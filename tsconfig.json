@@ -13,12 +13,15 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "rootDir": ".",
     "jsx": "preserve",
     "jsxFactory": "Taro.createElement",
     "allowJs": true,
     "resolveJsonModule": true,
+    "paths": {
+      "@/utils/*": ["utils/*"],
+    },
     "typeRoots": [
       "node_modules/@types",
       "global.d.ts"

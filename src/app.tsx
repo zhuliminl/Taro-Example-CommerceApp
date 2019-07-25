@@ -1,7 +1,12 @@
 import Taro, { Component, Config } from '@tarojs/taro'
+import { Provider } from '@tarojs/redux'
+import configStore from './store'
+
 import Index from './pages/index'
 
 import './app.scss'
+
+const store = configStore() 
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -25,12 +30,14 @@ class App extends Component {
       'pages/seckill/seckill',
       'pages/partner/partner',
       'pages/user/user',
+      'pages/user_login/user_login',
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
+      navigationStyle: 'custom',  // 隐藏顶部导航栏
     },
     tabBar: {
       color: "#666",
@@ -84,7 +91,9 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
-      <Index />
+      <Provider store={store}>
+        <Index />
+      </Provider>
     )
   }
 }
