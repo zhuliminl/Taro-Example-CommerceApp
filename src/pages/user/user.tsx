@@ -7,14 +7,33 @@ import bg_user from './assets/bg_user.png'
 import arrow from './assets/arrow.png'
 import arrow_grey from './assets/arrow_grey.png'
 import banner_partner from './assets/banner_partner.png'
-import iconA1 from './assets/withdraw.png'
-import iconA2 from './assets/team.png'
-import iconA3 from './assets/order.png'
-import iconA4 from './assets/seckill_order.png'
 
 import { device } from '@/utils/device'
 
 const defaultAvatar = 'https://upload-images.jianshu.io/upload_images/1911665-4c2545e999616a1f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp'
+
+const DETAIL_LIST = [
+  {
+    key: 'withdraw',
+    text: '提现',
+    img: require('./assets/withdraw.png')
+  },
+  {
+    key: 'team',
+    text: '团队',
+    img: require('./assets/team.png')
+  },
+  {
+    key: 'order',
+    text: '淘宝订单',
+    img: require('./assets/order.png')
+  },
+  {
+    key: 'seckill_order',
+    text: '秒杀订单',
+    img: require('./assets/seckill_order.png')
+  },
+]
 
 interface UserInterface {
   getUser: (token) => {},
@@ -112,22 +131,16 @@ class User extends Component<UserInterface, {}> {
           </View>
 
           <View className='user__items-wrapper'>
-            <View className='user-item-wrapper'>
-              <Image className='icon-img' src={iconA1}/>
-              <Text className='item-txt'>提现</Text>
-            </View>
-            <View className='user-item-wrapper'>
-              <Image className='icon-img' src={iconA2}/>
-              <Text className='item-txt'>团队</Text>
-            </View>
-            <View className='user-item-wrapper'>
-              <Image className='icon-img' src={iconA3}/>
-              <Text className='item-txt'>淘宝订单</Text>
-            </View>
-            <View className='user-item-wrapper'>
-              <Image className='icon-img' src={iconA4}/>
-              <Text className='item-txt'>秒杀订单</Text>
-            </View>
+          {
+            DETAIL_LIST.map((item, i) => {
+              return (
+                <View className='user-item-wrapper' key={item.key}>
+                  <Image className='icon-img' src={item.img}/>
+                  <Text className='item-txt'>{item.text}</Text>
+                </View>
+              )
+            })
+          }
           </View>
 
         </View>
