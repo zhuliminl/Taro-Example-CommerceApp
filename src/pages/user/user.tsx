@@ -83,7 +83,7 @@ const MEMBER_CENTER_LIST = [
   {
     key: 'mannual',
     text: '新手教程',
-    description: '初入好省必读攻略'
+    description: '初入好省必读攻略',
     img: require('./assets/manual.png')
   },
 ]
@@ -159,7 +159,8 @@ const SERVICE_LIST = [
 
 
 interface UserInterface {
-  getUser: (token) => {},
+  getUser: (token: string) => {},
+  goto: (path: string) => {},
   userInfo: any,
 }
 
@@ -179,6 +180,29 @@ class User extends Component<UserInterface, {}> {
     console.log('FIN', device)
   }
 
+  componentDidMount = () => {
+    console.log("FIN Did Mount")
+  }
+
+  testToast = () => {
+    console.log('FIN show toast')
+
+    Taro.showToast({
+      title: '成功',
+      icon: 'success',
+      duration: 2000
+    })
+      .then(res => console.log(res))
+  }
+
+  goto = path => {
+    console.log('FIN path', path)
+    Taro.navigateTo({
+      url: '/pages/setting/setting'
+    })
+  }
+
+
   render () {
     return (
         <View className='user'>
@@ -193,7 +217,11 @@ class User extends Component<UserInterface, {}> {
               <View className='profile__top-bar_item'>
                 <Text className='profile__top-bar_txt'>消息</Text>
               </View>
-              <View className='profile__top-bar_item'>
+              <View className='profile__top-bar_item'
+                onClick={() => {
+                  this.goto('ss')
+                }}
+              >
                 <Text className='profile__top-bar_txt'>设置</Text>
               </View>
             </View>
@@ -201,7 +229,9 @@ class User extends Component<UserInterface, {}> {
             <View className='profile__avatar'>
               <Image className='profile__avatar_img' src={defaultAvatar}/>
               <View className='profile__right'>
-                <View className='profile__right-item'>
+                <View className='profile__right-item'
+                onClick={this.testToast}
+                >
                   <Text className='profile__name-txt'>小石头{device.isAndroid() && 'android'} {device.isIOS() && 'ios'}</Text>
                   <Text className='profile__partner-txt'>合伙人</Text>
                 </View>
@@ -255,7 +285,7 @@ class User extends Component<UserInterface, {}> {
 
           <View className='user__items-wrapper'>
           {
-            DETAIL_LIST.map((item, i) => {
+            DETAIL_LIST.map((item) => {
               return (
                 <View className='user-item-wrapper' key={item.key}>
                   <Image className='icon-img' src={item.img}/>
@@ -273,7 +303,7 @@ class User extends Component<UserInterface, {}> {
           </View>
           <View className='user__items-wrapper'>
           {
-            SECKILL_ORDER_LIST.map((item, i) => {
+            SECKILL_ORDER_LIST.map((item) => {
               return (
                 <View className='user-item-wrapper' key={item.key}>
                   <Image className='icon-img' src={item.img}/>
@@ -289,7 +319,7 @@ class User extends Component<UserInterface, {}> {
           </View>
           <View className='user__items-wrapper'>
           {
-            MEMBER_CENTER_LIST.map((item, i) => {
+            MEMBER_CENTER_LIST.map((item) => {
               const description = item.description
               return (
                 <View className='user-item-wrapper' key={item.key}>
@@ -307,7 +337,7 @@ class User extends Component<UserInterface, {}> {
           </View>
           <View className='user__items-wrapper'>
           {
-            SERVICE_LIST.map((item, i) => {
+            SERVICE_LIST.map((item) => {
               const description = item.description
               return (
                 <View className='user-item-wrapper' key={item.key}>

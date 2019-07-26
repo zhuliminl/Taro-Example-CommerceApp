@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "DaTaoKe",
 	"description": "大淘客",
-	"appid": "touristappid",
+	"appid": "wxfd67f0c2f607440b",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,

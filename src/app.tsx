@@ -5,6 +5,7 @@ import configStore from './store'
 import Index from './pages/index'
 
 import './app.scss'
+import console = require('console');
 
 const store = configStore() 
 
@@ -31,6 +32,7 @@ class App extends Component {
       'pages/partner/partner',
       'pages/user/user',
       'pages/user_login/user_login',
+      'pages/setting/setting',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -79,13 +81,21 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {}
+  componentDidMount () {
+    console.log('APP DidMount')
+  }
 
-  componentDidShow () {}
+  componentDidShow () {
+    console.log('APP DidShow')
+  }
 
-  componentDidHide () {}
+  componentDidHide () {
+    console.log('APP DidShow')
+  }
 
-  componentDidCatchError () {}
+  componentDidCatchError () {
+    console.log('APP DidCatchError')
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数

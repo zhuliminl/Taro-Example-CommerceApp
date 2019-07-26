@@ -21,6 +21,7 @@
     "resolveJsonModule": true,
     "paths": {
       "@/utils/*": ["utils/*"],
+      "@/components/*": ["components/*"],
     },
     "typeRoots": [
       "node_modules/@types",

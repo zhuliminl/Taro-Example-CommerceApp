@@ -18,12 +18,6 @@ render () {
   return (
       <View>
         <Text>登录页面</Text>
-        <View
-          onClick = {() => {
-            Taro.navigateBack()
-          }}
-        >返回</View>
-        
       </View>
     )
   }
