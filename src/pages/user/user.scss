@@ -143,6 +143,8 @@
 }
 
 .user__title {
+  border-color: #F5F6F7;
+  border-top-width: 20px;
   background-color: #FFF;
   position: relative;
   padding: 20px 40px;
@@ -168,14 +170,19 @@
 }
 
 .user__items-wrapper {
+  padding-bottom: 20px;
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  // justify-content: space-around;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   background-color: #FFF;
 }
 
 .user-item-wrapper {
+  width: 25%;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -186,6 +193,13 @@
   height: 64px;
 }
 .item-txt {
+  margin-top: 10px;
   font-size: 26px;
   color: #333;
+}
+.item-description-txt {
+  margin-top: 5px;
+  font-size: 22px;
+  color: #999;
+
 }
