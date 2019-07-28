@@ -11,7 +11,7 @@ import banner_partner from './assets/banner_partner.png'
 import { device } from '@/utils/device'
 import console = require('console');
 
-const defaultAvatar = 'https://upload-images.jianshu.io/upload_images/1911665-4c2545e999616a1f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp'
+const defaultAvatar = 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80'
 
 const DETAIL_LIST = [
   {
