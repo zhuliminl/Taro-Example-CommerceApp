@@ -15,7 +15,7 @@ class Header extends Component <HeaderInterface, {}> {
     return (
       <View className='header-wrapper'
         style={isIOS ? {
-          paddingTop: 30
+          marginTop: 20
        } : {}}
       >
         <View

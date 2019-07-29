@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Image } from '@tarojs/components';
+import { View, Image, ScrollView } from '@tarojs/components';
 import Header from '@/components/header'
 import List from '@/components/list'
 import Btn from '@/components/btn'
@@ -20,80 +20,95 @@ class Setting extends Component {
   }
 
 render () {
+  let scrollHeight = 65
+  if(device.isAndroid()) {
+    // 安卓特殊处理，否则无法滑动
+    scrollHeight = 98
+  }
   return (
       <View 
         className='page-wrapper'
-        style={device.isRN() ? {height: device.windowHeight}: {}}
       >
         <Header title='设置' />
-        <List 
-          title='头像'
-          callback={() => {
-            console.log('FIN 进入其他页面')
+        <View style={{ height: Taro.pxTransform(130), backgroundColor: '#FFF'}} ></View>
+
+        <ScrollView 
+          style={{
+            height: device.windowHeight - scrollHeight
           }}
-          renderAsideEl={
-             <Image 
-              className='setting-avatar'
-              src={defaultAvatar} /> 
-            }
-          />
-        <List 
-          title='昵称'
-          desc='小石头'
-          callback={() => {
-            console.log('FIN 进入其他页面')
-          }}
-          />
-        <List 
-          title='手机号'
-          desc={phone.hideFormat('13735881684')}
-          callback={() => {
-            console.log('FIN 进入其他页面')
-          }}
-          />
-        <List 
-          title='收货地址'
-          callback={() => {
-            console.log('FIN 进入其他页面')
-          }}
-          hasMarginBottom
-          />
+        >
+          <List 
+            title='头像'
+            callback={() => {
+              console.log('FIN 进入其他页面')
+            }}
+            renderAsideEl={
+              <Image 
+                className='setting-avatar'
+                src={defaultAvatar} /> 
+              }
+            />
+          <List 
+            title='昵称'
+            desc='小石头'
+            callback={() => {
+              console.log('FIN 进入其他页面')
+            }}
+            />
+          <List 
+            title='手机号'
+            desc={phone.hideFormat('13735881684')}
+            callback={() => {
+              console.log('FIN 进入其他页面')
+            }}
+            />
+          <List 
+            title='收货地址'
+            callback={() => {
+              console.log('FIN 进入其他页面')
+            }}
+            hasMarginBottom
+            />
+            
+          <List 
+            title='微信授权'
+            callback={() => {
+              console.log('FIN 进入其他页面')
+            }}
+            hasMarginBottom
+            />
+
+          <List 
+            title='推送设置'
+            callback={() => {
+              console.log('FIN 进入其他页面')
+            }}
+            />
+          <List 
+            title='浏览记录'
+            callback={() => {
+              console.log('FIN 进入其他页面')
+            }}
+            />
+          <List 
+            title='多语言'
+            callback={() => {
+              console.log('FIN 进入其他页面')
+            }}
+            hasMarginBottom
+            />
+         
           
-        <List 
-          title='微信授权'
-          callback={() => {
-            console.log('FIN 进入其他页面')
-          }}
-          hasMarginBottom
+
+          <Btn 
+            title='退出当前账户'
+
+            callback={() => {
+              console.log('FIN 注销')
+            }}
           />
 
-        <List 
-          title='推送设置'
-          callback={() => {
-            console.log('FIN 进入其他页面')
-          }}
-          />
-        <List 
-          title='浏览记录'
-          callback={() => {
-            console.log('FIN 进入其他页面')
-          }}
-          />
-        <List 
-          title='多语言'
-          callback={() => {
-            console.log('FIN 进入其他页面')
-          }}
-          hasMarginBottom
-          />
-
-        <Btn 
-          title='退出当前账户'
-
-          callback={() => {
-            console.log('FIN 注销')
-          }}
-        />
+        </ScrollView>
       </View>
     )
   }

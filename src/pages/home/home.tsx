@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import './home.scss'
+import Banner from '@/components/banner'
 
 class Home extends Component {
   config = {
@@ -14,7 +15,7 @@ class Home extends Component {
 render () {
   return (
       <View className='home'>
-        <Text>真的首页</Text>
+        <Banner />
       </View>
     )
   }

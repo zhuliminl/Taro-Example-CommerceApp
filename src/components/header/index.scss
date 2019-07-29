@@ -1,7 +1,9 @@
 
 .header-wrapper {
-  position: relative;
-  padding: 30px 20px;
+  position: absolute;
+  z-index: 9999;
+  height: 100px;
+  width: 100%;
   background-color: #FFF;
   display: flex;
   flex-direction: row;
@@ -11,16 +13,18 @@
   border-bottom-width: 1px;
   /*postcss-pxtransform rn eject enable*/
   border-bottom-style: solid;
-  padding: 10px 20px;
+  position: fixed;
   /*postcss-pxtransform rn eject disable*/
 }
 
 .header__back-img {
+  margin-left: 30px;
   width: 40px;
   height: 40px;
 }
 
 .header__title-txt {
+  padding-right: 40px;
   flex: 1;
   justify-content: center;
   text-align: center;
