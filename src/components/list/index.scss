@@ -1,0 +1,25 @@
+.list-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 22px 30px;
+  background-color: #FFF;
+  margin-bottom: 1px;
+
+}
+
+.list-title {
+  flex: 1;
+  font-size: 32px;
+  color: #333;
+}
+
+.list-desc {
+  font-size: 28px;
+  color: #888;
+}
+
+.list-arrow-img {
+  width: 30px;
+  height: 30px;
+}
