@@ -5,7 +5,6 @@ import configStore from './store'
 import Index from './pages/index'
 
 import './app.scss'
-import console = require('console');
 
 const store = configStore() 
 

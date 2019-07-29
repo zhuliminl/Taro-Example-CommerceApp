@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
 import './index.scss'
-import console = require('console');
+import {device} from '@/utils/device'
 
 interface ListInterface {
   title: string;
@@ -9,6 +9,12 @@ interface ListInterface {
   hasMarginBottom: boolean;
   callback: () => void;
   renderAsideEl: JSX.Element;
+}
+
+interface WrapperStyleInterface {
+  marginBottom?: any;
+  paddingTop?: number;
+  paddingBottom?: number;
 }
 
 
@@ -19,15 +25,21 @@ class List extends Component <ListInterface, {}> {
     renderAsideEl: null,
   }
 
-  componentDidMount = () => {
-    console.log('FIN list props', this.props)
-  }
-
   render () {
+    let wrapperStyle : WrapperStyleInterface = {}
+    if(this.props.hasMarginBottom) {
+      wrapperStyle.marginBottom = Taro.pxTransform(20)
+    }
+
+    if(device.isIOS()) {
+      wrapperStyle.paddingTop = 18
+      wrapperStyle.paddingBottom =18
+    }
+
     return (
       <View 
         className='list-wrapper'
-        style={this.props.hasMarginBottom ? { marginBottom: 20}: {}}
+        style={wrapperStyle}
         onClick={() => {
           this.props.callback && this.props.callback()
         }}

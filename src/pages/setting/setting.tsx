@@ -1,10 +1,12 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Image } from '@tarojs/components';
+import { View, Image } from '@tarojs/components';
 import Header from '@/components/header'
 import List from '@/components/list'
+import Btn from '@/components/btn'
 import './setting.scss'
 import {device} from '@/utils/device'
 import {phone} from '@/utils/phone'
+import console = require('console');
 
 const defaultAvatar = 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80'
 
@@ -84,6 +86,14 @@ render () {
           }}
           hasMarginBottom
           />
+
+        <Btn 
+          title='退出当前账户'
+
+          callback={() => {
+            console.log('FIN 注销')
+          }}
+        />
       </View>
     )
   }

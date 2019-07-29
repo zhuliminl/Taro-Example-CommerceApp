@@ -1,0 +1,16 @@
+.btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 24px 30px;
+  background-color: #FFF;
+  margin-bottom: 1px;
+
+}
+
+.btn-title-txt {
+  flex: 1;
+  text-align: center;
+  font-size: 32px;
+  color: red;
+}
