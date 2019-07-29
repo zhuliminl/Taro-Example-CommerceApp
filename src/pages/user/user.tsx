@@ -9,9 +9,37 @@ import arrow_grey from './assets/arrow_grey.png'
 import banner_partner from './assets/banner_partner.png'
 
 import { device } from '@/utils/device'
-import console = require('console');
+
+
+import Banner from '@/components/banner'
+import banner1 from '@/assets/banner/banner1.png'
+import banner2 from '@/assets/banner/banner2.png'
+import banner3 from '@/assets/banner/banner3.png'
+import banner4 from '@/assets/banner/banner4.png'
+
+const IMG_LIST = [
+  {
+    key: 1,
+    src: banner1,
+  },
+  {
+    key: 2,
+    src: banner2,
+  },
+  {
+    key: 3,
+    src: banner3,
+  },
+  {
+    key: 4,
+    src: banner4,
+  },
+]
+
 
 const defaultAvatar = 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80'
+
+
 
 const DETAIL_LIST = [
   {
@@ -295,6 +323,13 @@ class User extends Component<UserInterface, {}> {
             })
           }
           </View>
+
+
+          <Banner 
+            bannerHeight={135}
+            imgList={IMG_LIST}
+          />
+
 
           <View className='user__title'>
             <Text className='user__title-txt'>我的秒杀订单</Text>
