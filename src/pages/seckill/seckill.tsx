@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 
-class User extends Component {
+class Seckill extends Component {
   config = {
     navigationBarTitleText: '大牌秒杀',
   }
@@ -19,4 +19,4 @@ render () {
   }
 }
 
-export default User
+export default Seckill
