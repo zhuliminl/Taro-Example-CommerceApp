@@ -10,6 +10,7 @@ import banner1 from '@/assets/banner/banner1.png'
 import banner2 from '@/assets/banner/banner2.png'
 import banner3 from '@/assets/banner/banner3.png'
 import banner4 from '@/assets/banner/banner4.png'
+import { device } from '@/utils/device';
 
 const IMG_LIST = [
   {
@@ -30,7 +31,7 @@ const IMG_LIST = [
   },
 ]
 
-const coupon_url = 'https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/0/back/100/min_id/1'
+const coupon_url = 'https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/0/back/20/min_id/1'
 
 class Home extends Component {
   config = {
@@ -65,6 +66,9 @@ class Home extends Component {
 
         <ScrollView
           scrollY
+          style={{
+            height: device.windowHeight,
+          }}
         >
           <ItemListB
             list={this.state.coupons || []}

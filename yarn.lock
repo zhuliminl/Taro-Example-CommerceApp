@@ -1499,6 +1499,11 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
 
+StatusBar@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/StatusBar/-/StatusBar-1.0.0.tgz#26740632a1b93dabb01ea1ddf69a35e8805d8e0f"
+  integrity sha1-JnQGMqG5PauwHqHd9po16IBdjg8=
+
 abab@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"

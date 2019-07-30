@@ -6,7 +6,6 @@ import Btn from '@/components/btn'
 import './setting.scss'
 import {device} from '@/utils/device'
 import {phone} from '@/utils/phone'
-import console = require('console');
 
 const defaultAvatar = 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80'
 

@@ -1,52 +1,50 @@
 .item-list {
-  padding: 20px;
-  background-color: #F5F6F7;
-
+  margin-top: 20px;
+  background: #ffffff;
 }
 
 .item-list__title {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 30px;
+  height: 100px;
 }
 
 .item-list__wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 15px;
+  padding-left: 28px;   // 使居中
 }
 
 .item-list__item {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 16px;
-  border-radius: 10px;
-  padding: 16px;
-  background-color: #FFF;
+  flex-direction: column;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 30px;
+  // padding-bottom: 140px;  // 给出下方固定的排版高度
+  width: 50%;
+
+  &-img {
+    width: 330px;
+    height: 330px;
+    background: #f4f4f4;
+    border-radius: 4px;
+  }
 }
 
-.item-list__item-img {
-  width: 250px;
-  height: 250px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  border-radius: 8px;
-}
-
-.item-list__item-right {
-  flex: 1;
-  height: 250px;  // 必须保持和图片同高
-  padding-left: 20px;
-  padding-right: 10px;
+.item-content-wrap {
   display: flex;
   flex-direction: column;
-}
-
-.item-right-top {
-  flex: 1;
-  // background-color: blue;
-}
-
-.item-mall-type-img {
-
+  width: 330px;
+  height: 280px;
 }
 
 .item__title-txt {
+  flex: 1;
   color: #333;
   font-weight: bold;
   font-size: 30px;
@@ -62,6 +60,7 @@
   flex-direction: row;
   align-items: baseline;
 }
+
 .item__symbol-txt {
   color: red;
   font-weight: bold;
@@ -72,14 +71,6 @@
   color: red;
   font-weight: bold;
   font-size: 40px;
-
-}
-
-.item-right-bottom-wrap {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
-  align-items: center;
 }
 
 .item__original-price-txt {
@@ -93,16 +84,14 @@
   font-size: 26px;
 }
 
-.item__coupon-txt {
-  position: absolute;
-  width: 130px;
-  // background-color: #555;  只有文字容器和背景同宽，才会有居中效果
-  text-align: center;
-  color: #FFF;
-  font-size: 24px;
+.item-bottom-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
 }
 
-.item-right-bottom-coupon-wrap {
+.item-bottom-coupon-wrap {
   // 必须有容器才能保证，背景不变形，同时还能把『返利』挤到一边去
   flex: 1;
   /*postcss-pxtransform rn eject enable*/
@@ -110,7 +99,19 @@
   /*postcss-pxtransform rn eject disable*/
 }
 
-.item-right-bottom__bg-coupon {
+.item__coupon-txt {
+  position: absolute;
+  top: 0px;
+  width: 130px;
+  // background-color: #555; 
+  // 只有文字容器和背景同宽，才会有居中效果
+  text-align: center;
+  color: #FFF;
+  font-size: 24px;
+}
+
+
+.item-bottom__bg-coupon {
   width: 130px;
   height: 40px;
 }
@@ -128,3 +129,4 @@
   border-radius: 6px;
 
 }
+
