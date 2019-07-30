@@ -4,6 +4,7 @@
 
 见官网
 
+
 常见的坑
 
 - `_reactNative.UIManager.getViewManagerConfig(reactNativeViewName)',` 报错
@@ -11,6 +12,8 @@
 解决办法见 [https://github.com/expo/expo/commit/27f4c75d0b88cded2f7b109519ad70f58c0d4ad4](https://github.com/expo/expo/commit/27f4c75d0b88cded2f7b109519ad70f58c0d4ad4)
 
 按如上提示修改 `node_modules/@unimodules/react-native-adapter/build/NativeViewManagerAdapter.js` 文件即可
+
+RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro-native-shell](https://github.com/NervJS/taro-native-shell)
 
 
 ## 适配进度
