@@ -2,7 +2,7 @@ import Taro, { Component, pxTransform } from '@tarojs/taro';
 import { View, Text, ScrollView } from '@tarojs/components';
 import './home.scss'
 
-import ItemListB from '@/components/item-list-b'
+import ItemListB from '@/components/item-list-a'
 
 import Banner from '@/components/banner'
 
