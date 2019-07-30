@@ -1,0 +1,23 @@
+
+// 总包装
+.tab-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+// tab 标题容器
+.tab-item-wrap {
+  background: #DDD;
+  height: 80px;
+  width: 200px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+
+// tab 内部字体
+.tab-item-txt {
+  font-size: 30px;
+  color: #333;
+}
