@@ -23,11 +23,11 @@
 ## 目标功能
 
 - [x] 商品列表 -- 开发中
+- [x] 会员中心 -- 开发中
 - [x] 设置 -- 开发中
 - [ ] 商品详情 -- 开发中
 - [ ] 商品搜索 -- 开发中
 - [ ] 商品筛选 -- 开发中
-- [ ] 会员中心 -- 开发中
 
 ## 部分截图展示
 
@@ -35,11 +35,11 @@
 
 ### h5 端
 
-<img src="screenshots/h5_2.png" width="375px" height="667px" /><img src="screenshots/h5_1.png" width="375px" height="667px" /> <img src="screenshots/h5_3.png" width="375px" height="667px" />
+<img src="screenshots/h5_2.png" width="375px" height="667px" />   <img src="screenshots/h5_1.png" width="375px" height="667px" />   <img src="screenshots/h5_3.png" width="375px" height="667px" />
 
 ### RN 端
 
-<img src="screenshots/rn_2.png" width="375px" height="667px" /><img src="screenshots/rn_4.png" width="375px" height="667px" /> <img src="screenshots/rn_5.png" width="375px" height="667px" /> <img src="screenshots/rn_1.png" width="375px" height="667px" />
+<img src="screenshots/rn_2.png" width="375px" height="667px" />   <img src="screenshots/rn_4.png" width="375px" height="667px" />   <img src="screenshots/rn_5.png" width="375px" height="667px" />   <img src="screenshots/rn_1.png" width="375px" height="667px" />
 
 ### 小程序 端
 
