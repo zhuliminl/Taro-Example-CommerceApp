@@ -1,0 +1,130 @@
+.item-list {
+  padding: 20px;
+  background-color: #F5F6F7;
+
+}
+
+.item-list__title {
+
+}
+
+.item-list__wrap {
+}
+
+.item-list__item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  padding: 16px;
+  background-color: #FFF;
+}
+
+.item-list__item-img {
+  width: 250px;
+  height: 250px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.item-list__item-right {
+  flex: 1;
+  height: 250px;  // 必须保持和图片同高
+  padding-left: 20px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-right-top {
+  flex: 1;
+  // background-color: blue;
+}
+
+.item-mall-type-img {
+
+}
+
+.item__title-txt {
+  color: #333;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+  // background-color: green;
+  /*postcss-pxtransform rn eject enable*/
+  display: block;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.item__price-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.item__symbol-txt {
+  color: red;
+  font-weight: bold;
+  font-size: 26px;
+  padding-bottom: 4px;
+}
+.item__price-txt {
+  color: red;
+  font-weight: bold;
+  font-size: 40px;
+
+}
+
+.item-right-bottom-wrap {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.item__original-price-txt {
+  flex: 1;
+  color: #999;
+  font-size: 26px;
+}
+
+.item__sold-txt {
+  color: #999;
+  font-size: 26px;
+}
+
+.item__coupon-txt {
+  position: absolute;
+  width: 130px;
+  // background-color: #555;  只有文字容器和背景同宽，才会有居中效果
+  text-align: center;
+  color: #FFF;
+  font-size: 24px;
+}
+
+.item-right-bottom-coupon-wrap {
+  // 必须有容器才能保证，背景不变形，同时还能把『返利』挤到一边去
+  flex: 1;
+  /*postcss-pxtransform rn eject enable*/
+  line-height: 24px; // 保证 h5 端底部不超出
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.item-right-bottom__bg-coupon {
+  width: 130px;
+  height: 40px;
+}
+
+.item__return-txt {
+  overflow: hidden;
+  padding: 4px 12px 4px 12px;
+  /*postcss-pxtransform rn eject enable*/
+  padding: 1px 10px 1px 10px;
+  /*postcss-pxtransform rn eject disable*/
+  font-size: 24px;
+  color: red;
+  opacity: 0.8;
+  background-color: #ffd4d4;
+  border-radius: 6px;
+
+}

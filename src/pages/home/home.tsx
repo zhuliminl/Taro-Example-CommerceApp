@@ -1,6 +1,9 @@
 import Taro, { Component, pxTransform } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
+import { View, Text, ScrollView } from '@tarojs/components';
 import './home.scss'
+
+import ItemListB from '@/components/item-list-b'
+
 import Banner from '@/components/banner'
 
 import banner1 from '@/assets/banner/banner1.png'
@@ -27,6 +30,8 @@ const IMG_LIST = [
   },
 ]
 
+const coupon_url = 'https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/0/back/100/min_id/1'
+
 class Home extends Component {
   config = {
     navigationBarTitleText: '真的首页',
@@ -34,15 +39,43 @@ class Home extends Component {
 
   state = {
     loading: false,
+    coupons: [],
   }
 
-render () {
-  return (
+  componentDidMount = async () => {
+    try {
+      const resp = await Taro.request({url: coupon_url})
+      const coupons = resp && resp.data && resp.data.data
+      this.setState({
+        coupons,
+      })
+      console.log('FIN coupons', coupons)
+    } catch(err) {
+      console.log('FIN get coupon err', err)
+    }
+  }
+
+  render () {
+    return (
       <View className='home'>
         <Banner 
           bannerHeight={135}
           imgList={IMG_LIST}
         />
+
+        <ScrollView
+          scrollY
+        >
+          <ItemListB
+            list={this.state.coupons || []}
+          >
+            <View>
+              <Text>标题头</Text>
+            </View>
+          </ItemListB>
+        </ScrollView>
+
+
       </View>
     )
   }
