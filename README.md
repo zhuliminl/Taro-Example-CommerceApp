@@ -38,7 +38,7 @@ RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro
 
 ### h5 端
 
-<img src="screenshots/h5_2.png" width="375px" height="667px" />   <img src="screenshots/h5_1.png" width="375px" height="667px" />   <img src="screenshots/h5_3.png" width="375px" height="667px" />
+<img src="screenshots/h5_2.png" width="375px" height="667px" style="margin-right: 20px" />   <img src="screenshots/h5_1.png" width="375px" height="667px" />   <img src="screenshots/h5_3.png" width="375px" height="667px" />
 
 ### RN 端
 
