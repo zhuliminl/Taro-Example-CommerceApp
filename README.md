@@ -1,9 +1,5 @@
 # 大淘客
 
-
-# 前言
-
-
 ## 项目运行
 
 见官网
@@ -12,16 +8,9 @@
 
 - `_reactNative.UIManager.getViewManagerConfig(reactNativeViewName)',` 报错
 
-解决办法
+解决办法见 [https://github.com/expo/expo/commit/27f4c75d0b88cded2f7b109519ad70f58c0d4ad4](https://github.com/expo/expo/commit/27f4c75d0b88cded2f7b109519ad70f58c0d4ad4)
 
-详情见 [https://github.com/expo/expo/commit/27f4c75d0b88cded2f7b109519ad70f58c0d4ad4](https://github.com/expo/expo/commit/27f4c75d0b88cded2f7b109519ad70f58c0d4ad4)
-
- 按如上提示修改 `node_modules/@unimodules/react-native-adapter/build/NativeViewManagerAdapter.js` 文件即可
-
-## 休闲一刻
-
-<img src="screenshots/gh_a896d27a50a3_430.jpg" width="250"/> <img src="screenshots/gh_44a51ea2dd08_430.jpg" width="250"/>
-
+按如上提示修改 `node_modules/@unimodules/react-native-adapter/build/NativeViewManagerAdapter.js` 文件即可
 
 
 ## 适配进度
@@ -30,13 +19,14 @@
 - [x] React Native -- 完美适配
 - [x] 微信小程序 -- 完美适配
 - [x] 支付宝小程序 -- 适配中
-- [] 百度小程序 -- 95%适配
-- [ ] 字节跳动小程序 -- 适配中
-- [ ] 快应用 -- 适配中
 
 ## 目标功能
 
 - [x] 商品列表 -- 开发中
+- [x] 设置 -- 开发中
+- [ ] 商品详情 -- 开发中
+- [ ] 商品搜索 -- 开发中
+- [ ] 商品筛选 -- 开发中
 - [ ] 会员中心 -- 开发中
 
 ## 部分截图展示
@@ -71,22 +61,14 @@
 
 > https://mp.weixin.qq.com/debug/wxadoc/dev/
 
-### 百度智能小程序官方文档
-
-> https://smartprogram.baidu.com/docs/introduction/register/index.html
-
 ### 支付宝小程序官方文档
 
 > https://docs.alipay.com/mini/developer/getting-started
 
-### 字节跳动小程序官方文档
-
-> https://microapp.bytedance.com/
-
 
 # 技术交流
 
-如有帮助，欢迎加好友一起聊技术
+如有帮助，欢迎加好友一起共同学习
 
 
 <img src="screenshots/me.PNG" width="200px" /> 
