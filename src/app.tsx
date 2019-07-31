@@ -33,6 +33,7 @@ class App extends Component {
       'pages/user/user',
       'pages/user_login/user_login',
       'pages/setting/setting',
+      'pages/estimate/estimate',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -60,7 +61,8 @@ class App extends Component {
           text: "好省圈"
         },
         {
-          pagePath: "pages/seckill/seckill",
+          // pagePath: "pages/seckill/seckill",
+          pagePath: "pages/estimate/estimate",
           iconPath: "./assets/tab-bar/seckill.png",
           selectedIconPath: "./assets/tab-bar/seckill-active.png",
           text: "大牌秒杀"
