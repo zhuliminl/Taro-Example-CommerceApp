@@ -28,12 +28,14 @@ interface ActiveStyleInterface {
 class Tab extends Component <TabInterface, TabStateInterface> {
   constructor(props) {
     super(props)
-    const {list, itemWidth} = this.props
+    const {list, itemWidth, current} = this.props
     const totalX = itemWidth*(list.length)
+    const leftX = itemWidth*current
     this.state = {
       x: 0,
       current: this.props.current || 0,
       maxX: totalX - device.windowWidth,  // 最大移动位置是元素的总长度减去屏幕宽度
+      leftX,
     }
   }
 
@@ -60,18 +62,22 @@ class Tab extends Component <TabInterface, TabStateInterface> {
 
   // 让某个值在某个区间变化
   animateValue = (a, b, fn) => {
-    const duration = 1*1000
+    // console.log('FIN 初始值a', a)
+    // console.log('FIN 初始值b', b)
+    const duration = 0.2*1000
     let d = b - a
     let startT = +new Date();
     let ID = setInterval(() => {
       let curT = +new Date();
       let passT = curT - startT;
-      let value = moveStrategies.strongEaseOut(passT, a, d, duration)
+      let value = moveStrategies.sineaseIn(passT, a, d, duration)
       fn(value)
       if(passT > duration) {
+        fn(b)  // 强制纠正动画值的不精确性
+        // console.log('FIN 终点值', value)
         clearInterval(ID)
       }
-    }, 50)
+    }, 0.4)
   }
 
   handleTabItemClick = item => {
@@ -79,10 +85,10 @@ class Tab extends Component <TabInterface, TabStateInterface> {
 
     const preLeftX = this.props.itemWidth * this.state.current
     const nextLeftX = this.props.itemWidth * item.key
-    this.animateValue(preLeftX, nextLeftX, this.printV)
-    console.log('FIN 之前的位置', preLeftX)
-    console.log('FIN 下一次的位置', nextLeftX)
+    this.animateValue(preLeftX, nextLeftX, this.setCursor)
 
+    // console.log('FIN 之前的位置', preLeftX)
+    // console.log('FIN 下一次的位置', nextLeftX)
   }
 
   handleActiveItem = item =>{
@@ -110,14 +116,13 @@ class Tab extends Component <TabInterface, TabStateInterface> {
 
   render () {
     const {list} = this.props
-    let leftX : any = this.props.itemWidth * this.state.current
+    let leftX : any = this.state.leftX
     let itemWidth = this.props.itemWidth
     if(device.isWeChat()) {
       // 微信端必须重新设置
       leftX = Taro.pxTransform(leftX*2)
       itemWidth = Taro.pxTransform(itemWidth*2)
     }
-
 
     return (
       <ScrollView className='tab-wrap'
