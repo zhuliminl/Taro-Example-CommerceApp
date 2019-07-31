@@ -3,13 +3,18 @@
 .tab-wrap {
   display: flex;
   flex-direction: row;
+  white-space: nowrap;
 }
 
 // tab 标题容器
 .tab-item-wrap {
+  position: relative;
+  flex-direction: row;
+  display: inline-block;
+  // margin: 0 32px;
+  padding: 0 20px;
   background: #DDD;
   height: 80px;
-  width: 200px;
   align-items: center;
   display: flex;
   justify-content: center;
