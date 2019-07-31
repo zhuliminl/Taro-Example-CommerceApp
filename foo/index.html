@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小球缓动</title>
+    <style>
+      * {
+        transition: opacity 3s cubic-bezier(0.9, 0, 0.25, 1) 0s;
+      }
+      #container {
+        padding: 40px;
+        width: 100wh;
+        height: 500px;
+        border: 3px solid #999;
+      }
+
+      @keyframes scaleFloat {
+        0% {
+          transform: scale(1);
+          box-shadow: 1px 14px 14px 1px rgba(153, 153, 153, 0.45098039215686275);
+        }
+        50% {
+          transform: scale(0.7);
+          box-shadow: 1px 20px 7px 1px rgba(153, 153, 153, 0.1);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 1px 14px 14px 1px rgba(153, 153, 153, 0.45098039215686275);
+        }
+      }
+
+      .ball {
+        position: relative;
+        background: red;
+        height: 60px;
+        width: 60px;
+        transform: scale(2);
+        border-radius: 50%;
+        opacity: 1;
+      }
+      .floatItem {
+        animation: scaleFloat 3s infinite;
+      }
+
+      .fade {
+        transform: scale(0.5);
+        opacity: .1;
+
+      }
+    </style>
+</head>
+<body>
+    <div id="container">
+    </div>
+    <script type='text/javascript'>
+      const moveStrategies = {
+        /*
+         * 小球欢动策略算法
+         *
+         * @param 动画已经消耗的时间
+         * @param 小球的原始位置
+         * @param 小球目标位置
+         * @param 动画持续总时间
+         * @return 当前位置
+         */
+        linear:        (t, b, c, d) => (c*t/d + b),
+        easeIn:        (t, b, c, d) => (c * ( t /= d) * t + b),
+        strongEaseIn:  (t, b, c, d) => (c * ( t /= d ) * t * t * t * t + b),
+        strongEaseOut: (t, b, c, d) => (c * ( ( t = t / d - 1) * t * t * t * t + 1 ) + b),
+        sineaseIn:     (t, b, c ,d) => (c * ( t /= d) * t * t + b),
+        sineaseOut:    (t, b, c, d) => (c * ( ( t = t / d - 1) * t * t + 1 ) + b),
+        easeOut:       (t,b,c,d) => {
+                          if ((t/=d) < (1/2.75)) {
+                            return c*(7.5625*t*t) + b;
+                          } else if (t < (2/2.75)) {
+                            return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+                          } else if (t < (2.5/2.75)) {
+                            return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+                          } else {
+                            return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+                          }
+                        }
+      };
+
+      let container = document.getElementById('container');
+      let computedStyle = document.defaultView.getComputedStyle(container, null);
+      // 容器的尺寸
+      let containerDimension = {
+        height: computedStyle.height,
+        width: computedStyle.width
+      }
+
+      // 创建小球
+      let ball = document.createElement('div');
+      ball.setAttribute('class', 'ball')
+      ball.classList.add('floatItem')
+
+      ball.style.top = getRandomPosition(containerDimension, 'height');
+      ball.style.left = getRandomPosition(containerDimension, 'width');
+
+      // 添加小球到 UI
+      container.appendChild(ball)
+
+      // 给小球一个随意的位置
+      function getRandomPosition(fatherDimension, axis) {
+        if(axis === 'height') {
+          let topPos = Math.random() * (parseInt(fatherDimension[axis], 10) - 200) + 'px';
+          return topPos;
+        }
+        return (Math.random() * parseInt(fatherDimension[axis], 10)) + 'px';
+      }
+
+      // 点击小球，落到指定位置
+      ball.addEventListener('click', (e) => {
+        // 停止浮动效果并消隐
+        ball.classList.remove('floatItem')
+        ball.classList.add('fade')
+
+        // 小球位置
+        let initX, initY;
+        initX = parseInt(ball.style.left, 10);
+        initY = parseInt(ball.style.top, 10);
+        // console.log('init', initX, initY)
+
+        // 指定位置
+        let finalX = 200;
+        let finalY = 400;
+
+        let dsX = finalX - initX;
+        let dsY = finalY - initY;
+
+        // 开始时间
+        let startT = +new Date();
+        // 总持续时间
+        let duration = 3000;
+
+        let timeId = setInterval(() => {
+          // 当前时间
+          let curT = +new Date();
+          // 间隔时间
+          let passT = curT - startT;
+          // 当前位置计算
+          let curPosX = moveStrategies.strongEaseOut(passT, initX, dsX, duration)
+          let curPosY = moveStrategies.easeOut(passT, initY, dsY, duration)
+          // 更新位置
+          ball.style.left = curPosX + 'px';
+          ball.style.top = curPosY + 'px';
+          // 到临界值停止动画
+          if(passT > duration) {
+            clearInterval(timeId)
+          }
+        }, 50)
+      })
+
+
+    </script>
+</body>
+</html>
