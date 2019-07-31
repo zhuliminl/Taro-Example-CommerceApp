@@ -16,6 +16,7 @@ interface TabStateInterface {
   current: number;
   x: number;
   maxX: number;
+  leftX?: number;
 }
 
 interface ActiveStyleInterface {
@@ -44,26 +45,43 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   componentDidMount = () => {
     console.log('FIN tab state', this.state)
 
-    let finalX = 200;
-    let initX = 0
+    this.animateValue(300, 100, this.printV)
+  }
 
-    let dsX = finalX - initX;
+  printV = v => {
+    console.log('FIN value', v)
+  }
 
+  setCursor = v => {
+    this.setState({
+      leftX: v
+    })
+  }
+
+  // 让某个值在某个区间变化
+  animateValue = (a, b, fn) => {
+    const duration = 1*1000
+    let d = b - a
     let startT = +new Date();
-    let duration = 3000;
-    let timeId = setInterval(() => {
+    let ID = setInterval(() => {
       let curT = +new Date();
       let passT = curT - startT;
-      let curPosX = moveStrategies.strongEaseOut(passT, initX, dsX, duration)
-      console.log('FIN 当前值', curPosX)
+      let value = moveStrategies.strongEaseOut(passT, a, d, duration)
+      fn(value)
       if(passT > duration) {
-        clearInterval(timeId)
+        clearInterval(ID)
       }
     }, 50)
   }
 
   handleTabItemClick = item => {
     this.handleActiveItem(item) // 处理 tab 的激活状态和移动
+
+    const preLeftX = this.props.itemWidth * this.state.current
+    const nextLeftX = this.props.itemWidth * item.key
+    this.animateValue(preLeftX, nextLeftX, this.printV)
+    console.log('FIN 之前的位置', preLeftX)
+    console.log('FIN 下一次的位置', nextLeftX)
 
   }
 
