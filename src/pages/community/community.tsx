@@ -14,7 +14,7 @@ const TAB_LIST = [
   },
   {
     key: 2,
-    title: '男装',
+    title: '男装服饰',
   },
   {
     key: 3,
@@ -88,22 +88,10 @@ class Community extends Component {
 
   state = {
     loading: false,
-    animationData: {},
   }
 
   componentDidMount = () => {
     console.log('FIN 动画')
-    let animation = Taro.createAnimation({
-      duration: 1000,
-      timingFunction: 'ease',
-    })
-
-
-    animation.scale(1.4,1.4).rotate(45).step()
-
-    this.setState({
-      animationData : animation.export()
-    })
   }
 
 
@@ -112,14 +100,13 @@ class Community extends Component {
       <View>
         <Text>好省圈</Text>
 
-        <View
-          animation={this.state.animationData}
-        >
+        <View >
           <Text>动画</Text>
         </View>
 
 
         <Tab 
+          itemWidth={60}
           current={3}
           list={TAB_LIST}
           handleItemClick={(item) => {
