@@ -2,6 +2,8 @@ import Taro, { Component } from '@tarojs/taro';
 import { View, Text, ScrollView } from '@tarojs/components';
 import './index.scss'
 import {device} from '@/utils/device'
+import {moveStrategies} from '@/utils/animation'
+import console = require('console');
 
 interface TabInterface {
   handleItemClick: (any) => void;
@@ -41,6 +43,23 @@ class Tab extends Component <TabInterface, TabStateInterface> {
 
   componentDidMount = () => {
     console.log('FIN tab state', this.state)
+
+    let finalX = 200;
+    let initX = 0
+
+    let dsX = finalX - initX;
+
+    let startT = +new Date();
+    let duration = 3000;
+    let timeId = setInterval(() => {
+      let curT = +new Date();
+      let passT = curT - startT;
+      let curPosX = moveStrategies.strongEaseOut(passT, initX, dsX, duration)
+      console.log('FIN 当前值', curPosX)
+      if(passT > duration) {
+        clearInterval(timeId)
+      }
+    }, 50)
   }
 
   handleTabItemClick = item => {
