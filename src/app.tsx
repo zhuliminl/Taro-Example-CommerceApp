@@ -61,8 +61,8 @@ class App extends Component {
           text: "好省圈"
         },
         {
-          // pagePath: "pages/seckill/seckill",
-          pagePath: "pages/estimate/estimate",
+          pagePath: "pages/seckill/seckill",
+          // pagePath: "pages/estimate/estimate",
           iconPath: "./assets/tab-bar/seckill.png",
           selectedIconPath: "./assets/tab-bar/seckill-active.png",
           text: "大牌秒杀"

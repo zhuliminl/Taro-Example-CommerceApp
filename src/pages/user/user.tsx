@@ -16,6 +16,7 @@ import banner1 from '@/assets/banner/banner1.png'
 import banner2 from '@/assets/banner/banner2.png'
 import banner3 from '@/assets/banner/banner3.png'
 import banner4 from '@/assets/banner/banner4.png'
+import console = require('console');
 
 const IMG_LIST = [
   {
@@ -223,10 +224,15 @@ class User extends Component<UserInterface, {}> {
       .then(res => console.log(res))
   }
 
-  goto = path => {
-    console.log('FIN path', path)
+  goto = (pathName, params = {}) => {
+    const paramsStr = Object.keys(params).map(function(k) {
+      return encodeURIComponent(k) + "=" + encodeURIComponent(params[k]);
+    }).join('&')
+
+    console.log(paramsStr)
+
     Taro.navigateTo({
-      url: '/pages/setting/setting'
+      url: `/pages/${pathName}/${pathName}?${paramsStr}`
     })
   }
 
@@ -271,7 +277,7 @@ class User extends Component<UserInterface, {}> {
             </View>
 
             <View className='profile__estimate'>
-              <View className='profile__estimate-item'>
+              <View className='profile__estimate-item' onClick={this.goto.bind(this, 'estimate', {title: '今日评估', name: 'saul', age: 45})}>
                 <Text className='profile__estimate_money-txt'>￥0.00</Text>
                 <View className='profile__estimate_title-item'>
                   <Text className='profile__estimate_title-txt'>今日预估</Text>
