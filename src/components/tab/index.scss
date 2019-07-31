@@ -1,28 +1,41 @@
 
 // 总包装
 .tab-wrap {
+  background-color: #EEE;
   display: flex;
   flex-direction: row;
+  margin: 0;
+  width: 100%;
+  /*postcss-pxtransform rn eject enable*/
   white-space: nowrap;
+  display: block;
+  /*postcss-pxtransform rn eject disable*/
 }
 
 // tab 标题容器
 .tab-item-wrap {
+  height: 80px;
+  // width: 150px; // 必须固定才好算滚动的长度 
+  display: flex;
   position: relative;
   flex-direction: row;
-  display: inline-block;
-  // margin: 0 32px;
-  padding: 0 20px;
-  background: #DDD;
-  height: 80px;
+  // background: blue;
   align-items: center;
-  display: flex;
   justify-content: center;
+  /*postcss-pxtransform rn eject enable*/
+  display: inline-block;
+  padding: 4px 0;
+  /*postcss-pxtransform rn eject disable*/
 }
 
 
 // tab 内部字体
 .tab-item-txt {
+  width: 100%;
+  text-align: center;
   font-size: 30px;
   color: #333;
+  /*postcss-pxtransform rn eject enable*/
+  display: inline-block;
+  /*postcss-pxtransform rn eject disable*/
 }
