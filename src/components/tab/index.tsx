@@ -46,8 +46,6 @@ class Tab extends Component <TabInterface, TabStateInterface> {
 
   componentDidMount = () => {
     console.log('FIN tab state', this.state)
-
-    this.animateValue(300, 100, this.printV)
   }
 
   printV = v => {
