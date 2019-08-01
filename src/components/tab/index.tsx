@@ -91,6 +91,9 @@ class Tab extends Component <TabInterface, TabStateInterface> {
 
     // console.log('FIN 之前的位置', preLeftX)
     // console.log('FIN 下一次的位置', nextLeftX)
+
+    // 响应上层事件
+    this.props.handleItemClick && this.props.handleItemClick(item)
   }
 
   handleActiveItem = item =>{
@@ -112,7 +115,7 @@ class Tab extends Component <TabInterface, TabStateInterface> {
 
     // 禁止滚动
     const {noScroll} = this.props
-    if(this.props.noScroll) {
+    if(noScroll) {
       return this.setState({
         current: item.key,
       })
@@ -124,6 +127,14 @@ class Tab extends Component <TabInterface, TabStateInterface> {
     })
   }
 
+  componentWillReceiveProps = nextProps => {
+    const {current, list} = nextProps
+    console.log('FIN willReceiveProps', nextProps)
+
+    if(current !== this.state.current) {
+      // this.handleTabItemClick(list[current])   // 我靠，有点变态了！
+    }
+  }
 
   render () {
     const {list} = this.props

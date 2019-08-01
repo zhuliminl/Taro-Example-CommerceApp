@@ -12,22 +12,22 @@ const TAB_LIST = [
   {
     key: 0,
     title: '今日预估',
-    title_desc: '今日评估效果',
+    title_desc: '今日评估效果0',
   },
   {
     key: 1,
     title: '本月预估',
-    title_desc: '本月评估效果',
+    title_desc: '本月评估效果1',
   },
   {
     key: 2,
     title: '上月预估',
-    title_desc: '上月评估效果',
+    title_desc: '上月评估效果2',
   },
   {
     key: 3,
     title: '上月收货',
-    title_desc: '上月总确认收货',
+    title_desc: '上月总确认收货3',
   },
 ]
 
@@ -39,7 +39,8 @@ export default class Estimate extends Component {
   }
 
   state = {
-    title: ''
+    title: '',
+    current: 0,
   }
 
   componentDidMount = () => {
@@ -56,8 +57,13 @@ export default class Estimate extends Component {
   }
 
 
-  handleChange = () => {
-    console.log('FIN onchange')
+  handleChange = (event) => {
+    const {detail} = event
+    const {current} = detail
+    this.setState({
+      current
+    })
+    console.log('FIN onchange', current)
   }
 
   render() {
@@ -70,6 +76,8 @@ export default class Estimate extends Component {
       // 安卓特殊处理，否则无法滑动
       scrollHeight = 98
     }
+
+    console.log('FIN current', this.state.current)
 
     return (
       <View className="estimate-page">
@@ -104,24 +112,26 @@ export default class Estimate extends Component {
               noScroll
               marginLeft={40}
               itemWidth={80}
-              current={0}
+              current={this.state.current}
               list={TAB_LIST}
               handleItemClick={(item) => {
-                console.log('FIN', item)
+                console.log('FIN 把 current 提上来')
+                this.setState({
+                  current: item.key,
+                })
               }}
             />
           </View>
           {/* tab 内容页 */}
 
           <Swiper
-            current={1}
+            current={this.state.current}
             onChange={this.handleChange.bind(this)}
             style={{
               // height: 220,            // 给定高度能兼容 RN 但是无法兼容 h5
               height: device.pxCompatibleToWechat(220),
               // backgroundColor: '#999',
               overflow: 'visible'   // 设置成 visible 可以兼容 h5
-
             }}
           >
             {
