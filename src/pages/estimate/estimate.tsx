@@ -117,8 +117,9 @@ export default class Estimate extends Component {
             current={1}
             onChange={this.handleChange.bind(this)}
             style={{
-              height: 220,            // 给定高度能兼容 RN 但是无法兼容 h5
-              backgroundColor: '#999',
+              // height: 220,            // 给定高度能兼容 RN 但是无法兼容 h5
+              height: device.pxCompatibleToWechat(220),
+              // backgroundColor: '#999',
               overflow: 'visible'   // 设置成 visible 可以兼容 h5
 
             }}
