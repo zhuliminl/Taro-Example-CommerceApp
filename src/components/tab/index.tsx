@@ -6,7 +6,7 @@ import {moveStrategies} from '@/utils/animation'
 import console = require('console');
 
 interface TabInterface {
-  handleItemClick: (any) => void;
+  onChange: (any) => void;
   current: number;
   noScroll?: boolean;
   list: any[];
@@ -16,7 +16,6 @@ interface TabInterface {
 }
 
 interface TabStateInterface {
-  current: number;
   x: number;
   maxX: number;
   leftX?: number;
@@ -36,14 +35,12 @@ class Tab extends Component <TabInterface, TabStateInterface> {
     const leftX = itemWidth*current
     this.state = {
       x: 0,
-      current: this.props.current || 0,
       maxX: totalX - device.windowWidth,  // 最大移动位置是元素的总长度减去屏幕宽度
       leftX,
     }
   }
 
   static defaultProps = {
-    handleItemClick: () => null,
     list: [], // 小程序端底部 tab 页面在点击之前就会 init，所以必须给与初始值才不会报错
   }
 
@@ -83,24 +80,20 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   }
 
   handleTabItemClick = item => {
-    this.handleActiveItem(item) // 处理 tab 的激活状态和移动
+    console.log('FINxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+    this.setX(item)      // 处理容器滚动位置
+    this.setLeftX(item)  // 处理小滑块滚动动画
 
-    const preLeftX = this.props.itemWidth * this.state.current
-    const nextLeftX = this.props.itemWidth * item.key
-    this.animateValue(preLeftX, nextLeftX, this.setCursor)
+    this.props.onChange && this.props.onChange(item)
 
-    // console.log('FIN 之前的位置', preLeftX)
-    // console.log('FIN 下一次的位置', nextLeftX)
-
-    // 响应上层事件
-    this.props.handleItemClick && this.props.handleItemClick(item)
   }
 
-  handleActiveItem = item =>{
+  setX = item =>{
     const {key} = item  // 当前被点中的 key
-    const {itemWidth : W} = this.props
+    const {itemWidth : W, current: preKey, noScroll} = this.props
+    if(noScroll) return // 禁止滚动
 
-    const {maxX, current: preKey} = this.state
+    const {maxX} = this.state
 
     // if(key === preKey) return  // 两次点击的一样，不进行任何动作
 
@@ -112,28 +105,23 @@ class Tab extends Component <TabInterface, TabStateInterface> {
     if(key <= preKey) {        // 如果是反向点击的话，那下个位置就必须在当前位置上向左移动一个单位
       nextX = nextX - W*2      // 乘以2 用户会提前看到之前的 tab，体验更好
     }
+    this.setState({ x: nextX, })
+  }
 
-    // 禁止滚动
-    const {noScroll} = this.props
-    if(noScroll) {
-      return this.setState({
-        current: item.key,
-      })
-    }
-
-    this.setState({
-      x: nextX,
-      current: item.key,
-    })
+  setLeftX = (item) => {
+    const preLeftX = this.props.itemWidth * this.props.current
+    const nextLeftX = this.props.itemWidth * item.key
+    this.animateValue(preLeftX, nextLeftX, this.setCursor)
   }
 
   componentWillReceiveProps = nextProps => {
     const {current, list} = nextProps
-    console.log('FIN willReceiveProps', nextProps)
+    // 这里只做滑动的逻辑
+    // console.log('FIN willReceiveProps', nextProps)
 
-    if(current !== this.state.current) {
+    // if(current !== this.state.current) {
       // this.handleTabItemClick(list[current])   // 我靠，有点变态了！
-    }
+    // }
   }
 
   render () {
@@ -169,7 +157,7 @@ class Tab extends Component <TabInterface, TabStateInterface> {
         </View>
         {
           list.map(item => {
-            const isActive = item.key === this.state.current
+            const isActive = item.key === this.props.current
             let activeStyle : ActiveStyleInterface = {}
             if(isActive) {
               activeStyle.color = '#FE1123'

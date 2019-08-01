@@ -87,6 +87,7 @@ class Community extends Component {
 
   state = {
     loading: false,
+    current: 0,
   }
 
   componentDidMount = () => {
@@ -106,10 +107,12 @@ class Community extends Component {
 
         <Tab 
           itemWidth={60}
-          current={3}
+          current={this.state.current}
           list={TAB_LIST}
-          handleItemClick={(item) => {
-            console.log('FIN', item)
+          onChange={(item) => {
+            this.setState({
+              current: item.key,
+            })
           }}
         />
       </View>

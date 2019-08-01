@@ -63,7 +63,7 @@ export default class Estimate extends Component {
     this.setState({
       current
     })
-    console.log('FIN onchange', current)
+    console.log('FIN Swipper onchange 事件触发', current)
   }
 
   render() {
@@ -77,7 +77,7 @@ export default class Estimate extends Component {
       scrollHeight = 98
     }
 
-    console.log('FIN current', this.state.current)
+    console.log('FIN current state 上级', this.state.current)
 
     return (
       <View className="estimate-page">
@@ -104,9 +104,7 @@ export default class Estimate extends Component {
           {/* 累计佣金 */}
           <View className='estimate-commission-wrap'>
             <Text className='comission-title-txt'>累计佣金</Text>
-            <TextMoney money={12.00} fontSize={32}
-            />
-            {/* <Text className='comission-money-txt'>￥0.00</Text> */}
+            <TextMoney money={12.00} fontSize={32}/>
             {/* tab */}
             <Tab 
               noScroll
@@ -114,10 +112,10 @@ export default class Estimate extends Component {
               itemWidth={80}
               current={this.state.current}
               list={TAB_LIST}
-              handleItemClick={(item) => {
-                console.log('FIN 把 current 提上来')
+              onChange={(item) => {
+                console.log('FIN onChange', item)
                 this.setState({
-                  current: item.key,
+                  current: item.key
                 })
               }}
             />
