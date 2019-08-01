@@ -1,0 +1,21 @@
+
+$mainColor: #FE1123;
+
+.text-money-comp {
+  display: flex;
+  flex-direction: row;
+  // justify-content: baseline;
+  align-items: baseline;
+}
+
+.text-money-symbol {
+  position: relative;
+  font-weight: bold;
+  color: $mainColor;
+  // padding-bottom: 10px;   
+}
+
+.text-money-txt {
+  font-weight: bold;
+  color: $mainColor;
+}

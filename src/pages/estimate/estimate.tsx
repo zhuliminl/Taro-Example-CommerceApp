@@ -4,6 +4,8 @@ import './estimate.scss'
 import Header from '@/components/header'
 import Tab from '@/components/tab'
 import {device} from '@/utils/device'
+import Achievement from './achievement'
+import TextMoney from '@/components/text-money'
 
 const TAB_LIST = [
   {
@@ -83,13 +85,15 @@ export default class Estimate extends Component {
           {/* 累计佣金 */}
           <View className='estimate-commission-wrap'>
             <Text className='comission-title-txt'>累计佣金</Text>
-            <Text className='comission-money-txt'>￥0.00</Text>
+            <TextMoney money={12.00} fontSize={36}
+            />
+            {/* <Text className='comission-money-txt'>￥0.00</Text> */}
             {/* tab */}
             <Tab 
               noScroll
               marginLeft={40}
               itemWidth={80}
-              current={3}
+              current={0}
               list={TAB_LIST}
               handleItemClick={(item) => {
                 console.log('FIN', item)
@@ -97,6 +101,10 @@ export default class Estimate extends Component {
             />
           </View>
           {/* tab 内容页 */}
+          <Achievement 
+            title={'今日评估效果预估'}
+            money={22.33}
+          />
         </ScrollView>
       </View>
     )

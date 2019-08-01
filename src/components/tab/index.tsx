@@ -133,7 +133,8 @@ class Tab extends Component <TabInterface, TabStateInterface> {
       // 微信端必须重新设置
       leftX = Taro.pxTransform(leftX*2)
       itemWidth = Taro.pxTransform(itemWidth*2)
-      marginLeft = Taro.pxTransform(marginLeft*2)
+      // marginLeft = Taro.pxTransform(marginLeft*2)
+      marginLeft = 0   // 小程序太难伺候了，暂时设为 0 不影响排版
     }
 
     return (
