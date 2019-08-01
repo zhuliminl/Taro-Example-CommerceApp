@@ -124,6 +124,7 @@ export default class Estimate extends Component {
           {/* tab 内容页 */}
 
           <Swiper
+            autoplay={false}
             current={this.state.current}
             onChange={this.handleChange.bind(this)}
             style={{

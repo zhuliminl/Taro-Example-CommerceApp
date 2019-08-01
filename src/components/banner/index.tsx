@@ -18,6 +18,7 @@ class Banner extends Component <BannerInterface, {}> {
 
   render () {
     const h = this.props.bannerHeight
+    if(true) return null
     return (
       <View>
         <Swiper

@@ -260,11 +260,10 @@ class User extends Component<UserInterface, {}> {
               </View>
             </View>
 
-            <View className='profile__avatar'>
+            <View className='profile__avatar' onClick={this.goto.bind(this, 'test')} >
               <Image className='profile__avatar_img' src={defaultAvatar}/>
               <View className='profile__right'>
                 <View className='profile__right-item'
-                onClick={this.testToast}
                 >
                   <Text className='profile__name-txt'>小石头{device.isAndroid() && 'android'} {device.isIOS() && 'ios'}</Text>
                   <Text className='profile__partner-txt'>合伙人</Text>
