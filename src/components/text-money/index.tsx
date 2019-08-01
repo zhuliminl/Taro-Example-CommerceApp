@@ -13,7 +13,7 @@ export default class TextMoney extends Component<TextMoneyInterface,{}> {
   render() {
     const {fontSize: fontSizeProp, money} = this.props
     let fontSize = fontSizeProp
-    let symbolFontSize : any = fontSize / 2
+    let symbolFontSize : any = fontSize / 1.7
     let paddingBottom: any = 0
 
     if(device.isWeChat()) {
@@ -22,7 +22,7 @@ export default class TextMoney extends Component<TextMoneyInterface,{}> {
     }
 
     if(device.isAndroid()){
-      paddingBottom = 4
+      paddingBottom = 6
       // 解决 Android 设备文字下坠的坑
     }
 

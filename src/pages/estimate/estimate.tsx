@@ -85,7 +85,7 @@ export default class Estimate extends Component {
           {/* 累计佣金 */}
           <View className='estimate-commission-wrap'>
             <Text className='comission-title-txt'>累计佣金</Text>
-            <TextMoney money={12.00} fontSize={36}
+            <TextMoney money={12.00} fontSize={32}
             />
             {/* <Text className='comission-money-txt'>￥0.00</Text> */}
             {/* tab */}
