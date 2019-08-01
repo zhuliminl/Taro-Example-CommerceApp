@@ -253,7 +253,7 @@ class User extends Component<UserInterface, {}> {
               </View>
               <View className='profile__top-bar_item'
                 onClick={() => {
-                  this.goto('ss')
+                  this.goto('setting')
                 }}
               >
                 <Text className='profile__top-bar_txt'>设置</Text>

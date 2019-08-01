@@ -24,6 +24,7 @@ render () {
     // 安卓特殊处理，否则无法滑动
     scrollHeight = 98
   }
+
   return (
       <View 
         className='page-wrapper'
@@ -32,6 +33,7 @@ render () {
         <View style={{ height: Taro.pxTransform(130), backgroundColor: '#FFF'}} ></View>
 
         <ScrollView 
+          scrollY
           style={{
             height: device.windowHeight - scrollHeight
           }}

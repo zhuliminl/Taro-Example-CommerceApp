@@ -29,6 +29,7 @@ class Header extends Component <HeaderInterface, {}> {
           />
         </View>
         <Text className='header__title-txt'>{this.props.title}</Text>
+        {this.props.children}
       </View>
     )
   }

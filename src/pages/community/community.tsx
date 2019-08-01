@@ -1,7 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import Tab from '@/components/tab'
-import console = require('console');
 
 const TAB_LIST = [
   {

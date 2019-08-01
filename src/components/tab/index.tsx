@@ -8,8 +8,11 @@ import console = require('console');
 interface TabInterface {
   handleItemClick: (any) => void;
   current: number;
+  noScroll?: boolean;
   list: any[];
   itemWidth: any;
+  marginLeft?: any;
+  backgroundColor?: any;
 }
 
 interface TabStateInterface {
@@ -45,6 +48,7 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   }
 
   componentDidMount = () => {
+    console.log('FIN tab props', this.props)
     console.log('FIN tab state', this.state)
   }
 
@@ -105,6 +109,15 @@ class Tab extends Component <TabInterface, TabStateInterface> {
     if(key <= preKey) {        // 如果是反向点击的话，那下个位置就必须在当前位置上向左移动一个单位
       nextX = nextX - W*2      // 乘以2 用户会提前看到之前的 tab，体验更好
     }
+
+    // 禁止滚动
+    const {noScroll} = this.props
+    if(this.props.noScroll) {
+      return this.setState({
+        current: item.key,
+      })
+    }
+
     this.setState({
       x: nextX,
       current: item.key,
@@ -115,15 +128,20 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   render () {
     const {list} = this.props
     let leftX : any = this.state.leftX
-    let itemWidth = this.props.itemWidth
+    let {itemWidth, marginLeft, backgroundColor} = this.props
     if(device.isWeChat()) {
       // 微信端必须重新设置
       leftX = Taro.pxTransform(leftX*2)
       itemWidth = Taro.pxTransform(itemWidth*2)
+      marginLeft = Taro.pxTransform(marginLeft*2)
     }
 
     return (
       <ScrollView className='tab-wrap'
+        style={{
+          marginLeft: marginLeft || 0,
+          backgroundColor: backgroundColor || '#FFF',
+        }}
         scrollX
         scrollLeft={this.state.x}
         scrollWithAnimation

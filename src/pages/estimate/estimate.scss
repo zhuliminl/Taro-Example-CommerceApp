@@ -1,1 +1,31 @@
+$mainColor: #FE1123;
 
+.estimate-page {
+}
+.estimate-header-right-txt {
+  margin-right: 20px;
+  font-size: 36px;
+  color: #333;
+}
+
+.estimate-commission-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFF;
+}
+
+.comission-title-txt {
+  margin-top: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #333;
+}
+
+.comission-money-txt {
+  margin-top: 10px;
+  font-size: 40px;
+  font-weight: bold;
+  color: $mainColor;
+  text-align: center;
+}
