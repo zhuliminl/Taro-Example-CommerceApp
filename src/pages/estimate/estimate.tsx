@@ -58,12 +58,13 @@ export default class Estimate extends Component {
 
 
   handleChange = (event) => {
+    console.log('FIN 触发 onChange 事件')
     const {detail} = event
     const {current} = detail
     this.setState({
       current
     })
-    console.log('FIN Swipper onchange 事件触发', current)
+    // console.log('FIN Swipper onchange 事件触发', current)
   }
 
   render() {
@@ -113,7 +114,7 @@ export default class Estimate extends Component {
               current={this.state.current}
               list={TAB_LIST}
               onChange={(item) => {
-                console.log('FIN onChange', item)
+                // console.log('FIN onChange', item)
                 this.setState({
                   current: item.key
                 })

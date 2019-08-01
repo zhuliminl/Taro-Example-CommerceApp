@@ -63,7 +63,7 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   animateValue = (a, b, fn) => {
     // console.log('FIN 初始值a', a)
     // console.log('FIN 初始值b', b)
-    const duration = 0.2*1000
+    const duration = 0.3*1000
     let d = b - a
     let startT = +new Date();
     let ID = setInterval(() => {
@@ -115,13 +115,10 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   }
 
   componentWillReceiveProps = nextProps => {
+    console.log('FIN componentWillReceiveProps')
     const {current, list} = nextProps
-    // 这里只做滑动的逻辑
-    // console.log('FIN willReceiveProps', nextProps)
-
-    // if(current !== this.state.current) {
-      // this.handleTabItemClick(list[current])   // 我靠，有点变态了！
-    // }
+    const item = list[current]
+    this.setLeftX(item) // 同步滑动
   }
 
   render () {
