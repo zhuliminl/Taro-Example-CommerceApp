@@ -1,28 +1,33 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, ScrollView } from '@tarojs/components'
+import { View, Text, ScrollView, Swiper, SwiperItem } from '@tarojs/components'
 import './estimate.scss'
 import Header from '@/components/header'
 import Tab from '@/components/tab'
 import {device} from '@/utils/device'
 import Achievement from './achievement'
 import TextMoney from '@/components/text-money'
+import console = require('console');
 
 const TAB_LIST = [
   {
     key: 0,
     title: '今日预估',
+    title_desc: '今日评估效果',
   },
   {
     key: 1,
     title: '本月预估',
+    title_desc: '本月评估效果',
   },
   {
     key: 2,
     title: '上月预估',
+    title_desc: '上月评估效果',
   },
   {
     key: 3,
     title: '上月收货',
+    title_desc: '上月总确认收货',
   },
 ]
 
@@ -48,6 +53,11 @@ export default class Estimate extends Component {
       paramsObj[key] = decodeURIComponent(data[key])
     })
     return paramsObj
+  }
+
+
+  handleChange = () => {
+    console.log('FIN onchange')
   }
 
   render() {
@@ -101,10 +111,36 @@ export default class Estimate extends Component {
             />
           </View>
           {/* tab 内容页 */}
-          <Achievement 
-            title={'今日评估效果预估'}
-            money={22.33}
-          />
+
+          <Swiper
+            current={1}
+            onChange={this.handleChange.bind(this)}
+            style={{
+              // width: device.windowWidth,
+              height: 400,
+            }}
+            // className='estimate-swiper'
+          >
+            {
+              TAB_LIST.map(item => {
+                return (
+                  <SwiperItem 
+                    key={item.key} 
+                    // style={{
+                    //   // width: device.windowWidth,
+                    // }}
+                    >
+                    {/* <Achievement title={item.title_desc} money={22.33} */}
+                    <View>
+                      <Text>xxxxxxx</Text>
+                    </View>
+                    />
+                  </SwiperItem>
+                )
+              })
+            }
+          </Swiper>
+
         </ScrollView>
       </View>
     )
