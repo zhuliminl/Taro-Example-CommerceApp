@@ -63,7 +63,7 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   animateValue = (a, b, fn) => {
     // console.log('FIN 初始值a', a)
     // console.log('FIN 初始值b', b)
-    const duration = 0.3*1000
+    const duration = 0.2*1000
     let d = b - a
     let startT = +new Date();
     let ID = setInterval(() => {
