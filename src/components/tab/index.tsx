@@ -3,7 +3,6 @@ import { View, Text, ScrollView } from '@tarojs/components';
 import './index.scss'
 import {device} from '@/utils/device'
 import {moveStrategies} from '@/utils/animation'
-import console = require('console');
 
 interface TabInterface {
   onChange: (any) => void;

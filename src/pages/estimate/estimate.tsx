@@ -6,7 +6,6 @@ import Tab from '@/components/tab'
 import {device} from '@/utils/device'
 import Achievement from './achievement'
 import TextMoney from '@/components/text-money'
-import console = require('console');
 
 const TAB_LIST = [
   {
