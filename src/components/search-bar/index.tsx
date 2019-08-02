@@ -2,8 +2,8 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
 
-const icon_back = require('@/assets/icon/back.png')
-const icon_search_red = require('@/assets/icon/search-red.png')
+import icon_search_red from '@/assets/icon/search-red.png'
+import icon_back from '@/assets/icon/back.png'
 
 interface SearchBarInterface {
   placeholder: string;

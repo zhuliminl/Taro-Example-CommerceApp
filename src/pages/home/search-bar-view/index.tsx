@@ -3,7 +3,7 @@ import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
 import {navigateTo} from '@/utils/navigation'
 
-const icon_search_red = require('@/assets/icon/search-red.png')
+import icon_search_red from '@/assets/icon/search-red.png'
 
 
 export default class SearchBarView extends Component {
