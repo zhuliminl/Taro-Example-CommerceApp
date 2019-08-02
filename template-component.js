@@ -15,6 +15,12 @@ if (!dirName) {
   process.exit(0);
 }
 
+if(dirName.indexOf('_') > 0) {
+  console.log('FIN 如果使用连字符,组件 创建必须使用连字符 - 做间隔 !!!')
+  console.log('创建模板失败，注意 page 和 component 的命名格式不同！')
+  process.exit(0);
+}
+
 // 页面模版
 const indexTep = `import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
@@ -48,13 +54,12 @@ process.chdir(pathName)
 fs.writeFileSync(`index.tsx`, indexTep)
 fs.writeFileSync(`index.scss`, scssTep)
 
+function changeCap(str) {
+  return str[0].toUpperCase()+str.slice(1)
+}
+
 function titleCase(str) {
-  const array = str.toLowerCase().split(' ');
-  for (let i = 0; i < array.length; i++) {
-    array[i] = array[i][0].toUpperCase() + array[i].substring(1, array[i].length);
-  }
-  const string = array.join(' ');
-  return string;
+  return str.split("-").map((val) => changeCap(val)).join("");
 }
 
 process.exit(0)

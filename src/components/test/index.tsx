@@ -4,22 +4,22 @@ import './index.scss'
 
 const TAB_LIST = [
   {
-    key: 0,
+    key: 1,
     title: '0000',
     title_desc: '今日评估效果0000',
   },
   {
-    key: 1,
+    key: 2,
     title: '111111',
     title_desc: '本月评估效果1111',
   },
   {
-    key: 2,
+    key: 3,
     title: '22222',
     title_desc: '上月评估效果2222',
   },
   {
-    key: 3,
+    key: 4,
     title: '33333',
     title_desc: '上月总确认收3333',
   },

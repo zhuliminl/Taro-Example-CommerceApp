@@ -61,7 +61,7 @@ export default class Estimate extends Component {
 
 
   handleChange = (event) => {
-    console.log('FIN 触发 onChange 事件')
+    // console.log('FIN 触发 onChange 事件')
     const {detail} = event
     const {current} = detail
     this.setState({
@@ -139,9 +139,12 @@ export default class Estimate extends Component {
           >
             {
               TAB_LIST.map(item => {
+                // console.log('FIN render item', item.key)
+                // 目前发现部分 item 不同步的问题和 key 有关系。数据其实更新了，但是不滚动
                 return (
                   <SwiperItem key={item.key}>
                     <Achievement title={item.title_desc} money={item.money} />
+                    {/* <Text>{this.state.current}</Text> */}
                   </SwiperItem>
                 )
               })
