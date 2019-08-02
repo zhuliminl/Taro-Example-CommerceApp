@@ -3,8 +3,8 @@ import { View, Text, ScrollView } from '@tarojs/components';
 import './home.scss'
 
 import ItemListB from '@/components/item-list-b'
-
 import Banner from '@/components/banner'
+import SearchBarView from '@/components/search-bar-view'
 
 import banner1 from '@/assets/banner/banner1.png'
 import banner2 from '@/assets/banner/banner2.png'
@@ -63,6 +63,7 @@ class Home extends Component {
           bannerHeight={135}
           imgList={IMG_LIST}
         />
+        <SearchBarView/>
 
         <ScrollView
           scrollY
