@@ -52,7 +52,7 @@ RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro
 
 ### 部分问题
 
-RN 端 Swiper 组件滑动没有触发 onChange 事件，修改 'node_modules/@manjiz/react-native-swiper/dist/index.js' updateIndexByOffset 方法，将最后的 index 还是取原来的 index ，凑巧能解决问题
+RN 端 Swiper 组件滑动没有触发 onChange 事件，修改 'node_modules/@manjiz/react-native-swiper/dist/index.js' updateIndexByOffset 方法，将最后的 index 还是取原来的 index ，凑巧能解决问题。不知道是不是我哪里写错了
 
 
 # 技术交流

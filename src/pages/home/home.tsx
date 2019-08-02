@@ -4,7 +4,7 @@ import './home.scss'
 
 import ItemListB from '@/components/item-list-b'
 import Banner from '@/components/banner'
-import SearchBarView from '@/components/search-bar-view'
+import SearchBarView from './search-bar-view'
 
 import banner1 from '@/assets/banner/banner1.png'
 import banner2 from '@/assets/banner/banner2.png'

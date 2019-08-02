@@ -1,7 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
-const icon_search_red = require('./assets/search-red.png')
+import {navigateTo} from '@/utils/navigation'
+
+const icon_search_red = require('@/assets/icon/search-red.png')
 
 
 export default class SearchBarView extends Component {
@@ -11,7 +13,11 @@ export default class SearchBarView extends Component {
 
   render() {
     return (
-      <View className="search-bar-view-comp">
+      <View className="search-bar-view-comp"
+        onClick={() => {
+          navigateTo('search')
+        }}
+      >
         <Image className='search-bar-view-img' src={icon_search_red} />
         <View className='search-bar-view-text-wrap'>
           <Text className='search-bar-view-title-thin'>复制标题,</Text>

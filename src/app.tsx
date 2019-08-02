@@ -35,6 +35,7 @@ class App extends Component {
       'pages/setting/setting',
       'pages/estimate/estimate',
       'pages/test/test',
+      'pages/search/search',
     ],
     window: {
       backgroundTextStyle: 'light',
