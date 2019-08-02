@@ -19,7 +19,7 @@ export default class Achievement extends Component<AchievementInterface, {}> {
       <View className="achievement-comp">
         <View className='achievement-title-wrap'>
           <Text className='achievement-title-txt'>{this.props.title}</Text>
-          <TextMoney money={2.33} fontSize={32}/>
+          <TextMoney money={this.props.money} fontSize={32}/>
         </View>
 
         {/* 我的概况 */}

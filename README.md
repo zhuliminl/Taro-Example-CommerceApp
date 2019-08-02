@@ -50,28 +50,9 @@ RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro
 
 <img src="screenshots/we_1.png" width="416.5px" height="667px" />
 
+### 部分问题
 
-# 说明
-
->  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
-
-
->  如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
-
-
-# 文档
-
-### Taro开发文档
-
-> https://nervjs.github.io/taro/docs/README.html
-
-### 微信小程序官方文档
-
-> https://mp.weixin.qq.com/debug/wxadoc/dev/
-
-### 支付宝小程序官方文档
-
-> https://docs.alipay.com/mini/developer/getting-started
+RN 端 Swiper 组件滑动没有触发 onChange 事件，修改 'node_modules/@manjiz/react-native-swiper/dist/index.js' updateIndexByOffset 方法，将最后的 index 还是取原来的 index ，凑巧能解决问题
 
 
 # 技术交流

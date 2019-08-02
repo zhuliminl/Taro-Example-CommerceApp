@@ -12,21 +12,25 @@ const TAB_LIST = [
     key: 0,
     title: '今日预估',
     title_desc: '今日评估效果0',
+    money: 0.00,
   },
   {
     key: 1,
     title: '本月预估',
     title_desc: '本月评估效果1',
+    money: 1.00,
   },
   {
     key: 2,
     title: '上月预估',
     title_desc: '上月评估效果2',
+    money: 2.00,
   },
   {
     key: 3,
     title: '上月收货',
     title_desc: '上月总确认收货3',
+    money: 3.00,
   },
 ]
 
@@ -137,7 +141,7 @@ export default class Estimate extends Component {
               TAB_LIST.map(item => {
                 return (
                   <SwiperItem key={item.key}>
-                    <Achievement title={item.title_desc} money={22.33} />
+                    <Achievement title={item.title_desc} money={item.money} />
                   </SwiperItem>
                 )
               })
