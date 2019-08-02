@@ -23,6 +23,7 @@
       "@/utils/*": ["utils/*"],
       "@/components/*": ["components/*"],
       "@/assets/*": ["assets/*"],
+      "@/constants/*": ["constants/*"],
     },
     "typeRoots": [
       "node_modules/@types",

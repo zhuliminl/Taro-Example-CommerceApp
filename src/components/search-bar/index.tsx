@@ -5,6 +5,7 @@ import './index.scss'
 import icon_search_red from '@/assets/icon/search-red.png'
 import icon_back from '@/assets/icon/back.png'
 import { device } from '@/utils/device';
+import {navigateTo} from '@/utils/navigation'
 
 interface SearchBarInterface {
   placeholder: string;
@@ -17,6 +18,13 @@ export default class SearchBar extends Component<SearchBarInterface, {}> {
   }
 
   handleOnChange = event => {
+
+  }
+
+  handleOnSearch = () => {
+
+    // 先行一步
+    navigateTo('search', {title: 'saul'})
 
   }
 
@@ -40,7 +48,7 @@ export default class SearchBar extends Component<SearchBarInterface, {}> {
             onInput={this.handleOnChange.bind(this)}
             style={inputStyle}
             />
-          <Text className='search-bar-red-btn'>搜券</Text>
+          <Text className='search-bar-red-btn' onClick={this.handleOnSearch.bind(this)}>搜券</Text>
         </View>
       </View>
     )

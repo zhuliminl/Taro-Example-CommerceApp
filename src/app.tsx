@@ -35,6 +35,7 @@ class App extends Component {
       'pages/setting/setting',
       'pages/estimate/estimate',
       'pages/test/test',
+      'pages/search_transition/search_transition',  // 搜索过渡页
       'pages/search/search',
     ],
     window: {

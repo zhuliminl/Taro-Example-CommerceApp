@@ -15,7 +15,7 @@ export default class SearchBarView extends Component {
     return (
       <View className="search-bar-view-comp"
         onClick={() => {
-          navigateTo('search')
+          navigateTo('search_transition')
         }}
       >
         <Image className='search-bar-view-img' src={icon_search_red} />
