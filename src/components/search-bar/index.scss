@@ -1,5 +1,7 @@
 
 .search-bar-comp {
+  padding-top: 30px;
+  padding-right: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,9 +10,10 @@
 
 .search-bar-wrap {
   background-color: #F6F6F6;
+  flex: 1;
   border-radius: 5px;
   padding: 0;
-  padding-left: 30px;
+  padding-left: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,11 +21,13 @@
   overflow: hidden;
 }
 
-.search-bar-back-img {
+.search-bar-back-img-wrap {
   padding-left: 30px;
   padding-right: 30px;
-  width: 48px;
-  height: 48px;
+}
+.search-bar-back-img {
+  width: 40px;
+  height: 40px;
 }
 .search-bar-img {
   width: 48px;
@@ -35,19 +40,22 @@
   padding-left: 20px;
 }
 
-.search-bar-title-thin {
-  font-size: 30px;
+.search-bar-input {
+  width: 400px;
+  // height: 80px;
+  font-size: 28px;
   color: #666;
 }
 .search-bar-title-bold {
-  font-size: 30px;
+  font-size: 28px;
   color: #111;
   font-weight: bold;
 }
 
 .search-bar-red-btn {
-  padding: 30px 30px;
+  margin-left: auto;  // 大招
+  padding: 18px 40px;
   color: #FFF;
-  font-size: 34px;
+  font-size: 32px;
   background-color: red;
 }
