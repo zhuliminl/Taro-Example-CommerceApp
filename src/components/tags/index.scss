@@ -1,0 +1,32 @@
+
+.tags-comp {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.tag-item-wrap {
+    margin-right: 30px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    height: 50px;
+    display: flex;
+    // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
+    flex-direction: row;   
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #F5F6F7;
+    // background-color: #999;
+    /*postcss-pxtransform rn eject enable*/
+    line-height: 26px;
+    /*postcss-pxtransform rn eject disable*/
+}
+
+.tag-item-txt {
+    align-self: center;
+    font-size: 28px;
+    color: #666;
+}

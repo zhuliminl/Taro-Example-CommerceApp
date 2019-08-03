@@ -26,8 +26,10 @@ const indexTep = `import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
 
+interface ${titleCase(dirName)}Interface {
+}
 
-export default class ${titleCase(dirName)} extends Component {
+export default class ${titleCase(dirName)} extends Component<${titleCase(dirName)}Interface,{}> {
 
   componentDidMount = () => {
   }
