@@ -1,0 +1,16 @@
+.large-title-comp {
+    display: flex;
+    flex-direction: row;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.large-title-txt {
+    font-size: 34px;
+    font-weight: bold;
+    color: #111;
+    flex: 1;
+}

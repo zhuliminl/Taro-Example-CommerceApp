@@ -1,9 +1,12 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components'
 import './search_transition.scss'
 import SearchBar from '@/components/search-bar'
+import LargetTitle from '@/components/large-title'
 import Tab from '@/components/tab'
 import Market from '@/constants/market'
+
+import video_guide from '@/assets/image/video-guide.png'
 
 
 export default class Search extends Component {
@@ -16,6 +19,14 @@ export default class Search extends Component {
   }
 
   componentDidMount = () => {
+  }
+
+  handleOnVideoGuideClick = () => {
+    console.log('FIN 去h5')
+  }
+
+  handleOnHistoryClear = () => {
+    console.log('FIN 清空历史')
   }
 
   render() {
@@ -41,6 +52,16 @@ export default class Search extends Component {
             })
           }}
         />
+
+        <Image className='video-guide'src={video_guide} onClick={this.handleOnVideoGuideClick.bind(this)}/>
+        <LargetTitle title='热门搜索'/>
+        <LargetTitle title='历史记录'>
+          <View className='history-clear-btn-wrap' onClick={this.handleOnHistoryClear.bind(this)}>
+            <Text className='history-clear-btn-txt'>清空</Text>
+          </View>
+        </LargetTitle>
+
+
       </View>
     )
   }
