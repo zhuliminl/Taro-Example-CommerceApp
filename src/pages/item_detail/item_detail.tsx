@@ -2,6 +2,22 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './item_detail.scss'
 import {parseUrlParams} from '@/utils/navigation'
+import TabBar from './tab-bar'
+
+const TAB_LIST = [
+  {
+    key: 0,
+    title: '宝贝',
+  },
+  {
+    key: 1,
+    title: '详情',
+  },
+  {
+    key: 2,
+    title: '推荐',
+  },
+]
 
 export default class Item_detail extends Component {
   config = {
@@ -25,9 +41,9 @@ export default class Item_detail extends Component {
   render() {
     return (
       <View className="item_detail-page">
-        <Text>
-          item_detail
-        </Text>
+        <TabBar 
+          list={TAB_LIST}
+        />
       </View>
     )
   }

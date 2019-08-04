@@ -13,9 +13,7 @@ class Header extends Component <HeaderInterface, {}> {
   render () {
     return (
       <View className='header-wrapper'
-        style={isIOS ? {
-          marginTop: 20
-       } : {}}
+        style={isIOS ? { marginTop: 20 } : {}}
       >
         <View
         onClick={() => {

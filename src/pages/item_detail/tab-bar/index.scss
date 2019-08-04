@@ -1,0 +1,39 @@
+.tab-bar-comp {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    // background-color: #EEE;
+    background-color: #FFF;
+    justify-content: center;
+}
+
+.icon-back-wrap {
+    padding-left: 30px;
+    padding-right: 30px;
+    // padding-top: 20px;
+    // background-color: red;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+.item-back-img {
+    width: 40px;
+    height: 40px;
+}
+
+.tab-bar-item-wrap {
+    // background-color: blue;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tab-bar-item-txt {
+    line-height: 34px;
+    font-size: 34px;
+    color: #333;
+}
