@@ -1,3 +1,14 @@
 .home {
   background-color: #FFF;
+  position: relative;
+  // padding-top: 50px;
+  // margin-top: 50px;
+}
+
+.home-sticky-wrap {
+  width: 100%;
+  // top: -100px;
+  position: absolute;
+  z-index: 999;
+  background-color: #FFF;
 }

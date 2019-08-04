@@ -12,27 +12,27 @@ import { device } from '@/utils/device'
 
 
 import Banner from '@/components/banner'
-import banner1 from '@/assets/banner/banner1.png'
-import banner2 from '@/assets/banner/banner2.png'
-import banner3 from '@/assets/banner/banner3.png'
-import banner4 from '@/assets/banner/banner4.png'
+import b1 from '@/assets/banner/banner1.png'
+import b2 from '@/assets/banner/banner2.png'
+import b3 from '@/assets/banner/banner3.png'
+import b4 from '@/assets/banner/banner4.png'
 
 const IMG_LIST = [
   {
     key: 1,
-    src: banner1,
+    src: b1,
   },
   {
     key: 2,
-    src: banner2,
+    src: b2,
   },
   {
     key: 3,
-    src: banner3,
+    src: b3,
   },
   {
     key: 4,
-    src: banner4,
+    src: b4,
   },
 ]
 
@@ -331,6 +331,7 @@ class User extends Component<UserInterface, {}> {
 
           <Banner 
             bannerHeight={135}
+            bannerWidth={750}
             imgList={IMG_LIST}
           />
 

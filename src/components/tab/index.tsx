@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { View, Text, ScrollView } from '@tarojs/components';
 import './index.scss'
 import {device} from '@/utils/device'
-import {moveStrategies} from '@/utils/animation'
+import {animateValue} from '@/utils/animation'
 
 interface TabInterface {
   onChange: (any) => void;
@@ -58,25 +58,6 @@ class Tab extends Component <TabInterface, TabStateInterface> {
     })
   }
 
-  // 让某个值在某个区间变化
-  animateValue = (a, b, fn) => {
-    // console.log('FIN 初始值a', a)
-    // console.log('FIN 初始值b', b)
-    const duration = 0.2*1000
-    let d = b - a
-    let startT = +new Date();
-    let ID = setInterval(() => {
-      let curT = +new Date();
-      let passT = curT - startT;
-      let value = moveStrategies.sineaseIn(passT, a, d, duration)
-      fn(value)
-      if(passT > duration) {
-        fn(b)  // 强制纠正动画值的不精确性
-        // console.log('FIN 终点值', value)
-        clearInterval(ID)
-      }
-    }, 0.4)
-  }
 
   handleTabItemClick = item => {
     console.log('FINxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
@@ -110,7 +91,7 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   setLeftX = (item) => {
     const preLeftX = this.props.itemWidth * this.props.current
     const nextLeftX = this.props.itemWidth * item.key
-    this.animateValue(preLeftX, nextLeftX, this.setCursor)
+    animateValue(preLeftX, nextLeftX, this.setCursor)
   }
 
   componentWillReceiveProps = nextProps => {

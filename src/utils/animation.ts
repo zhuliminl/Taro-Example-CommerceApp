@@ -17,3 +17,24 @@ export const moveStrategies = {
                     }
                   }
 }
+
+
+  // 让某个值在某个区间变
+export const animateValue = (a, b, fn) => {
+    // console.log('FIN 初始值a', a)
+    // console.log('FIN 初始值b', b)
+    const duration = 0.3*1000
+    let d = b - a
+    let startT = +new Date();
+    let ID = setInterval(() => {
+      let curT = +new Date();
+      let passT = curT - startT;
+      let value = moveStrategies.sineaseIn(passT, a, d, duration)
+      fn(value)
+      if(passT > duration) {
+        fn(b)  // 强制纠正动画值的不精确性
+        // console.log('FIN 终点值', value)
+        clearInterval(ID)
+      }
+    }, 0.4)
+  }

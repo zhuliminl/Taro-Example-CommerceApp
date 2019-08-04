@@ -3,6 +3,14 @@ import Taro from "@tarojs/taro";
 
 const isRN =  process.env.TARO_ENV === 'rn'
 
+let scrollHeight : number = Taro.getSystemInfoSync().windowHeight
+if(isRN && Platform.OS === 'ios') {
+  scrollHeight = 667
+}
+if(isRN && Platform.OS === 'android') {
+  scrollHeight = 567
+}
+
 export const device = {
   // 设备平台判断
   isRN: () => isRN,
@@ -29,5 +37,6 @@ export const device = {
       return  n*2 + 'px'
     }
     return n
-  }
+  },
+  scrollHeight,
 }
