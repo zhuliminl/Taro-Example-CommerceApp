@@ -37,6 +37,7 @@ class App extends Component {
       'pages/test/test',
       'pages/search_transition/search_transition',  // 搜索过渡页
       'pages/search/search',
+      'pages/item_detail/item_detail',
     ],
     window: {
       backgroundTextStyle: 'light',

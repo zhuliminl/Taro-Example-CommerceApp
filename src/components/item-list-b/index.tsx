@@ -4,6 +4,7 @@ import './index.scss'
 
 import bg_coupon from '@/assets/icon/bg_coupon.png'
 import { device } from '@/utils/device';
+import {navigateTo} from '@/utils/navigation'
 
 
 
@@ -19,8 +20,9 @@ class ItemList extends Component <ItemListInterface, {}> {
   static defaultProps = {
   }
 
-  handleClick = (item) => {
-    console.log('FIN 去商品详情页', item)
+  handleItemClick = (item) => {
+    // console.log('FIN 去商品详情页', item)
+    navigateTo('item_detail', {itemid:item.itemid})
 
   }
 
@@ -41,7 +43,7 @@ class ItemList extends Component <ItemListInterface, {}> {
             <View
               key={item.itemid}
               className='item-list__item'
-              onClick={this.handleClick.bind(this, item)}
+              onClick={this.handleItemClick.bind(this, item)}
             >
               <Image className='item-list__item-img' src={item.itempic} />
 

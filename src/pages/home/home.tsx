@@ -2,7 +2,7 @@ import Taro, { Component, pxTransform } from '@tarojs/taro';
 import { View, Text, ScrollView } from '@tarojs/components';
 import './home.scss'
 
-import ItemListB from '@/components/item-list-b'
+import ItemListB from '@/components/item-list-a'
 import Banner from '@/components/banner'
 import Tab from '@/components/tab'
 import SearchBarView from './search-bar-view'
@@ -158,7 +158,7 @@ class Home extends Component {
   }
 
   testAnimateSticky = () => {
-    animateValue(stickyTopInit, 0, this.setTop)
+    animateValue(stickyTopInit, 80, this.setTop)
   }
 
   handleOnScroll = (event) => {
