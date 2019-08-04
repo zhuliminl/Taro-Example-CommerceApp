@@ -26,7 +26,8 @@
     "dev:qq": "npm run build:qq -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "tep:page": "node template-page",
-    "tep:component": "node template-component"
+    "tep:component": "node template-component",
+    "build:rnios": "react-native bundle --entry-file='./rn_temp/index.js' --bundle-output='./ios/bundle/main.jsbundle'  --assets-dest './ios/bundle/' --dev=false --platform='ios'"
   },
   "author": "",
   "license": "MIT",
