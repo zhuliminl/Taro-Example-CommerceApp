@@ -2,17 +2,20 @@
 $mainColor: #FE1123;
 
 .text-money-comp {
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: row;
-  // justify-content: baseline;
-  align-items: baseline;
+  position: relative;
+  top: -10px;
+  align-items: flex-end;
 }
 
 .text-money-symbol {
   position: relative;
+  top: -10px;   // 坑! ￥ 很难对齐数字
   font-weight: bold;
   color: $mainColor;
-  // padding-bottom: 10px;   
 }
 
 .text-money-txt {

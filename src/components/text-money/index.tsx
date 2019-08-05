@@ -14,16 +14,10 @@ export default class TextMoney extends Component<TextMoneyInterface,{}> {
     const {fontSize: fontSizeProp, money} = this.props
     let fontSize = fontSizeProp
     let symbolFontSize : any = fontSize / 1.7
-    let paddingBottom: any = 0
 
     if(device.isWeChat()) {
       fontSize = Taro.pxTransform(fontSize*2)
       symbolFontSize = Taro.pxTransform(symbolFontSize*2)
-    }
-
-    if(device.isAndroid()){
-      paddingBottom = 6
-      // 解决 Android 设备文字下坠的坑
     }
 
     return (
@@ -32,7 +26,6 @@ export default class TextMoney extends Component<TextMoneyInterface,{}> {
           className='text-money-symbol'
           style={{
             fontSize: symbolFontSize,
-            paddingBottom,
           }}
         >￥</Text>
         <Text 
