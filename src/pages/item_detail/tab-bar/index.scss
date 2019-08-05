@@ -1,21 +1,28 @@
 .tab-bar-comp {
-    padding-top: 50px;
+    padding-top: 30px;
     padding-bottom: 20px;
     display: flex;
     flex-direction: row;
     position: relative;
-    // background-color: #EEE;
-    background-color: #FFF;
+    background-color: #EEE;
+    // background-color: #FFF;
     justify-content: center;
+    /*postcss-pxtransform rn eject enable*/
+    position: fixed;
+    width: 100%;
+    padding-top: 10px;
+    z-index: 999;
+    /*postcss-pxtransform rn eject disable*/
 }
 
 .icon-back-wrap {
     padding-left: 30px;
     padding-right: 30px;
-    // padding-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 25px;
     // background-color: red;
     position: absolute;
-    top: 20px;
+    bottom: 0;
     left: 0;
 }
 
@@ -35,5 +42,5 @@
 .tab-bar-item-txt {
     line-height: 34px;
     font-size: 34px;
-    color: #333;
+    color: #222;
 }

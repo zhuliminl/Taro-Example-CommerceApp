@@ -3,6 +3,11 @@ import { View, Text } from '@tarojs/components'
 import './item_detail.scss'
 import {parseUrlParams} from '@/utils/navigation'
 import TabBar from './tab-bar'
+import BottomBar from './bottom-bar'
+import {device} from '@/utils/device'
+const isIOS = device.isIOS()
+
+
 
 const TAB_LIST = [
   {
@@ -39,11 +44,20 @@ export default class Item_detail extends Component {
   }
 
   render() {
+    let pageStyle : any = {
+      height: device.windowHeight,
+    }
+    if(isIOS) {
+      marginTop: 20
+    }
+
     return (
-      <View className="item_detail-page">
+      <View className="item_detail-page" 
+        style={pageStyle} >
         <TabBar 
           list={TAB_LIST}
         />
+        <BottomBar />
       </View>
     )
   }

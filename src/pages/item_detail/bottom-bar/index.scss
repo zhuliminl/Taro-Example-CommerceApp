@@ -1,0 +1,90 @@
+$mainColor: #FE1123;
+$bottomBarBorderRadius: 38px;
+$bottomBarBorderRadiusForH5: 50px;
+
+.bottom-bar-comp {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: #FFF;
+  // background-color: #EEE;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /*postcss-pxtransform rn eject enable*/
+  position: fixed;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.bottom-bar-left-wrap {
+  padding-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-bar-left-img {
+  width: 40px;
+  height: 40px;
+}
+
+.bottom-bar-left-txt {
+  color: #111;
+  font-size: 26px;
+}
+
+.bottom-bar-right-wrap {
+  margin-right: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.bottom-bar-right-red-wrap {
+  // height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $mainColor;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // border-top-left-radius: $bottomBarBorderRadius;
+  // border-bottom-left-radius: $bottomBarBorderRadius;
+  border-top-left-radius: $bottomBarBorderRadius;
+  border-bottom-left-radius: $bottomBarBorderRadius;
+  /*postcss-pxtransform rn eject enable*/
+  border-top-left-radius: $bottomBarBorderRadiusForH5;
+  border-bottom-left-radius: $bottomBarBorderRadiusForH5;
+  padding-top: 15px;  // h5 端字体对齐
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.bottom-bar-right-black-wrap {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #000;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top-right-radius: $bottomBarBorderRadius;
+  border-bottom-right-radius: $bottomBarBorderRadius;
+  /*postcss-pxtransform rn eject enable*/
+  border-top-right-radius: $bottomBarBorderRadiusForH5;
+  border-bottom-right-radius: $bottomBarBorderRadiusForH5;
+  padding-top: 15px;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.bottom-bar-right-txt {
+  text-align: center;
+  font-size: 30px;
+  line-height: 30px;
+  color: #FFF;
+}
+

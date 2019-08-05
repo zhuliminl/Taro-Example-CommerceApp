@@ -158,7 +158,7 @@ class Home extends Component {
   }
 
   testAnimateSticky = () => {
-    animateValue(stickyTopInit, 80, this.setTop)
+    animateValue(stickyTopInit, 0, this.setTop)
   }
 
   handleOnScroll = (event) => {
