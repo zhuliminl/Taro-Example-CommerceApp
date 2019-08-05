@@ -1,9 +1,9 @@
-.item-list {
+.item-list-b {
   margin-top: 20px;
   background: #ffffff;
 }
 
-.item-list__title {
+.item-list-b__title {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@
   height: 100px;
 }
 
-.item-list__wrap {
+.item-list-b__wrap {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -19,7 +19,7 @@
   padding-left: 28px;   // 使居中
 }
 
-.item-list__item {
+.item-list-b__item {
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -36,14 +36,14 @@
   }
 }
 
-.item-content-wrap {
+.item-b-content-wrap {
   display: flex;
   flex-direction: column;
   width: 330px;
   height: 280px;
 }
 
-.item__title-txt {
+.item-b__title-txt {
   flex: 1;
   color: #333;
   font-weight: bold;
@@ -55,43 +55,43 @@
   /*postcss-pxtransform rn eject disable*/
 }
 
-.item__price-wrap {
+.item-b__price-wrap {
   display: flex;
   flex-direction: row;
   align-items: baseline;
 }
 
-.item__symbol-txt {
+.item-b__symbol-txt {
   color: red;
   font-weight: bold;
   font-size: 26px;
   padding-bottom: 4px;
 }
-.item__price-txt {
+.item-b__price-txt {
   color: red;
   font-weight: bold;
   font-size: 40px;
 }
 
-.item__original-price-txt {
+.item-b__original-price-txt {
   flex: 1;
   color: #999;
   font-size: 26px;
 }
 
-.item__sold-txt {
+.item-b__sold-txt {
   color: #999;
   font-size: 26px;
 }
 
-.item-bottom-wrap {
+.item-b-bottom-wrap {
   position: relative;
   display: flex;
   flex-direction: row;
   margin-top: 10px;
 }
 
-.item-bottom-coupon-wrap {
+.item-b-bottom-coupon-wrap {
   // 必须有容器才能保证，背景不变形，同时还能把『返利』挤到一边去
   flex: 1;
   /*postcss-pxtransform rn eject enable*/
@@ -99,7 +99,7 @@
   /*postcss-pxtransform rn eject disable*/
 }
 
-.item__coupon-txt {
+.item-b__coupon-txt {
   position: absolute;
   top: 0px;
   width: 130px;
@@ -111,12 +111,12 @@
 }
 
 
-.item-bottom__bg-coupon {
+.item-b-bottom__bg-coupon {
   width: 130px;
   height: 40px;
 }
 
-.item__return-txt {
+.item-b__return-txt {
   overflow: hidden;
   padding: 4px 12px 4px 12px;
   /*postcss-pxtransform rn eject enable*/

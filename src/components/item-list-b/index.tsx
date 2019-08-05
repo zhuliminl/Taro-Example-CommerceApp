@@ -34,43 +34,43 @@ class ItemList extends Component <ItemListInterface, {}> {
     }
 
     return (
-      <View className='item-list'>
-        <View className='item-list__title'>
+      <View className='item-list-b'>
+        <View className='item-list-b__title'>
           {this.props.children}
         </View>
-        <View className='item-list__wrap'>
+        <View className='item-list-b__wrap'>
           {list.map(item => (
             <View
               key={item.itemid}
-              className='item-list__item'
+              className='item-list-b__item'
               onClick={this.handleItemClick.bind(this, item)}
             >
-              <Image className='item-list__item-img' src={item.itempic} />
+              <Image className='item-list-b__item-img' src={item.itempic} />
 
-              <View className='item-content-wrap'>
-                <View className='item__price-wrap'>
-                  <Text className='item__symbol-txt'>￥</Text>
-                  <Text className='item__price-txt'>{item.itemendprice}</Text>
+              <View className='item-b-content-wrap'>
+                <View className='item-b__price-wrap'>
+                  <Text className='item-b__symbol-txt'>￥</Text>
+                  <Text className='item-b__price-txt'>{item.itemendprice}</Text>
                 </View>
                 <Text 
-                  className='item__title-txt'
+                  className='item-b__title-txt'
                   numberOfLines={2}
                   ellipsizeMode={'tail'}
                 >{item.itemshorttitle}</Text>
 
-                <View className='item-bottom-wrap'>
-                  <Text className='item__original-price-txt'>原价￥{item.itemprice}</Text>
-                  <Text className='item__sold-txt'>{item.itemsale}人已购</Text>
+                <View className='item-b-bottom-wrap'>
+                  <Text className='item-b__original-price-txt'>原价￥{item.itemprice}</Text>
+                  <Text className='item-b__sold-txt'>{item.itemsale}人已购</Text>
                 </View>
 
-                <View className='item-bottom-wrap'>
-                  <View className='item-bottom-coupon-wrap'>
-                    <Image className='item-bottom__bg-coupon' src={bg_coupon}/>
+                <View className='item-b-bottom-wrap'>
+                  <View className='item-b-bottom-coupon-wrap'>
+                    <Image className='item-b-bottom__bg-coupon' src={bg_coupon}/>
                   </View>
-                  <Text className='item__coupon-txt'
+                  <Text className='item-b__coupon-txt'
                     style={itemCouponTxtStyle}
                   >{item.tkmoney}元券</Text>
-                  <Text className='item__return-txt'>返现￥{item.tkmoney}</Text>
+                  <Text className='item-b__return-txt'>返现￥{item.tkmoney}</Text>
                 </View>
               </View>
             </View>
