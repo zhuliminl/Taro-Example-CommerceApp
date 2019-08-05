@@ -3,15 +3,17 @@
     padding-bottom: 20px;
     display: flex;
     flex-direction: row;
-    position: relative;
-    background-color: #EEE;
-    // background-color: #FFF;
+    // position: relative;
+    position: absolute;
+    // background-color: #EEE;
+    background-color: #FFF;
     justify-content: center;
+    width: 100%;
+    z-index: 9999;
     /*postcss-pxtransform rn eject enable*/
     position: fixed;
     width: 100%;
     padding-top: 10px;
-    z-index: 999;
     /*postcss-pxtransform rn eject disable*/
 }
 

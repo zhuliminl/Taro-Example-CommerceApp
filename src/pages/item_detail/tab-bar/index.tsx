@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
 import icon_back from '@/assets/icon/back.png'
+import { device } from '@/utils/device';
 
 interface TabBarInterface {
   list: any[],
@@ -13,9 +14,18 @@ export default class TabBar extends Component<TabBarInterface,{}> {
   }
 
   render() {
+    let styleIOS : any = {}
+    if(device.isIOS()) {
+      styleIOS.paddingTop = 30
+    }
+
     return (
-      <View className="tab-bar-comp">
-        <View className='icon-back-wrap'>
+      <View className="tab-bar-comp" style={styleIOS}>
+        <View className='icon-back-wrap' 
+          onClick={() => {
+            Taro.navigateBack()
+          }}
+        >
           <Image className='item-back-img' src={icon_back} />
         </View>
         {

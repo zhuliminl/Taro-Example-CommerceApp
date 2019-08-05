@@ -1,0 +1,14 @@
+.page-loading-comp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.page-loading-gif {
+  width: 200px;
+  height: 200px;
+}
+.page-loading-txt {
+  font-size: 30px;
+  color: #999;
+}

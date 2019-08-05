@@ -12,6 +12,7 @@ const defaultAvatar = 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af323
 class Setting extends Component {
   config = {
     navigationBarTitleText: '设置',
+    disableScroll: true,
   }
 
   state = {

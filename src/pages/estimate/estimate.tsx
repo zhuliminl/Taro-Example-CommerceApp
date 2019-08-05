@@ -39,6 +39,7 @@ const TAB_LIST = [
 export default class Estimate extends Component {
   config = {
     navigationBarTitleText: 'estimate',
+    disableScroll: true,
   }
 
   state = {

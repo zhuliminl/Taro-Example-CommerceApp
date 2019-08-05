@@ -17,6 +17,9 @@
 
 RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro-native-shell](https://github.com/NervJS/taro-native-shell)
 
+- apk 打不开，报 soload 错误
+
+见 [https://github.com/facebook/react-native/issues/20252](https://github.com/facebook/react-native/issues/20252)
 
 ## 适配进度
 

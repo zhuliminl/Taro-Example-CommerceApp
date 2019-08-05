@@ -11,6 +11,17 @@ if(isRN && Platform.OS === 'android') {
   scrollHeight = 567
 }
 
+
+let windowHeight : any = Taro.getSystemInfoSync().windowHeight
+// if(process.env.TARO_ENV === 'weapp') {
+//   windowHeight = windowHeight + 'px'
+// }
+
+let windowWidth : any = Taro.getSystemInfoSync().windowWidth
+// if(process.env.TARO_ENV === 'weapp') {
+//   windowWidth = windowWidth + 'px'
+// }
+
 export const device = {
   // 设备平台判断
   isRN: () => isRN,
@@ -29,8 +40,8 @@ export const device = {
   },
 
   // 
-  windowHeight: Taro.getSystemInfoSync().windowHeight,
-  windowWidth: Taro.getSystemInfoSync().windowWidth,
+  windowHeight,
+  windowWidth,
   // 对微信端特定的兼容，RN 的样式写法，不能兼容小程序
   pxCompatibleToWechat: (n: any) => {
     if(process.env.TARO_ENV === 'weapp') {
@@ -38,5 +49,6 @@ export const device = {
     }
     return n
   },
-  scrollHeight,
+  scrollHeight,  // 后期根据测试返回再完善
+  info: Taro.getSystemInfoSync(),
 }
