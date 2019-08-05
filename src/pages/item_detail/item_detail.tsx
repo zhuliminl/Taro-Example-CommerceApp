@@ -86,6 +86,10 @@ export default class Item_detail extends Component {
       pageStyle.height = device.windowHeight - device.info.statusBarHeight
     }
 
+    if(device.isWeChat()) {
+      pageStyle.height = device.windowHeight + 'px'
+    }
+
 
     let scrollStyle : any = {
       backgroundColor: 'red',
@@ -95,9 +99,17 @@ export default class Item_detail extends Component {
       scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
     }
 
-    if(device.isRN()) {
+    if(device.isIOS()) {
       scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
       // scrollStyle.height = 617.5
+    }
+
+    if(device.isAndroid()) {
+      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+    }
+
+    if(device.isWeChat()) {
+      scrollStyle.height = device.windowHeight + 'px'
     }
 
     return (
