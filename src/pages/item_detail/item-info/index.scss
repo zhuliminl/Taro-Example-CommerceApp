@@ -1,0 +1,54 @@
+$mainColor: #FE1123;
+
+.item-info-comp {
+  background-color: #FFF;
+}
+.item-info-price-wrap {
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  align-items: baseline;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.item-info-price-tag-wrap {
+  background-color: #999;
+  padding: 0;
+  margin: 0;
+  /*postcss-pxtransform rn eject enable*/
+  display: inline-block;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.item-info-price-tag-txt {
+  font-size: 28px;
+  line-height: 28px;
+  color: $mainColor;
+}
+
+.item-info-price-right-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+}
+
+.item-info-price-original-txt {
+  font-size: 28px;
+  color: #999;
+  flex: 1;
+}
+
+.item-info-price-sold-txt {
+  font-size: 28px;
+  color: #999;
+}
+
+.item-info-return-wrap {
+
+}
+
+.item-info-coupon-wrap {
+
+}

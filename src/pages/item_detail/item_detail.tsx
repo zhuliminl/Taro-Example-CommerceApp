@@ -3,6 +3,9 @@ import { View, Text, ScrollView } from '@tarojs/components'
 import './item_detail.scss'
 import {parseUrlParams} from '@/utils/navigation'
 import TabBar from './tab-bar'
+import RoundBack from './round-back'
+import ItemCarousel from './item-carousel'
+import ItemInfo from './item-info'
 import BottomBar from './bottom-bar'
 import SimilarItemList from '@/components/item-list-b'
 import PageLoading from '@/components/page-loading'
@@ -27,7 +30,17 @@ const TAB_LIST = [
   },
 ]
 
-export default class Item_detail extends Component {
+interface itemInterface {
+  [key: string] : any;
+}
+
+interface stateInterface {
+  item: itemInterface;
+  isLoading: boolean;
+  similarCoupon: any[];
+}
+
+export default class Item_detail extends Component<{}, stateInterface> {
   config = {
     navigationBarTitleText: 'item_detail',
     disableScroll: true,
@@ -37,6 +50,7 @@ export default class Item_detail extends Component {
   state = {
     isLoading: true,
     similarCoupon: [],
+    item : {},
   }
 
   componentDidMount = async () => {
@@ -45,8 +59,11 @@ export default class Item_detail extends Component {
     const url = `https://v2.api.haodanku.com/item_detail/apikey/saul/itemid/${itemid}`
     try {
       const resp = await Taro.request({url})
-      const coupon = resp && resp.data && resp.data.data
-      console.log('FIN coupons', coupon)
+      const item = resp && resp.data && resp.data.data
+      this.setState({
+        item,
+        isLoading: false,
+      })
     } catch(err) {
       console.log('FIN get coupon err', err)
     }
@@ -65,7 +82,6 @@ export default class Item_detail extends Component {
       console.log('FIN xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
       this.setState({
         similarCoupon: coupon,
-        isLoading: false,
       })
     } catch(err) {
       console.log('FIN get coupon err', err)
@@ -92,7 +108,7 @@ export default class Item_detail extends Component {
 
 
     let scrollStyle : any = {
-      backgroundColor: 'red',
+      // backgroundColor: 'red',
     }
 
     if(device.isH5()) {
@@ -112,11 +128,16 @@ export default class Item_detail extends Component {
       scrollStyle.height = device.windowHeight + 'px'
     }
 
+    const  {item} = this.state
+    const taobao_image = item && item['taobao_image'] || ''
+    const itemSrcList = taobao_image.split(',')
+
     return (
       <View className="item_detail-page" 
         style={pageStyle} 
         >
-        <TabBar list={TAB_LIST} />
+        {/* <TabBar list={TAB_LIST} /> */}
+        <RoundBack />
 
         <View style={scrollStyle}>
           <ScrollView
@@ -125,7 +146,15 @@ export default class Item_detail extends Component {
             scrollWithAnimation
             style={scrollStyle}
           >
-            <Text>{pageStyle.height}</Text>
+            {/* <Text>{pageStyle.height}</Text> */}
+            <ItemCarousel
+              itemSrcList={itemSrcList}
+            />
+
+            <ItemInfo 
+              item={this.state.item}
+            />
+
             <SimilarItemList
               list={this.state.similarCoupon || []}
             >

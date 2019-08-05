@@ -59,6 +59,7 @@ const TAG_LIST = [
 export default class Search extends Component {
   config = {
     navigationBarTitleText: 'search',
+    disableScroll: true,
   }
 
   state = {
