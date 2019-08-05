@@ -2,6 +2,8 @@ $mainColor: #FE1123;
 
 .item-info-comp {
   background-color: #FFF;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .item-info-price-wrap {
   display: flex;
@@ -13,18 +15,24 @@ $mainColor: #FE1123;
 }
 
 .item-info-price-tag-wrap {
-  background-color: #999;
-  padding: 0;
-  margin: 0;
+  border-radius: 15px;
+  height: 30px;
+  display: flex;
+  // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
+  flex-direction: row;   
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ffd4d4;
   /*postcss-pxtransform rn eject enable*/
-  display: inline-block;
+  line-height: 26px;
   /*postcss-pxtransform rn eject disable*/
 }
 
 .item-info-price-tag-txt {
-  font-size: 28px;
-  line-height: 28px;
-  color: $mainColor;
+    align-self: center;
+    font-size: 24px;
+    color: $mainColor;
 }
 
 .item-info-price-right-wrap {
@@ -38,10 +46,11 @@ $mainColor: #FE1123;
   font-size: 28px;
   color: #999;
   flex: 1;
+  text-decoration: line-through;
 }
 
 .item-info-price-sold-txt {
-  font-size: 28px;
+  font-size: 26px;
   color: #999;
 }
 
