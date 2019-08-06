@@ -6,6 +6,7 @@ import ItemListB from '@/components/item-list-a'
 import Banner from '@/components/banner'
 import Tab from '@/components/tab'
 import SearchBarView from './search-bar-view'
+import Spin from '@/components/spin'
 
 import banner1 from '@/assets/tmp/banner/b1.png'
 import banner2 from '@/assets/tmp/banner/b2.png'
@@ -14,7 +15,6 @@ import banner4 from '@/assets/tmp/banner/b4.png'
 import banner5 from '@/assets/tmp/banner/b5.png'
 import { device } from '@/utils/device';
 import {animateValue} from '@/utils/animation'
-import { ImageEditor } from 'react-native';
 
 const IMG_LIST = [
   {
@@ -302,6 +302,7 @@ class Home extends Component {
           />
 
           <ItemListB list={this.state.coupons || []} />
+          <Spin isShow/>
         </ScrollView>
 
 
