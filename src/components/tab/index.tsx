@@ -44,8 +44,8 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   }
 
   componentDidMount = () => {
-    console.log('FIN tab props', this.props)
-    console.log('FIN tab state', this.state)
+    // console.log('FIN tab props', this.props)
+    // console.log('FIN tab state', this.state)
   }
 
   printV = v => {
@@ -60,7 +60,6 @@ class Tab extends Component <TabInterface, TabStateInterface> {
 
 
   handleTabItemClick = item => {
-    console.log('FINxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     this.setX(item)      // 处理容器滚动位置
     this.setLeftX(item)  // 处理小滑块滚动动画
 
@@ -95,7 +94,7 @@ class Tab extends Component <TabInterface, TabStateInterface> {
   }
 
   componentWillReceiveProps = nextProps => {
-    console.log('FIN componentWillReceiveProps')
+    // console.log('FIN componentWillReceiveProps')
     const {current, list} = nextProps
     const item = list[current]
     this.setLeftX(item) // 同步滑动

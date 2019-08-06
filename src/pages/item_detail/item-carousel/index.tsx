@@ -10,7 +10,6 @@ interface ItemCarouselInterface {
 export default class ItemCarousel extends Component<ItemCarouselInterface,{}> {
 
   componentDidMount = () => {
-    console.log('FIN itemCarousel Props', this.props.itemSrcList)
   }
 
   render() {

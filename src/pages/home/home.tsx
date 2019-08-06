@@ -14,6 +14,7 @@ import banner4 from '@/assets/tmp/banner/b4.png'
 import banner5 from '@/assets/tmp/banner/b5.png'
 import { device } from '@/utils/device';
 import {animateValue} from '@/utils/animation'
+import { ImageEditor } from 'react-native';
 
 const IMG_LIST = [
   {
@@ -49,7 +50,7 @@ const TAB_LIST = [
   },
   {
     key: 2,
-    title: '男装服饰',
+    title: '男装',
   },
   {
     key: 3,
@@ -134,14 +135,13 @@ class Home extends Component {
     current: 0,
     stickyTop: stickyTopInit,
     isHide: true,
+    superSearchList: [],
+    tabList: TAB_LIST, // 目前的 tab 存在必须设置好一定的初始值才能确保点击有滚动效果，这是个很隐晦的 bug
   }
 
   componentDidMount = async () => {
     this.fetchCoupon()
-
-    // setTimeout(() => {
-    //   this.testAnimateSticky()
-    // }, 3000)
+    this.fetchSuperSearch()
   }
 
   fetchCoupon = async () => {
@@ -173,7 +173,6 @@ class Home extends Component {
 
     if(scrollTop > 300 && this.state.isHide) {
       // 展示顶部隐藏的组件
-      console.log('FIN 展示顶部组件')
       this.setState({
         isHide: false,
         stickyTop: 0,
@@ -181,14 +180,36 @@ class Home extends Component {
     }
 
     if(scrollTop <= 300 && !this.state.isHide) {
-      console.log('FIN 隐藏顶部组件')
       this.setState({
         isHide: true,
         stickyTop: stickyTopInit,
       })
     }
+  }
 
-    console.log('FIN scroll scrollTop', scrollTop)
+  fetchSuperSearch = async() => {
+    const url = 'http://v2.api.haodanku.com/super_classify/apikey/saul'
+    try {
+      const resp = await Taro.request({url})
+      let general_classify = resp && resp.data && resp.data.general_classify || []
+
+      let tabList = general_classify.map((item, i) => ({
+        key: i,
+        title: item.main_name,
+      }))
+
+      // console.log('FIN tablist', tabList)
+      // console.log('FIN TABLIST', TAB_LIST)
+
+      this.setState({
+        superSearchList: general_classify,
+        tabList,  
+      })
+
+    } catch(err) {
+      console.log('FIN get superSearch err', err)
+    }
+
   }
 
   render () {
@@ -224,7 +245,7 @@ class Home extends Component {
           <Tab 
             itemWidth={60}
             current={this.state.current}
-            list={TAB_LIST}
+            list={this.state.tabList}
             onChange={(item) => {
               this.setState({
                 current: item.key,
@@ -249,7 +270,7 @@ class Home extends Component {
           <Tab 
             itemWidth={60}
             current={this.state.current}
-            list={TAB_LIST}
+            list={this.state.tabList}
             onChange={(item) => {
               this.setState({
                 current: item.key,
