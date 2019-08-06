@@ -6,11 +6,12 @@ import TabBar from './tab-bar'
 import RoundBack from './round-back'
 import ItemCarousel from './item-carousel'
 import ItemInfo from './item-info'
+import ShopInfo from './shop-info'
 import BottomBar from './bottom-bar'
+import CenterTitle from './center-title'
 import SimilarItemList from '@/components/item-list-b'
 import PageLoading from '@/components/page-loading'
 import {device} from '@/utils/device'
-import { Decipher } from 'crypto';
 const isIOS = device.isIOS()
 
 
@@ -133,9 +134,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
     const itemSrcList = taobao_image.split(',')
 
     return (
-      <View className="item_detail-page" 
-        style={pageStyle} 
-        >
+      <View className="item_detail-page" style={pageStyle} >
         {/* <TabBar list={TAB_LIST} /> */}
         <RoundBack />
 
@@ -147,21 +146,12 @@ export default class Item_detail extends Component<{}, stateInterface> {
             style={scrollStyle}
           >
             {/* <Text>{pageStyle.height}</Text> */}
-            <ItemCarousel
-              itemSrcList={itemSrcList}
-            />
-
-            <ItemInfo 
-              item={this.state.item}
-            />
-
-            <SimilarItemList
-              list={this.state.similarCoupon || []}
-            >
-              <View>
-                <Text>标题头</Text>
-              </View>
-            </SimilarItemList>
+            <ItemCarousel itemSrcList={itemSrcList} />
+            <ItemInfo item={this.state.item} />
+            <ShopInfo item={this.state.item} />
+            <CenterTitle title={'商品详情'} />
+            <CenterTitle title={'商品推荐'} />
+            <SimilarItemList list={this.state.similarCoupon || []} />
           </ScrollView>
         </View>
 

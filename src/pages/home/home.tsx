@@ -211,13 +211,7 @@ class Home extends Component {
             }}
           />
 
-          <ItemListB
-            list={this.state.coupons || []}
-          >
-            <View>
-              <Text>标题头</Text>
-            </View>
-          </ItemListB>
+          <ItemListB list={this.state.coupons || []} />
         </ScrollView>
 
 

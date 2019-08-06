@@ -104,6 +104,64 @@ $mainColor: #FE1123;
   color: #333;
 }
 
-.item-info-coupon-wrap {
+.item-info-item-title-wrap {
+  margin: 20px 30px;
+  margin-top: 30px;
+}
+.item-info-item-title-txt {
+  font-size: 38px;
+  line-height: 40px;
+  font-weight: bold;
+  color: #333;
+}
 
+.item-info-coupon-wrap {
+  background-color: #FEE9EB;
+  border-radius: 8px;
+  margin: 20px 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.item-info-coupon-money-txt {
+  margin: 20px 30px;
+  font-size: 40px;
+  line-height: 42px;
+  font-weight: bold;
+  color: $mainColor;
+
+}
+
+.item-info-coupon-desc-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.item-info-coupon-desc-txt {
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: bold;
+  color: $mainColor;
+}
+.item-info-coupon-date-txt {
+  font-size: 26px;
+  margin-top: 10px;
+  color: $mainColor;
+}
+
+.item-info-coupon-bg {
+  width: 60px;
+  height: 120px;
+}
+.item-info-coupon-take-txt {
+  margin-right: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+  color: $mainColor;
 }
