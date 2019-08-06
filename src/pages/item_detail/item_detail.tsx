@@ -80,7 +80,6 @@ export default class Item_detail extends Component<{}, stateInterface> {
     try {
       const resp = await Taro.request({url})
       const coupon = resp && resp.data && resp.data.data
-      console.log('FIN xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
       this.setState({
         similarCoupon: coupon,
       })
@@ -155,7 +154,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
           </ScrollView>
         </View>
 
-        <BottomBar />
+        <BottomBar item={this.state.item} />
       </View>
     )
   }

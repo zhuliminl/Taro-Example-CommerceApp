@@ -15,11 +15,12 @@ export default class ShopInfo extends Component<ShopInfoInterface,{}> {
   }
 
   render() {
+    const {item} = this.props
     return (
       <View className="shop-info-comp">
         <View className='shop-info-title-wrap'>
           <Image className='shop-info-bg' src={bg_tianmao} />
-          <Text className='shop-info-title-txt'>南极人乐上专卖店</Text>
+          <Text className='shop-info-title-txt'>{item.sellernick}</Text>
         </View>
         <View className='shop-info-appraise-wrap'>
 

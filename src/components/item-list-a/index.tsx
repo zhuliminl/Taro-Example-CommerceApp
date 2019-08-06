@@ -60,7 +60,7 @@ class ItemList extends Component <ItemListInterface, {}> {
                       <View className='item-right-bottom-coupon-wrap'>
                         <Image className='item-right-bottom__bg-coupon' src={bg_coupon}/>
                       </View>
-                      <Text className='item__coupon-txt'>{item.tkmoney}元券</Text>
+                      <Text className='item__coupon-txt'>{item.couponmoney}元券</Text>
                       <Text className='item__return-txt'>返现￥{item.tkmoney}</Text>
                     </View>
                   </View>

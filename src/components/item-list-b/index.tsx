@@ -69,7 +69,7 @@ class ItemList extends Component <ItemListInterface, {}> {
                   </View>
                   <Text className='item-b__coupon-txt'
                     style={itemCouponTxtStyle}
-                  >{item.tkmoney}元券</Text>
+                  >{item.couponmoney}元券</Text>
                   <Text className='item-b__return-txt'>返现￥{item.tkmoney}</Text>
                 </View>
               </View>

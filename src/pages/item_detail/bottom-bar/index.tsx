@@ -2,8 +2,10 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
 import icon_copy from '@/assets/icon/copy.png'
+import item_detail_styles from '../../../../rn_temp/pages/item_detail/item_detail_styles';
 
 interface BottomBarInterface {
+  item: any;
 }
 
 export default class BottomBar extends Component<BottomBarInterface,{}> {
@@ -12,6 +14,7 @@ export default class BottomBar extends Component<BottomBarInterface,{}> {
   }
 
   render() {
+    const {item} = this.props
     return (
       <View className="bottom-bar-comp">
         <View className='bottom-bar-left-wrap'>
@@ -21,11 +24,11 @@ export default class BottomBar extends Component<BottomBarInterface,{}> {
         <View className='bottom-bar-right-wrap'>
           <View className='bottom-bar-right-red-wrap'>
             <Text className='bottom-bar-right-txt'>分享赚</Text>
-            <Text className='bottom-bar-right-txt'>￥4.76</Text>
+            <Text className='bottom-bar-right-txt'>￥{item.tkmoney}</Text>
           </View>
           <View className='bottom-bar-right-black-wrap'>
             <Text className='bottom-bar-right-txt'>下单返</Text>
-            <Text className='bottom-bar-right-txt'>￥4.76</Text>
+            <Text className='bottom-bar-right-txt'>￥{item.tkmoney}</Text>
           </View>
         </View>
       </View>
