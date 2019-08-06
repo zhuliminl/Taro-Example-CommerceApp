@@ -63,10 +63,33 @@ export default class Search extends Component {
   }
 
   state = {
-    current: 0
+    current: 0,
+    hotList: [],
   }
 
   componentDidMount = () => {
+    this.fetchHotSearch()
+  }
+
+
+  fetchHotSearch = async() => {
+    const url = 'http://v2.api.haodanku.com/hot_key/apikey/saul/back/15'
+    try {
+      const resp = await Taro.request({url})
+      let data = resp && resp.data && resp.data.data || []
+
+      let hotList = data.map((item, i) => ({
+        key: i,
+        title: item.keyword
+      }))
+
+      this.setState({
+        hotList,
+      })
+    } catch(err) {
+      console.log('FIN get hostList err', err)
+    }
+
   }
 
   handleOnVideoGuideClick = () => {
@@ -104,7 +127,7 @@ export default class Search extends Component {
         <Image className='video-guide'src={video_guide} onClick={this.handleOnVideoGuideClick.bind(this)}/>
 
         <LargetTitle title='热门搜索'/>
-        <Tags tagList={TAG_LIST} />
+        <Tags tagList={this.state.hotList} />
 
         <LargetTitle title='历史记录'>
           <View className='history-clear-btn-wrap' onClick={this.handleOnHistoryClear.bind(this)}>
