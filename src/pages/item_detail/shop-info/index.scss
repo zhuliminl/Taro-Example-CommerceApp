@@ -45,3 +45,25 @@
   width: 30px;
   height: 30px;
 }
+
+.shop-info-recommend-wrap {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  padding-right: 20px;
+}
+
+.shop-info-recommend-title-txt {
+  color: #111;
+  font-size: 30px;
+  line-height: 32px;
+  flex-shrink: 0;
+}
+
+.shop-info-recommend-desc-txt {
+  padding-right: 80px;
+  padding-left: 20px;
+  color: #999;
+  line-height: 34px;
+  font-size: 26px;
+}

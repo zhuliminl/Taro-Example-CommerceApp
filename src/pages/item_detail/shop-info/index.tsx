@@ -40,6 +40,11 @@ export default class ShopInfo extends Component<ShopInfoInterface,{}> {
           </View>
 
         </View>
+
+        <View className='shop-info-recommend-wrap'>
+          <Text className='shop-info-recommend-title-txt'>推荐语</Text>
+          <Text className='shop-info-recommend-desc-txt'>{item.itemdesc}</Text>
+        </View>
       </View>
     )
   }

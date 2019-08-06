@@ -125,7 +125,9 @@ export default class Item_detail extends Component<{}, stateInterface> {
     }
 
     if(device.isWeChat()) {
-      scrollStyle.height = device.windowHeight + 'px'
+      scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
+      scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
+      console.log('FIN item scroll style for wechat', scrollStyle)
     }
 
     const  {item} = this.state
