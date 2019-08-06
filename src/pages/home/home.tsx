@@ -1,4 +1,4 @@
-import Taro, { Component, pxTransform, hideToast } from '@tarojs/taro';
+import Taro, { Component, pxTransform, } from '@tarojs/taro';
 import { View, Text, ScrollView, Swiper, SwiperItem } from '@tarojs/components';
 import './home.scss'
 
@@ -7,6 +7,7 @@ import Banner from '@/components/banner'
 import Tab from '@/components/tab'
 import SearchBarView from './search-bar-view'
 import Spin from '@/components/spin'
+import ImgNav from '@/components/img-nav'
 
 import banner1 from '@/assets/tmp/banner/b1.png'
 import banner2 from '@/assets/tmp/banner/b2.png'
@@ -15,6 +16,7 @@ import banner4 from '@/assets/tmp/banner/b4.png'
 import banner5 from '@/assets/tmp/banner/b5.png'
 import { device } from '@/utils/device';
 import {animateValue} from '@/utils/animation'
+import { navigateTo } from '@/utils/navigation'
 
 const IMG_LIST = [
   {
@@ -137,13 +139,13 @@ class Home extends Component {
 
     cid: 1,
     min_id: 1,
-    superSearchList: [],
+    superSortList: [],
     tabList: TAB_LIST, // 目前的 tab 存在必须设置好一定的初始值才能确保点击有滚动效果，这是个很隐晦的 bug
   }
 
   componentDidMount = async () => {
     this.fetchCoupon()
-    this.fetchSuperSearch()
+    this.fetchSuperSortList()
   }
 
 
@@ -199,7 +201,7 @@ class Home extends Component {
   }
 
 
-  fetchSuperSearch = async() => {
+  fetchSuperSortList = async() => {
     const url = 'http://v2.api.haodanku.com/super_classify/apikey/saul'
     try {
       const resp = await Taro.request({url})
@@ -217,7 +219,7 @@ class Home extends Component {
       // console.log('FIN tablist', tabList)
 
       this.setState({
-        superSearchList: general_classify,
+        superSortList: general_classify,
         tabList,  
       })
 
@@ -308,6 +310,11 @@ class Home extends Component {
             list={this.state.tabList}
             onChange={(item) => { this.handleOnTabChange(item) }}
           />
+
+          <View onClick={() => {navigateTo('supersort')}}>
+            <Text>超级分类</Text>
+          </View>
+
 
           {/* <Swiper
             current={this.state.current}

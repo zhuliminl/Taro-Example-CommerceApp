@@ -38,6 +38,7 @@ class App extends Component {
       'pages/search_transition/search_transition',  // 搜索过渡页
       'pages/search/search',
       'pages/item_detail/item_detail',
+      'pages/supersort/supersort',
     ],
     window: {
       backgroundTextStyle: 'light',
