@@ -1,5 +1,5 @@
 import Taro, { Component, pxTransform, hideToast } from '@tarojs/taro';
-import { View, Text, ScrollView } from '@tarojs/components';
+import { View, Text, ScrollView, Swiper, SwiperItem } from '@tarojs/components';
 import './home.scss'
 
 import ItemListB from '@/components/item-list-a'
@@ -262,6 +262,13 @@ class Home extends Component {
       console.log('FIN item scroll style for wechat', scrollStyle)
     }
 
+    let swiperStyle : any = {
+      overflow: 'visible',
+    }
+
+    if(device.isRN()) {
+      // swiperStyle.height = 300
+    }
 
 
     return (
@@ -294,6 +301,7 @@ class Home extends Component {
           />
 
           <SearchBarView/>
+
           <Tab 
             itemWidth={60}
             current={this.state.current}
@@ -301,8 +309,28 @@ class Home extends Component {
             onChange={(item) => { this.handleOnTabChange(item) }}
           />
 
+          {/* <Swiper
+            current={this.state.current}
+            style={swiperStyle}
+          >
+            <SwiperItem>
+              <ScrollView style={{height: 300, width: '100%'}}>
+                <ItemListB list={this.state.coupons || []} />
+              </ScrollView>
+              <Spin isShow/>
+            </SwiperItem>
+            <SwiperItem>
+              <ItemListB list={this.state.coupons || []} />
+              <Spin isShow/>
+            </SwiperItem>
+            <SwiperItem>
+              <ItemListB list={this.state.coupons || []} />
+              <Spin isShow/>
+            </SwiperItem>
+          </Swiper> */}
+
           <ItemListB list={this.state.coupons || []} />
-          <Spin isShow/>
+
         </ScrollView>
 
 
