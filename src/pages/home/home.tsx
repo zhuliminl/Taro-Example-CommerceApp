@@ -1,4 +1,4 @@
-import Taro, { Component, pxTransform } from '@tarojs/taro';
+import Taro, { Component, pxTransform, hideToast } from '@tarojs/taro';
 import { View, Text, ScrollView } from '@tarojs/components';
 import './home.scss'
 
@@ -119,11 +119,13 @@ const TAB_LIST = [
 
 const coupon_url = 'https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/0/back/20/min_id/1'
 
-const stickyTopInit = -70
+// 隐藏顶部的搜索和分类 tab
+const stickyTopInit = -200
 
 class Home extends Component {
   config = {
-    navigationBarTitleText: '真的首页',
+    navigationBarTitleText: '首页',
+    disableScroll: true,
   }
 
   state = {
@@ -131,23 +133,27 @@ class Home extends Component {
     coupons: [],
     current: 0,
     stickyTop: stickyTopInit,
+    isHide: true,
   }
 
   componentDidMount = async () => {
+    this.fetchCoupon()
+
+    // setTimeout(() => {
+    //   this.testAnimateSticky()
+    // }, 3000)
+  }
+
+  fetchCoupon = async () => {
     try {
       const resp = await Taro.request({url: coupon_url})
       const coupons = resp && resp.data && resp.data.data
       this.setState({
         coupons,
       })
-      console.log('FIN coupons', coupons)
     } catch(err) {
       console.log('FIN get coupon err', err)
     }
-
-    setTimeout(() => {
-      this.testAnimateSticky()
-    }, 3000)
   }
 
   setTop = value => {
@@ -158,13 +164,55 @@ class Home extends Component {
   }
 
   testAnimateSticky = () => {
-    animateValue(stickyTopInit, 0, this.setTop)
+    // animateValue(stickyTopInit, 0, this.setTop)
   }
 
   handleOnScroll = (event) => {
+    const {detail} = event
+    const {scrollTop} = detail
+
+    if(scrollTop > 300 && this.state.isHide) {
+      // 展示顶部隐藏的组件
+      console.log('FIN 展示顶部组件')
+      this.setState({
+        isHide: false,
+        stickyTop: 0,
+      })
+    }
+
+    if(scrollTop <= 300 && !this.state.isHide) {
+      console.log('FIN 隐藏顶部组件')
+      this.setState({
+        isHide: true,
+        stickyTop: stickyTopInit,
+      })
+    }
+
+    console.log('FIN scroll scrollTop', scrollTop)
   }
 
   render () {
+    let scrollStyle : any = {}
+    if(device.isH5()) {
+      scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
+    }
+
+    if(device.isIOS()) {
+      scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+    }
+
+    if(device.isAndroid()) {
+      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+    }
+
+    if(device.isWeChat()) {
+      scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
+      scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
+      console.log('FIN item scroll style for wechat', scrollStyle)
+    }
+
+
+
     return (
       <View className='home'>
         <View className='home-sticky-wrap'
@@ -187,19 +235,17 @@ class Home extends Component {
         <ScrollView
           onScroll={this.handleOnScroll.bind(this)}
           scrollY
-          style={{
-            height: device.scrollHeight,
-          }}
+          style={scrollStyle}
         >
           <View style={{height: pxTransform(40)}}></View>
+
           <Banner 
             bannerHeight={280}
             bannerWidth={700}
             imgList={IMG_LIST}
           />
-          <SearchBarView/>
-          <Text>{device.windowHeight}</Text>
 
+          <SearchBarView/>
           <Tab 
             itemWidth={60}
             current={this.state.current}
