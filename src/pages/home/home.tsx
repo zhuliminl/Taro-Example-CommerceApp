@@ -92,11 +92,11 @@ const TAB_LIST = [
     key: 12,
     title: '数码',
   },
-  /*
   {
     key: 13,
     title: '家电',
   },
+  /*
   {
     key: 14,
     title: '其他',
@@ -118,7 +118,6 @@ const TAB_LIST = [
 
 
 
-const coupon_url = 'https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/0/back/20/min_id/1'
 
 // 隐藏顶部的搜索和分类 tab
 const stickyTopInit = -200
@@ -135,6 +134,9 @@ class Home extends Component {
     current: 0,
     stickyTop: stickyTopInit,
     isHide: true,
+
+    cid: 1,
+    min_id: 1,
     superSearchList: [],
     tabList: TAB_LIST, // 目前的 tab 存在必须设置好一定的初始值才能确保点击有滚动效果，这是个很隐晦的 bug
   }
@@ -144,17 +146,6 @@ class Home extends Component {
     this.fetchSuperSearch()
   }
 
-  fetchCoupon = async () => {
-    try {
-      const resp = await Taro.request({url: coupon_url})
-      const coupons = resp && resp.data && resp.data.data
-      this.setState({
-        coupons,
-      })
-    } catch(err) {
-      console.log('FIN get coupon err', err)
-    }
-  }
 
   setTop = value => {
     console.log('FIN set sticky top', value)
@@ -187,19 +178,43 @@ class Home extends Component {
     }
   }
 
+  fetchCoupon = async () => {
+    const {cid, min_id} = this.state
+    console.log('FIN home state', this.state)
+    const coupon_url = `https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/${cid}/back/20/min_id/${min_id}`
+    console.log('FIN coupon list url', coupon_url)
+    try {
+      const resp = await Taro.request({url: coupon_url})
+      const couponsData = resp && resp.data && resp.data.data
+      const min_id = resp && resp.data && resp.data.min_id
+      const preState = this.state
+      const coupons = preState.coupons.concat(couponsData)
+      this.setState({
+        coupons,
+        min_id,
+      })
+    } catch(err) {
+      console.log('FIN get coupon err', err)
+    }
+  }
+
+
   fetchSuperSearch = async() => {
     const url = 'http://v2.api.haodanku.com/super_classify/apikey/saul'
     try {
       const resp = await Taro.request({url})
       let general_classify = resp && resp.data && resp.data.general_classify || []
+      
+      let tabList : any = [{key: 0, title: '全部'}]  // 单独插入全部
 
-      let tabList = general_classify.map((item, i) => ({
-        key: i,
-        title: item.main_name,
-      }))
+      general_classify.forEach((item, i) => {
+        tabList.push({
+          key: item.cid,
+          title: item.main_name,
+        })
+      })
 
       // console.log('FIN tablist', tabList)
-      // console.log('FIN TABLIST', TAB_LIST)
 
       this.setState({
         superSearchList: general_classify,
@@ -210,6 +225,21 @@ class Home extends Component {
       console.log('FIN get superSearch err', err)
     }
 
+  }
+
+  handleOnTabChange = item => {
+    const key = item.key
+    this.setState({
+      current: key,
+      cid: key,
+      coupons: [],
+      min_id: 1,
+    }, this.fetchCoupon)
+
+  }
+
+  handleOnScrollToLower = () => {
+    this.fetchCoupon()
   }
 
   render () {
@@ -246,15 +276,12 @@ class Home extends Component {
             itemWidth={60}
             current={this.state.current}
             list={this.state.tabList}
-            onChange={(item) => {
-              this.setState({
-                current: item.key,
-              })
-            }}
+            onChange={(item) => { this.handleOnTabChange(item) }}
           />
         </View>
         <ScrollView
           onScroll={this.handleOnScroll.bind(this)}
+          onScrollToLower={this.handleOnScrollToLower.bind(this)}
           scrollY
           style={scrollStyle}
         >
@@ -271,11 +298,7 @@ class Home extends Component {
             itemWidth={60}
             current={this.state.current}
             list={this.state.tabList}
-            onChange={(item) => {
-              this.setState({
-                current: item.key,
-              })
-            }}
+            onChange={(item) => { this.handleOnTabChange(item) }}
           />
 
           <ItemListB list={this.state.coupons || []} />

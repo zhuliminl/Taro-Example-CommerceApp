@@ -39,9 +39,9 @@ class ItemList extends Component <ItemListInterface, {}> {
           {this.props.children}
         </View>
         <View className='item-list-b__wrap'>
-          {list.map(item => (
+          {list.map((item, i) => (
             <View
-              key={item.itemid}
+              key={i}
               className='item-list-b__item'
               onClick={this.handleItemClick.bind(this, item)}
             >

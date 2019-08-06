@@ -53,6 +53,8 @@
   // background-color: green;
   /*postcss-pxtransform rn eject enable*/
   display: block;
+  max-height: 90px;
+  overflow: hidden;
   /*postcss-pxtransform rn eject disable*/
 }
 
