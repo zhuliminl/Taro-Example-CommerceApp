@@ -26,7 +26,14 @@ export default class ItemInfo extends Component<ItemInfoInterface,{}> {
           </View>
         </View>
 
-        <View className='item-info-return-wrap'></View>
+        <View className='item-info-return-wrap'>
+          <View className='item-info-return-order-wrap'>
+            <Text className='item-info-return-order-txt'>下单返￥7.31</Text>
+          </View>
+          <Text className='item-info-return-leader'>成为团长可返回</Text>
+          <Text className='item-info-return-money'>￥9.55</Text>
+          <Text className='item-info-return-upgrade'>立即升级 ></Text>
+        </View>
 
         <View className='item-info-coupon-wrap'></View>
       </View>
