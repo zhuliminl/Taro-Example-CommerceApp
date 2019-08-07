@@ -1,1 +1,147 @@
+$mainColor: #FE1123;
+$shareBorderRadius: 26px;
 
+.moments-comp {
+  background-color: #FFF;
+}
+
+.moment-wrap {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+
+  padding-top: 20px;
+  border-width: 0;
+  border-top-width: 1px;
+  border-color: #F5F6F7;
+  border-style: solid;
+
+}
+
+.moment-avatar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.moment-right-wrap {
+  flex: 4;
+  display: flex;
+}
+
+.moment-avatar-img {
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.moment-right-top-wrap {
+  display: flex;
+  flex-direction: row;
+  // height: 100px;   // 固定一个高度
+
+  align-items: center;
+}
+
+.moment-title-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+
+  height: 100px;
+}
+
+.moment-title-desc-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.moment-share-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.moment-title-tag-wrap {
+  background-color: $mainColor;
+  margin-right: 5px;
+  border-radius: 4px;
+  height: 34px;
+  display: flex;
+  // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
+  flex-direction: row;   
+  align-items: center;
+  padding-left: 6px;
+  padding-right: 6px;
+  /*postcss-pxtransform rn eject enable*/
+  line-height: 26px;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.moment-title-tag-txt {
+  font-size: 26px;
+  line-height: 28px;
+  color: #FFF;
+}
+
+.moment-title-txt {
+  font-size: 34px;
+  line-height: 36px;
+  color: #111;
+}
+
+
+.moment-title-date-txt {
+  font-size: 26px;
+  line-height: 28px;
+  color: #999;
+  /*postcss-pxtransform rn eject enable*/
+  font-size: 24px;
+  line-height: 26px;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.moment-share-number-wrap {
+  border-radius: $shareBorderRadius;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #F0F0F0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.moment-share-download-wrap {
+  border-radius: $shareBorderRadius;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #F0F0F0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.moment-share-number-txt {
+  font-size: 26px;
+  line-height: 28px;
+  color: #333;
+}
+
+.moment-share-download-txt {
+  font-size: 26px;
+  line-height: 28px;
+  color: #333;
+}
+
+.moment-share-number-img {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+}
+
+.moment-share-download-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
