@@ -1,120 +1,63 @@
-import Taro, { Component } from '@tarojs/taro';
+import Taro, { Component, hideToast } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-import Tab from '@/components/tab'
+import Moments from './moments'
+import {host} from '@/constants/host'
+
 
 const TAB_LIST = [
   {
     key: 0,
-    title: '全部',
+    title: '好省精选',
   },
   {
     key: 1,
-    title: '女装',
+    title: '营销素材',
   },
   {
     key: 2,
-    title: '男装服饰',
+    title: '好省学院',
   },
-  {
-    key: 3,
-    title: '内衣',
-  },
-  {
-    key: 4,
-    title: '美妆',
-  },
-  {
-    key: 5,
-    title: '配饰',
-  },
-  {
-    key: 6,
-    title: '鞋品',
-  },
-  {
-    key: 7,
-    title: '箱包',
-  },
-  {
-    key: 8,
-    title: '儿童',
-  },
-  {
-    key: 9,
-    title: '母婴',
-  },
-  {
-    key: 10,
-    title: '居家',
-  },
-  {
-    key: 11,
-    title: '美食',
-  },
-  {
-    key: 12,
-    title: '数码',
-  },
-  /*
-  {
-    key: 13,
-    title: '家电',
-  },
-  {
-    key: 14,
-    title: '其他',
-  },
-  {
-    key: 15,
-    title: '车品',
-  },
-  {
-    key: 16,
-    title: '文体',
-  },
-  {
-    key: 17,
-    title: '宠物',
-  },
-  */
 ]
-
 
 class Community extends Component {
   config = {
     navigationBarTitleText: '好省圈',
+    disableScroll: true,
   }
 
   state = {
     loading: false,
     current: 0,
+    min_id: 1,
   }
 
   componentDidMount = () => {
-    console.log('FIN 动画')
+    this.fetchMoments()
   }
+
+  fetchMoments = async () => {
+    const {min_id} = this.state
+    // const url = `${host}/selected_item/apikey/saul/min_id/${min_id}`
+    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/1`
+    console.log('FIN URL', url)
+
+    try {
+      const resp = await Taro.request({url})
+      console.log('FIN moments ', resp)
+
+    } catch(err) {
+      console.log('FIN get moments err', err)
+    }
+
+  }
+
 
 
   render () {
     return (
-      <View>
-        <Text>好省圈</Text>
-
-        <View >
-          <Text>动画</Text>
-        </View>
+      <View className='community-page'>
 
 
-        <Tab 
-          itemWidth={60}
-          current={this.state.current}
-          list={TAB_LIST}
-          onChange={(item) => {
-            this.setState({
-              current: item.key,
-            })
-          }}
-        />
       </View>
     )
   }
