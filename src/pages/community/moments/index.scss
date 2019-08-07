@@ -28,6 +28,7 @@ $shareBorderRadius: 26px;
 .moment-right-wrap {
   flex: 4;
   display: flex;
+  flex-direction: column;
 }
 
 .moment-avatar-img {
@@ -144,4 +145,18 @@ $shareBorderRadius: 26px;
   width: 30px;
   height: 30px;
   margin-right: 10px;
+}
+
+.moment-right-middle-wrap {
+  padding-top: 20px;
+}
+
+.moment-content-txt {
+  margin-right: 20px;
+  font-size: 28px;
+  line-height: 40px;
+  color: #333;
+  /*postcss-pxtransform rn eject enable*/
+  display: block;
+  /*postcss-pxtransform rn eject disable*/
 }

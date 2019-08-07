@@ -51,8 +51,10 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
 
                 </View>
 
-                {/* 中间的图片和视频 */}
-                <View className='moment-right-middle-wrap'></View>
+                {/* 中间实体内容文字和图片、视频 */}
+                <View className='moment-right-middle-wrap'>
+                  <Text className='moment-content-txt'>👊{moment['content']}</Text>
+                </View>
 
               </View>
             </View>
