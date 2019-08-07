@@ -41,9 +41,6 @@ RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro
 
 个人中心、设置页面、商品单双排列表
 
-### h5 端
-
-<img src="screenshots/h5_2.png" width="416.5px" height="667px"/>   <img src="screenshots/h5_1.png" width="416.5px" height="667px" />   <img src="screenshots/h5_3.png" width="416.5px" height="667px" />
 
 ### RN 端
 
@@ -52,6 +49,15 @@ RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro
 ### 小程序 端
 
 <img src="screenshots/we_1.png" width="416.5px" height="667px" />
+
+
+### h5 端
+
+<img src="screenshots/h5_2.png" width="416.5px" height="667px"/>   <img src="screenshots/h5_1.png" width="416.5px" height="667px" />   <img src="screenshots/h5_3.png" width="416.5px" height="667px" />
+
+
+
+
 
 ### 部分问题
 
