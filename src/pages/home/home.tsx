@@ -337,10 +337,9 @@ class Home extends Component {
           </Swiper> */}
 
           <ItemListB list={this.state.coupons || []} />
+          <Spin isShow/>
 
         </ScrollView>
-
-
       </View>
     )
   }

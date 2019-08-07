@@ -102,7 +102,7 @@ export default class Search extends Component {
 
   render() {
     return (
-      <View className="search-page">
+      <View className="search-transition-page">
         <SearchBar 
           placeholder={'复制标题，搜隐藏优惠券拿返利'}
           onSearch={(title) => {

@@ -10,22 +10,33 @@ import {navigateTo} from '@/utils/navigation'
 interface SearchBarInterface {
   placeholder: string;
   onSearch: (any) => void;
+  $router?: any;
 }
 
 
 export default class SearchBar extends Component<SearchBarInterface, {}> {
+  state = {
+    keyword: ''
+  }
+
   componentDidMount = () => {
   }
 
   handleOnChange = event => {
-
+    const {detail} = event
+    const {value} = detail
+    this.setState({
+      keyword: value,
+    })
   }
 
   handleOnSearch = () => {
-
-    // 先行一步
-    navigateTo('search', {title: 'saul'})
-
+    // 如果当前页面是搜索页，则直接在原地重新渲染，而不是跳转
+    // console.log('FIN search', this.props.$router)   // 注意 RN 中 非页面组件中访问 $router 必须得通过下传的方式才能做到
+    if(this.props.$router && this.props.$router['path'] === '/pages/search/search') {
+      return this.props.onSearch(this.state.keyword)
+    }
+    navigateTo('search', {keyword: this.state.keyword})
   }
 
   render() {
