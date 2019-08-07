@@ -16,8 +16,7 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
     <View className="moments-comp">
       {
         moments.map((moment, i) => {
-          let itemtitle = moments['itemtitle'] || ''
-          console.log('FIN xxxxx', itemtitle)
+          let itemtitle = moment['itemtitle'] || ''
           if(itemtitle.length >= 6) {
             itemtitle = itemtitle.substr(0,6) + '...'
           }
