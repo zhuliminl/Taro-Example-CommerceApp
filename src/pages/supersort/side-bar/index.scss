@@ -1,0 +1,23 @@
+
+.side-bar-comp {
+}
+
+.side-bar-item-wrap {
+  background-color: #F5F6F7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px 0;
+
+  border-width: 0;
+  border-left-width: 3px;
+  border-color:#F5F6F7;   // 设置和背景同色，激活样式为主题色
+  border-style: solid;
+}
+
+.side-bar-item-txt {
+  font-size: 30px;
+  line-height: 32px;
+  color: #333;
+  text-align: center;
+}

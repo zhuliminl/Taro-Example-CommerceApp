@@ -1,0 +1,42 @@
+import Taro, { FunctionComponent } from '@tarojs/taro'
+import { View, Text, Image } from '@tarojs/components'
+import React from 'react'
+import './index.scss'
+
+interface ImgNavInterface {
+  imgNavData: any;
+}
+
+const ImgNav : FunctionComponent<ImgNavInterface> = (props) => {
+  const {imgNavData} = props
+  console.log('FIN imgNavdata', imgNavData)
+
+  return (
+    <View className="img-nav-comp">
+      {
+        imgNavData.data && imgNavData.data.map((mainItem, i) => {
+          return (
+            <View className='img-nav-main-item-wrap' key={i}>
+              <Text className='img-nav-main-item-title-txt'>{mainItem.next_name}</Text>
+              <View className='img-nav-sub-wrap'>
+                {
+                  mainItem && mainItem.info && mainItem.info.map((item, j) => {
+                    return (
+                      <View className='img-nav-sub-item-wrap' key={j}>
+                        <Image className='img-nav-img' src={item.imgurl}/>
+                        <Text className='img-nav-sub-item-txt'>{item.son_name}</Text>
+                      </View>
+                    )
+                  })
+                }
+              </View>
+            </View>
+          )
+        })
+      }
+    </View>
+  )
+}
+
+
+export default ImgNav

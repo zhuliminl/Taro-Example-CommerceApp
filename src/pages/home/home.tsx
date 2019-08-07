@@ -202,7 +202,7 @@ class Home extends Component {
 
 
   fetchSuperSortList = async() => {
-    const url = 'http://v2.api.haodanku.com/super_classify/apikey/saul'
+    const url = 'https://v2.api.haodanku.com/super_classify/apikey/saul'
     try {
       const resp = await Taro.request({url})
       let general_classify = resp && resp.data && resp.data.general_classify || []
@@ -216,7 +216,7 @@ class Home extends Component {
         })
       })
 
-      // console.log('FIN tablist', tabList)
+      console.log('FIN superSortList', general_classify)
 
       this.setState({
         superSortList: general_classify,

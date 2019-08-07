@@ -2,6 +2,8 @@ const fs = require('fs');
 
 const pageDir = process.argv[2];
 const dirName = process.argv[3];
+const isHooks = process.argv[4];
+
 
 if (!pageDir) {
   console.log('page 不能为空！');
@@ -22,7 +24,7 @@ if(dirName.indexOf('_') > 0) {
 }
 
 // 页面模版
-const indexTep = `import Taro, { Component } from '@tarojs/taro'
+let indexTep = `import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
 
@@ -45,6 +47,33 @@ export default class ${titleCase(dirName)} extends Component<${titleCase(dirName
   }
 }
 `
+
+let compName = titleCase(dirName)
+
+if(isHooks === 'hooks') {
+  indexTep = `import Taro, { FunctionComponent } from '@tarojs/taro'
+import { View, Text, Image } from '@tarojs/components'
+import React from 'react'
+import './index.scss'
+
+interface ${compName}Interface {
+}
+
+const ${compName} : FunctionComponent<${compName}Interface> = (props) => {
+
+  return (
+    <View className="${dirName}-comp">
+      <Text>
+        ${dirName}
+      </Text>
+    </View>
+  )
+}
+
+export default ${compName}
+`
+}
+
 
 const scssTep = `
 `

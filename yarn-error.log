@@ -2,7 +2,7 @@ Arguments:
   /usr/local/Cellar/node/12.1.0/bin/node /usr/local/Cellar/yarn/1.16.0/libexec/bin/yarn.js add @/ --silent --no-progress
 
 PATH: 
-  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zx001/Project/Front/Taro_app/DaTaoKe/node_modules/.bin:/var/folders/vs/53s2yc3n2v7c6sbz7tv8p0cm0000gn/T/yarn--1564564702703-0.46028967556893496:/Users/zx001/Project/Front/Taro_app/DaTaoKe/node_modules/.bin:/Users/zx001/.config/yarn/link/node_modules/.bin:/usr/local/Cellar/node/12.1.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/12.1.0/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/12.1.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/zx001/.jenv/shims:/Users/zx001/.jenv/bin:/Users/zx001/.npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/zx001/.jenv/shims:/Users/zx001/.jenv/bin:/Users/zx001/.npm-global/bin:/Users/zx001/Library/Android/sdk/emulator:/Users/zx001/Library/Android/sdk/tools:/Users/zx001/Library/Android/sdk/tools/bin:/Users/zx001/Library/Android/sdk/platform-tools:/Users/zx001/Library/Android/sdk/emulator:/Users/zx001/Library/Android/sdk/tools:/Users/zx001/Library/Android/sdk/tools/bin:/Users/zx001/Library/Android/sdk/platform-tools
+  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zx001/Project/Front/Taro_app/DaTaoKe/node_modules/.bin:/var/folders/vs/53s2yc3n2v7c6sbz7tv8p0cm0000gn/T/yarn--1565078289302-0.09601568885427891:/Users/zx001/Project/Front/Taro_app/DaTaoKe/node_modules/.bin:/Users/zx001/.config/yarn/link/node_modules/.bin:/usr/local/Cellar/node/12.1.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/12.1.0/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/12.1.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/zx001/.jenv/shims:/Users/zx001/.jenv/bin:/Users/zx001/.npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/zx001/.jenv/shims:/Users/zx001/.jenv/bin:/Users/zx001/.npm-global/bin:/Users/zx001/Library/Android/sdk/emulator:/Users/zx001/Library/Android/sdk/tools:/Users/zx001/Library/Android/sdk/tools/bin:/Users/zx001/Library/Android/sdk/platform-tools:/Users/zx001/Library/Android/sdk/emulator:/Users/zx001/Library/Android/sdk/tools:/Users/zx001/Library/Android/sdk/tools/bin:/Users/zx001/Library/Android/sdk/platform-tools
 
 Yarn version: 
   1.16.0
@@ -54,7 +54,9 @@ npm manifest:
       "dev:rn": "npm run build:rn -- --watch",
       "dev:qq": "npm run build:qq -- --watch",
       "dev:quickapp": "npm run build:quickapp -- --watch",
-      "tep": "node template"
+      "tep:page": "node template-page",
+      "tep:component": "node template-component",
+      "build:rnios": "react-native bundle --entry-file='./rn_temp/index.js' --bundle-output='./ios/bundle/main.jsbundle'  --assets-dest './ios/bundle/' --dev=false --platform='ios'"
     },
     "author": "",
     "license": "MIT",
