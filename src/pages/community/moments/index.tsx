@@ -11,10 +11,16 @@ interface MomentsInterface {
 
 const Moments : FunctionComponent<MomentsInterface> = (props) => {
   const {moments} = props
+
   return (
     <View className="moments-comp">
       {
         moments.map((moment, i) => {
+          let itemtitle = moments['itemtitle'] || ''
+          console.log('FIN xxxxx', itemtitle)
+          if(itemtitle.length >= 6) {
+            itemtitle = itemtitle.substr(0,6) + '...'
+          }
           return (
             <View className='moment-wrap' key={i}>
               {/* 头像  */}
@@ -28,7 +34,7 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
                 <View className='moment-right-top-wrap'>
                   {/* 标题和描述 */}
                   <View className='moment-title-wrap'>
-                    <Text className='moment-title-txt'>{moment['itemtitle']}</Text>
+                    <Text className='moment-title-txt'>{itemtitle}</Text>
                     <View className='moment-title-desc-wrap'>
                       <View className='moment-title-tag-wrap'>
                         <Text className='moment-title-tag-txt'>精选</Text>
