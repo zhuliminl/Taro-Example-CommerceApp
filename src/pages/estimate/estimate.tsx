@@ -72,22 +72,35 @@ export default class Estimate extends Component {
   }
 
   render() {
-    let scrollHeight = 65
-    let topBarHeight = 130
+    let scrollHeight : any = device.windowHeight
+    let blankHeight : any = 50
     if(device.isIOS()) {
-      topBarHeight = 150
-    }
-    if(device.isAndroid()) {
-      // 安卓特殊处理，否则无法滑动
-      scrollHeight = 98
+      blankHeight = 50 + 20
+      scrollHeight = device.windowHeight - 70
     }
 
-    console.log('FIN current state 上级', this.state.current)
+    if(device.isH5()) {
+      scrollHeight = device.windowHeight - 50
+    }
+
+    if(device.isWeChat()) {
+      blankHeight = (50 + 20) + 'px'
+      scrollHeight = device.windowHeight + 'px'   // 微信很奇怪，
+    }
+
+    if(device.isAndroid()) {
+      scrollHeight = device.windowHeight - 70   // 安卓暂时没摸清标准
+    }
+
+    let swiperHeight : any = 300   // 具体数值得具体看页面自身大小
+    if(device.isWeChat()) {
+      swiperHeight = 300 + 'px'
+    }
 
     return (
       <View className="estimate-page">
         <Header title='整体概况'>
-          <View 
+          <View
             onClick={() => {
               console.log('FIN 去帮助页面')
               Taro.showToast({title: 'ssss'})
@@ -96,29 +109,29 @@ export default class Estimate extends Component {
             <Text className='estimate-header-right-txt'>？</Text>
           </View>
         </Header>
-        <View style={{ height: Taro.pxTransform(topBarHeight), backgroundColor: '#FFF'}} ></View>
+        <View style={{ height: blankHeight, backgroundColor: '#FFF'}} ></View>
 
-        <ScrollView 
+        <ScrollView
           scrollY
           style={{
-            height: device.windowHeight - scrollHeight,
+            height: scrollHeight,
+            // backgroundColor: 'red',
             flexDirection: 'column',
-            // backgroundColor: '#999'
           }}
         >
+          <Text>{device.windowHeight}</Text>
           {/* 累计佣金 */}
           <View className='estimate-commission-wrap'>
             <Text className='comission-title-txt'>累计佣金</Text>
             <TextMoney money={12.00} fontSize={32}/>
             {/* tab */}
-            <Tab 
+            <Tab
               noScroll
               marginLeft={40}
               itemWidth={80}
               current={this.state.current}
               list={TAB_LIST}
               onChange={(item) => {
-                // console.log('FIN onChange', item)
                 this.setState({
                   current: item.key
                 })
@@ -132,8 +145,7 @@ export default class Estimate extends Component {
             current={this.state.current}
             onChange={this.handleChange.bind(this)}
             style={{
-              // height: 220,            // 给定高度能兼容 RN 但是无法兼容 h5
-              height: device.pxCompatibleToWechat(220),
+              height: swiperHeight,            // 给定高度能兼容 RN 但是无法兼容 h5
               // backgroundColor: '#999',
               overflow: 'visible'   // 设置成 visible 可以兼容 h5
             }}

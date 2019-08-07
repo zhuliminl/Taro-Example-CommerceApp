@@ -2,7 +2,6 @@ import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
 import './index.scss'
 import {device} from '@/utils/device'
-const isIOS = device.isIOS()
 
 interface HeaderInterface {
   title: string,
@@ -11,13 +10,21 @@ interface HeaderInterface {
 
 class Header extends Component <HeaderInterface, {}> {
   render () {
+    let wrapStyle : any = {}
+    if(device.isIOS()) {
+      wrapStyle.marginTop = 20
+    }
+
+    if(device.isWeChat()) {
+      wrapStyle.marginTop = 20 + 'px'
+    }
+
     return (
       <View className='header-wrapper'
-        style={isIOS ? { marginTop: 20 } : {}}
+        style={wrapStyle}
       >
         <View
         onClick={() => {
-          console.log('FIN 返k')
           Taro.navigateBack()
         }}
         >
