@@ -28,7 +28,7 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
                 <View className='moment-right-top-wrap'>
                   {/* 标题和描述 */}
                   <View className='moment-title-wrap'>
-                    <Text className='moment-title-txt'>好省大牌秒杀</Text>
+                    <Text className='moment-title-txt'>{moment['itemtitle']}</Text>
                     <View className='moment-title-desc-wrap'>
                       <View className='moment-title-tag-wrap'>
                         <Text className='moment-title-tag-txt'>精选</Text>
@@ -53,7 +53,7 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
 
                 {/* 中间实体内容文字和图片、视频 */}
                 <View className='moment-right-middle-wrap'>
-                  <Text className='moment-content-txt'>👊{moment['content']}</Text>
+                  <Text className='moment-content-txt'>{moment['content']}</Text>
                 </View>
 
               </View>
