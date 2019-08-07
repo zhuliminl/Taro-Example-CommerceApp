@@ -32,6 +32,7 @@ render () {
         <SuperTab 
           list={TAB_LIST} 
           height={100}
+          toLeft={100}
           />
       </View>
     )
