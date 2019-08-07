@@ -92,7 +92,7 @@ export default class Estimate extends Component {
       scrollHeight = device.windowHeight - 70   // 安卓暂时没摸清标准
     }
 
-    let swiperHeight : any = 300   // 具体数值得具体看页面自身大小
+    let swiperHeight : any = 223   // 具体数值得具体看页面自身大小, 避免 RN 居中
     if(device.isWeChat()) {
       swiperHeight = 300 + 'px'
     }
@@ -119,7 +119,7 @@ export default class Estimate extends Component {
             flexDirection: 'column',
           }}
         >
-          <Text>{device.windowHeight}</Text>
+          {/* <Text>{device.windowHeight}</Text> */}
           {/* 累计佣金 */}
           <View className='estimate-commission-wrap'>
             <Text className='comission-title-txt'>累计佣金</Text>

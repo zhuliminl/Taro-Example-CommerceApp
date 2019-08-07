@@ -136,7 +136,6 @@ export default class Search extends Component {
         </LargetTitle>
         <Tags tagList={TAG_LIST} />
 
-
       </View>
     )
   }
