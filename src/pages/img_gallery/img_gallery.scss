@@ -1,1 +1,11 @@
 
+.img_gallery-page {
+
+}
+
+.img-gallery-item-img {
+  // 直接覆盖框架的默认值，这样才能保证自适应大小并居中
+  /*postcss-pxtransform rn eject enable*/
+  height: unset;
+  /*postcss-pxtransform rn eject disable*/
+}

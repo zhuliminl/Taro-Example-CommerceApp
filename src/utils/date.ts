@@ -10,6 +10,6 @@ export const parseDate = nStr => {
 }
 
 export const parseToMinuteago = nStr => {
-  console.log('FIN xxxxxxxxxxxxxxxxxx', nStr)
+  // console.log('FIN xxxxxxxxxxxxxxxxxx', nStr)
   return 33
 }

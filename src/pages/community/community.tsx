@@ -45,8 +45,7 @@ class Community extends Component {
       const resp = await Taro.request({ url })
       const moments = resp && resp.data && resp.data.data
       const min_id = resp && resp.data['min_id']
-      console.log('FIN moments ', moments)
-      console.log('FIN minid ', min_id)
+
       this.setState({
         moments,
         min_id,
