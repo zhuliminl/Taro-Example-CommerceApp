@@ -27,6 +27,7 @@
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "tep:page": "node template/template-page",
     "tep:component": "node template/template-component",
+    "tep:component-poly": "node template/template-component-poly",
     "build:rnios": "react-native bundle --entry-file='./rn_temp/index.js' --bundle-output='./ios/bundle/main.jsbundle'  --assets-dest './ios/bundle/' --dev=false --platform='ios'"
   },
   "author": "",
