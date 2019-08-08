@@ -1,29 +1,30 @@
 Arguments: 
-  /usr/local/Cellar/node/12.1.0/bin/node /usr/local/Cellar/yarn/1.16.0/libexec/bin/yarn.js add @/com --silent --no-progress
+  /Users/saul/.nodebrew/node/v10.14.1/bin/node /usr/local/Cellar/yarn/1.13.0/libexec/bin/yarn.js add @/components-poly/test/index --silent --no-progress
 
 PATH: 
-  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zx001/Project/Front/Taro_app/DaTaoKe/node_modules/.bin:/var/folders/vs/53s2yc3n2v7c6sbz7tv8p0cm0000gn/T/yarn--1565246107833-0.6860410081693511:/Users/zx001/Project/Front/Taro_app/DaTaoKe/node_modules/.bin:/Users/zx001/.config/yarn/link/node_modules/.bin:/usr/local/Cellar/node/12.1.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/12.1.0/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/Cellar/node/12.1.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/zx001/.jenv/shims:/Users/zx001/.jenv/bin:/Users/zx001/.npm-global/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/zx001/.jenv/shims:/Users/zx001/.jenv/bin:/Users/zx001/.npm-global/bin:/Users/zx001/Library/Android/sdk/emulator:/Users/zx001/Library/Android/sdk/tools:/Users/zx001/Library/Android/sdk/tools/bin:/Users/zx001/Library/Android/sdk/platform-tools:/Users/zx001/Library/Android/sdk/emulator:/Users/zx001/Library/Android/sdk/tools:/Users/zx001/Library/Android/sdk/tools/bin:/Users/zx001/Library/Android/sdk/platform-tools
+  /Users/saul/.nodebrew/node/v10.14.1/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/saul/Documents/code/Taro/dalang/node_modules/.bin:/var/folders/q1/zj8l0179029_6ztg3pv_x6fw0000gn/T/yarn--1565278412310-0.12405115857660731:/Users/saul/Documents/code/Taro/dalang/node_modules/.bin:/Users/saul/.config/yarn/link/node_modules/.bin:/Users/saul/Documents/code/Taro/dalang/node_modules/.bin:/Users/saul/.config/yarn/link/node_modules/.bin:/Users/saul/.nodebrew/node/v10.14.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/saul/.nodebrew/node/v10.14.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/saul/.nodebrew/node/v10.14.1/bin/node_modules/npm/bin/node-gyp-bin:/Users/saul/.nodebrew/node/v10.14.1/bin:/Users/saul/.nodebrew/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS:/Users/saul/.nodebrew/current/bin:/Users/saul/Library/Android/sdk/emulator:/Users/saul/Library/Android/sdk/tools:/Users/saul/Library/Android/sdk/tools/bin:/Users/saul/Library/Android/sdk/platform-tools:/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home/bin:/Users/saul/development/flutter/bin:/Users/saul/go/bin:/Users/saul/Library/Android/sdk/emulator:/Users/saul/Library/Android/sdk/tools:/Users/saul/Library/Android/sdk/tools/bin:/Users/saul/Library/Android/sdk/platform-tools:/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home/bin:/Users/saul/development/flutter/bin:/Users/saul/go/bin
 
 Yarn version: 
-  1.16.0
+  1.13.0
 
 Node version: 
-  12.1.0
+  10.14.1
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@%2fcom: tunneling socket could not be established, statusCode=500
-      at ClientRequest.onConnect (/usr/local/Cellar/yarn/1.16.0/libexec/lib/cli.js:141065:19)
-      at Object.onceWrapper (events.js:284:20)
-      at ClientRequest.emit (events.js:196:13)
-      at Socket.socketOnData (_http_client.js:485:11)
-      at Socket.emit (events.js:196:13)
-      at addChunk (_stream_readable.js:290:12)
-      at readableAddChunk (_stream_readable.js:271:11)
-      at Socket.Readable.push (_stream_readable.js:226:10)
-      at TCP.onStreamRead (internal/stream_base_commons.js:166:17)
+  Error: https://registry.yarnpkg.com/@%2fcomponents-poly/test/index: Request "https://registry.yarnpkg.com/@%2fcomponents-poly/test/index" returned a 405
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:66264:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:129397:22)
+      at Request.emit (events.js:182:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:130369:10)
+      at Request.emit (events.js:182:13)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:130291:12)
+      at Object.onceWrapper (events.js:273:13)
+      at IncomingMessage.emit (events.js:187:15)
+      at endReadableNT (_stream_readable.js:1094:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {

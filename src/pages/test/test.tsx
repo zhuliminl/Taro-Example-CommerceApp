@@ -1,7 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './test.scss'
-import Test from '@/components/test'
+
+import Test from '@/components-poly/test/index'
 
 
 export default class TestPage extends Component {
@@ -19,7 +20,7 @@ export default class TestPage extends Component {
           backgroundColor: '#999',
         }}
       >
-        <Test />
+        <Test title='saul' />
       </View>
     )
   }

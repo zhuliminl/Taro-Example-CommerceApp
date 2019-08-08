@@ -22,6 +22,7 @@
     "paths": {
       "@/utils/*": ["utils/*"],
       "@/components/*": ["components/*"],
+      "@/components-poly/*": ["components-poly/*"],
       "@/assets/*": ["assets/*"],
       "@/constants/*": ["constants/*"],
     },
