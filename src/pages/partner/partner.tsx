@@ -1,7 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, WebView } from '@tarojs/components';
 import Header from '@/components/header'
-import console = require('console');
 import { device } from '@/utils/device';
 
 class User extends Component {
