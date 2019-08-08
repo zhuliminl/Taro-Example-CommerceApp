@@ -25,6 +25,7 @@ import './${dirName}.scss'
 export default class ${titleCase(dirName)} extends Component {
   config = {
     navigationBarTitleText: '${dirName}',
+    disableScroll: true,
   }
 
   componentDidMount = () => {
