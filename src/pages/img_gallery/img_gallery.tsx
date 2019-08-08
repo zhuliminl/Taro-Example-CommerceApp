@@ -40,6 +40,12 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
     const { detail } = event
     console.log('FIN img on change', detail)
   }
+
+  handleOnImgLoad = event => {
+    // const { detail } = event
+    // console.log('FIN img on change', detail)
+  }
+
   render() {
     // console.log('FIN imgGallery ', this.state)
 
@@ -65,6 +71,9 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
 
     let imgStyle: any = {
       width: device.windowWidth,
+    }
+    if(device.isRN()) {
+      imgStyle.height = 500  // RN 直接给定固定的高度就 OK 了
     }
     if(device.isWeChat()) {
       imgStyle.width += 'px'
@@ -100,7 +109,7 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
                   key={i}
                   style={swiperItemStyle}
                 >
-                  <Image className='img-gallery-item-img' src={item} style={imgStyle} mode={'aspectFit'} />
+                  <Image className='img-gallery-item-img' src={item} style={imgStyle} mode={'aspectFit'} onLoad={this.handleOnImgLoad.bind(this)} />
                 </SwiperItem>
               )
             })
