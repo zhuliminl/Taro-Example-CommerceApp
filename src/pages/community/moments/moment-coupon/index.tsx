@@ -32,6 +32,8 @@ const MomentCoupon: FunctionComponent<MomentCouponInterface> = (props) => {
           <RedTag title={'4折起'} />
           <RedTag title={'最高佣金￥13.9'} />
         </View>
+
+
       </View>
     </View>
   )

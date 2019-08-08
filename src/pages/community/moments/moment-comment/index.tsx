@@ -23,6 +23,10 @@ const MomentComment: FunctionComponent<MomentCommentInterface> = (props) => {
           )
         })
       }
+
+      <View className='moment-comment-copy-wrap'>
+        <Text className='moment-comment-copy-txt'>复制评论</Text>
+      </View>
     </View>
   )
 }
