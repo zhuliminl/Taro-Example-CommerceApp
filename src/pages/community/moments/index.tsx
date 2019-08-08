@@ -6,6 +6,8 @@ import './index.scss'
 import arrow_share from '@/assets/image/arrow_share.png'
 import arrow_download from '@/assets/image/arrow_download.png'
 
+import {parseToMinuteago} from '@/utils/date'
+
 interface MomentsInterface {
   moments: any[];
 }
@@ -22,6 +24,9 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
             itemtitle = itemtitle.substr(0,6) + '...'
           }
           const imgList = moment['itempic'] || []
+
+          const dateStr = moment['show_time'] || 0
+
           return (
             <View className='moment-wrap' key={i}>
               {/* 头像  */}
@@ -40,7 +45,7 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
                       <View className='moment-title-tag-wrap'>
                         <Text className='moment-title-tag-txt'>精选</Text>
                       </View>
-                      <Text className='moment-title-date-txt'>33分钟之前发布</Text>
+                      <Text className='moment-title-date-txt'>{parseToMinuteago(dateStr)}分钟之前发布</Text>
                     </View>
                   </View>
 

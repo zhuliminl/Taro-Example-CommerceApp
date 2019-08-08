@@ -8,3 +8,8 @@ export const parseDate = nStr => {
   return list[0] + '.' + list[1] + '.' + list[2]
   // return list[2] + '.' + list[0] + '.' + list[1]
 }
+
+export const parseToMinuteago = nStr => {
+  console.log('FIN xxxxxxxxxxxxxxxxxx', nStr)
+  return 33
+}
