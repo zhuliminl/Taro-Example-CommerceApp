@@ -2,6 +2,9 @@ import './img_gallery.scss'
 
 import Taro, { Component } from '@tarojs/taro'
 import { Text, View, Image, Swiper, SwiperItem } from '@tarojs/components'
+import RoundBack from '@/components/round-back'
+import DownloadBtn from '@/components/download-btn'
+
 
 import { parseUrlParams } from '@/utils/navigation'
 
@@ -53,7 +56,7 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
       height: device.windowHeight,
       // overflow: 'visible',
     }
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       swiperStyle.height += 'px'
     }
 
@@ -63,7 +66,7 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
       width: device.windowWidth,
       backgroundColor: '#000',
     }
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       pageStyle.height = '100%'
       pageStyle.width += 'px'
     }
@@ -72,10 +75,10 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
     let imgStyle: any = {
       width: device.windowWidth,
     }
-    if(device.isRN()) {
+    if (device.isRN()) {
       imgStyle.height = 500  // RN 直接给定固定的高度就 OK 了
     }
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       imgStyle.width += 'px'
       imgStyle.height = '300px'    // 针对小程序，必须给定固定高度
     }
@@ -89,7 +92,7 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
       flexDirection: 'row',
       alignItems: 'center',
     }
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       swiperItemStyle.width = device.windowWidth + 'px'
       swiperItemStyle.height = device.windowHeight + 'px'
     }
@@ -97,6 +100,8 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
 
     return (
       <View className="img_gallery-page" style={pageStyle}>
+        <RoundBack />
+        <DownloadBtn />
         <Swiper
           current={this.state.current}
           onChange={this.handleOnChange.bind(this)}

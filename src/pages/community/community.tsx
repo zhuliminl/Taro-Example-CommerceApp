@@ -1,9 +1,10 @@
+import { ScrollView, Text, View } from '@tarojs/components';
 import Taro, { Component, hideToast } from '@tarojs/taro';
-import { View, Text, ScrollView } from '@tarojs/components';
-import Moments from './moments'
-import { host } from '@/constants/host'
-import { device } from '@/utils/device'
 
+import Moments from './moments'
+import Spin from '@/components/spin'
+import { device } from '@/utils/device'
+import { host } from '@/constants/host'
 
 const TAB_LIST = [
   {
@@ -45,15 +46,20 @@ class Community extends Component {
       const resp = await Taro.request({ url })
       const moments = resp && resp.data && resp.data.data
       const min_id = resp && resp.data['min_id']
+      const preState = this.state
 
       this.setState({
-        moments,
+        moments: preState.moments.concat(moments),
         min_id,
       })
 
     } catch (err) {
       console.log('FIN get moments err', err)
     }
+  }
+
+  handleOnScrollToLower = () => {
+    this.fetchMoments()
   }
 
   render() {
@@ -80,8 +86,10 @@ class Community extends Component {
         <ScrollView
           scrollY
           style={scrollStyle}
+          onScrollToLower={this.handleOnScrollToLower.bind(this)}
         >
           <Moments moments={this.state.moments} />
+          <Spin isShow />
         </ScrollView>
       </View>
     )
