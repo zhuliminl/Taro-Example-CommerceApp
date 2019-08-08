@@ -1,8 +1,10 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
-import icon_back from '@/assets/icon/back.png'
+
+import { Image, Text, View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro'
+
 import { device } from '@/utils/device';
+import icon_back from '@/assets/icon/back.png'
 
 interface TabBarInterface {
   list: any[],
@@ -17,6 +19,7 @@ export default class TabBar extends Component<TabBarInterface, {}> {
     let styleIOS: any = {}
     if (device.isIOS()) {
       styleIOS.paddingTop = 30
+      // 
     }
 
     return (

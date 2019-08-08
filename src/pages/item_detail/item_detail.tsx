@@ -1,17 +1,20 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, ScrollView } from '@tarojs/components'
 import './item_detail.scss'
-import { parseUrlParams } from '@/utils/navigation'
-import TabBar from './tab-bar'
-import RoundBack from './round-back'
-import ItemCarousel from './item-carousel'
-import ItemInfo from './item-info'
-import ShopInfo from './shop-info'
+
+import { ScrollView, Text, View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro'
+
 import BottomBar from './bottom-bar'
 import CenterTitle from './center-title'
-import SimilarItemList from '@/components/item-list-b'
+import ItemCarousel from './item-carousel'
+import ItemInfo from './item-info'
 import PageLoading from '@/components/page-loading'
+import RoundBack from './round-back'
+import ShopInfo from './shop-info'
+import SimilarItemList from '@/components/item-list-b'
+import TabBar from './tab-bar'
 import { device } from '@/utils/device'
+import { parseUrlParams } from '@/utils/navigation'
+
 const isIOS = device.isIOS()
 
 

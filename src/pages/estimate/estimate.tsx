@@ -1,11 +1,13 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, ScrollView, Swiper, SwiperItem } from '@tarojs/components'
 import './estimate.scss'
+
+import { ScrollView, Swiper, SwiperItem, Text, View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro'
+
+import Achievement from './achievement'
 import Header from '@/components/header'
 import Tab from '@/components/tab'
-import { device } from '@/utils/device'
-import Achievement from './achievement'
 import TextMoney from '@/components/text-money'
+import { device } from '@/utils/device'
 
 const TAB_LIST = [
   {

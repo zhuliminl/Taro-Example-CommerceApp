@@ -1,21 +1,21 @@
-import Taro, { Component, pxTransform, } from '@tarojs/taro';
-import { View, Text, ScrollView, Swiper, SwiperItem } from '@tarojs/components';
 import './home.scss'
 
-import ItemListB from '@/components/item-list-a'
+import { ScrollView, Swiper, SwiperItem, Text, View } from '@tarojs/components';
+import Taro, { Component, pxTransform, } from '@tarojs/taro';
+
 import Banner from '@/components/banner'
-import Tab from '@/components/tab'
+import ImgNav from '@/components/img-nav'
+import ItemListB from '@/components/item-list-a'
 import SearchBarView from './search-bar-view'
 import Spin from '@/components/spin'
-import ImgNav from '@/components/img-nav'
-
+import Tab from '@/components/tab'
+import { animateValue } from '@/utils/animation'
 import banner1 from '@/assets/tmp/banner/b1.png'
 import banner2 from '@/assets/tmp/banner/b2.png'
 import banner3 from '@/assets/tmp/banner/b3.png'
 import banner4 from '@/assets/tmp/banner/b4.png'
 import banner5 from '@/assets/tmp/banner/b5.png'
 import { device } from '@/utils/device';
-import { animateValue } from '@/utils/animation'
 import { navigateTo } from '@/utils/navigation'
 
 const IMG_LIST = [

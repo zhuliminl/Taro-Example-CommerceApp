@@ -1,10 +1,10 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
-import { navigateTo } from '@/utils/navigation'
+
+import { Image, Text, View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro'
 
 import icon_search_red from '@/assets/icon/search-red.png'
-
+import { navigateTo } from '@/utils/navigation'
 
 export default class SearchBarView extends Component {
 

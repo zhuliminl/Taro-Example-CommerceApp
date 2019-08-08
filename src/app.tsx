@@ -39,6 +39,7 @@ class App extends Component {
       'pages/search/search',
       'pages/item_detail/item_detail',
       'pages/supersort/supersort',
+      'pages/img_gallery/img_gallery',
     ],
     window: {
       backgroundTextStyle: 'light',
