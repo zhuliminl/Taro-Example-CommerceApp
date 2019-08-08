@@ -1,0 +1,22 @@
+
+$mainColor: #FE1123;
+
+.red-tag-comp {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffd4d4;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.red-tag-txt {
+  color: $mainColor;
+  font-size: 24px;
+  line-height: 25px;
+  /*postcss-pxtransform rn eject enable*/
+  // display: block;
+  /*postcss-pxtransform rn eject disable*/
+}

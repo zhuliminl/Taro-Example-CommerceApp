@@ -1,7 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
-import Tab from '../tab';
 
 interface DownloadBtnInterface {
   imgItem: any;
@@ -53,7 +52,7 @@ export default class DownloadBtn extends Component<DownloadBtnInterface, {}> {
 
     } catch (err) {
       console.log('FIN save file fail', err)
-      Taro.showToast({ title: err.errMsg})
+      Taro.showToast({ title: err.errMsg })
     }
   }
 

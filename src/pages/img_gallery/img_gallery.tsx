@@ -4,6 +4,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { Text, View, Image, Swiper, SwiperItem } from '@tarojs/components'
 import RoundBack from '@/components/round-back'
 import DownloadBtn from '@/components/download-btn'
+import PageNumber from '@/components/page-number'
 
 
 import { parseUrlParams } from '@/utils/navigation'
@@ -41,6 +42,11 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
 
   handleOnChange = event => {
     const { detail } = event
+    const { current = 0 } = detail
+    this.setState({
+      current,
+    })
+
     console.log('FIN img on change', detail)
   }
 
@@ -98,11 +104,12 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
     }
 
 
-    const {imgList = [], current = 0} = this.state
+    const { imgList = [], current = 0 } = this.state
     return (
       <View className="img_gallery-page" style={pageStyle}>
         <RoundBack />
-        <DownloadBtn imgItem={imgList[current]}/>
+        <DownloadBtn imgItem={imgList[current]} />
+        <PageNumber current={current} total={imgList && imgList.length || 1} />
         <Swiper
           current={this.state.current}
           onChange={this.handleOnChange.bind(this)}

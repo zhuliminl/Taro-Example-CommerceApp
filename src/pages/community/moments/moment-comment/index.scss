@@ -1,0 +1,22 @@
+
+.moment-comment-comp {
+  background-color: #EEE;
+  border-radius: 10px;
+  margin-right: 30px;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
+
+
+.moment-comment-item-wrap {
+  /*postcss-pxtransform rn eject enable*/
+  line-height: 40px;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.moment-comment-txt {
+  font-size: 28px;
+  line-height: 40px;
+  color: #999;
+}

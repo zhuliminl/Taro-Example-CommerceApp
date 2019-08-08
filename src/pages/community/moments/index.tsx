@@ -1,12 +1,17 @@
-import Taro, { FunctionComponent } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
-import React from 'react'
-import MomentImgGallery from './moment-img-gallery'
 import './index.scss'
-import arrow_share from '@/assets/image/arrow_share.png'
-import arrow_download from '@/assets/image/arrow_download.png'
 
+import { Image, Text, View } from '@tarojs/components'
+import Taro, { FunctionComponent } from '@tarojs/taro'
+
+import MomentComment from './moment-comment'
+import MomentCoupon from './moment-coupon'
+import MomentImgGallery from './moment-img-gallery'
+import React from 'react'
+import arrow_download from '@/assets/image/arrow_download.png'
+import arrow_share from '@/assets/image/arrow_share.png'
 import { parseToMinuteago } from '@/utils/date'
+
+import bg_triangle from '@/assets/image/triangle.png'
 
 interface MomentsInterface {
   moments: any[];
@@ -67,7 +72,11 @@ const Moments: FunctionComponent<MomentsInterface> = (props) => {
                 <View className='moment-right-middle-wrap'>
                   <Text className='moment-content-txt'>{moment['content']}</Text>
                   <MomentImgGallery imgList={imgList} />
+                  <MomentCoupon item={moment} />
 
+                  {/* 箭头图标各平台不能统一位置，需要后期集中处理 */}
+                  <Image src={bg_triangle} className='moment-comment-triangle-img' />
+                  <MomentComment comment={moment['comment']} />
                 </View>
 
               </View>
