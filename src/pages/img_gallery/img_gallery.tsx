@@ -47,25 +47,30 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
       height: device.windowHeight,
       // overflow: 'visible',
     }
+    if(device.isWeChat()) {
+      swiperStyle.height += 'px'
+    }
+
 
     let pageStyle: any = {
       height: device.windowHeight,
       width: device.windowWidth,
       backgroundColor: '#000',
     }
-
     if(device.isWeChat()) {
-      pageStyle.height = device.windowHeight + 'px'
-      pageStyle.width = device.windowWidth + 'px'
+      pageStyle.height = '100%'
+      pageStyle.width += 'px'
     }
+
 
     let imgStyle: any = {
       width: device.windowWidth,
     }
-
     if(device.isWeChat()) {
-      imgStyle.width = device.windowWidth + 'px'
+      imgStyle.width += 'px'
+      imgStyle.height = '300px'    // 针对小程序，必须给定固定高度
     }
+
 
     let swiperItemStyle: any = {
       // 保证 h5 端居中对齐
@@ -75,6 +80,11 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
       flexDirection: 'row',
       alignItems: 'center',
     }
+    if(device.isWeChat()) {
+      swiperItemStyle.width = device.windowWidth + 'px'
+      swiperItemStyle.height = device.windowHeight + 'px'
+    }
+
 
     return (
       <View className="img_gallery-page" style={pageStyle}>
