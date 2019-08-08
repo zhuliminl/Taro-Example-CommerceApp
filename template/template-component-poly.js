@@ -23,7 +23,6 @@ process.chdir(cpsDir)
 
 const h5Tep = `
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
 
 interface ${titleCase(dirName)}Interface {
 }
@@ -35,11 +34,9 @@ export default class ${titleCase(dirName)} extends Component<${titleCase(dirName
 
   render() {
     return (
-      <View className="${dirName}-comp">
-        <Text>
-        h5 ${dirName}
-        </Text>
-      </View>
+      <div>
+      hhhhh5
+      </div>
     )
   }
 }
