@@ -1,21 +1,21 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
 import './index.scss'
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
 
 interface HeaderInterface {
   title: string,
 }
 
 
-class Header extends Component <HeaderInterface, {}> {
-  render () {
-    let wrapStyle : any = {}
-    if(device.isIOS()) {
+class Header extends Component<HeaderInterface, {}> {
+  render() {
+    let wrapStyle: any = {}
+    if (device.isIOS()) {
       wrapStyle.marginTop = 20
     }
 
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       wrapStyle.marginTop = 20 + 'px'
     }
 
@@ -24,9 +24,9 @@ class Header extends Component <HeaderInterface, {}> {
         style={wrapStyle}
       >
         <View
-        onClick={() => {
-          Taro.navigateBack()
-        }}
+          onClick={() => {
+            Taro.navigateBack()
+          }}
         >
           <Image className='header__back-img'
             src={require('./assets/back.png')}

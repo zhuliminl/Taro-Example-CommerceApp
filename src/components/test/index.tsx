@@ -33,15 +33,15 @@ export default class Test extends Component {
   }
 
   handleChange = (event) => {
-    const {detail} = event
-    const {current} = detail
+    const { detail } = event
+    const { current } = detail
     console.log("FIN current", current)
-    this.setState({current})
+    this.setState({ current })
   }
 
   render() {
     return (
-      <View 
+      <View
         className="test-comp"
         style={{
           marginTop: 100,
@@ -50,14 +50,14 @@ export default class Test extends Component {
         {
           TAB_LIST.map(item => {
             return (
-              <View key={item.key} style={{backgroundColor: '#FFF', flexDirection: 'row'}}
-              onClick={() => {
-                this.setState({current: item.key})
-              }}
+              <View key={item.key} style={{ backgroundColor: '#FFF', flexDirection: 'row' }}
+                onClick={() => {
+                  this.setState({ current: item.key })
+                }}
               >
                 <Text style={{
                   fontSize: 35,
-                  color: this.state.current === item.key ? 'red': '#333',
+                  color: this.state.current === item.key ? 'red' : '#333',
                 }}>{item.title}</Text>
               </View>
             )
@@ -76,8 +76,8 @@ export default class Test extends Component {
               return (
                 <SwiperItem key={item.key}>
                   <View>
-                    <Text style={{fontSize: 35, color: 'red'}}>=>current{this.state.current}</Text>
-                    <Text style={{fontSize: 35}}>{item.title_desc}</Text>
+                    <Text style={{ fontSize: 35, color: 'red' }}>=>current{this.state.current}</Text>
+                    <Text style={{ fontSize: 35 }}>{item.title_desc}</Text>
                   </View>
                 </SwiperItem>
               )

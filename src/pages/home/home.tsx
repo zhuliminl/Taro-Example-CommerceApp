@@ -15,7 +15,7 @@ import banner3 from '@/assets/tmp/banner/b3.png'
 import banner4 from '@/assets/tmp/banner/b4.png'
 import banner5 from '@/assets/tmp/banner/b5.png'
 import { device } from '@/utils/device';
-import {animateValue} from '@/utils/animation'
+import { animateValue } from '@/utils/animation'
 import { navigateTo } from '@/utils/navigation'
 
 const IMG_LIST = [
@@ -161,10 +161,10 @@ class Home extends Component {
   }
 
   handleOnScroll = (event) => {
-    const {detail} = event
-    const {scrollTop} = detail
+    const { detail } = event
+    const { scrollTop } = detail
 
-    if(scrollTop > 300 && this.state.isHide) {
+    if (scrollTop > 300 && this.state.isHide) {
       // 展示顶部隐藏的组件
       this.setState({
         isHide: false,
@@ -172,7 +172,7 @@ class Home extends Component {
       })
     }
 
-    if(scrollTop <= 300 && !this.state.isHide) {
+    if (scrollTop <= 300 && !this.state.isHide) {
       this.setState({
         isHide: true,
         stickyTop: stickyTopInit,
@@ -181,12 +181,12 @@ class Home extends Component {
   }
 
   fetchCoupon = async () => {
-    const {cid, min_id} = this.state
+    const { cid, min_id } = this.state
     console.log('FIN home state', this.state)
     const coupon_url = `https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/${cid}/back/20/min_id/${min_id}`
     console.log('FIN coupon list url', coupon_url)
     try {
-      const resp = await Taro.request({url: coupon_url})
+      const resp = await Taro.request({ url: coupon_url })
       const couponsData = resp && resp.data && resp.data.data
       const min_id = resp && resp.data && resp.data.min_id
       const preState = this.state
@@ -195,19 +195,19 @@ class Home extends Component {
         coupons,
         min_id,
       })
-    } catch(err) {
+    } catch (err) {
       console.log('FIN get coupon err', err)
     }
   }
 
 
-  fetchSuperSortList = async() => {
+  fetchSuperSortList = async () => {
     const url = 'https://v2.api.haodanku.com/super_classify/apikey/saul'
     try {
-      const resp = await Taro.request({url})
+      const resp = await Taro.request({ url })
       let general_classify = resp && resp.data && resp.data.general_classify || []
-      
-      let tabList : any = [{key: 0, title: '全部'}]  // 单独插入全部
+
+      let tabList: any = [{ key: 0, title: '全部' }]  // 单独插入全部
 
       general_classify.forEach((item, i) => {
         tabList.push({
@@ -220,10 +220,10 @@ class Home extends Component {
 
       this.setState({
         superSortList: general_classify,
-        tabList,  
+        tabList,
       })
 
-    } catch(err) {
+    } catch (err) {
       console.log('FIN get superSearch err', err)
     }
 
@@ -244,31 +244,31 @@ class Home extends Component {
     this.fetchCoupon()
   }
 
-  render () {
-    let scrollStyle : any = {}
-    if(device.isH5()) {
+  render() {
+    let scrollStyle: any = {}
+    if (device.isH5()) {
       scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
     }
 
-    if(device.isIOS()) {
+    if (device.isIOS()) {
       scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
-    if(device.isAndroid()) {
+    if (device.isAndroid()) {
       scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
       scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
       console.log('FIN item scroll style for wechat', scrollStyle)
     }
 
-    let swiperStyle : any = {
+    let swiperStyle: any = {
       overflow: 'visible',
     }
 
-    if(device.isRN()) {
+    if (device.isRN()) {
       // swiperStyle.height = 300
     }
 
@@ -280,8 +280,8 @@ class Home extends Component {
             top: this.state.stickyTop,
           }}
         >
-          <SearchBarView/>
-          <Tab 
+          <SearchBarView />
+          <Tab
             itemWidth={60}
             current={this.state.current}
             list={this.state.tabList}
@@ -294,24 +294,24 @@ class Home extends Component {
           scrollY
           style={scrollStyle}
         >
-          <View style={{height: pxTransform(40)}}></View>
+          <View style={{ height: pxTransform(40) }}></View>
 
-          <Banner 
+          <Banner
             bannerHeight={280}
             bannerWidth={700}
             imgList={IMG_LIST}
           />
 
-          <SearchBarView/>
+          <SearchBarView />
 
-          <Tab 
+          <Tab
             itemWidth={60}
             current={this.state.current}
             list={this.state.tabList}
             onChange={(item) => { this.handleOnTabChange(item) }}
           />
 
-          <View onClick={() => {navigateTo('supersort')}}>
+          <View onClick={() => { navigateTo('supersort') }}>
             <Text>超级分类</Text>
           </View>
 
@@ -337,7 +337,7 @@ class Home extends Component {
           </Swiper> */}
 
           <ItemListB list={this.state.coupons || []} />
-          <Spin isShow/>
+          <Spin isShow />
 
         </ScrollView>
       </View>

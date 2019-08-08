@@ -4,7 +4,7 @@ import './index.scss'
 
 import bg_coupon from '@/assets/icon/bg_coupon.png'
 import { device } from '@/utils/device';
-import {navigateTo} from '@/utils/navigation'
+import { navigateTo } from '@/utils/navigation'
 
 
 
@@ -16,20 +16,20 @@ interface ItemListInterface {
   list: any[],
 }
 
-class ItemList extends Component <ItemListInterface, {}> {
+class ItemList extends Component<ItemListInterface, {}> {
   static defaultProps = {
   }
 
   handleItemClick = (item) => {
     // console.log('FIN 去商品详情页', item)
-    navigateTo('item_detail', {itemid:item.itemid})
+    navigateTo('item_detail', { itemid: item.itemid })
 
   }
 
-  render () {
-    const {list = []} = this.props
-    let itemCouponTxtStyle : ItemCouponTxtStyleInterface =  {}
-    if(device.isIOS()) {
+  render() {
+    const { list = [] } = this.props
+    let itemCouponTxtStyle: ItemCouponTxtStyleInterface = {}
+    if (device.isIOS()) {
       itemCouponTxtStyle.top = 3
     }
 
@@ -52,7 +52,7 @@ class ItemList extends Component <ItemListInterface, {}> {
                   <Text className='item-b__symbol-txt'>￥</Text>
                   <Text className='item-b__price-txt'>{item.itemendprice}</Text>
                 </View>
-                <Text 
+                <Text
                   className='item-b__title-txt'
                   numberOfLines={2}
                   ellipsizeMode={'tail'}
@@ -65,7 +65,7 @@ class ItemList extends Component <ItemListInterface, {}> {
 
                 <View className='item-b-bottom-wrap'>
                   <View className='item-b-bottom-coupon-wrap'>
-                    <Image className='item-b-bottom__bg-coupon' src={bg_coupon}/>
+                    <Image className='item-b-bottom__bg-coupon' src={bg_coupon} />
                   </View>
                   <Text className='item-b__coupon-txt'
                     style={itemCouponTxtStyle}

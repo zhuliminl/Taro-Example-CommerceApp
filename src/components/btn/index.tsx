@@ -8,14 +8,14 @@ interface BtnInterface {
 }
 
 
-class Btn extends Component <BtnInterface, {}> {
+class Btn extends Component<BtnInterface, {}> {
   static defaultProps = {
     callback: () => null
   }
 
-  render () {
+  render() {
     return (
-      <View 
+      <View
         className='btn-wrapper'
         onClick={() => {
           this.props.callback && this.props.callback()

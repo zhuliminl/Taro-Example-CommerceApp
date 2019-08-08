@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, ScrollView } from '@tarojs/components'
 import './item_detail.scss'
-import {parseUrlParams} from '@/utils/navigation'
+import { parseUrlParams } from '@/utils/navigation'
 import TabBar from './tab-bar'
 import RoundBack from './round-back'
 import ItemCarousel from './item-carousel'
@@ -11,7 +11,7 @@ import BottomBar from './bottom-bar'
 import CenterTitle from './center-title'
 import SimilarItemList from '@/components/item-list-b'
 import PageLoading from '@/components/page-loading'
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
 const isIOS = device.isIOS()
 
 
@@ -32,7 +32,7 @@ const TAB_LIST = [
 ]
 
 interface itemInterface {
-  [key: string] : any;
+  [key: string]: any;
 }
 
 interface stateInterface {
@@ -45,13 +45,13 @@ export default class Item_detail extends Component<{}, stateInterface> {
   config = {
     navigationBarTitleText: 'item_detail',
     disableScroll: true,
-    
+
   }
 
   state = {
     isLoading: true,
     similarCoupon: [],
-    item : {},
+    item: {},
   }
 
   componentDidMount = async () => {
@@ -59,13 +59,13 @@ export default class Item_detail extends Component<{}, stateInterface> {
     const itemid = params.itemid
     const url = `https://v2.api.haodanku.com/item_detail/apikey/saul/itemid/${itemid}`
     try {
-      const resp = await Taro.request({url})
+      const resp = await Taro.request({ url })
       const item = resp && resp.data && resp.data.data
       this.setState({
         item,
         isLoading: false,
       })
-    } catch(err) {
+    } catch (err) {
       console.log('FIN get coupon err', err)
     }
 
@@ -78,59 +78,59 @@ export default class Item_detail extends Component<{}, stateInterface> {
     const itemid = params.itemid
     const url = `https://v2.api.haodanku.com/get_similar_info/apikey/saul/back/50/itemid/${itemid}`
     try {
-      const resp = await Taro.request({url})
+      const resp = await Taro.request({ url })
       const coupon = resp && resp.data && resp.data.data
       this.setState({
         similarCoupon: coupon,
       })
-    } catch(err) {
+    } catch (err) {
       console.log('FIN get coupon err', err)
     }
   }
 
   render() {
-    if(this.state.isLoading) {
+    if (this.state.isLoading) {
       return <PageLoading />
     }
-    
 
-    let pageStyle : any = {
+
+    let pageStyle: any = {
       height: device.windowHeight
     }
 
-    if(device.isAndroid()) {
+    if (device.isAndroid()) {
       pageStyle.height = device.windowHeight - device.info.statusBarHeight
     }
 
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       pageStyle.height = device.windowHeight + 'px'
     }
 
 
-    let scrollStyle : any = {
+    let scrollStyle: any = {
       // backgroundColor: 'red',
     }
 
-    if(device.isH5()) {
+    if (device.isH5()) {
       scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
     }
 
-    if(device.isIOS()) {
+    if (device.isIOS()) {
       scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
       // scrollStyle.height = 617.5
     }
 
-    if(device.isAndroid()) {
+    if (device.isAndroid()) {
       scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
       scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
       console.log('FIN item scroll style for wechat', scrollStyle)
     }
 
-    const  {item} = this.state
+    const { item } = this.state
     const taobao_image = item && item['taobao_image'] || ''
     const itemSrcList = taobao_image.split(',')
 

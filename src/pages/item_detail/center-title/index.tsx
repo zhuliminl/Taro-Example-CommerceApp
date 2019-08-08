@@ -7,7 +7,7 @@ interface CenterTitleInterface {
   title: string;
 }
 
-export default class CenterTitle extends Component<CenterTitleInterface,{}> {
+export default class CenterTitle extends Component<CenterTitleInterface, {}> {
 
   componentDidMount = () => {
   }

@@ -2,24 +2,24 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, Icon } from '@tarojs/components'
 import './index.scss'
 import gif_loading from '@/assets/loading.gif'
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
 
 interface PageLoadingInterface {
 }
 
-export default class PageLoading extends Component<PageLoadingInterface,{}> {
+export default class PageLoading extends Component<PageLoadingInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
-    let pageStyle : any = {
+    let pageStyle: any = {
       width: device.windowWidth,
       height: device.windowHeight,
       backgroundColor: '#FFF',
     }
 
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       pageStyle.width = pageStyle.width + 'px'
       pageStyle.height = pageStyle.height + 'px'
     }

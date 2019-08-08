@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
-import {navigateTo} from '@/utils/navigation'
+import { navigateTo } from '@/utils/navigation'
 
 import icon_search_red from '@/assets/icon/search-red.png'
 

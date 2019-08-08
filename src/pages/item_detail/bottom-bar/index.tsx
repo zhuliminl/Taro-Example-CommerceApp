@@ -8,17 +8,17 @@ interface BottomBarInterface {
   item: any;
 }
 
-export default class BottomBar extends Component<BottomBarInterface,{}> {
+export default class BottomBar extends Component<BottomBarInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
-    const {item} = this.props
+    const { item } = this.props
     return (
       <View className="bottom-bar-comp">
         <View className='bottom-bar-left-wrap'>
-          <Image className='bottom-bar-left-img'  src={icon_copy}/>
+          <Image className='bottom-bar-left-img' src={icon_copy} />
           <Text className='bottom-bar-left-txt'>复制口令</Text>
         </View>
         <View className='bottom-bar-right-wrap'>

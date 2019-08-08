@@ -1,5 +1,5 @@
 export const parseDate = nStr => {
-  const n = (+nStr)*1000
+  const n = (+nStr) * 1000
   const date = new Date(n)
   const dateStr = date.toLocaleDateString()
   const list = dateStr.split('/')

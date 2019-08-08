@@ -3,7 +3,7 @@ import { View, Text, Image } from '@tarojs/components';
 import './index.scss'
 
 import bg_coupon from '@/assets/icon/bg_coupon.png'
-import {navigateTo} from '@/utils/navigation'
+import { navigateTo } from '@/utils/navigation'
 
 /* import {device} from '@/utils/device'
 
@@ -18,18 +18,18 @@ interface ItemListInterface {
   list: any[],
 }
 
-class ItemList extends Component <ItemListInterface, {}> {
+class ItemList extends Component<ItemListInterface, {}> {
   static defaultProps = {
   }
 
   handleItemClick = (item) => {
     // console.log('FIN 去商品详情页', item)
-    navigateTo('item_detail', {itemid:item.itemid})
+    navigateTo('item_detail', { itemid: item.itemid })
 
   }
 
-  render () {
-    const {list = []} = this.props
+  render() {
+    const { list = [] } = this.props
     return (
       <View className='item-list'>
         <View className='item-list__title'>{this.props.children}</View>
@@ -41,7 +41,7 @@ class ItemList extends Component <ItemListInterface, {}> {
                 className='item-list__item'
                 onClick={this.handleItemClick.bind(this, item)}
               >
-                <Image className='item-list__item-img' src={item.itempic}/>
+                <Image className='item-list__item-img' src={item.itempic} />
                 <View className='item-list__item-right'>
                   <View className='item-right-top'>
                     <Text className='item__title-txt'>{item.itemshorttitle}</Text>
@@ -58,7 +58,7 @@ class ItemList extends Component <ItemListInterface, {}> {
                     </View>
                     <View className='item-right-bottom-wrap'>
                       <View className='item-right-bottom-coupon-wrap'>
-                        <Image className='item-right-bottom__bg-coupon' src={bg_coupon}/>
+                        <Image className='item-right-bottom__bg-coupon' src={bg_coupon} />
                       </View>
                       <Text className='item__coupon-txt'>{item.couponmoney}元券</Text>
                       <Text className='item__return-txt'>返现￥{item.tkmoney}</Text>

@@ -7,7 +7,7 @@ interface LargeTitleInterface {
   aside?: JSX.Element;
 }
 
-export default class LargeTitle extends Component<LargeTitleInterface,{}> {
+export default class LargeTitle extends Component<LargeTitleInterface, {}> {
 
   componentDidMount = () => {
   }

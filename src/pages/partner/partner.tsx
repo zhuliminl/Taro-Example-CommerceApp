@@ -19,7 +19,7 @@ class User extends Component {
 
   }
 
-  render () {
+  render() {
     return (
       <View
         style={{
@@ -27,10 +27,10 @@ class User extends Component {
           width: device.windowWidth
         }}
       >
-        <Header 
+        <Header
           title='合伙人特权'
         />
-        <WebView src='https://www.baidu.com/'/>
+        <WebView src='https://www.baidu.com/' />
       </View>
     )
   }

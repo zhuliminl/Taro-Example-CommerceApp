@@ -7,7 +7,7 @@ import round_back from '@/assets/icon/round_back.png'
 interface RoundBackInterface {
 }
 
-export default class RoundBack extends Component<RoundBackInterface,{}> {
+export default class RoundBack extends Component<RoundBackInterface, {}> {
 
   componentDidMount = () => {
   }

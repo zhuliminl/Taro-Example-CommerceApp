@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
 import './index.scss'
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
 
 interface ListInterface {
   title: string;
@@ -18,26 +18,26 @@ interface WrapperStyleInterface {
 }
 
 
-class List extends Component <ListInterface, {}> {
+class List extends Component<ListInterface, {}> {
   static defaultProps = {
     desc: '',
     hasMarginBottom: false,
     renderAsideEl: null,
   }
 
-  render () {
-    let wrapperStyle : WrapperStyleInterface = {}
-    if(this.props.hasMarginBottom) {
+  render() {
+    let wrapperStyle: WrapperStyleInterface = {}
+    if (this.props.hasMarginBottom) {
       wrapperStyle.marginBottom = Taro.pxTransform(20)
     }
 
-    if(device.isIOS()) {
+    if (device.isIOS()) {
       wrapperStyle.paddingTop = 18
-      wrapperStyle.paddingBottom =18
+      wrapperStyle.paddingBottom = 18
     }
 
     return (
-      <View 
+      <View
         className='list-wrapper'
         style={wrapperStyle}
         onClick={() => {
@@ -47,7 +47,7 @@ class List extends Component <ListInterface, {}> {
         <Text className='list-title'>{this.props.title}</Text>
         <Text className='list-desc'>{this.props.desc}</Text>
         {this.props.renderAsideEl}
-        <Image 
+        <Image
           className='list-arrow-img'
           src={require('./assets/arrow_grey.png')}
         />

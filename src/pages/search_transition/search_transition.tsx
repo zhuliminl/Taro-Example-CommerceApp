@@ -72,10 +72,10 @@ export default class Search extends Component {
   }
 
 
-  fetchHotSearch = async() => {
+  fetchHotSearch = async () => {
     const url = 'http://v2.api.haodanku.com/hot_key/apikey/saul/back/15'
     try {
-      const resp = await Taro.request({url})
+      const resp = await Taro.request({ url })
       let data = resp && resp.data && resp.data.data || []
 
       let hotList = data.map((item, i) => ({
@@ -86,7 +86,7 @@ export default class Search extends Component {
       this.setState({
         hotList,
       })
-    } catch(err) {
+    } catch (err) {
       console.log('FIN get hostList err', err)
     }
 
@@ -103,14 +103,14 @@ export default class Search extends Component {
   render() {
     return (
       <View className="search-transition-page">
-        <SearchBar 
+        <SearchBar
           placeholder={'复制标题，搜隐藏优惠券拿返利'}
           onSearch={(title) => {
             console.log('FIN 就搜你了', title)
           }}
         />
 
-        <Tab 
+        <Tab
           noScroll
           marginLeft={65}
           itemWidth={80}
@@ -124,9 +124,9 @@ export default class Search extends Component {
           }}
         />
 
-        <Image className='video-guide'src={video_guide} onClick={this.handleOnVideoGuideClick.bind(this)}/>
+        <Image className='video-guide' src={video_guide} onClick={this.handleOnVideoGuideClick.bind(this)} />
 
-        <LargetTitle title='热门搜索'/>
+        <LargetTitle title='热门搜索' />
         <Tags tagList={this.state.hotList} />
 
         <LargetTitle title='历史记录'>

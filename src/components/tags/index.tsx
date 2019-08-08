@@ -11,7 +11,7 @@ interface TagsInterface {
   tagList: TagItemInterface[];
 }
 
-export default class Tags extends Component<TagsInterface,{}> {
+export default class Tags extends Component<TagsInterface, {}> {
 
   componentDidMount = () => {
   }

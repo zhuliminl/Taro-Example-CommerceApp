@@ -2,14 +2,14 @@ import Taro, { FunctionComponent } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import React from 'react'
 import './index.scss'
-import {navigateTo} from '@/utils/navigation'
+import { navigateTo } from '@/utils/navigation'
 
 interface ImgNavInterface {
   imgNavData: any;
 }
 
-const ImgNav : FunctionComponent<ImgNavInterface> = (props) => {
-  const {imgNavData = {}} = props
+const ImgNav: FunctionComponent<ImgNavInterface> = (props) => {
+  const { imgNavData = {} } = props
 
   return (
     <View className="img-nav-comp">
@@ -25,7 +25,7 @@ const ImgNav : FunctionComponent<ImgNavInterface> = (props) => {
                       <View className='img-nav-sub-item-wrap' key={j} onClick={() => {
                         navigateTo('search')
                       }}>
-                        <Image className='img-nav-img' src={item.imgurl}/>
+                        <Image className='img-nav-img' src={item.imgurl} />
                         <Text className='img-nav-sub-item-txt'>{item.son_name}</Text>
                       </View>
                     )

@@ -4,8 +4,8 @@ import Header from '@/components/header'
 import List from '@/components/list'
 import Btn from '@/components/btn'
 import './setting.scss'
-import {device} from '@/utils/device'
-import {phone} from '@/utils/phone'
+import { device } from '@/utils/device'
+import { phone } from '@/utils/phone'
 
 const defaultAvatar = 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80'
 
@@ -19,90 +19,90 @@ class Setting extends Component {
     loading: false,
   }
 
-render () {
-  let scrollHeight = 65
-  if(device.isAndroid()) {
-    // 安卓特殊处理，否则无法滑动
-    scrollHeight = 98
-  }
+  render() {
+    let scrollHeight = 65
+    if (device.isAndroid()) {
+      // 安卓特殊处理，否则无法滑动
+      scrollHeight = 98
+    }
 
-  return (
-      <View 
+    return (
+      <View
         className='page-wrapper'
       >
         <Header title='设置' />
-        <View style={{ height: Taro.pxTransform(130), backgroundColor: '#FFF'}} ></View>
+        <View style={{ height: Taro.pxTransform(130), backgroundColor: '#FFF' }} ></View>
 
-        <ScrollView 
+        <ScrollView
           scrollY
           style={{
             height: device.windowHeight - scrollHeight
           }}
         >
-          <List 
+          <List
             title='头像'
             callback={() => {
               console.log('FIN 进入其他页面')
             }}
             renderAsideEl={
-              <Image 
+              <Image
                 className='setting-avatar'
-                src={defaultAvatar} /> 
-              }
-            />
-          <List 
+                src={defaultAvatar} />
+            }
+          />
+          <List
             title='昵称'
             desc='小石头'
             callback={() => {
               console.log('FIN 进入其他页面')
             }}
-            />
-          <List 
+          />
+          <List
             title='手机号'
             desc={phone.hideFormat('13735881684')}
             callback={() => {
               console.log('FIN 进入其他页面')
             }}
-            />
-          <List 
+          />
+          <List
             title='收货地址'
             callback={() => {
               console.log('FIN 进入其他页面')
             }}
             hasMarginBottom
-            />
-            
-          <List 
+          />
+
+          <List
             title='微信授权'
             callback={() => {
               console.log('FIN 进入其他页面')
             }}
             hasMarginBottom
-            />
+          />
 
-          <List 
+          <List
             title='推送设置'
             callback={() => {
               console.log('FIN 进入其他页面')
             }}
-            />
-          <List 
+          />
+          <List
             title='浏览记录'
             callback={() => {
               console.log('FIN 进入其他页面')
             }}
-            />
-          <List 
+          />
+          <List
             title='多语言'
             callback={() => {
               console.log('FIN 进入其他页面')
             }}
             hasMarginBottom
-            />
-         
-          
+          />
 
-          <Btn 
+
+
+          <Btn
             title='退出当前账户'
 
             callback={() => {

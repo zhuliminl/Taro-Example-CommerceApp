@@ -7,8 +7,8 @@ interface MomentImgGalleryInterface {
   imgList: any[];
 }
 
-const MomentImgGallery : FunctionComponent<MomentImgGalleryInterface> = (props) => {
-  const {imgList = []} = props
+const MomentImgGallery: FunctionComponent<MomentImgGalleryInterface> = (props) => {
+  const { imgList = [] } = props
   console.log('FIN imglist', imgList)
 
   return (
@@ -16,7 +16,7 @@ const MomentImgGallery : FunctionComponent<MomentImgGalleryInterface> = (props) 
       {
         imgList.map((item, i) => {
           return (
-            <Image className='moment-img' src={item || ''} key={i} style={{ }}/>
+            <Image className='moment-img' src={item || ''} key={i} style={{}} />
           )
         })
       }

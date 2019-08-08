@@ -8,20 +8,20 @@ interface TabBarInterface {
   list: any[],
 }
 
-export default class TabBar extends Component<TabBarInterface,{}> {
+export default class TabBar extends Component<TabBarInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
-    let styleIOS : any = {}
-    if(device.isIOS()) {
+    let styleIOS: any = {}
+    if (device.isIOS()) {
       styleIOS.paddingTop = 30
     }
 
     return (
       <View className="tab-bar-comp" style={styleIOS}>
-        <View className='icon-back-wrap' 
+        <View className='icon-back-wrap'
           onClick={() => {
             Taro.navigateBack()
           }}

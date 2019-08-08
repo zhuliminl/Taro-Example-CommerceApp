@@ -8,13 +8,13 @@ interface SpinInterface {
   isShow?: boolean;
 }
 
-export default class Spin extends Component<SpinInterface,{}> {
+export default class Spin extends Component<SpinInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
-    if(!this.props.isShow) {
+    if (!this.props.isShow) {
       return null
     }
     return (

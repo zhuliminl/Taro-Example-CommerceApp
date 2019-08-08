@@ -6,8 +6,8 @@ import Tab from '@/components/tab'
 import ItemListA from '@/components/item-list-a'
 import Spin from '@/components/spin'
 import Market from '@/constants/market'
-import {device} from '@/utils/device'
-import {parseUrlParams} from '@/utils/navigation'
+import { device } from '@/utils/device'
+import { parseUrlParams } from '@/utils/navigation'
 
 
 export default class Search extends Component {
@@ -34,12 +34,12 @@ export default class Search extends Component {
   }
 
   fetchCoupon = async () => {
-    const {cid, min_id, keyword} = this.state
+    const { cid, min_id, keyword } = this.state
     console.log('FIN home state', this.state)
     const coupon_url = `https://v2.api.haodanku.com/get_keyword_items/apikey/saul/keyword/${keyword}/back/20/min_id/${min_id}/sort/0/cid/0`
     // console.log('FIN coupon list url', coupon_url)
     try {
-      const resp = await Taro.request({url: coupon_url})
+      const resp = await Taro.request({ url: coupon_url })
       const couponsData = resp && resp.data && resp.data.data
       const min_id = resp && resp.data && resp.data.min_id
       const preState = this.state
@@ -48,7 +48,7 @@ export default class Search extends Component {
         coupons,
         min_id,
       })
-    } catch(err) {
+    } catch (err) {
       console.log('FIN get coupon err', err)
     }
   }
@@ -70,21 +70,21 @@ export default class Search extends Component {
   }
 
   render() {
-    let scrollStyle : any = {
+    let scrollStyle: any = {
       height: device.windowHeight,
     }
 
-    if(device.isAndroid()) {
+    if (device.isAndroid()) {
       scrollStyle.height = device.windowHeight - device.info.statusBarHeight
     }
 
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       scrollStyle.height = device.windowHeight + 'px'
     }
 
     return (
       <View className="search-page">
-        <ScrollView 
+        <ScrollView
           onScroll={this.handleOnScroll.bind(this)}
           onScrollToLower={this.handleOnScrollToLower.bind(this)}
           scrollY
@@ -97,7 +97,7 @@ export default class Search extends Component {
               this.handleOnSearch(keyword)
             }}
           />
-          <Tab 
+          <Tab
             noScroll
             marginLeft={65}
             itemWidth={80}
@@ -112,7 +112,7 @@ export default class Search extends Component {
           />
 
           <ItemListA list={this.state.coupons || []} />
-          <Spin isShow/>
+          <Spin isShow />
         </ScrollView>
       </View>
     )

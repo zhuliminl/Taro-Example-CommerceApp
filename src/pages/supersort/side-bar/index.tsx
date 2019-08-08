@@ -9,21 +9,21 @@ interface SideBarInterface {
   onChange: (item, i) => void;
 }
 
-const SideBar : FunctionComponent<SideBarInterface> = (props,) => {
-  const {list = [], current, onChange} = props
-  const activeStyleWrap : any = {
+const SideBar: FunctionComponent<SideBarInterface> = (props, ) => {
+  const { list = [], current, onChange } = props
+  const activeStyleWrap: any = {
     borderColor: 'red',
     backgroundColor: '#FFF',
   }
-  const activeStyleTxt : any = {
+  const activeStyleTxt: any = {
     color: '#FE1123',
   }
   return (
     <View className='side-bar-comp'>
       {
-        list.map((item,i) => {
+        list.map((item, i) => {
           return (
-            <View className='side-bar-item-wrap' style={current === i ? activeStyleWrap : {}} key={item.cid} onClick={() => {onChange(item, i)}}>
+            <View className='side-bar-item-wrap' style={current === i ? activeStyleWrap : {}} key={item.cid} onClick={() => { onChange(item, i) }}>
               <Text className='side-bar-item-txt' style={current === i ? activeStyleTxt : {}}>{item.main_name}</Text>
             </View>
           )

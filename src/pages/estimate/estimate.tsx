@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Swiper, SwiperItem } from '@tarojs/components'
 import './estimate.scss'
 import Header from '@/components/header'
 import Tab from '@/components/tab'
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
 import Achievement from './achievement'
 import TextMoney from '@/components/text-money'
 
@@ -49,11 +49,11 @@ export default class Estimate extends Component {
 
   componentDidMount = () => {
     const params = this.parseParams(this.$router.params)
-    this.setState({title: params.title})
+    this.setState({ title: params.title })
   }
 
   parseParams = data => {
-    let paramsObj : any = {}
+    let paramsObj: any = {}
     Object.keys(data).forEach(key => {
       paramsObj[key] = decodeURIComponent(data[key])
     })
@@ -63,8 +63,8 @@ export default class Estimate extends Component {
 
   handleChange = (event) => {
     // console.log('FIN 触发 onChange 事件')
-    const {detail} = event
-    const {current} = detail
+    const { detail } = event
+    const { current } = detail
     this.setState({
       current
     })
@@ -72,28 +72,28 @@ export default class Estimate extends Component {
   }
 
   render() {
-    let scrollHeight : any = device.windowHeight
-    let blankHeight : any = 50
-    if(device.isIOS()) {
+    let scrollHeight: any = device.windowHeight
+    let blankHeight: any = 50
+    if (device.isIOS()) {
       blankHeight = 50 + 20
       scrollHeight = device.windowHeight - 70
     }
 
-    if(device.isH5()) {
+    if (device.isH5()) {
       scrollHeight = device.windowHeight - 50
     }
 
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       blankHeight = (50 + 20) + 'px'
       scrollHeight = device.windowHeight + 'px'   // 微信很奇怪，
     }
 
-    if(device.isAndroid()) {
+    if (device.isAndroid()) {
       scrollHeight = device.windowHeight - 70   // 安卓暂时没摸清标准
     }
 
-    let swiperHeight : any = 223   // 具体数值得具体看页面自身大小, 避免 RN 居中
-    if(device.isWeChat()) {
+    let swiperHeight: any = 223   // 具体数值得具体看页面自身大小, 避免 RN 居中
+    if (device.isWeChat()) {
       swiperHeight = 300 + 'px'
     }
 
@@ -103,13 +103,13 @@ export default class Estimate extends Component {
           <View
             onClick={() => {
               console.log('FIN 去帮助页面')
-              Taro.showToast({title: 'ssss'})
+              Taro.showToast({ title: 'ssss' })
             }}
           >
             <Text className='estimate-header-right-txt'>？</Text>
           </View>
         </Header>
-        <View style={{ height: blankHeight, backgroundColor: '#FFF'}} ></View>
+        <View style={{ height: blankHeight, backgroundColor: '#FFF' }} ></View>
 
         <ScrollView
           scrollY
@@ -123,7 +123,7 @@ export default class Estimate extends Component {
           {/* 累计佣金 */}
           <View className='estimate-commission-wrap'>
             <Text className='comission-title-txt'>累计佣金</Text>
-            <TextMoney money={12.00} fontSize={32}/>
+            <TextMoney money={12.00} fontSize={32} />
             {/* tab */}
             <Tab
               noScroll

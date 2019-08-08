@@ -1,8 +1,8 @@
 import Taro, { Component, hideToast } from '@tarojs/taro';
 import { View, Text, ScrollView } from '@tarojs/components';
 import Moments from './moments'
-import {host} from '@/constants/host'
-import {device} from '@/utils/device'
+import { host } from '@/constants/host'
+import { device } from '@/utils/device'
 
 
 const TAB_LIST = [
@@ -38,11 +38,11 @@ class Community extends Component {
   }
 
   fetchMoments = async () => {
-    const {min_id} = this.state
+    const { min_id } = this.state
     const url = `${host}/selected_item/apikey/saul/min_id/${min_id}`  // 跨域使用
     // const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/1`
     try {
-      const resp = await Taro.request({url})
+      const resp = await Taro.request({ url })
       const moments = resp && resp.data && resp.data.data
       const min_id = resp && resp.data['min_id']
       console.log('FIN moments ', moments)
@@ -52,26 +52,26 @@ class Community extends Component {
         min_id,
       })
 
-    } catch(err) {
+    } catch (err) {
       console.log('FIN get moments err', err)
     }
   }
 
-  render () {
-    let scrollStyle : any = {}
-    if(device.isH5()) {
+  render() {
+    let scrollStyle: any = {}
+    if (device.isH5()) {
       scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
     }
 
-    if(device.isIOS()) {
+    if (device.isIOS()) {
       scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
-    if(device.isAndroid()) {
+    if (device.isAndroid()) {
       scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
       scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
     }

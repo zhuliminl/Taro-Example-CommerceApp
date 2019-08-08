@@ -7,7 +7,7 @@ interface ItemCarouselInterface {
   itemSrcList: any[];
 }
 
-export default class ItemCarousel extends Component<ItemCarouselInterface,{}> {
+export default class ItemCarousel extends Component<ItemCarouselInterface, {}> {
 
   componentDidMount = () => {
   }
@@ -29,22 +29,22 @@ export default class ItemCarousel extends Component<ItemCarouselInterface,{}> {
           circular
           indicatorDots={true}
           autoplay>
-            {
-              this.props.itemSrcList &&
-              this.props.itemSrcList.map((item) => {
-                return (
-                  <SwiperItem key={item}>
-                    <Image 
-                      style={{
-                        width: device.windowWidth,
-                        height: device.windowWidth,
-                      }}
-                      src={item}
-                    />
-                  </SwiperItem>
-                )
-              })
-            }
+          {
+            this.props.itemSrcList &&
+            this.props.itemSrcList.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <Image
+                    style={{
+                      width: device.windowWidth,
+                      height: device.windowWidth,
+                    }}
+                    src={item}
+                  />
+                </SwiperItem>
+              )
+            })
+          }
         </Swiper>
       </View>
     )

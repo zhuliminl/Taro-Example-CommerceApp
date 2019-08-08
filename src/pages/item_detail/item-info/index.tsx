@@ -3,20 +3,20 @@ import { View, Text, Image } from '@tarojs/components'
 import TextMoney from '@/components/text-money'
 import './index.scss'
 import bg_coupon from '@/assets/image/bg_coupon.png'
-import {parseDate} from '@/utils/date'
+import { parseDate } from '@/utils/date'
 
 
 interface ItemInfoInterface {
   item: any;
 }
 
-export default class ItemInfo extends Component<ItemInfoInterface,{}> {
+export default class ItemInfo extends Component<ItemInfoInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
-    const {item = {}} = this.props
+    const { item = {} } = this.props
     console.log('FIN couponurl', item.couponurl)
     return (
       <View className="item-info-comp">
@@ -24,7 +24,7 @@ export default class ItemInfo extends Component<ItemInfoInterface,{}> {
           <View className='item-info-price-tag-wrap'>
             <Text className='item-info-price-tag-txt'>券后</Text>
           </View>
-          <TextMoney money={item.itemendprice} fontSize={32}/>
+          <TextMoney money={item.itemendprice} fontSize={32} />
           <View className='item-info-price-right-wrap'>
             <Text className='item-info-price-original-txt'>原价￥{item.itemprice}</Text>
             <Text className='item-info-price-sold-txt'>{item.itemsale}人已购</Text>

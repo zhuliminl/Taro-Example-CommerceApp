@@ -1,7 +1,7 @@
 import Taro, { Component, pxTransform } from '@tarojs/taro';
 import { View, Image, Swiper, SwiperItem } from '@tarojs/components';
 import './index.scss'
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
 
 
 interface BannerInterface {
@@ -11,13 +11,13 @@ interface BannerInterface {
 }
 
 
-class Banner extends Component <BannerInterface, {}> {
+class Banner extends Component<BannerInterface, {}> {
   static defaultProps = {
     imgList: [],
     bannerHeight: 135,
   }
 
-  render () {
+  render() {
     const h = this.props.bannerHeight
     const w = this.props.bannerWidth
     return (
@@ -36,22 +36,22 @@ class Banner extends Component <BannerInterface, {}> {
           circular
           indicatorDots={false}
           autoplay>
-            {
-              this.props.imgList.map((item) => {
-                return (
-                  <SwiperItem key={item.src}>
-                    <Image 
-                      style={{
-                        height: pxTransform(h),
-                        width: pxTransform(w),
-                      }}
-                      src={item.src}
-                    />
+          {
+            this.props.imgList.map((item) => {
+              return (
+                <SwiperItem key={item.src}>
+                  <Image
+                    style={{
+                      height: pxTransform(h),
+                      width: pxTransform(w),
+                    }}
+                    src={item.src}
+                  />
 
-                  </SwiperItem>
-                )
-              })
-            }
+                </SwiperItem>
+              )
+            })
+          }
         </Swiper>
       </View>
     )

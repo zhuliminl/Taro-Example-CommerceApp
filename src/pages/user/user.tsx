@@ -224,7 +224,7 @@ class User extends Component<UserInterface, {}> {
   }
 
   goto = (pathName, params = {}) => {
-    const paramsStr = Object.keys(params).map(function(k) {
+    const paramsStr = Object.keys(params).map(function (k) {
       return encodeURIComponent(k) + "=" + encodeURIComponent(params[k]);
     }).join('&')
 
@@ -236,164 +236,164 @@ class User extends Component<UserInterface, {}> {
   }
 
 
-  render () {
+  render() {
     return (
-        <View className='user'>
-          <Image className='user_bg' src={bg_user} />
+      <View className='user'>
+        <Image className='user_bg' src={bg_user} />
 
-          <View className='user__profile'>
-            <View className='profile__top-bar' 
-              style={{
-                ...(device.isRN() && {marginTop: 30} ),
+        <View className='user__profile'>
+          <View className='profile__top-bar'
+            style={{
+              ...(device.isRN() && { marginTop: 30 }),
+            }}
+          >
+            <View className='profile__top-bar_item'>
+              <Text className='profile__top-bar_txt'>消息</Text>
+            </View>
+            <View className='profile__top-bar_item'
+              onClick={() => {
+                this.goto('setting')
               }}
             >
-              <View className='profile__top-bar_item'>
-                <Text className='profile__top-bar_txt'>消息</Text>
-              </View>
-              <View className='profile__top-bar_item'
-                onClick={() => {
-                  this.goto('setting')
-                }}
+              <Text className='profile__top-bar_txt'>设置</Text>
+            </View>
+          </View>
+
+          <View className='profile__avatar' onClick={this.goto.bind(this, 'test')} >
+            <Image className='profile__avatar_img' src={defaultAvatar} />
+            <View className='profile__right'>
+              <View className='profile__right-item'
               >
-                <Text className='profile__top-bar_txt'>设置</Text>
+                <Text className='profile__name-txt'>小石头{device.isAndroid() && 'android'} {device.isIOS() && 'ios'}</Text>
+                <Text className='profile__partner-txt'>合伙人</Text>
               </View>
-            </View>
-
-            <View className='profile__avatar' onClick={this.goto.bind(this, 'test')} >
-              <Image className='profile__avatar_img' src={defaultAvatar}/>
-              <View className='profile__right'>
-                <View className='profile__right-item'
-                >
-                  <Text className='profile__name-txt'>小石头{device.isAndroid() && 'android'} {device.isIOS() && 'ios'}</Text>
-                  <Text className='profile__partner-txt'>合伙人</Text>
-                </View>
-                <View className='profile__right-item'>
-                  <Text className='profile__token-txt'>邀请口令:820CD406</Text>
-                  <Text className='profile__copy-txt'>复制</Text>
-                </View>
+              <View className='profile__right-item'>
+                <Text className='profile__token-txt'>邀请口令:820CD406</Text>
+                <Text className='profile__copy-txt'>复制</Text>
               </View>
-            </View>
-
-            <View className='profile__estimate'>
-              <View className='profile__estimate-item' onClick={this.goto.bind(this, 'estimate', {title: '今日评估', name: 'saul', age: 45})}>
-                <Text className='profile__estimate_money-txt'>￥0.00</Text>
-                <View className='profile__estimate_title-item'>
-                  <Text className='profile__estimate_title-txt'>今日预估</Text>
-                  <Image className='profile__arrow'  src={arrow}/>
-                </View>
-              </View>
-              <View className='profile__border'></View>
-              <View className='profile__estimate-item'>
-                <Text className='profile__estimate_money-txt'>￥8.00</Text>
-                <View className='profile__estimate_title-item'>
-                  <Text className='profile__estimate_title-txt'>今日预估</Text>
-                  <Image className='profile__arrow'  src={arrow}/>
-                </View>
-              </View>
-              <View className='profile__border'></View>
-              <View className='profile__estimate-item'>
-                <Text className='profile__estimate_money-txt'>￥100.00</Text>
-                <View className='profile__estimate_title-item'>
-                  <Text className='profile__estimate_title-txt'>今日预估</Text>
-                  <Image className='profile__arrow'  src={arrow}/>
-                </View>
-              </View>
-            </View>
-
-            <View className='profile__partner_banner'>
-              <Image
-                src={banner_partner}
-                className='profile__partner_banner-img'
-                />
             </View>
           </View>
-          <View className='user_blank'></View>
 
-          <View className='user__title'>
-            <Text className='user__title-txt'>会员详情</Text>
-            <Text className='user__title-aside-txt'>查看概况</Text>
-            <Image className='arrow_grey-img' src={arrow_grey} />
+          <View className='profile__estimate'>
+            <View className='profile__estimate-item' onClick={this.goto.bind(this, 'estimate', { title: '今日评估', name: 'saul', age: 45 })}>
+              <Text className='profile__estimate_money-txt'>￥0.00</Text>
+              <View className='profile__estimate_title-item'>
+                <Text className='profile__estimate_title-txt'>今日预估</Text>
+                <Image className='profile__arrow' src={arrow} />
+              </View>
+            </View>
+            <View className='profile__border'></View>
+            <View className='profile__estimate-item'>
+              <Text className='profile__estimate_money-txt'>￥8.00</Text>
+              <View className='profile__estimate_title-item'>
+                <Text className='profile__estimate_title-txt'>今日预估</Text>
+                <Image className='profile__arrow' src={arrow} />
+              </View>
+            </View>
+            <View className='profile__border'></View>
+            <View className='profile__estimate-item'>
+              <Text className='profile__estimate_money-txt'>￥100.00</Text>
+              <View className='profile__estimate_title-item'>
+                <Text className='profile__estimate_title-txt'>今日预估</Text>
+                <Image className='profile__arrow' src={arrow} />
+              </View>
+            </View>
           </View>
 
-          <View className='user__items-wrapper'>
+          <View className='profile__partner_banner'>
+            <Image
+              src={banner_partner}
+              className='profile__partner_banner-img'
+            />
+          </View>
+        </View>
+        <View className='user_blank'></View>
+
+        <View className='user__title'>
+          <Text className='user__title-txt'>会员详情</Text>
+          <Text className='user__title-aside-txt'>查看概况</Text>
+          <Image className='arrow_grey-img' src={arrow_grey} />
+        </View>
+
+        <View className='user__items-wrapper'>
           {
             DETAIL_LIST.map((item) => {
               return (
                 <View className='user-item-wrapper' key={item.key}>
-                  <Image className='icon-img' src={item.img}/>
+                  <Image className='icon-img' src={item.img} />
                   <Text className='item-txt'>{item.text}</Text>
                 </View>
               )
             })
           }
-          </View>
+        </View>
 
 
-          <Banner 
-            bannerHeight={135}
-            bannerWidth={750}
-            imgList={IMG_LIST}
-          />
+        <Banner
+          bannerHeight={135}
+          bannerWidth={750}
+          imgList={IMG_LIST}
+        />
 
 
-          <View className='user__title'>
-            <Text className='user__title-txt'>我的秒杀订单</Text>
-            <Text className='user__title-aside-txt'>查看更多订单</Text>
-            <Image className='arrow_grey-img' src={arrow_grey} />
-          </View>
-          <View className='user__items-wrapper'>
+        <View className='user__title'>
+          <Text className='user__title-txt'>我的秒杀订单</Text>
+          <Text className='user__title-aside-txt'>查看更多订单</Text>
+          <Image className='arrow_grey-img' src={arrow_grey} />
+        </View>
+        <View className='user__items-wrapper'>
           {
             SECKILL_ORDER_LIST.map((item) => {
               return (
                 <View className='user-item-wrapper' key={item.key}>
-                  <Image className='icon-img' src={item.img}/>
+                  <Image className='icon-img' src={item.img} />
                   <Text className='item-txt'>{item.text}</Text>
                 </View>
               )
             })
           }
-          </View>
+        </View>
 
-          <View className='user__title'>
-            <Text className='user__title-txt'>会员中心</Text>
-          </View>
-          <View className='user__items-wrapper'>
+        <View className='user__title'>
+          <Text className='user__title-txt'>会员中心</Text>
+        </View>
+        <View className='user__items-wrapper'>
           {
             MEMBER_CENTER_LIST.map((item) => {
               const description = item.description
               return (
                 <View className='user-item-wrapper' key={item.key}>
-                  <Image className='icon-img' src={item.img}/>
+                  <Image className='icon-img' src={item.img} />
                   <Text className='item-txt'>{item.text}</Text>
                   <Text className='item-description-txt'>{description}</Text>
                 </View>
               )
             })
           }
-          </View>
+        </View>
 
-          <View className='user__title'>
-            <Text className='user__title-txt'>我的服务</Text>
-          </View>
-          <View className='user__items-wrapper'>
+        <View className='user__title'>
+          <Text className='user__title-txt'>我的服务</Text>
+        </View>
+        <View className='user__items-wrapper'>
           {
             SERVICE_LIST.map((item) => {
               const description = item.description
               return (
                 <View className='user-item-wrapper' key={item.key}>
-                  <Image className='icon-img' src={item.img}/>
+                  <Image className='icon-img' src={item.img} />
                   <Text className='item-txt'>{item.text}</Text>
                   <Text className='item-description-txt'>{description}</Text>
                 </View>
               )
             })
           }
-          </View>
-
-
-
         </View>
-      )
+
+
+
+      </View>
+    )
   }
 }
 

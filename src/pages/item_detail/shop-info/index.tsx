@@ -9,13 +9,13 @@ interface ShopInfoInterface {
   item: any;
 }
 
-export default class ShopInfo extends Component<ShopInfoInterface,{}> {
+export default class ShopInfo extends Component<ShopInfoInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
-    const {item} = this.props
+    const { item } = this.props
     return (
       <View className="shop-info-comp">
         <View className='shop-info-title-wrap'>
