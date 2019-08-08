@@ -29,7 +29,7 @@ class ItemList extends Component <ItemListInterface, {}> {
   }
 
   render () {
-    const {list} = this.props
+    const {list = []} = this.props
     return (
       <View className='item-list'>
         <View className='item-list__title'>{this.props.children}</View>

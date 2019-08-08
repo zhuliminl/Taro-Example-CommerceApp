@@ -69,13 +69,13 @@ $shareBorderRadius: 26px;
   background-color: $mainColor;
   margin-right: 5px;
   border-radius: 4px;
-  height: 34px;
+  height: 32px;
   display: flex;
   // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
   flex-direction: row;   
   align-items: center;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
   /*postcss-pxtransform rn eject enable*/
   line-height: 26px;
   /*postcss-pxtransform rn eject disable*/
@@ -89,6 +89,7 @@ $shareBorderRadius: 26px;
 
 .moment-title-txt {
   font-size: 34px;
+  font-weight: bold;
   line-height: 36px;
   color: #111;
 }

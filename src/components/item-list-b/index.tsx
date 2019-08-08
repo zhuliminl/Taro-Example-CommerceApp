@@ -27,7 +27,7 @@ class ItemList extends Component <ItemListInterface, {}> {
   }
 
   render () {
-    const {list} = this.props
+    const {list = []} = this.props
     let itemCouponTxtStyle : ItemCouponTxtStyleInterface =  {}
     if(device.isIOS()) {
       itemCouponTxtStyle.top = 3

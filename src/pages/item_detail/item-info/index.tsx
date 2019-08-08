@@ -16,7 +16,7 @@ export default class ItemInfo extends Component<ItemInfoInterface,{}> {
   }
 
   render() {
-    const {item} = this.props
+    const {item = {}} = this.props
     console.log('FIN couponurl', item.couponurl)
     return (
       <View className="item-info-comp">

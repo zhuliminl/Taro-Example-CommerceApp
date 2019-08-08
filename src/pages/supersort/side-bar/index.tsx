@@ -10,8 +10,7 @@ interface SideBarInterface {
 }
 
 const SideBar : FunctionComponent<SideBarInterface> = (props,) => {
-  const {list, current, onChange} = props
-  console.log('FIN list')
+  const {list = [], current, onChange} = props
   const activeStyleWrap : any = {
     borderColor: 'red',
     backgroundColor: '#FFF',

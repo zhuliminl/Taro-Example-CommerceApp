@@ -30,6 +30,7 @@ export default class ItemCarousel extends Component<ItemCarouselInterface,{}> {
           indicatorDots={true}
           autoplay>
             {
+              this.props.itemSrcList &&
               this.props.itemSrcList.map((item) => {
                 return (
                   <SwiperItem key={item}>

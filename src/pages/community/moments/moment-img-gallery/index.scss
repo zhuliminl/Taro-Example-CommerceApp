@@ -1,0 +1,16 @@
+
+.moment-img-gallery-comp {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+.moment-img {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;   // 圆角对于 Android 很不明显
+}

@@ -1,6 +1,7 @@
 import Taro, { FunctionComponent } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import React from 'react'
+import MomentImgGallery from './moment-img-gallery'
 import './index.scss'
 import arrow_share from '@/assets/image/arrow_share.png'
 import arrow_download from '@/assets/image/arrow_download.png'
@@ -10,7 +11,7 @@ interface MomentsInterface {
 }
 
 const Moments : FunctionComponent<MomentsInterface> = (props) => {
-  const {moments} = props
+  const {moments = []} = props
 
   return (
     <View className="moments-comp">
@@ -20,6 +21,7 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
           if(itemtitle.length >= 6) {
             itemtitle = itemtitle.substr(0,6) + '...'
           }
+          const imgList = moment['itempic'] || []
           return (
             <View className='moment-wrap' key={i}>
               {/* 头像  */}
@@ -46,7 +48,7 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
                   <View className='moment-share-wrap'>
                     <View className='moment-share-number-wrap'>
                       <Image className='moment-share-number-img' src={arrow_share}/>
-                      <Text className='moment-share-number-txt'>2342</Text>
+                      <Text className='moment-share-number-txt'>{moment['dummy_click_statistics']}</Text>
                     </View>
                     <View className='moment-share-download-wrap'>
                       <Image className='moment-share-download-img' src={arrow_download}/>
@@ -59,6 +61,8 @@ const Moments : FunctionComponent<MomentsInterface> = (props) => {
                 {/* 中间实体内容文字和图片、视频 */}
                 <View className='moment-right-middle-wrap'>
                   <Text className='moment-content-txt'>{moment['content']}</Text>
+                  <MomentImgGallery imgList={imgList}/>
+
                 </View>
 
               </View>

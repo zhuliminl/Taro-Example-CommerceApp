@@ -89,15 +89,15 @@ class App extends Component {
   }
 
   componentDidMount () {
-    console.log('APP DidMount')
+    // console.log('APP DidMount')
   }
 
   componentDidShow () {
-    console.log('APP DidShow')
+    // console.log('APP DidShow')
   }
 
   componentDidHide () {
-    console.log('APP DidShow')
+    // console.log('APP DidShow')
   }
 
   componentDidCatchError () {

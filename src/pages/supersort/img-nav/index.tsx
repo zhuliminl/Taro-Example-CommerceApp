@@ -9,13 +9,12 @@ interface ImgNavInterface {
 }
 
 const ImgNav : FunctionComponent<ImgNavInterface> = (props) => {
-  const {imgNavData} = props
-  console.log('FIN imgNavdata', imgNavData)
+  const {imgNavData = {}} = props
 
   return (
     <View className="img-nav-comp">
       {
-        imgNavData.data && imgNavData.data.map((mainItem, i) => {
+        imgNavData && imgNavData.data && imgNavData.data.map((mainItem, i) => {
           return (
             <View className='img-nav-main-item-wrap' key={i}>
               <Text className='img-nav-main-item-title-txt'>{mainItem.next_name}</Text>
