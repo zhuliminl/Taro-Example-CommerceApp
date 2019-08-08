@@ -98,10 +98,11 @@ export default class ImgGallery extends Component<ImgGalleryInterface, ImgGaller
     }
 
 
+    const {imgList = [], current = 0} = this.state
     return (
       <View className="img_gallery-page" style={pageStyle}>
         <RoundBack />
-        <DownloadBtn />
+        <DownloadBtn imgItem={imgList[current]}/>
         <Swiper
           current={this.state.current}
           onChange={this.handleOnChange.bind(this)}
