@@ -60,6 +60,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
   componentDidMount = async () => {
     const params = parseUrlParams(this.$router.params)
     const itemid = params.itemid
+    console.log('FIN item detail itemid', itemid)
     const url = `https://v2.api.haodanku.com/item_detail/apikey/saul/itemid/${itemid}`
     try {
       const resp = await Taro.request({ url })
