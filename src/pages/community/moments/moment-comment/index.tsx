@@ -1,6 +1,5 @@
-import Taro, { FunctionComponent } from '@tarojs/taro'
+import Taro, { FunctionComponent, useCallback, useEffect } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
-import React from 'react'
 import './index.scss'
 
 interface MomentCommentInterface {
@@ -10,7 +9,23 @@ interface MomentCommentInterface {
 const MomentComment: FunctionComponent<MomentCommentInterface> = (props) => {
   const { comment: commentStr = '' } = props
   const comments = commentStr.split('|') || []
-  console.log('FIN comments', comments)
+
+  // const hanldeOnCopyClick = useCallback(() => {
+  //   Taro.showToast({
+  //     title: '复制成功'
+  //   })
+  // }, [])
+
+  console.log('Use callback', Taro)
+
+  // useEffect(() => {
+  //   // console.log('FIN use effect in MomentComment')
+  // })
+  const hanldeOnCopyClick = () => {
+    Taro.showToast({
+      title: '复制成功'
+    })
+  }
 
   return (
     <View className="moment-comment-comp">
@@ -24,7 +39,7 @@ const MomentComment: FunctionComponent<MomentCommentInterface> = (props) => {
         })
       }
 
-      <View className='moment-comment-copy-wrap'>
+      <View className='moment-comment-copy-wrap' onClick={hanldeOnCopyClick} >
         <Text className='moment-comment-copy-txt'>复制评论</Text>
       </View>
     </View>

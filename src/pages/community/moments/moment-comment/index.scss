@@ -1,11 +1,13 @@
 
 .moment-comment-comp {
-  background-color: #EEE;
+  display: flex;
+  flex-direction: column;
+  background-color: #F8F8F7;
   border-radius: 10px;
   margin-right: 30px;
   padding-left: 20px;
   padding-right: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 
@@ -19,4 +21,25 @@
   font-size: 28px;
   line-height: 40px;
   color: #999;
+}
+
+.moment-comment-copy-wrap {
+  align-self: flex-end;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  background-color: #E6E6E6;
+}
+
+.moment-comment-copy-txt {
+  align-self: center;
+  font-size: 28px;
+  line-height: 30px;
+  color: #333;
 }
