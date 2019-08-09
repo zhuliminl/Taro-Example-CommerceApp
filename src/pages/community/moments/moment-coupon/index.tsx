@@ -28,8 +28,8 @@ const MomentCoupon: FunctionComponent<MomentCouponInterface> = (props) => {
         </View>
         <View className='moment-coupon-tags-wrap'>
           {/* 以下数据暂时 API 并未提供 */}
-          <RedTag title={'5.9元起'} />
-          <RedTag title={'4折起'} />
+          <RedTag title={'8.2元起'} />
+          <RedTag title={'5折起'} />
           <RedTag title={'最高佣金￥13.9'} />
         </View>
 

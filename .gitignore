@@ -2,6 +2,7 @@ node_modules
 .temp
 dist
 ios
+android
 rn_temp
 .DS_Store
 yarn-error.log
