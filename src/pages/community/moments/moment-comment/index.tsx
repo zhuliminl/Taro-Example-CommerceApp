@@ -59,9 +59,9 @@ function MomentComment(props) {
 
   // console.log('Use callback', Taro)
 
-  Taro.useEffect(() => {
-    console.log('FIN use effect in MomentComment')
-  })
+  // Taro.useEffect(() => {
+  //   console.log('FIN use effect in MomentComment')
+  // })
   const hanldeOnCopyClick = () => {
     Taro.showToast({
       title: '复制成功'
