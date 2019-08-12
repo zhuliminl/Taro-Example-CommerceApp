@@ -1,14 +1,14 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Swiper, SwiperItem, ScrollView } from '@tarojs/components'
 import './index.scss'
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
 
 interface TabPageWrapInterface {
   height: any;
   current: number;
-  onChange: () => void;
+  onChange: (any) => void;
   pages: any[];
-  scrollable: boolean;  // 默认支持
+  scrollable?: boolean;  // 默认支持
 }
 
 
@@ -16,6 +16,12 @@ export default class TabPageWrap extends Component<TabPageWrapInterface, {}> {
 
   componentDidMount = () => {
   }
+
+  handleOnChange = e => {
+    const { detail } = e
+    this.props.onChange && this.props.onChange(detail)
+  }
+
 
   render() {
     const { height, pages } = this.props
@@ -28,25 +34,25 @@ export default class TabPageWrap extends Component<TabPageWrapInterface, {}> {
     }
 
     // 暂不支持微信端
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       wrapStyle.height += 'px'
       wrapStyle.width += 'px'
     }
 
-    let swiperStyle : any = {
+    let swiperStyle: any = {
       width: device.windowWidth,
       // RN 会自动给一定的高度，不能主动赋值
     }
 
     // h5 必须修改滚动内容的高度为视口高度才能左右滑动
-    if(device.isH5()) {
+    if (device.isH5()) {
       swiperStyle.height = '100vh'
       // swiperStyle.height = height
     }
 
     return (
       <View className="tab-page-wrap-comp" style={wrapStyle}>
-        <ScrollView 
+        <ScrollView
           scrollY
           style={{
             height,
@@ -55,7 +61,7 @@ export default class TabPageWrap extends Component<TabPageWrapInterface, {}> {
         >
           <Swiper
             current={this.props.current}
-            onChange={this.props.onChange}
+            onChange={this.handleOnChange.bind(this)}
             style={swiperStyle}
           >
             {
@@ -69,8 +75,8 @@ export default class TabPageWrap extends Component<TabPageWrapInterface, {}> {
                     flexDirection: 'column',
                     alignItems: 'flex-start',
                     justifyContent: 'flex-start',
-                   }}>
-                      <PageEl />
+                  }}>
+                    <PageEl />
                   </SwiperItem>
                 )
               })

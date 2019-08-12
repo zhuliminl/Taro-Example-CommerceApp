@@ -81,12 +81,11 @@ render () {
   return (
       <View>
         <TabPageWrap
-          scrollable
           height={scrollStyle.height}
           // height={400}
           current={0}
-          onChange={() => {
-            console.log('FIN onTabPageWrap change', )
+          onChange={(detail) => {
+            console.log('FIN onTabPageWrap change', detail)
           }}
           pages={pages}
         />
