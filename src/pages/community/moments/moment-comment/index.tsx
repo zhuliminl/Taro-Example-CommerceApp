@@ -10,22 +10,22 @@ const MomentComment: FunctionComponent<MomentCommentInterface> = (props) => {
   const { comment: commentStr = '' } = props
   const comments = commentStr.split('|') || []
 
-  const hanldeOnCopyClick = useCallback(() => {
-    Taro.showToast({
-      title: 'useCallback'
-    })
-  }, [])
+  // const hanldeOnCopyClick = useCallback(() => {
+  //   Taro.showToast({
+  //     title: 'useCallback'
+  //   })
+  // }, [])
 
   // console.log('Use callback', Taro)
 
   // useEffect(() => {
   //   // console.log('FIN use effect in MomentComment')
   // })
-  // const hanldeOnCopyClick = () => {
-  //   Taro.showToast({
-  //     title: '复制成功'
-  //   })
-  // }
+  const hanldeOnCopyClick = () => {
+    Taro.showToast({
+      title: '复制成功'
+    })
+  }
 
   return (
     <View className="moment-comment-comp">

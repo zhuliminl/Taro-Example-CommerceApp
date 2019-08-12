@@ -19,6 +19,7 @@ class Header extends Component<HeaderInterface, {}> {
       wrapStyle.marginTop = 20 + 'px'
     }
 
+
     return (
       <View className='header-wrapper'
         style={wrapStyle}

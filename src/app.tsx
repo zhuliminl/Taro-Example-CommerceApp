@@ -66,16 +66,18 @@ class App extends Component {
           selectedIconPath: "./assets/tab-bar/save-active.png",
           text: "好省圈"
         },
+        // {
+        //   pagePath: "pages/seckill/seckill",
+        //   // pagePath: "pages/estimate/estimate",
+        //   iconPath: "./assets/tab-bar/seckill.png",
+        //   selectedIconPath: "./assets/tab-bar/seckill-active.png",
+        //   text: "大牌秒杀"
+        // },
         {
-          pagePath: "pages/seckill/seckill",
-          // pagePath: "pages/estimate/estimate",
-          iconPath: "./assets/tab-bar/seckill.png",
-          selectedIconPath: "./assets/tab-bar/seckill-active.png",
-          text: "大牌秒杀"
-        },
-        {
-          pagePath: "pages/partner/partner",
-          iconPath: "./assets/tab-bar/partner.png",
+          pagePath: "pages/community/community",
+          iconPath: "./assets/tab-bar/save.png",
+          // pagePath: "pages/partner/partner",
+          // iconPath: "./assets/tab-bar/partner.png",
           selectedIconPath: "./assets/tab-bar/home-active.png",
           text: "合伙人特权"
         },

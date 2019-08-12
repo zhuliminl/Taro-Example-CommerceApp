@@ -182,7 +182,7 @@ class Home extends Component {
 
   fetchCoupon = async () => {
     const { cid, min_id } = this.state
-    console.log('FIN home state', this.state)
+    // console.log('FIN home state', this.state)
     const coupon_url = `https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/${cid}/back/20/min_id/${min_id}`
     console.log('FIN coupon list url', coupon_url)
     try {
@@ -216,7 +216,7 @@ class Home extends Component {
         })
       })
 
-      console.log('FIN superSortList', general_classify)
+      // console.log('FIN superSortList', general_classify)
 
       this.setState({
         superSortList: general_classify,
