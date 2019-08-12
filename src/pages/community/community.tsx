@@ -3,23 +3,10 @@ import Taro, { Component, hideToast } from '@tarojs/taro';
 
 import Moments from './moments'
 import Spin from '@/components/spin'
+import TAB_LIST from '@/constants/community-tab'
+import Tab from '@/components/tab'
 import { device } from '@/utils/device'
 import { host } from '@/constants/host'
-
-const TAB_LIST = [
-  {
-    key: 0,
-    title: '好省精选',
-  },
-  {
-    key: 1,
-    title: '营销素材',
-  },
-  {
-    key: 2,
-    title: '好省学院',
-  },
-]
 
 class Community extends Component {
   config = {
@@ -88,6 +75,19 @@ class Community extends Component {
           style={scrollStyle}
           onScrollToLower={this.handleOnScrollToLower.bind(this)}
         >
+          <Tab
+            noScroll
+            marginLeft={65}
+            itemWidth={80}
+            current={this.state.current}
+            list={TAB_LIST}
+            onChange={(item) => {
+              console.log('FIN tab item', item)
+              this.setState({
+                current: item.key
+              })
+            }}
+          />
           <Moments moments={this.state.moments} />
           <Spin isShow />
         </ScrollView>

@@ -11,5 +11,7 @@ export const parseDate = nStr => {
 
 export const parseToMinuteago = nStr => {
   // console.log('FIN xxxxxxxxxxxxxxxxxx', nStr)
-  return 33
+  const p = parseInt(nStr) * 1000
+  const c = new Date().getTime()
+  return Math.floor((c - p)/(1000*60))
 }

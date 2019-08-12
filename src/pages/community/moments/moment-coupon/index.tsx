@@ -10,6 +10,7 @@ interface MomentCouponInterface {
 
 const MomentCoupon: FunctionComponent<MomentCouponInterface> = (props) => {
   const { item = {} } = props
+  // console.log('FIN item', item)
   let itemtitle = item['itemtitle'] || ''
   if (itemtitle.length >= 6) {
     itemtitle = itemtitle.substr(0, 12) + '...'

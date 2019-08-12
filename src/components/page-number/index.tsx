@@ -3,7 +3,7 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 interface PageNumberInterface {
-  current: number;
+  current: string | number;
   total: number;
 }
 
@@ -13,9 +13,10 @@ export default class PageNumber extends Component<PageNumberInterface,{}> {
   }
 
   render() {
+    const {current = 0, total = 0} = this.props
     return (
       <View className="page-number-comp">
-        <Text className='page-number-txt'>{this.props.current + 1}/{this.props.total}</Text>
+        <Text className='page-number-txt'>{parseInt(current.toString()) + 1}/{total}</Text>
       </View>
     )
   }
