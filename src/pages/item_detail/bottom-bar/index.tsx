@@ -17,7 +17,11 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
     const { item } = this.props
     return (
       <View className="bottom-bar-comp">
-        <View className='bottom-bar-left-wrap'>
+        <View className='bottom-bar-left-wrap' onClick={() => {
+          Taro.showToast({
+            title: '复制成功'
+          })
+        }}>
           <Image className='bottom-bar-left-img' src={icon_copy} />
           <Text className='bottom-bar-left-txt'>复制口令</Text>
         </View>
