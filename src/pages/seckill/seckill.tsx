@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, SwiperItem } from '@tarojs/components';
-import TabPageWrap from '@/components/tab-page-wrap'
 import {device} from '@/utils/device'
 
 const TAB_LIST = [
@@ -20,6 +19,49 @@ const TAB_LIST = [
 
 const FooA = () => (
   <View style={{backgroundColor: 'green', flexDirection: 'column', justifyContent: 'flex-start'}}>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FobA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>Fobb</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>Fobb</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>Ooob</Text></View>
+    <View><Text>FobA</Text></View>
+    <View><Text>FobA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FoBA</Text></View>
+    <View><Text>FoBA</Text></View>
+    <View><Text>FBoA</Text></View>
+    <View><Text>BOoA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FBoA</Text></View>
+    <View><Text>FoBA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FBoA</Text></View>
+    <View><Text>BooA</Text></View>
+    <View><Text>BooA</Text></View>
+    <View><Text>FooA</Text></View>
+    <View><Text>FoBA</Text></View>
     <View><Text>FooA</Text></View>
   </View>
 )
@@ -57,6 +99,7 @@ class Seckill extends Component {
 
   state = {
     loading: false,
+    current: 0,
   }
 
 render () {
@@ -80,15 +123,6 @@ render () {
 
   return (
       <View>
-        <TabPageWrap
-          height={scrollStyle.height}
-          // height={400}
-          current={0}
-          onChange={(detail) => {
-            console.log('FIN onTabPageWrap change', detail)
-          }}
-          pages={pages}
-        />
       </View>
     )
   }

@@ -9,7 +9,6 @@ import SearchBar from '@/components/search-bar'
 import Spin from '@/components/spin'
 import TAB_LIST from '@/constants/community-tab'
 import Tab from '@/components/tab'
-import TabPageWrap from '@/components/tab-page-wrap'
 import { device } from '@/utils/device'
 
 // import { host } from '@/constants/host'
@@ -70,11 +69,11 @@ class Community extends Component {
   render() {
     let scrollStyle: any = {}
     if (device.isH5()) {
-      scrollStyle.height = device.windowHeight - 55 - 100   // 必须大于底部栏目固定高度，才不会导致滑动障碍
+      scrollStyle.height = device.windowHeight - 55  // 必须大于底部栏目固定高度，才不会导致滑动障碍
     }
 
     if (device.isIOS()) {
-      scrollStyle.height = device.windowHeight - 49.5 - 40   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+      scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
     if (device.isAndroid()) {
@@ -102,46 +101,14 @@ class Community extends Component {
           }}
         />
 
-        <TabPageWrap
-          height={scrollStyle.height}
-          current={0}
-          onChange={(detail) => {
-            console.log('FIN onTabPageWrap change', detail)
-          }}
-          pages={[
-            {
-              key: 0,
-              el: () => {
-                console.log('FIN xxxx moment')
-                return (
-                  // <View style={{
-                  //   width: device.windowWidth,
-                  // }}>
-                      <Moments moments={this.state.moments} />
-                      // <Spin isShow />
-                  // </View>
-                )
-              }
-            },
-            {
-              key: 1,
-              el: FooB,
-            },
-            {
-              key: 2,
-              el: FooC,
-            },
-          ]}
-        />
-
-        {/* <ScrollView
+        <ScrollView
           scrollY
           style={scrollStyle}
           onScrollToLower={this.handleOnScrollToLower.bind(this)}
         >
           <Moments moments={this.state.moments} />
           <Spin isShow />
-        </ScrollView> */}
+        </ScrollView>
       </View>
     )
   }
