@@ -8,7 +8,7 @@ interface TabPageWrapInterface {
   current: number;
   onChange: () => void;
   pages: any[];
-  scrollable: boolean;
+  scrollable: boolean;  // 默认支持
 }
 
 
@@ -20,7 +20,8 @@ export default class TabPageWrap extends Component<TabPageWrapInterface, {}> {
   render() {
     const { height, pages } = this.props
     // console.log('FIN tabpageWrap props', this.props)
-    let swiperStyle: any = {
+
+    let wrapStyle: any = {
       height,
       width: device.windowWidth,
       backgroundColor: '#F5F6F7',
@@ -28,70 +29,54 @@ export default class TabPageWrap extends Component<TabPageWrapInterface, {}> {
 
     // 暂不支持微信端
     if(device.isWeChat()) {
-      swiperStyle.height += 'px'
-      swiperStyle.width += 'px'
+      wrapStyle.height += 'px'
+      wrapStyle.width += 'px'
     }
 
-  //   return (
-  //     <View className="tab-page-wrap-comp" style={swiperStyle}>
-  //       <ScrollView 
-  //         scrollY
-  //         style={{
-  //           height: 300,
-  //         }}
-  //       >
-  //         <Swiper
-  //           current={this.props.current}
-  //           onChange={this.props.onChange}
-  //           style={{
-  //             // height: 999999,
-  //           }}
-  //         >
-  //           {
-  //             pages && pages.map((page, i) => {
-  //               const PageEl = page.el
-  //               // console.log('FIN pageEl', PageEl)
-  //               return (
-  //                 <SwiperItem key={page.key} style={{}}>
-  //                     <PageEl />
-  //                 </SwiperItem>
-  //               )
-  //             })
-  //           }
-  //         </Swiper>
-  //       </ScrollView>
-  //     </View>
-  //   )
-  // }
+    let swiperStyle : any = {
+      width: device.windowWidth,
+      // RN 会自动给一定的高度，不能主动赋值
+    }
+
+    // h5 必须修改滚动内容的高度为视口高度才能左右滑动
+    if(device.isH5()) {
+      swiperStyle.height = '100vh'
+      // swiperStyle.height = height
+    }
+
     return (
-      <View className="tab-page-wrap-comp" style={swiperStyle}>
-        <Swiper
-          current={this.props.current}
-          onChange={this.props.onChange}
-          style={swiperStyle}
+      <View className="tab-page-wrap-comp" style={wrapStyle}>
+        <ScrollView 
+          scrollY
+          style={{
+            height,
+            width: device.windowWidth,
+          }}
         >
-          {
-            pages && pages.map((page, i) => {
-              const PageEl = page.el
-              // console.log('FIN pageEl', PageEl)
-              return (
-                <SwiperItem key={page.key} style={{}}>
-                  <View><Text>xxxxxxxxxxxxx</Text></View>
-                  <View>
-                    <ScrollView 
-                      scrollY
-                      style={{
-                        height: 300,
-                      }}
-                    >
+          <Swiper
+            current={this.props.current}
+            onChange={this.props.onChange}
+            style={swiperStyle}
+          >
+            {
+              pages && pages.map((page, i) => {
+                const PageEl = page.el
+                // 暂不支持微信端
+                // console.log('FIN pageEl', PageEl)
+                return (
+                  <SwiperItem key={page.key} style={{
+                    width: device.windowWidth,
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start',
+                   }}>
                       <PageEl />
-                    </ScrollView>
-                  </View>
-                </SwiperItem>
-              )
-            })
-          }
-        </Swiper>
+                  </SwiperItem>
+                )
+              })
+            }
+          </Swiper>
+        </ScrollView>
       </View>
     )
   }

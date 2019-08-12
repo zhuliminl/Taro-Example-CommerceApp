@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, SwiperItem } from '@tarojs/components';
 import TabPageWrap from '@/components/tab-page-wrap'
+import {device} from '@/utils/device'
 
 const TAB_LIST = [
   {
@@ -18,30 +19,17 @@ const TAB_LIST = [
 ]
 
 const FooA = () => (
-  <View style={{backgroundColor: 'blue', height: 300, display: 'flex', flexDirection: 'column'}}>
-    <Text>FooA</Text>
-    <Text>FooA</Text>
-    <Text>FooA</Text>
-    <Text>FooA</Text>
-    <Text>FooA</Text>
-    <Text>FooA</Text>
-    <Text>FosfdsoA</Text>
-    <Text>FooA</Text>
-    <Text>Foob</Text>
-    <Text>FooA</Text>
-    <Text>FosdA</Text>
-    <Text>FooA</Text>
-    <Text>barA</Text>
-    <Text>sauloA</Text>
+  <View style={{backgroundColor: 'green', flexDirection: 'column', justifyContent: 'flex-start'}}>
+    <View><Text>FooA</Text></View>
   </View>
 )
 const FooB = () => (
-  <View style={{background: 'green'}}>
+  <View style={{backgroundColor: 'green'}}>
     <Text>FooB</Text>
   </View>
 )
 const FooC = () => (
-  <View style={{background: 'red'}}>
+  <View style={{backgroundColor: 'red'}}>
     <Text>FooC</Text>
   </View>
 )
@@ -72,11 +60,30 @@ class Seckill extends Component {
   }
 
 render () {
+  let scrollStyle: any = {}
+  if (device.isH5()) {
+    scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
+  }
+
+  if (device.isIOS()) {
+    scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+  }
+
+  if (device.isAndroid()) {
+    scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+  }
+
+  if (device.isWeChat()) {
+    scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
+    scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
+  }
+
   return (
       <View>
         <TabPageWrap
           scrollable
-          height={300}
+          height={scrollStyle.height}
+          // height={400}
           current={0}
           onChange={() => {
             console.log('FIN onTabPageWrap change', )
