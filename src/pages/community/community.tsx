@@ -1,12 +1,30 @@
-import { ScrollView, Text, View } from '@tarojs/components';
-import Taro, { Component, hideToast } from '@tarojs/taro';
+import './community.scss'
 
+import { ScrollView, Text, View } from '@tarojs/components';
+import Taro, { Component, hideToast, startBluetoothDevicesDiscovery } from '@tarojs/taro';
+
+import Market from '@/constants/market'
 import Moments from './moments'
+import SearchBar from '@/components/search-bar'
 import Spin from '@/components/spin'
 import TAB_LIST from '@/constants/community-tab'
 import Tab from '@/components/tab'
+import TabPageWrap from '@/components/tab-page-wrap'
 import { device } from '@/utils/device'
+
 // import { host } from '@/constants/host'
+
+const FooB = () => (
+  <View style={{ backgroundColor: 'green' }}>
+    <Text>FooB</Text>
+  </View>
+)
+const FooC = () => (
+  <View style={{ backgroundColor: 'red' }}>
+    <Text>FooC</Text>
+  </View>
+)
+
 
 class Community extends Component {
   config = {
@@ -52,11 +70,11 @@ class Community extends Component {
   render() {
     let scrollStyle: any = {}
     if (device.isH5()) {
-      scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
+      scrollStyle.height = device.windowHeight - 55 - 100   // 必须大于底部栏目固定高度，才不会导致滑动障碍
     }
 
     if (device.isIOS()) {
-      scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+      scrollStyle.height = device.windowHeight - 49.5 - 40   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
     if (device.isAndroid()) {
@@ -70,27 +88,60 @@ class Community extends Component {
 
     return (
       <View className='community-page'>
-        <ScrollView
+        <Tab
+          noScroll
+          marginLeft={65}
+          itemWidth={80}
+          current={this.state.current}
+          list={Market}
+          onChange={(item) => {
+            console.log('FIN tab item', item)
+            this.setState({
+              current: item.key
+            })
+          }}
+        />
+
+        <TabPageWrap
+          height={scrollStyle.height}
+          current={0}
+          onChange={(detail) => {
+            console.log('FIN onTabPageWrap change', detail)
+          }}
+          pages={[
+            {
+              key: 0,
+              el: () => {
+                console.log('FIN xxxx moment')
+                return (
+                  // <View style={{
+                  //   width: device.windowWidth,
+                  // }}>
+                      <Moments moments={this.state.moments} />
+                      // <Spin isShow />
+                  // </View>
+                )
+              }
+            },
+            {
+              key: 1,
+              el: FooB,
+            },
+            {
+              key: 2,
+              el: FooC,
+            },
+          ]}
+        />
+
+        {/* <ScrollView
           scrollY
           style={scrollStyle}
           onScrollToLower={this.handleOnScrollToLower.bind(this)}
         >
-          <Tab
-            noScroll
-            marginLeft={65}
-            itemWidth={80}
-            current={this.state.current}
-            list={TAB_LIST}
-            onChange={(item) => {
-              console.log('FIN tab item', item)
-              this.setState({
-                current: item.key
-              })
-            }}
-          />
           <Moments moments={this.state.moments} />
           <Spin isShow />
-        </ScrollView>
+        </ScrollView> */}
       </View>
     )
   }
