@@ -6,7 +6,7 @@ import Spin from '@/components/spin'
 import TAB_LIST from '@/constants/community-tab'
 import Tab from '@/components/tab'
 import { device } from '@/utils/device'
-import { host } from '@/constants/host'
+// import { host } from '@/constants/host'
 
 class Community extends Component {
   config = {
@@ -27,7 +27,7 @@ class Community extends Component {
 
   fetchMoments = async () => {
     const { min_id } = this.state
-    const url = `${host}/selected_item/apikey/saul/min_id/${min_id}`  // 跨域使用
+    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/${min_id}`  // 跨域使用
     // const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/1`
     try {
       const resp = await Taro.request({ url })
