@@ -18,6 +18,7 @@ if(dirName.indexOf('_') > 0) {
 const mainFold = './src/components-poly'
 const cpsDir = `${mainFold}/${dirName}`
 console.log('F', cpsDir)
+
 fs.mkdirSync(cpsDir)
 process.chdir(cpsDir)
 
