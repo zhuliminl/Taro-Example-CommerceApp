@@ -39,12 +39,17 @@ export default class Talk extends Component<TalkInterface, {}> {
 
   render() {
     const talks = this.state.talks || {}
-    const imglist = talks['topdata'] && talks['topdata'].map(item => item['article_banner'])
+    const imglist = talks['topdata'] && talks['topdata'].map(item => {
+      return {
+        url: item['article_banner'],
+        title: item['shorttitle'],
+      }
+    })
     // console.log('imgList', imglist)
-    
+
     return (
       <View className="talk-comp">
-        <SwiperPoly 
+        <SwiperPoly
           imgList={imglist}
         />
       </View>

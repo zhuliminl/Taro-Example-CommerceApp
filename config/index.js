@@ -79,6 +79,17 @@ const config = {
     }
   },
   h5: {
+    webpackChain (chain, webpack) {
+      chain.merge({
+        resolve: {
+          alias: {
+            'react': 'nervjs',
+            'react-dom': 'nervjs',
+            'create-react-class': "nerv-create-class"    }
+        }
+      })
+    },
+
     publicPath: '/',
     staticDirectory: 'static',
     module: {

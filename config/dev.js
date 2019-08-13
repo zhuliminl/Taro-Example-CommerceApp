@@ -11,6 +11,7 @@ module.exports = {
   },
   weapp: {},
   h5: {
+
     devServer: {
       proxy: {
         '/api/': {
