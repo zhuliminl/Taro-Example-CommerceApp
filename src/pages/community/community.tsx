@@ -1,20 +1,12 @@
-import './community.scss'
-
-import { ScrollView, Text, View } from '@tarojs/components';
-import Taro, { Component, hideToast, startBluetoothDevicesDiscovery } from '@tarojs/taro';
-
-import Market from '@/constants/market'
-import Moments from './moments'
-import SearchBar from '@/components/search-bar'
-import Spin from '@/components/spin'
-import TAB_LIST from '@/constants/community-tab'
-import Tab from '@/components/tab'
-import { device } from '@/utils/device'
-import Topic from './topic'
-import Talk from './talk'
-
-// import { host } from '@/constants/host'
-
+import Tab from '@/components/tab';
+import TAB_LIST from '@/constants/community-tab';
+import { device } from '@/utils/device';
+import { View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
+import './community.scss';
+import Moments from './moments';
+import Talk from './talk';
+import Topic from './topic';
 
 
 class Community extends Component {
@@ -22,40 +14,8 @@ class Community extends Component {
     navigationBarTitleText: '好省圈',
     disableScroll: true,
   }
-
   state = {
-    loading: false,
     current: 0,
-    min_id: 1,
-    moments: [],
-  }
-
-  componentDidMount = () => {
-    this.fetchMoments()
-  }
-
-  fetchMoments = async () => {
-    const { min_id } = this.state
-    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/${min_id}`  // 跨域使用
-    // const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/1`
-    try {
-      const resp = await Taro.request({ url })
-      const moments = resp && resp.data && resp.data.data
-      const min_id = resp && resp.data['min_id']
-      const preState = this.state
-
-      this.setState({
-        moments: preState.moments.concat(moments),
-        min_id,
-      })
-
-    } catch (err) {
-      console.log('FIN get moments err', err)
-    }
-  }
-
-  handleOnScrollToLower = () => {
-    this.fetchMoments()
   }
 
   render() {
@@ -95,14 +55,7 @@ class Community extends Component {
         />
         {
           this.state.current === 0 &&
-          <ScrollView
-            scrollY
-            style={scrollStyle}
-            onScrollToLower={this.handleOnScrollToLower.bind(this)}
-          >
-            <Moments moments={this.state.moments} />
-            <Spin isShow />
-          </ScrollView>
+          <Moments scrollStyle={scrollStyle} />
         }
         {
           this.state.current === 1 &&

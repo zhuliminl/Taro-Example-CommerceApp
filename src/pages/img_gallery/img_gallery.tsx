@@ -1,15 +1,13 @@
-import './img_gallery.scss'
+import './img_gallery.scss';
 
-import Taro, { Component } from '@tarojs/taro'
-import { Text, View, Image, Swiper, SwiperItem } from '@tarojs/components'
-import RoundBack from '@/components/round-back'
-import DownloadBtn from '@/components/download-btn'
-import PageNumber from '@/components/page-number'
+import { Image, Swiper, SwiperItem, View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
 
-
-import { parseUrlParams } from '@/utils/navigation'
-
-import { device } from '@/utils/device'
+import DownloadBtn from '@/components/download-btn';
+import PageNumber from '@/components/page-number';
+import RoundBack from '@/components/round-back';
+import { device } from '@/utils/device';
+import { parseUrlParams } from '@/utils/navigation';
 
 interface ImgGalleryInterface {
 }

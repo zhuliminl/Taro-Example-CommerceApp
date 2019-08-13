@@ -1,14 +1,15 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, ScrollView } from '@tarojs/components'
-import './search.scss'
-import SearchBar from '@/components/search-bar'
-import Tab from '@/components/tab'
-import ItemListA from '@/components/item-list-a'
-import Spin from '@/components/spin'
-import Market from '@/constants/market'
-import { device } from '@/utils/device'
-import { parseUrlParams } from '@/utils/navigation'
+import './search.scss';
 
+import { ScrollView, View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
+
+import ItemListA from '@/components/item-list-a';
+import Market from '@/constants/market';
+import SearchBar from '@/components/search-bar';
+import Spin from '@/components/spin';
+import Tab from '@/components/tab';
+import { device } from '@/utils/device';
+import { parseUrlParams } from '@/utils/navigation';
 
 export default class Search extends Component {
   config = {

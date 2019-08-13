@@ -1,12 +1,13 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
 import './search_transition.scss'
-import SearchBar from '@/components/search-bar'
+
+import { Image, Text, View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro'
+
 import LargetTitle from '@/components/large-title'
+import Market from '@/constants/market'
+import SearchBar from '@/components/search-bar'
 import Tab from '@/components/tab'
 import Tags from '@/components/tags'
-import Market from '@/constants/market'
-
 import video_guide from '@/assets/image/video-guide.png'
 
 const TAG_LIST = [
