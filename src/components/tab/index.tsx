@@ -1,8 +1,10 @@
-import Taro, { Component } from '@tarojs/taro';
-import { View, Text, ScrollView } from '@tarojs/components';
 import './index.scss'
-import { device } from '@/utils/device'
+
+import { ScrollView, Text, View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
+
 import { animateValue } from '@/utils/animation'
+import { device } from '@/utils/device'
 
 interface TabInterface {
   onChange: (any) => void;
