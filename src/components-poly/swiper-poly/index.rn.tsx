@@ -2,10 +2,10 @@
 import React, { Component } from 'react'
 import { View, Text, Image } from 'react-native'
 
-interface BannerPolyInterface {
+interface SwiperPolyInterface {
 }
 
-export default class BannerPoly extends Component<BannerPolyInterface,{}> {
+export default class SwiperPoly extends Component<SwiperPolyInterface,{}> {
 
   componentDidMount = () => {
   }
@@ -14,7 +14,7 @@ export default class BannerPoly extends Component<BannerPolyInterface,{}> {
     return (
       <View>
         <Text>
-        rn banner-poly
+        rn swiper-poly
         </Text>
       </View>
     )

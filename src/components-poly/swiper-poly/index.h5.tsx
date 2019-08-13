@@ -1,10 +1,11 @@
 
 import Taro, { Component } from '@tarojs/taro'
 
-interface BannerPolyInterface {
+interface SwiperPolyInterface {
+  imglist: any[];
 }
 
-export default class BannerPoly extends Component<BannerPolyInterface,{}> {
+export default class SwiperPoly extends Component<SwiperPolyInterface,{}> {
 
   componentDidMount = () => {
   }
@@ -12,7 +13,6 @@ export default class BannerPoly extends Component<BannerPolyInterface,{}> {
   render() {
     return (
       <div>
-      hhhhh5
       </div>
     )
   }

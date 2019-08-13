@@ -2,19 +2,19 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 
-interface BannerPolyInterface {
+interface SwiperPolyInterface {
 }
 
-export default class BannerPoly extends Component<BannerPolyInterface,{}> {
+export default class SwiperPoly extends Component<SwiperPolyInterface,{}> {
 
   componentDidMount = () => {
   }
 
   render() {
     return (
-      <View className="banner-poly-comp">
+      <View className="swiper-poly-comp">
         <Text>
-        weapp banner-poly
+        weapp swiper-poly
         </Text>
       </View>
     )

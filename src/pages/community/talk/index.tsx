@@ -1,9 +1,13 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
+/* eslint-disable */
+import SwiperPoly from '@/components-poly/swiper-poly/index'
+/* eslint-enable */
+
 
 /* eslint-disable */
-export const host = HOST
+const host = HOST
 /* eslint-enable */
 
 
@@ -17,7 +21,6 @@ export default class Talk extends Component<TalkInterface, {}> {
   }
 
   componentDidMount = async () => {
-    console.log('FIN xxxxxxxxxxxx', host)
 
     // const url = `https://v2.api.haodanku.com/talent_info/apikey/saul/talentcat/1`
     const url = `${host}/talent_info/apikey/saul/talentcat/1`
@@ -41,9 +44,9 @@ export default class Talk extends Component<TalkInterface, {}> {
     
     return (
       <View className="talk-comp">
-        <Text>
-          talk
-        </Text>
+        <SwiperPoly 
+          imgList={imglist}
+        />
       </View>
     )
   }
