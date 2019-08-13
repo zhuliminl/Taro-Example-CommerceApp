@@ -10,19 +10,11 @@ import Spin from '@/components/spin'
 import TAB_LIST from '@/constants/community-tab'
 import Tab from '@/components/tab'
 import { device } from '@/utils/device'
+import Topic from './topic'
+import Talk from './talk'
 
 // import { host } from '@/constants/host'
 
-const FooB = () => (
-  <View style={{ backgroundColor: 'green' }}>
-    <Text>FooB</Text>
-  </View>
-)
-const FooC = () => (
-  <View style={{ backgroundColor: 'red' }}>
-    <Text>FooC</Text>
-  </View>
-)
 
 
 class Community extends Component {
@@ -114,7 +106,11 @@ class Community extends Component {
         }
         {
           this.state.current === 1 &&
-          <FooB />
+          <Topic />
+        }
+        {
+          this.state.current === 2 &&
+          <Talk />
         }
 
       </View>
