@@ -53,8 +53,6 @@ export default class Moments extends Component<MomentsInterface, {}> {
 
 
   render() {
-
-    console.log('FIN momment props', this.props)
     const { moments = [] } = this.state
 
     return (

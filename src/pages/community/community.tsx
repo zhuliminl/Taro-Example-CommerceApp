@@ -15,26 +15,26 @@ class Community extends Component {
     disableScroll: true,
   }
   state = {
-    current: 0,
+    current: 1,
   }
 
   render() {
     let scrollStyle: any = {}
     if (device.isH5()) {
-      scrollStyle.height = device.windowHeight - 55  // 必须大于底部栏目固定高度，才不会导致滑动障碍
+      scrollStyle.height = device.windowHeight - 55 - 44   // 必须大于底部栏目固定高度，才不会导致滑动障碍
     }
 
     if (device.isIOS()) {
-      scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+      scrollStyle.height = device.windowHeight - 49.5 - 60   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
     if (device.isAndroid()) {
-      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5 - 58   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
     if (device.isWeChat()) {
-      scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
-      scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
+      // scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
+      scrollStyle.height = (Taro.getSystemInfoSync().screenHeight - 120 ) + 'px'   // 手机上还是超出，需要集中处理这个问题 
     }
 
     return (
@@ -59,7 +59,7 @@ class Community extends Component {
         }
         {
           this.state.current === 1 &&
-          <Topic />
+          <Topic scrollStyle={scrollStyle}/>
         }
         {
           this.state.current === 2 &&

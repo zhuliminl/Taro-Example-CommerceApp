@@ -1,0 +1,61 @@
+.topic-item-comp {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 30px;
+  margin-top: 40px;
+  // background-color: #999;
+}
+
+
+.topic-banner-wrap {
+  position: relative;
+  width: 100%;
+
+}
+
+.topic-banner-img {
+  width: 750 - 60px;
+}
+
+.topic-date-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  margin-right: 30px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  height: 50px;
+  display: flex;
+  // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
+  flex-direction: row;   
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #F5F6F7;
+  // background-color: #999;
+  /*postcss-pxtransform rn eject enable*/
+  line-height: 26px;
+  bottom: 30px;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.topic-date-txt {
+  font-size: 26px;
+  color: #666;
+}
+
+.topic-title-txt {
+  font-size: 40px;
+  line-height: 80px;
+  font-weight: bold;
+  color: #111;
+
+}
+.topic-title-desc-txt {
+  padding: 0 10px;
+  font-size: 26px;
+  line-height: 40px;
+  color: #666;
+
+}
