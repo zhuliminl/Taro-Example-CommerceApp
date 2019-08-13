@@ -13,12 +13,19 @@ export default class ItemCarousel extends Component<ItemCarouselInterface, {}> {
   }
 
   render() {
+    let width = device.windowWidth
+    let height = device.windowWidth
+    if(device.isWeChat()) {
+      width += 'px'
+      height += 'px'
+    }
+
     return (
       <View className="item-carousel-comp">
         <Swiper
           style={{
-            width: device.windowWidth,
-            height: device.windowWidth,
+            width,
+            height,
           }}
           duration={300}
           interval={3000}
@@ -36,8 +43,8 @@ export default class ItemCarousel extends Component<ItemCarouselInterface, {}> {
                 <SwiperItem key={item}>
                   <Image
                     style={{
-                      width: device.windowWidth,
-                      height: device.windowWidth,
+                      width,
+                      height,
                     }}
                     src={item}
                   />
