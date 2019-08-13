@@ -91,8 +91,11 @@ export default class Estimate extends Component {
     }
 
     if (device.isAndroid()) {
-      scrollHeight = device.windowHeight - 70   // 安卓暂时没摸清标准
+      blankHeight = 48
+      scrollHeight = device.windowHeight - 48 - 24   
     }
+
+
 
     let swiperHeight: any = 223   // 具体数值得具体看页面自身大小, 避免 RN 居中
     if (device.isWeChat()) {

@@ -16,11 +16,11 @@ export default class TopicItem extends Component<TopicItemInterface,{}> {
   render() {
     const {topic = {}} = this.props
     let bannerImgSrc = 'http://img.haodanku.com/' + topic['image']
-    console.log('FIN topic', topic)
+    // console.log('FIN topic', topic)
 
     return (
       <View className="topic-item-comp" onClick={() => {
-        navigateTo('topic_items', {topicid: topic['id']})
+        navigateTo('topic_items', {topicid: topic['id'], topicName: topic['name']})
       }}>
         <View className='topic-banner-wrap'>
           <Image className='topic-banner-img' src={bannerImgSrc} mode={'scaleToFill'} />

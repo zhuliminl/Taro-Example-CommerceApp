@@ -253,13 +253,13 @@ class Home extends Component {
     }
 
     if (device.isAndroid()) {
-      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 49   // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
     if (device.isWeChat()) {
       scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
       scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
-      console.log('FIN item scroll style for wechat', scrollStyle)
+      // console.log('FIN item scroll style for wechat', scrollStyle)
     }
 
     let swiperStyle: any = {
