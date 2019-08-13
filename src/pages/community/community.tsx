@@ -90,9 +90,10 @@ class Community extends Component {
         <Tab
           noScroll
           marginLeft={65}
+          marginTop={20}
           itemWidth={80}
           current={this.state.current}
-          list={Market}
+          list={TAB_LIST}
           onChange={(item) => {
             console.log('FIN tab item', item)
             this.setState({
@@ -100,15 +101,22 @@ class Community extends Component {
             })
           }}
         />
+        {
+          this.state.current === 0 &&
+          <ScrollView
+            scrollY
+            style={scrollStyle}
+            onScrollToLower={this.handleOnScrollToLower.bind(this)}
+          >
+            <Moments moments={this.state.moments} />
+            <Spin isShow />
+          </ScrollView>
+        }
+        {
+          this.state.current === 1 &&
+          <FooB />
+        }
 
-        <ScrollView
-          scrollY
-          style={scrollStyle}
-          onScrollToLower={this.handleOnScrollToLower.bind(this)}
-        >
-          <Moments moments={this.state.moments} />
-          <Spin isShow />
-        </ScrollView>
       </View>
     )
   }

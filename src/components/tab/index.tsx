@@ -11,6 +11,7 @@ interface TabInterface {
   list: any[];
   itemWidth: any;
   marginLeft?: any;
+  marginTop?: any;
   backgroundColor?: any;
 }
 
@@ -103,19 +104,26 @@ class Tab extends Component<TabInterface, TabStateInterface> {
   render() {
     const { list } = this.props
     let leftX: any = this.state.leftX
-    let { itemWidth, marginLeft, backgroundColor } = this.props
+    let { itemWidth, marginLeft, marginTop = 0, backgroundColor } = this.props
+
+    if(device.isH5()) {
+      marginTop = 0
+    }
+
+
     if (device.isWeChat()) {
       // 微信端必须重新设置
       leftX = Taro.pxTransform(leftX * 2)
       itemWidth = Taro.pxTransform(itemWidth * 2)
-      // marginLeft = Taro.pxTransform(marginLeft*2)
-      marginLeft = 0   // 小程序太难伺候了，暂时设为 0 不影响排版
+      marginLeft = Taro.pxTransform(marginLeft*2)
+      marginTop = Taro.pxTransform(marginTop*2)
     }
 
     return (
       <ScrollView className='tab-wrap'
         style={{
           marginLeft: marginLeft || 0,
+          marginTop,
           backgroundColor: backgroundColor || '#FFF',
         }}
         scrollX

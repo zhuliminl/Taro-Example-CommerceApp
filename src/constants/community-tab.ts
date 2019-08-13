@@ -6,7 +6,7 @@ export default [
   },
   {
     key: 1,
-    title: '精编文案',
+    title: '精选专题',
     desc: 'xxx',
   },
   {
