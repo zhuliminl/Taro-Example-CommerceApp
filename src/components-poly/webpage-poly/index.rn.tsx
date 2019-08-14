@@ -6,6 +6,7 @@ import { WebView } from 'react-native-webview';
 
 interface WebpagePolyInterface {
   url: string;
+  frameStyle: any;
 }
 
 export default class WebpagePoly extends Component<WebpagePolyInterface,{}> {
@@ -15,7 +16,13 @@ export default class WebpagePoly extends Component<WebpagePolyInterface,{}> {
 
   render() {
     return (
-      <WebView source={{ uri: 'https://facebook.github.io/react-native/' }} />
+      <View
+        style={this.props.frameStyle}
+      >
+        <WebView 
+          source={{ uri: 'https://www.baidu.com' }} 
+        />
+      </View>
     )
   }
 }
