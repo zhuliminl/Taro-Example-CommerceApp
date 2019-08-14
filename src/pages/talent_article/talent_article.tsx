@@ -17,7 +17,7 @@ export default class TalentArticle extends Component {
   render() {
     return (
       <View className="talent_article-page">
-        <HeaderWebpage />
+        <HeaderWebpage backgroundColor={'#FE1123'} title={'达人文章'}/>
         <WebPage />
       </View>
     )

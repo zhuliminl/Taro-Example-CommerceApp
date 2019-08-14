@@ -1,1 +1,41 @@
 
+.header-webpage-comp {
+  position: absolute;
+  z-index: 99999;
+  background-color: #FFF;
+  width: 100%;
+  height: 100px;   // 必须写死，同时 ios 端另外有覆盖
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+   /*postcss-pxtransform rn eject enable*/
+   position: fixed;
+   /*postcss-pxtransform rn eject disable*/
+}
+
+.header-webpage-back-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-webpage-title-txt {
+  font-size: 34px;
+  color: #FFF;
+  line-height: 36px;
+  flex: 1;
+  text-align: center;
+}
+
+.header-webpage-icon-img {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-webpage-reload-wrap {
+  margin-right: 30px;
+}
