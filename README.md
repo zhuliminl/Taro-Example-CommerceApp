@@ -45,6 +45,8 @@ RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro
 
 ### RN 端
 
+![image](https://raw.githubusercontent.com/zhuliminl/Taro-Example-CommerceApp/master/bug_gif/rn1.gif)
+
 <img src="screenshots/rn_detail.png" width="375px" height="667px" /> <img src="screenshots/rn_search.png" width="375px" height="667px" />  <img src="screenshots/rn_2.png" width="416.5px" height="667px" />   <img src="screenshots/rn_4.png" width="416.5px" height="667px" />   <img src="screenshots/rn_5.png" width="416.5px" height="667px" />   <img src="screenshots/rn_1.png" width="416.5px" height="667px" />
 
 ### 小程序 端
