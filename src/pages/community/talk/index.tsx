@@ -1,18 +1,15 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, ScrollView } from '@tarojs/components'
 import './index.scss'
-/* eslint-disable */
-import SwiperPoly from '@/components-poly/swiper-poly/index'
-/* eslint-enable */
 
-import Spin from '@/components/spin'
+import { ScrollView, Text, View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro'
+
 import LargeTitle from '@/components/large-title'
+import Spin from '@/components/spin'
+import SwiperPoly from '@/components-poly/swiper-poly/index'
 import ThisWeek from './this-week'
 
 
-/* eslint-disable */
 const host = HOST
-/* eslint-enable */
 
 
 interface TalkInterface {
@@ -62,7 +59,7 @@ export default class Talk extends Component<TalkInterface, {}> {
         <SwiperPoly
           imgList={imglist}
         />
-        
+
         <LargeTitle title={'本周推荐'} />
         <ThisWeek talkList={newData} />
 

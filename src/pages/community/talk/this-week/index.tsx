@@ -18,7 +18,7 @@ export default class ThisWeek extends Component<ThisWeekInterface, {}> {
     return (
       <View className="this-week-comp">
         <ScrollView
-          showsHorizontalScrollIndicator={false}
+          // showsHorizontalScrollIndicator={false}
           scrollX
           style={{
             width: device.windowWidth,
