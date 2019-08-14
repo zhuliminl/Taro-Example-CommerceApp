@@ -45,6 +45,7 @@ export default class Talk extends Component<TalkInterface, {}> {
       return {
         url: item['article_banner'],
         title: item['shorttitle'],
+        type: 'image',             // 使用 mp-colorui 必须要声明好 item 类型
       }
     })
 
