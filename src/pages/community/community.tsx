@@ -68,7 +68,7 @@ class Community extends Component {
         }
         {
           this.state.current === 2 &&
-          <Talk />
+          <Talk scrollStyle={scrollStyle} />
         }
 
       </View>

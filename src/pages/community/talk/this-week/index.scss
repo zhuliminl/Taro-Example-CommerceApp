@@ -1,0 +1,50 @@
+.this-week-comp {
+  // padding-bottom: 20px;
+}
+
+.this-week-scroll-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.this-week-item-wrap {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.this-week-item-img {
+  width: 300*1.4px;
+  height: 100*1.4px;
+  border-radius: 8px;
+}
+
+
+.this-week-item-title {
+  font-size: 30px;
+  line-height: 32px;
+  padding: 10px 0;
+  color: #666;
+  display: flex;
+}
+
+.this-week-user-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.this-week-user-avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+
+.this-week-user-name-txt {
+  margin-left: 16px;
+  font-size: 26px;
+  line-height: 28px;
+  color: #999;
+}

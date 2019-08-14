@@ -4,8 +4,11 @@
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 20px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     align-items: center;
+    /*postcss-pxtransform rn eject enable*/
+    padding-bottom: 0px;
+    /*postcss-pxtransform rn eject disable*/
 }
 
 .large-title-txt {

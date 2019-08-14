@@ -1,9 +1,13 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, ScrollView } from '@tarojs/components'
 import './index.scss'
 /* eslint-disable */
 import SwiperPoly from '@/components-poly/swiper-poly/index'
 /* eslint-enable */
+
+import Spin from '@/components/spin'
+import LargeTitle from '@/components/large-title'
+import ThisWeek from './this-week'
 
 
 /* eslint-disable */
@@ -12,11 +16,12 @@ const host = HOST
 
 
 interface TalkInterface {
+  scrollStyle: any;
 }
 
 export default class Talk extends Component<TalkInterface, {}> {
   state = {
-    isLoading: true,
+    loading: true,
     talks: {},
   }
 
@@ -30,7 +35,7 @@ export default class Talk extends Component<TalkInterface, {}> {
       // console.log('FIN talks', talks)
       this.setState({
         talks,
-        isLoading: false,
+        loading: false,
       })
     } catch (err) {
       console.log('FIN get coupons err', err)
@@ -45,14 +50,26 @@ export default class Talk extends Component<TalkInterface, {}> {
         title: item['shorttitle'],
       }
     })
-    // console.log('imgList', imglist)
+
+    const newData = talks['newdata'] || []
 
     return (
-      <View className="talk-comp">
+      <ScrollView
+        scrollY
+        style={this.props.scrollStyle}
+      >
+        <Spin isShow={this.state.loading} />
         <SwiperPoly
           imgList={imglist}
         />
-      </View>
+        
+        <LargeTitle title={'本周推荐'} />
+        <ThisWeek talkList={newData} />
+
+
+        <LargeTitle title={'大家都在逛'} />
+
+      </ScrollView>
     )
   }
 }
