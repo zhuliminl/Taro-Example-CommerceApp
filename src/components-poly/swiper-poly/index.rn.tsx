@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     // shadowRadius: 10,
     // shadowColor: 'red',
     // shadowOffset: { height: 0, width: 0 },
+    // backgroundColor: '#F5F6F7',
 
     marginTop: 10,
     marginBottom: 10,
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
     backgroundColor: 'white',
+    borderRadius: 8,
   },
   bannerImg: {
     ...StyleSheet.absoluteFillObject,
@@ -81,8 +83,8 @@ const styles = StyleSheet.create({
   },
   title: {
     height: titleHeight,
-    backgroundColor: '#F5F6F7',
-    // backgroundColor: '#FFF',
+    // backgroundColor: '#F5F6F7',
+    backgroundColor: '#FFF',
     paddingLeft: 10,
     paddingTop: 10,
     fontSize: 18,
