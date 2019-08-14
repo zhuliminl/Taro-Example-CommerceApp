@@ -21,7 +21,8 @@ class Community extends Component {
   render() {
     let scrollStyle: any = {}
     if (device.isH5()) {
-      scrollStyle.height = device.windowHeight - 55 - 44   // 必须大于底部栏目固定高度，才不会导致滑动障碍
+      // scrollStyle.height = device.windowHeight - 55 - 44   // 必须大于底部栏目固定高度，才不会导致滑动障碍
+      scrollStyle.height = device.windowHeight - 55 - 35   // 必须大于底部栏目固定高度，才不会导致滑动障碍
     }
 
     if (device.isIOS()) {
