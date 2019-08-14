@@ -13,7 +13,7 @@ export default class SwiperPoly extends Component<SwiperPolyInterface,{}> {
 
   render() {
     const {imgList = []} = this.props
-    // console.log('FIN imglist', imgList)
+    console.log('FIN imglist', imgList)
     const bannerWidth = 300
     const bannerHeight = 300
     return (
