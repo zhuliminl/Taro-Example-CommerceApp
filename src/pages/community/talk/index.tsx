@@ -7,6 +7,7 @@ import LargeTitle from '@/components/large-title'
 import Spin from '@/components/spin'
 import SwiperPoly from '@/components-poly/swiper-poly/index'
 import ThisWeek from './this-week'
+import HangAround from './hang-around'
 
 
 const host = HOST
@@ -25,7 +26,7 @@ export default class Talk extends Component<TalkInterface, {}> {
   componentDidMount = async () => {
 
     // const url = `https://v2.api.haodanku.com/talent_info/apikey/saul/talentcat/1`
-    const url = `${host}/talent_info/apikey/saul/talentcat/1`
+    const url = `${host}/talent_info/apikey/saul/talentcat/0`
     try {
       const resp = await Taro.request({ url })
       const talks = resp && resp.data && resp.data.data
@@ -51,6 +52,16 @@ export default class Talk extends Component<TalkInterface, {}> {
 
     const newData = talks['newdata'] || []
 
+    const clickData = talks['clickdata'] || []
+    let talent_Category = talks['talent_Category'] || {}
+    talent_Category['0'] = "全部"
+    const cats = Object.keys(talent_Category).map((item, i) => {
+      return {
+        key: i,
+        title: talent_Category[item]
+      }
+    })
+
     return (
       <ScrollView
         scrollY
@@ -64,8 +75,8 @@ export default class Talk extends Component<TalkInterface, {}> {
         <LargeTitle title={'本周推荐'} />
         <ThisWeek talkList={newData} />
 
-
         <LargeTitle title={'大家都在逛'} />
+        <HangAround talkList={clickData} cats={cats} />
 
       </ScrollView>
     )

@@ -3,7 +3,7 @@
     flex-direction: row;
     padding-left: 30px;
     padding-right: 30px;
-    padding-top: 20px;
+    padding-top: 50px;
     padding-bottom: 10px;
     align-items: center;
     /*postcss-pxtransform rn eject enable*/
@@ -12,7 +12,8 @@
 }
 
 .large-title-txt {
-    font-size: 34px;
+    // font-size: 34px;
+    font-size: 44px;
     font-weight: bold;
     color: #111;
     flex: 1;

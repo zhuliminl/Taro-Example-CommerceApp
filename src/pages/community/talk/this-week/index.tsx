@@ -14,7 +14,6 @@ export default class ThisWeek extends Component<ThisWeekInterface, {}> {
 
   render() {
     const { talkList = [] } = this.props
-    console.log('FIN talkList', talkList)
     return (
       <View className="this-week-comp">
         <ScrollView

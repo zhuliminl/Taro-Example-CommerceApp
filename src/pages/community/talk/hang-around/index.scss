@@ -1,0 +1,105 @@
+
+.hang-around-comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hand-around-cats-wrap {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.hand-around-cat-item-wrap {
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  height: 40px;
+  display: flex;
+  // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
+  flex-direction: row;   
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  // background-color: #F5F6F7;
+  /*postcss-pxtransform rn eject enable*/
+  line-height: 26px;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.hand-around-cat-itme-title-txt {
+  line-height: 30px;
+  font-size: 28px;
+}
+
+
+.hand-around-item-wrap {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 30px;
+  background-color: #f5f6f7;
+  padding: 30px;
+  // width: 600px;
+}
+
+.hand-around-item-img-wrap {
+  position: relative;
+
+}
+
+$bannerWidth: 750 - 60 - 60px;   // 算入内外的边距
+.hand-around-item-img {
+  border-radius: 12px;
+  width: $bannerWidth;
+  height: $bannerWidth/3;       // 根据图片比例来保证图片不变形
+}
+
+.hand-around-item-label-wrap {
+  background-color: #FE1123;
+  position: absolute;
+  bottom: -18px;
+  left: 20px;
+
+  margin-right: 20px;
+  border-radius: 20px;
+  height: 40px;
+  display: flex;
+  // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
+  flex-direction: row;   
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #ff7680;
+  // background-color: #999;
+  /*postcss-pxtransform rn eject enable*/
+  line-height: 26px;
+  bottom: -12px;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.hand-around-item-label-txt {
+  position: relative;
+  top: 1px;      // 小技巧！
+  line-height: 28px;
+  font-size: 26px;
+  color: #FFF;
+}
+.hand-around-item-title-txt {
+  margin-top: 16px;
+  line-height: 50px;
+  font-size: 34px;
+  color: #333;
+
+}
+
+.hand-around-item-desc-txt {
+  line-height: 36px;
+  font-size: 28px;
+  color: #9c9aa0;
+
+}
