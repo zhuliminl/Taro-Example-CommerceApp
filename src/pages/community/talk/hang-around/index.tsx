@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
+import {navigateTo} from '@/utils/navigation'
 
 interface HangAroundInterface {
   talkList: any[];
@@ -54,7 +55,11 @@ export default class HangAround extends Component<HangAroundInterface, {}> {
             const cat = cats[talentcat] || {}
             const labelTxt = cat['title'] || ''
             return (
-              <View className='hand-around-item-wrap' key={i}>
+              <View className='hand-around-item-wrap' key={i} 
+                onClick={() => {
+                  navigateTo('talent_article', {title: 'xxxx', id: item['id']})
+                }}
+              >
                 <View className='hand-around-item-img-wrap'>
                   <Image className='hand-around-item-img' src={item['article_banner']} mode={'aspectFit'} />
                   <View className='hand-around-item-label-wrap'>

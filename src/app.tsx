@@ -41,6 +41,7 @@ class App extends Component {
       'pages/supersort/supersort',
       'pages/img_gallery/img_gallery',
       'pages/topic_items/topic_items',
+      'pages/talent_article/talent_article',
     ],
     window: {
       backgroundTextStyle: 'light',
