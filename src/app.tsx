@@ -76,12 +76,12 @@ class App extends Component {
           selectedIconPath: "./assets/tab-bar/seckill-active.png",
           text: "大牌秒杀"
         },
-        // {
-        //   pagePath: "pages/partner/partner",
-        //   iconPath: "./assets/tab-bar/partner.png",
-        //   selectedIconPath: "./assets/tab-bar/home-active.png",
-        //   text: "合伙人特权"
-        // },
+        {
+          pagePath: "pages/partner/partner",
+          iconPath: "./assets/tab-bar/partner.png",
+          selectedIconPath: "./assets/tab-bar/home-active.png",
+          text: "定制页"
+        },
         {
           pagePath: "pages/user/user",
           iconPath: "./assets/tab-bar/user.png",

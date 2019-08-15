@@ -13,8 +13,10 @@
 
 }
 
+$bannerWidth: 750 - 60px;
 .topic-banner-img {
-  width: 750 - 60px;
+  width: $bannerWidth;
+  height: $bannerWidth;
 }
 
 .topic-date-wrap {
