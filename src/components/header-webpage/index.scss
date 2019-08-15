@@ -28,7 +28,7 @@
 }
 
 .header-webpage-title-txt {
-  padding-right: 30px;
+  padding-right: 60px;
   font-size: 34px;
   color: #FFF;
   line-height: 36px;
@@ -43,6 +43,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.header-webpage-icon-close-img {
+  margin-left: 30px;
 }
 
 .header-webpage-reload-wrap {

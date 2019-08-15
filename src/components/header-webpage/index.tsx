@@ -42,7 +42,7 @@ export default class HeaderWebpage extends Component<HeaderWebpageInterface, {}>
           Taro.navigateBack()
         }}>
           <Image className='header-webpage-icon-img' src={isBlackIcon ? back_img_grey : back_img} />
-          <Image className='header-webpage-icon-img' src={isBlackIcon ? close_img_grey : close_img} />
+          <Image className='header-webpage-icon-img header-webpage-icon-close-img' src={isBlackIcon ? close_img_grey : close_img} />
         </View>
         <Text className='header-webpage-title-txt' style={{color: titleColor}}>{this.props.title}</Text>
         <View className='header-webpage-reload-wrap' onClick={() => {
