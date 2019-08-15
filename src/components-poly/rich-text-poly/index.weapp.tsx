@@ -1,4 +1,5 @@
 import './index.scss'
+import '@/utils/commodity.css'
 
 import { Image, RichText, Text, View } from '@tarojs/components'
 import Taro, { Component } from '@tarojs/taro'

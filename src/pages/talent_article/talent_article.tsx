@@ -64,8 +64,8 @@ export default class TalentArticle extends Component {
               overflow: 'hidden',
               // width: '200px',
             }}
-            // nodes={escape2Html(nodes)} 
-            nodes={getHtml()}
+            nodes={escape2Html(nodes)}
+            // nodes={getHtml()}
             />
             {/* nodes={'<img class="rich-img" src="http://img.fqapps.com/Fs6YbNzVTQEaUuIu3k7K_Xbv-JMQ-600" _src="http://img.fqapps.com/Fs6YbNzVTQEaUuIu3k7K_Xbv-JMQ-600"/>'} /> */}
         </View>
@@ -76,6 +76,11 @@ export default class TalentArticle extends Component {
   }
 }
 
+function getHtml_() {
+  return `<img class="rich-img" src="http://img.alicdn.com/imgextra/i4/1809908328/O1CN01fSTq1m2BOGz7pymRH_!!1809908328.jpg" alt=""
+  class="getitemid"
+  data-itemid="597648273529" data-tkrates="20" data-itemsale="94"/>`
+}
 
 function getHtml() {
   return `<section class="section-style" style="margin: 22px 0;">
@@ -154,7 +159,9 @@ function getHtml() {
 <p><br/></p>
 <div class="single-content-one">
   <div class="single-info-one js_tobuy" id="itemid597648273529">
+
      <img class="rich-img" src="http://img.alicdn.com/imgextra/i4/1809908328/O1CN01fSTq1m2BOGz7pymRH_!!1809908328.jpg" alt="" class="getitemid" data-itemid="597648273529" data-tkrates="20" data-itemsale="94"/>
+
      <div class="single-details-one">
         <span class="phone-title single-title-one">洋气女童背带裤+上衣两件套童装 </span>
         <div class="single-coupon-one"><span class="coupon-style"><span>券</span><span class="coupon">100</span></span><span>已售 <span class="itemsale">94</span></span></div>
