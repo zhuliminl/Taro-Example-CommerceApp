@@ -7,9 +7,15 @@ import back_img from '@/assets/icon/back_white.png'
 import close_img from '@/assets/icon/close_white.png'
 import reload_img from '@/assets/icon/reload_white.png'
 
+import back_img_grey from '@/assets/icon/back_grey.png'
+import close_img_grey from '@/assets/icon/close_grey.png'
+import reload_img_grey from '@/assets/icon/reload_grey.png'
+
 interface HeaderWebpageInterface {
   title: string;
   backgroundColor: string;
+  isBlackIcon?: boolean;
+  titleColor?: string;
 }
 
 export default class HeaderWebpage extends Component<HeaderWebpageInterface, {}> {
@@ -28,23 +34,23 @@ export default class HeaderWebpage extends Component<HeaderWebpageInterface, {}>
       wrapStyle.paddingTop = 20 + 'px'
     }
 
-    const { backgroundColor = 'red' } = this.props
+    const { backgroundColor = 'red', isBlackIcon = true, titleColor = '#FFF' } = this.props
 
     return (
       <View className="header-webpage-comp" style={{ backgroundColor, ...wrapStyle }}>
         <View className='header-webpage-back-wrap' onClick={() => {
           Taro.navigateBack()
         }}>
-          <Image className='header-webpage-icon-img' src={back_img} />
-          <Image className='header-webpage-icon-img' src={close_img} />
+          <Image className='header-webpage-icon-img' src={isBlackIcon ? back_img_grey : back_img} />
+          <Image className='header-webpage-icon-img' src={isBlackIcon ? close_img_grey : close_img} />
         </View>
-        <Text className='header-webpage-title-txt'>{this.props.title}</Text>
+        <Text className='header-webpage-title-txt' style={{color: titleColor}}>{this.props.title}</Text>
         <View className='header-webpage-reload-wrap' onClick={() => {
           Taro.showToast({
             title: '正在重新加载',
           })
         }}>
-          <Image className='header-webpage-icon-img' src={reload_img} />
+          <Image className='header-webpage-icon-img' src={isBlackIcon? reload_img_grey : reload_img} />
         </View>
       </View>
     )

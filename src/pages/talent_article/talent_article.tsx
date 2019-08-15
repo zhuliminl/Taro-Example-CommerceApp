@@ -27,7 +27,6 @@ export default class TalentArticle extends Component {
 
     if (device.isH5()) {
       scrollHeight = device.windowHeight - 50
-      // marginTop = 70
     }
 
     if (device.isWeChat()) {
@@ -48,7 +47,11 @@ export default class TalentArticle extends Component {
 
     return (
       <View className="talent_article-page">
-        <HeaderWebpage backgroundColor={'#FE1123'} title={'达人文章'} />
+        <HeaderWebpage 
+          backgroundColor={'#FFF'} 
+          titleColor={'#333'}
+          title={'达人文章'} 
+          />
         <WebPage
           frameStyle={frameStyle}
           url={'https://www.baidu.com'}
