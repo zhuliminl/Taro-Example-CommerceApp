@@ -4,6 +4,7 @@ import { Image, Text, View } from '@tarojs/components'
 import Taro, { Component } from '@tarojs/taro'
 
 import ArticleInfo from './article-info'
+import ArticleBottom from './article-bottom'
 import HeaderWebpage from '@/components/header-webpage'
 import RichTextPoly from '@/components-poly/rich-text-poly/index'
 import { device } from '@/utils/device'
@@ -15,7 +16,7 @@ const host = HOST
 export default class TalentArticle extends Component {
   config = {
     navigationBarTitleText: 'talent_article',
-    disableScroll: true,
+    // disableScroll: true,
   }
 
   state = {
@@ -61,9 +62,12 @@ export default class TalentArticle extends Component {
           <RichTextPoly
             frameStyle={{
               overflow: 'hidden',
+              // width: '200px',
             }}
             nodes={escape2Html(nodes)} />
         </View>
+
+        <ArticleBottom data={data} />
       </View>
     )
   }
