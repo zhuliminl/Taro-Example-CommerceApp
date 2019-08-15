@@ -1,21 +1,26 @@
-.rech-text-poly-wrap {
+.rich-text-poly-wrap {
   background-color: red;
 }
 
-// .rech-text-poly-wrap p img {
+// .rich-text-poly-wrap p img {
 //   // max-width: 100%;
 //   width: 200px;
 // }
 
-.rech-text-poly-wrap img {
+.rich-text-poly-wrap img {
   // max-width: 100%;
-  width: 200px;
+  // width: 200px;
 }
 
-.rech-text-poly-wrap p  {
+.rich-text-poly-wrap p {
   color: blue;
 }
 
-.section-style {
-  background-color: blue;
+.rich-text-poly-wrap .section-style {
+  background-color: green;
+}
+
+.rich-img {
+  width: 100px;
+  height: 100px;
 }

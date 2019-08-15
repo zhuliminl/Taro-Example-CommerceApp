@@ -1,6 +1,9 @@
-import Taro, { Component } from '@tarojs/taro'
-import '@/utils/commodity.css'   // 肯定得重新定制
+import '@/utils/commodity.css'
 import './index.scss'
+
+import Taro, { Component } from '@tarojs/taro'
+
+// 肯定得重新定制
 
 interface RichTextPolyInterface {
   frameStyle: any;
@@ -17,7 +20,7 @@ export default class RichTextPoly extends Component<RichTextPolyInterface,{}> {
     // console.log('FIN nodes', nodes)
     return (
       <div
-        className='rech-text-poly-wrap'
+        className='rich-text-poly-wrap'
         style={frameStyle}
         dangerouslySetInnerHTML={createMarkup(nodes)}
       />
@@ -26,5 +29,15 @@ export default class RichTextPoly extends Component<RichTextPolyInterface,{}> {
 }
 
 function createMarkup(str) {
-  return {__html: str}
+  // return {__html: str}
+  return {__html: putImgStyle(str)}
+}
+
+function putImgStyle(str) {
+  return str.replace(/\<img /g, (i, m) => {
+    // console.log('FIN xxx <img', i)
+    return '<img class="rich-img" '
+    // return i;
+    }
+  )
 }
