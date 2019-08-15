@@ -51,7 +51,7 @@ export default class TalentArticle extends Component {
         <HeaderWebpage backgroundColor={'#FE1123'} title={'达人文章'} />
         <WebPage
           frameStyle={frameStyle}
-          url={'http://www.baidu.com'}
+          url={'https://www.baidu.com'}
         />
       </View>
     )

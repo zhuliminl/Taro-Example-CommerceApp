@@ -16,16 +16,16 @@ export default class WebpagePoly extends Component<WebpagePolyInterface, {}> {
   render() {
     const { url = '', frameStyle = {} } = this.props
     console.log('FIN url', url)
-    // h5 端滑动有问题，先不管
+    // h5 端 IOS 滑动有问题，先不管
     return (
-        <WebView 
-          src={url}
-          // style={frameStyle}
-          style={{
-            width: 300,
-            height: 300,
-          }}
-         />
+      <WebView
+        src={url}
+        // style={frameStyle}
+        style={{
+          width: 300,
+          height: 300,
+        }}
+      />
     )
   }
 }
