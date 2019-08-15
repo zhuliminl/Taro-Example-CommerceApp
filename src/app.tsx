@@ -42,6 +42,7 @@ class App extends Component {
       'pages/img_gallery/img_gallery',
       'pages/topic_items/topic_items',
       'pages/talent_article/talent_article',
+      'pages/FAQ/FAQ',
     ],
     window: {
       backgroundTextStyle: 'light',

@@ -16,6 +16,7 @@ import banner_partner from './assets/banner_partner.png'
 import bg_user from './assets/bg_user.png'
 import { connect } from '@tarojs/redux'
 import { device } from '@/utils/device'
+import { navigateTo } from '@/utils/navigation'
 
 const IMG_LIST = [
   {
@@ -144,6 +145,7 @@ const SERVICE_LIST = [
   {
     key: 'question',
     text: '常见问题',
+    path: 'FAQ',
     description: '有疑点点这里',
     img: require('./assets/question.png')
   },
@@ -380,7 +382,12 @@ class User extends Component<UserInterface, {}> {
             SERVICE_LIST.map((item) => {
               const description = item.description
               return (
-                <View className='user-item-wrapper' key={item.key}>
+                <View className='user-item-wrapper' key={item.key}
+                  onClick={() => {
+                    const path = item['path']
+                    path && navigateTo(path)
+                  }}
+                >
                   <Image className='icon-img' src={item.img} />
                   <Text className='item-txt'>{item.text}</Text>
                   <Text className='item-description-txt'>{description}</Text>
