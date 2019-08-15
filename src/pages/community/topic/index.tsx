@@ -23,7 +23,7 @@ export default class Topic extends Component<TopicInterface,{}> {
     try {
       const resp = await Taro.request({ url })
       const topics = resp && resp.data && resp.data.data
-      console.log('FIN topics data', topics)
+      // console.log('FIN topics data', topics)
       const preState = this.state
 
       this.setState({

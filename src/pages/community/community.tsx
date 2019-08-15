@@ -53,7 +53,7 @@ class Community extends Component {
           current={this.state.current}
           list={TAB_LIST}
           onChange={(item) => {
-            console.log('FIN tab item', item)
+            // console.log('FIN tab item', item)
             this.setState({
               current: item.key
             })
