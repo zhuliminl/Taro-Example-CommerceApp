@@ -6,3 +6,4 @@ android
 rn_temp
 .DS_Store
 yarn-error.log
+yarn.lock
