@@ -36,7 +36,6 @@ function putImgStyle(str) {
   return str.replace(/\<img /g, (i, m) => {
     // console.log('FIN xxx <img', i)
     return '<img class="rich-img" '
-    // return i;
     }
   )
 }
