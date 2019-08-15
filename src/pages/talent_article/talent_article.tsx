@@ -48,6 +48,8 @@ export default class TalentArticle extends Component {
         <HeaderWebpage backgroundColor={'#FFF'} titleColor={'#333'} title={'达人文章'} />
         {device.isH5() && (<View style={{ height: 50 }}></View>)}
         {device.isIOS() && (<View style={{ height: 70 }}></View>)}
+        {device.isAndroid() && (<View style={{ height: 48 }}></View>)}
+        {device.isWeChat() && (<View style={{ height: '70px' }}></View>)}
 
         {/* 除了富文本，富文本外围还有其他组件 */}
         <Image

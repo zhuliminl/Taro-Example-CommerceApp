@@ -32,9 +32,15 @@ export default class HeaderWebpage extends Component<HeaderWebpageInterface, {}>
 
     if (device.isWeChat()) {
       wrapStyle.paddingTop = 20 + 'px'
+      wrapStyle.height = 70 + 'px'   // 小程序需要格外注意
     }
 
     const { backgroundColor = 'red', isBlackIcon = true, titleColor = '#FFF' } = this.props
+
+    let titlePaddingRight: any = 30
+    if (device.isWeChat()) {
+      titlePaddingRight = 73 + 'px'
+    }
 
     return (
       <View className="header-webpage-comp" style={{ backgroundColor, ...wrapStyle }}>
@@ -44,14 +50,16 @@ export default class HeaderWebpage extends Component<HeaderWebpageInterface, {}>
           <Image className='header-webpage-icon-img' src={isBlackIcon ? back_img_grey : back_img} />
           <Image className='header-webpage-icon-img header-webpage-icon-close-img' src={isBlackIcon ? close_img_grey : close_img} />
         </View>
-        <Text className='header-webpage-title-txt' style={{color: titleColor}}>{this.props.title}</Text>
-        <View className='header-webpage-reload-wrap' onClick={() => {
-          Taro.showToast({
-            title: '正在重新加载',
-          })
-        }}>
-          <Image className='header-webpage-icon-img' src={isBlackIcon? reload_img_grey : reload_img} />
-        </View>
+        <Text className='header-webpage-title-txt' style={{ color: titleColor, paddingRight: titlePaddingRight }}>{this.props.title}</Text>
+        {!device.isWeChat() &&
+          <View className='header-webpage-reload-wrap' onClick={() => {
+            Taro.showToast({
+              title: '正在重新加载',
+            })
+          }}>
+            <Image className='header-webpage-icon-img' src={isBlackIcon ? reload_img_grey : reload_img} />
+          </View>
+        }
       </View>
     )
   }
