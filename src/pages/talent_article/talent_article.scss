@@ -1,1 +1,15 @@
+.talent_article-page {
+  background-color: #FFF;
+}
 
+$bannerWidth: 750px;
+
+.talent-article-top-banner-img {
+  width: $bannerWidth;
+  height: $bannerWidth/3;
+}
+
+
+.talent-article-wrap {
+  padding: 30px;
+}

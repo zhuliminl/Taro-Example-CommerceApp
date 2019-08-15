@@ -1,21 +1,29 @@
-
+import { Image, Text, View, WebView } from '@tarojs/components'
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
 
 interface WebpagePolyInterface {
+  url: string;
+  frameStyle: any;
 }
 
-export default class WebpagePoly extends Component<WebpagePolyInterface,{}> {
+export default class WebpagePoly extends Component<WebpagePolyInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
+    const { url = '', frameStyle = {} } = this.props
+
     return (
       <View className="webpage-poly-comp">
-        <Text>
-        weapp webpage-poly
-        </Text>
+        <WebView
+          src={url}
+          // style={frameStyle}
+          style={{
+            width: 300,
+            height: 300,
+          }}
+        />
       </View>
     )
   }

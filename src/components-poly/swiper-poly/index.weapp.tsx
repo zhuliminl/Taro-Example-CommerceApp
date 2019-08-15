@@ -15,7 +15,7 @@ export default class SwiperPoly extends Component<SwiperPolyInterface, {}> {
 
   render() {
     const { imgList = [] } = this.props
-    console.log('FIN imgList', imgList)
+    // console.log('FIN imgList', imgList)
     return (
       <View className="swiper-poly-comp">
         <ClSwiper
