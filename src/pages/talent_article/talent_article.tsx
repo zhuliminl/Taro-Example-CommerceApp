@@ -18,10 +18,11 @@ export default class TalentArticle extends Component {
   render() {
 
     let scrollHeight: any = device.windowHeight
-    let blankHeight: any = 50
+    let marginTop: any = 0
+
     if (device.isIOS()) {
-      blankHeight = 50 + 20
       scrollHeight = device.windowHeight - 70
+      marginTop = 70
     }
 
     if (device.isH5()) {
@@ -29,19 +30,18 @@ export default class TalentArticle extends Component {
     }
 
     if (device.isWeChat()) {
-      blankHeight = (50 + 20) + 'px'
       scrollHeight = (device.windowHeight - 10) + 'px'   // 微信很奇怪，
     }
 
     if (device.isAndroid()) {
-      blankHeight = 48
       scrollHeight = device.windowHeight - 48 - 24   
+      marginTop = 48
     }
 
     let frameStyle: any = {
       height: scrollHeight,
       width: device.windowWidth,
-      marginTop: 70,  // 直接查看 ios 实际高度
+      marginTop,
     }
 
     return (
