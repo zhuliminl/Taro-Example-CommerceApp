@@ -15,7 +15,7 @@ const host = HOST
 export default class TalentArticle extends Component {
   config = {
     navigationBarTitleText: 'talent_article',
-    // disableScroll: true,
+    disableScroll: true,
   }
 
   state = {
@@ -47,6 +47,7 @@ export default class TalentArticle extends Component {
       <View className="talent_article-page">
         <HeaderWebpage backgroundColor={'#FFF'} titleColor={'#333'} title={'达人文章'} />
         {device.isH5() && (<View style={{ height: 50 }}></View>)}
+        {device.isIOS() && (<View style={{ height: 70 }}></View>)}
 
         {/* 除了富文本，富文本外围还有其他组件 */}
         <Image
@@ -56,8 +57,9 @@ export default class TalentArticle extends Component {
         <View className='talent-article-wrap'>
           <ArticleInfo data={data} />
           <RichTextPoly
-            // frameStyle={{ ...frameStyle }}
-            frameStyle={{}}
+            frameStyle={{
+              overflow: 'hidden',
+            }}
             nodes={escape2Html(nodes)} />
         </View>
       </View>
