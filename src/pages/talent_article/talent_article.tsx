@@ -26,8 +26,8 @@ export default class TalentArticle extends Component {
     }
 
     if (device.isH5()) {
-      scrollHeight = device.windowHeight - 50 - 70
-      marginTop = 70
+      scrollHeight = device.windowHeight - 50
+      // marginTop = 70
     }
 
     if (device.isWeChat()) {
