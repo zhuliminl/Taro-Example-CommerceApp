@@ -1,15 +1,15 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, WebView } from '@tarojs/components'
 import './talent_article.scss'
 import HeaderWebpage from '@/components/header-webpage'
 import WebPage from '@/components-poly/webpage-poly/index'
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
 
 
 export default class TalentArticle extends Component {
   config = {
     navigationBarTitleText: 'talent_article',
-    disableScroll: true,
+    // disableScroll: true,
   }
 
   componentDidMount = () => {
@@ -26,7 +26,8 @@ export default class TalentArticle extends Component {
     }
 
     if (device.isH5()) {
-      scrollHeight = device.windowHeight - 50
+      scrollHeight = device.windowHeight - 50 - 70
+      marginTop = 70
     }
 
     if (device.isWeChat()) {
@@ -34,7 +35,7 @@ export default class TalentArticle extends Component {
     }
 
     if (device.isAndroid()) {
-      scrollHeight = device.windowHeight - 48 - 24   
+      scrollHeight = device.windowHeight - 48 - 24
       marginTop = 48
     }
 
@@ -44,10 +45,14 @@ export default class TalentArticle extends Component {
       marginTop,
     }
 
+
     return (
       <View className="talent_article-page">
-        <HeaderWebpage backgroundColor={'#FE1123'} title={'达人文章'}/>
-        <WebPage frameStyle={frameStyle} />
+        <HeaderWebpage backgroundColor={'#FE1123'} title={'达人文章'} />
+        <WebPage
+          frameStyle={frameStyle}
+          url={'http://www.baidu.com'}
+        />
       </View>
     )
   }

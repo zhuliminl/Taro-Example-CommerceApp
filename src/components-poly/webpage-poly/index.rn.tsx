@@ -9,18 +9,19 @@ interface WebpagePolyInterface {
   frameStyle: any;
 }
 
-export default class WebpagePoly extends Component<WebpagePolyInterface,{}> {
+export default class WebpagePoly extends Component<WebpagePolyInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
+    const { url = '', frameStyle = {} } = this.props
     return (
       <View
-        style={this.props.frameStyle}
+        style={frameStyle}
       >
-        <WebView 
-          source={{ uri: 'https://www.baidu.com' }} 
+        <WebView
+          source={{ uri: url }}
         />
       </View>
     )
