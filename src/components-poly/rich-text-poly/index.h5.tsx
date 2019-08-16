@@ -17,7 +17,6 @@ export default class RichTextPoly extends Component<RichTextPolyInterface,{}> {
 
   render() {
     const {frameStyle = {}, nodes = ''} = this.props
-    // console.log('FIN nodes', nodes)
     return (
       <div
         className='rich-text-poly-wrap'
@@ -30,14 +29,12 @@ export default class RichTextPoly extends Component<RichTextPolyInterface,{}> {
 
 function createMarkup(str) {
   // return {__html: str}
-  return {__html: putImgStyle(str)}
+  return {__html: putClassNameToImg(str)}
 }
 
-function putImgStyle(str) {
+function putClassNameToImg(str) {
   return str.replace(/\<img /g, (i, m) => {
-    // console.log('FIN xxx <img', i)
     return '<img class="rich-img" '
-    // return i;
     }
   )
 }

@@ -7,6 +7,7 @@ import ArticleBottom from './article-bottom'
 import ArticleInfo from './article-info'
 import HeaderWebpage from '@/components/header-webpage'
 import RichTextPoly from '@/components-poly/rich-text-poly/index'
+import WavePoly from '@/components-poly/wave-poly/index'
 import { device } from '@/utils/device'
 import { escape2Html } from '@/utils/stringhelper'
 import { parseUrlParams } from '@/utils/navigation'
@@ -65,17 +66,22 @@ export default class TalentArticle extends Component {
               // width: '200px',
             }}
             nodes={escape2Html(nodes)}
-            // nodes={getHtml()}
-            />
-            {/* nodes={'<img class="rich-img" src="http://img.fqapps.com/Fs6YbNzVTQEaUuIu3k7K_Xbv-JMQ-600" _src="http://img.fqapps.com/Fs6YbNzVTQEaUuIu3k7K_Xbv-JMQ-600"/>'} /> */}
+          // nodes={getHtml()}
+          />
         </View>
 
+        <View className='wave-poly-wrap'>
+          <WavePoly />
+        </View>
         <ArticleBottom data={data} />
       </View>
     )
   }
 }
 
+
+
+// 后期对富文本中优惠券样式做编辑的时候可能会用到作为参考
 function getHtml_() {
   return `<img class="rich-img" src="http://img.alicdn.com/imgextra/i4/1809908328/O1CN01fSTq1m2BOGz7pymRH_!!1809908328.jpg" alt=""
   class="getitemid"

@@ -1,1 +1,49 @@
+.article-bottom-comp {
+  position: relative;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+.article-bottom-avatar-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+.article-bottom-author-name-txt {
+  margin-top: 20px;
+  font-size: 30px;
+  line-height: 32px;
+  color: #333;
+}
+
+.article-bottom-author-homepage-btn-wrap {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  height: 50px;
+
+  display: flex;
+  // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
+  flex-direction: row;   
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  border-width: 1px;
+  // border-color: #EEE;
+  border-color: #FE1123;
+  border-style: solid;
+  /*postcss-pxtransform rn eject enable*/
+  line-height: 26px;
+  /*postcss-pxtransform rn eject disable*/
+}
+
+.article-bottom-author-btn-txt {
+  font-size: 26px;
+  line-height: 28px;
+  color: #FE1123;
+}

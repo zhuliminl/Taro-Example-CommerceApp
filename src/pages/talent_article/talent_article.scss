@@ -1,4 +1,5 @@
 .talent_article-page {
+  position: relative;
   background-color: #FFF;
 }
 
@@ -12,4 +13,13 @@ $bannerWidth: 750px;
 
 .talent-article-wrap {
   padding: 30px;
+}
+
+.wave-poly-wrap {
+  position: absolute;
+  bottom: 0;
+  width: 750px;
+  height: 400px;  // 这个高度要和作者头像组件保持一致
+  // background-color: #EEE;
+  background-color: #FFF;
 }
