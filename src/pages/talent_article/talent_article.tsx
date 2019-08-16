@@ -1,6 +1,6 @@
 import './talent_article.scss'
 
-import { Image, Text, View } from '@tarojs/components'
+import { Image, Text, View, ScrollView } from '@tarojs/components'
 import Taro, { Component } from '@tarojs/taro'
 
 import ArticleBottom from './article-bottom'
@@ -17,8 +17,7 @@ const host = HOST
 export default class TalentArticle extends Component {
   config = {
     navigationBarTitleText: 'talent_article',
-    // disableScroll: device.isRN(),  // 注意 rn 端需要关闭滚动
-    disableScroll: false,  // 注意 rn 端需要关闭滚动
+    disableScroll: true,
   }
 
   state = {
@@ -44,6 +43,30 @@ export default class TalentArticle extends Component {
   }
 
   render() {
+    let scrollHeight: any = device.windowHeight
+    let blankHeight: any = 50
+    if (device.isIOS()) {
+      blankHeight = 50 + 20
+      scrollHeight = device.windowHeight - 70
+    }
+
+    if (device.isH5()) {
+      scrollHeight = device.windowHeight - 50
+    }
+
+    if (device.isWeChat()) {
+      blankHeight = (50 + 20) + 'px'
+      scrollHeight = (device.windowHeight - 10) + 'px'   // 微信很奇怪，
+    }
+
+    if (device.isAndroid()) {
+      blankHeight = 48
+      scrollHeight = device.windowHeight - 48 - 24   
+    }
+
+
+
+
     const { data = {} } = this.state
     const nodes = data['article'] || ''
     return (
@@ -54,21 +77,28 @@ export default class TalentArticle extends Component {
         {device.isAndroid() && (<View style={{ height: 48 }}></View>)}
         {device.isWeChat() && (<View style={{ height: '70px' }}></View>)}
 
-        {/* 除了富文本，富文本外围还有其他组件 */}
-        <Image
-          className='talent-article-top-banner-img'
-          src={data['article_banner'] || ''} />
+        <ScrollView
+          scrollY
+          style={{
+            height: scrollHeight,
+          }}
+        >
+          {/* 除了富文本，富文本外围还有其他组件 */}
+          <Image
+            className='talent-article-top-banner-img'
+            src={data['article_banner'] || ''} />
 
-        <View className='talent-article-wrap'>
-          <ArticleInfo data={data} />
-          <RichTextPoly nodes={escape2Html(nodes)} />
-          {/* <RichTextPoly nodes={getHtml_()} /> */}
-        </View>
+          <View className='talent-article-wrap'>
+            <ArticleInfo data={data} />
+            <RichTextPoly nodes={escape2Html(nodes)} />
+            {/* <RichTextPoly nodes={getHtml_()} /> */}
+          </View>
 
-        <View className='wave-poly-wrap'>
-          <WavePoly />
-        </View>
-        <ArticleBottom data={data} />
+          {/* <View className='wave-poly-wrap'>
+            <WavePoly />
+          </View> */}
+          <ArticleBottom data={data} />
+        </ScrollView>
       </View>
     )
   }

@@ -1,7 +1,7 @@
-
+import { Image, Text, View } from 'react-native'
 import React, { Component } from 'react'
-import { View, Text, Image } from 'react-native'
-import { WebView } from 'react-native-webview';
+
+import AutoHeightWebView from 'react-native-autoheight-webview'
 import { device } from '@/utils/device'
 
 interface RichTextPolyInterface {
@@ -9,66 +9,9 @@ interface RichTextPolyInterface {
 }
 
 
-const BaseScript = `
-    document.body.style.backgroundColor = 'red';
-    height = document.body.scrollHeight;
-    window.ReactNativeWebView.postMessage(JSON.stringify({
-      type: 'setHeight',
-      height: height,
-    }));
-
-    window.ReactNativeWebView.postMessage(JSON.stringify({
-      type: 'pageMessage',
-      data: {
-        name: 'saul',
-        age: 32,
-      }
-    }));
-
-
-    (function() {
-      var height = null;
-      var ID = setInterval(function() { 
-        // window.alert('xxxxx你好啦啦啦');
-
-        if (document.body.scrollHeight != height) {
-          height = document.body.scrollHeight;
-          window.ReactNativeWebView.postMessage(JSON.stringify({
-            type: 'setHeight',
-            height: height,
-          }));
-        } else {
-          clearInterval(ID)
-          window.ReactNativeWebView.postMessage(JSON.stringify({
-            type: 'timer',
-            message: 'timerClear!',
-          }));
-        }
-      }, 2000);
-
-      // 注意取消定时器
-
-    })();
-    true; // note: this is required, or you'll sometimes get silent failures
-  `;
-
 export default class RichTextPoly extends Component<RichTextPolyInterface, {}> {
   state = {
     height: 0,
-  }
-
-  onMessage(event) {
-    // console.log('FIN webview onMessage', event)
-    try {
-      const action = JSON.parse(event.nativeEvent.data)
-      console.log('FIN action', action)
-      if (action.type === 'setHeight' && action.height > 0) {
-        this.setState({ height: action.height })
-      }
-    } catch (error) {
-      console.log('FIN try get webview message', error)
-      // pass
-    }
   }
 
   componentDidMount = () => {
@@ -78,37 +21,42 @@ export default class RichTextPoly extends Component<RichTextPolyInterface, {}> {
     const { nodes = '' } = this.props
     // const nodes = '<h1>hello</h1>'
     return (
-      <View style={{
-        width: device.windowWidth - 30,
-        backgroundColor: 'green',
-        // minHeight: 500,
-        // height: this.state.height/2,
-        // height: 1,
-        height: 100/2,
-      }}>
-        <WebView
-          source={{ html: nodes }}
-          onError={syntheticEvent => {
-            const { nativeEvent } = syntheticEvent;
-            console.warn('WebView error: ', nativeEvent);
-          }}
-          onMessage={this.onMessage.bind(this)}
-
-          // scalesPageToFit
-          useWebKit
-          javaScriptEnabled
-          domStorageEnabled
+      <View
+        style={{
+          width: device.windowWidth - 30,
+          backgroundColor: '#FFF',
+          overflow: 'hidden',
+        }}
+      >
+        <AutoHeightWebView
+          // overScrollMode={'never'}
           scrollEnabled={false}
-          automaticallyAdjustContentInsets={false}
-          injectedJavaScript={BaseScript}
-
-          onLoad={syntheticEvent => {
-            const { nativeEvent } = syntheticEvent;
-            console.log('FIN webview onLoad')
-            // this.url = nativeEvent.url;
+          customScript={`document.body.style.background = '#FFF';`}
+          // either height or width updated will trigger this
+          onSizeUpdated={(size) => {
+            console.log('FIN richtext size', size)
           }}
+          customStyle={`
+            img {
+              max-width: 100%;
+            }
+            .rich-img {
+              max-width: 100%;
+            }
+          `}
+          // source={{ html: `<p style="font-weight: 400;font-style: normal;font-size: 21px;line-height: 1.58;letter-spacing: -.003em;">Tags are great for describing the essence of your story in a single word or phrase, but stories are rarely about a single thing. <span style="background-color: transparent !important;background-image: linear-gradient(to bottom, rgba(146, 249, 190, 1), rgba(146, 249, 190, 1));">If I pen a story about moving across the country to start a new job in a car with my husband, two cats, a dog, and a tarantula, I wouldn’t only tag the piece with “moving”. I’d also use the tags “pets”, “marriage”, “career change”, and “travel tips”.</span></p>` }}
+          source={{ html: putClassNameToImg(nodes) }}
+          // disables zoom on ios (true by default)
+          zoomable={false}
         />
       </View>
     )
   }
+}
+
+function putClassNameToImg(str) {
+  return str.replace(/\<img /g, (i, m) => {
+    return '<img class="rich-img" '
+  }
+  )
 }
