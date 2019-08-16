@@ -62,6 +62,7 @@ export default class TalentArticle extends Component {
         <View className='talent-article-wrap'>
           <ArticleInfo data={data} />
           <RichTextPoly nodes={escape2Html(nodes)} />
+          {/* <RichTextPoly nodes={getHtml_()} /> */}
         </View>
 
         <View className='wave-poly-wrap'>
@@ -77,9 +78,16 @@ export default class TalentArticle extends Component {
 
 // 后期对富文本中优惠券样式做编辑的时候可能会用到作为参考
 function getHtml_() {
-  return `<img class="rich-img" src="http://img.alicdn.com/imgextra/i4/1809908328/O1CN01fSTq1m2BOGz7pymRH_!!1809908328.jpg" alt=""
-  class="getitemid"
-  data-itemid="597648273529" data-tkrates="20" data-itemsale="94"/>`
+  // const height = 123
+  // return `
+  // <div style="height: ${height - 16}px;width: 568px; background-color: blue;">
+  // </div>
+  // `
+  return `
+  <div style="height: 100px; width: 100px; background-color: blue;">
+    <h1> xxxxxxxxx </h1>
+  </div>
+  `
 }
 
 function getHtml() {
