@@ -14,6 +14,7 @@ const store = configStore()
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
+console.disableYellowBox = true;
 
 class App extends Component {
 
