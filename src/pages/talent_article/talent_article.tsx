@@ -17,7 +17,8 @@ const host = HOST
 export default class TalentArticle extends Component {
   config = {
     navigationBarTitleText: 'talent_article',
-    // disableScroll: true,
+    // disableScroll: device.isRN(),  // 注意 rn 端需要关闭滚动
+    disableScroll: false,  // 注意 rn 端需要关闭滚动
   }
 
   state = {
@@ -60,14 +61,7 @@ export default class TalentArticle extends Component {
 
         <View className='talent-article-wrap'>
           <ArticleInfo data={data} />
-          <RichTextPoly
-            frameStyle={{
-              overflow: 'hidden',
-              // width: '200px',
-            }}
-            nodes={escape2Html(nodes)}
-          // nodes={getHtml()}
-          />
+          <RichTextPoly nodes={escape2Html(nodes)} />
         </View>
 
         <View className='wave-poly-wrap'>

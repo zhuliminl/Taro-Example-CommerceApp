@@ -6,21 +6,22 @@ import Taro, { Component } from '@tarojs/taro'
 // 肯定得重新定制
 
 interface RichTextPolyInterface {
-  frameStyle: any;
   nodes: string;
 }
 
-export default class RichTextPoly extends Component<RichTextPolyInterface,{}> {
+export default class RichTextPoly extends Component<RichTextPolyInterface, {}> {
 
   componentDidMount = () => {
   }
 
   render() {
-    const {frameStyle = {}, nodes = ''} = this.props
+    const { nodes = '' } = this.props
     return (
       <div
         className='rich-text-poly-wrap'
-        style={frameStyle}
+        style={{
+          overflow: 'hidden',
+        }}
         dangerouslySetInnerHTML={createMarkup(nodes)}
       />
     )
@@ -29,12 +30,12 @@ export default class RichTextPoly extends Component<RichTextPolyInterface,{}> {
 
 function createMarkup(str) {
   // return {__html: str}
-  return {__html: putClassNameToImg(str)}
+  return { __html: putClassNameToImg(str) }
 }
 
 function putClassNameToImg(str) {
   return str.replace(/\<img /g, (i, m) => {
     return '<img class="rich-img" '
-    }
+  }
   )
 }
