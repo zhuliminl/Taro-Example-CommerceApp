@@ -11,7 +11,7 @@ const sColor =  '#F5F6F7'
 const MyLoader = () => <ContentLoader />
 const MyFacebookLoader = () => <Facebook />
 
-export const MyMomentLoader = () => (
+export const MyMomentsLoader = () => (
   <ContentLoader
     height={840}
     speed={3}
@@ -32,6 +32,25 @@ export const MyMomentLoader = () => (
     <rect x="180" y="200" rx="2" ry="2" width="90" height="90" />
     <rect x="280" y="200" rx="2" ry="2" width="90" height="90" />
     <rect x="80" y="300" rx="2" ry="2" width="90" height="90" />
+  </ContentLoader>
+)
+
+export const MyTopicsLoader = () => (
+  <ContentLoader
+    height={1000}
+    speed={3}
+    primaryColor={pColor}
+    secondaryColor={sColor}
+  >
+    {/* Only SVG shapes */}
+    <rect x="15" y="20" rx="2" ry="2" width="370" height="370" />
+    <rect x="15" y="400" rx="2" ry="2" width="100" height="30" />
+    <rect x="15" y="440" rx="2" ry="2" width="370" height="10" />
+    <rect x="15" y="460" rx="2" ry="2" width="370" height="10" />
+    <rect x="15" y="480" rx="2" ry="2" width="370" height="10" />
+    <rect x="15" y="500" rx="2" ry="2" width="330" height="10" />
+    <rect x="15" y="520" rx="2" ry="2" width="300" height="10" />
+    <rect x="15" y="540" rx="2" ry="2" width="200" height="10" />
   </ContentLoader>
 )
 

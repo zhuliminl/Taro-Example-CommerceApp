@@ -12,7 +12,7 @@ import arrow_share from '@/assets/image/arrow_share.png';
 import bg_triangle from '@/assets/image/triangle.png';
 import { parseToMinuteago } from '@/utils/date';
 
-import { MyMomentLoader } from '@/components-poly/skeleton-poly/index'
+import { MyMomentsLoader } from '@/components-poly/skeleton-poly/index'
 
 interface MomentsInterface {
   scrollStyle: any;
@@ -60,7 +60,7 @@ export default class Moments extends Component<MomentsInterface, {}> {
 
     // if (this.state.loading) {
     // if (true) { return ( <MyMomentLoader />) }
-    if (this.state.loading) { return ( <MyMomentLoader />) }
+    if (this.state.loading) { return ( <MyMomentsLoader />) }
 
 
     return (

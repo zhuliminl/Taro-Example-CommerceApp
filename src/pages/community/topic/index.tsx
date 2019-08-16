@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from '@tarojs/components'
 import './index.scss'
 import Spin from '@/components/spin'
 import TopicItem from './topic-item'
+import { MyTopicsLoader } from '@/components-poly/skeleton-poly/index'
 
 interface TopicInterface {
   scrollStyle: any;
@@ -37,6 +38,10 @@ export default class Topic extends Component<TopicInterface,{}> {
   }
 
   render() {
+    if(this.state.loading) {
+      return <MyTopicsLoader />
+    }
+
     return (
       <ScrollView
         scrollY

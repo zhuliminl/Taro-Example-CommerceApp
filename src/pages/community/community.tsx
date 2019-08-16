@@ -15,7 +15,7 @@ class Community extends Component {
     disableScroll: true,
   }
   state = {
-    current: 0,
+    current: 1,
   }
 
   render() {
