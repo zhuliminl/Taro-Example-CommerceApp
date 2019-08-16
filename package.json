@@ -57,6 +57,7 @@
     "nervjs": "^1.4.0",
     "nuka-carousel": "^4.5.9",
     "react": "16.8.3",
+    "react-content-loader": "^4.2.2",
     "react-native": "0.59.8",
     "react-native-autoheight-webview": "^1.1.6",
     "react-native-modal": "^11.3.1",
@@ -66,6 +67,7 @@
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "taro-skeleton": "^1.0.6",
     "tslib": "^1.8.0"
   },
   "devDependencies": {

@@ -3,12 +3,12 @@ import './index.scss'
 import { ScrollView, Text, View } from '@tarojs/components'
 import Taro, { Component } from '@tarojs/taro'
 
+import HangAround from './hang-around'
 import LargeTitle from '@/components/large-title'
 import Spin from '@/components/spin'
 import SwiperPoly from '@/components-poly/swiper-poly/index'
 import ThisWeek from './this-week'
-import HangAround from './hang-around'
-
+import SkeletonPoly from '@/components-poly/skeleton-poly/index'
 
 const host = HOST
 
@@ -68,9 +68,13 @@ export default class Talk extends Component<TalkInterface, {}> {
         style={this.props.scrollStyle}
       >
         <Spin isShow={this.state.loading} />
+
         <SwiperPoly
           imgList={imglist}
         />
+
+        <SkeletonPoly  action />
+
 
         <LargeTitle title={'本周推荐'} />
         <ThisWeek talkList={newData} />
