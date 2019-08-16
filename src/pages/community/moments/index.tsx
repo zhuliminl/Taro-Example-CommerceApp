@@ -12,13 +12,15 @@ import arrow_share from '@/assets/image/arrow_share.png';
 import bg_triangle from '@/assets/image/triangle.png';
 import { parseToMinuteago } from '@/utils/date';
 
+import { MyMomentLoader } from '@/components-poly/skeleton-poly/index'
+
 interface MomentsInterface {
   scrollStyle: any;
 }
 
 export default class Moments extends Component<MomentsInterface, {}> {
   state = {
-    loading: false,
+    loading: true,
     min_id: 1,
     moments: [],
   }
@@ -40,6 +42,7 @@ export default class Moments extends Component<MomentsInterface, {}> {
       this.setState({
         moments: preState.moments.concat(moments),
         min_id,
+        loading: false,
       })
 
     } catch (err) {
@@ -54,6 +57,11 @@ export default class Moments extends Component<MomentsInterface, {}> {
 
   render() {
     const { moments = [] } = this.state
+
+    // if (this.state.loading) {
+    // if (true) { return ( <MyMomentLoader />) }
+    if (this.state.loading) { return ( <MyMomentLoader />) }
+
 
     return (
       <ScrollView
@@ -125,7 +133,7 @@ export default class Moments extends Component<MomentsInterface, {}> {
             })
           }
         </View>
-        <Spin isShow />
+        {/* <Spin isShow /> */}
       </ScrollView >
     )
   }
