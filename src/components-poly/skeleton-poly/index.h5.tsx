@@ -79,4 +79,4 @@ export const MyTalkLoader = () => (
 )
 
 
-export default Skeleton
+// export default Skeleton

@@ -58,9 +58,10 @@ export default class Moments extends Component<MomentsInterface, {}> {
   render() {
     const { moments = [] } = this.state
 
-    // if (this.state.loading) {
-    // if (true) { return ( <MyMomentLoader />) }
-    if (this.state.loading) { return ( <MyMomentsLoader />) }
+    // if(true) {
+    if (this.state.loading) { 
+      return ( <MyMomentsLoader />) 
+    }
 
 
     return (

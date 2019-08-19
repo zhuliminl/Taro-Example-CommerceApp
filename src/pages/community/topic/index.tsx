@@ -39,6 +39,7 @@ export default class Topic extends Component<TopicInterface,{}> {
 
   render() {
     if(this.state.loading) {
+    // if(true) {
       return <MyTopicsLoader />
     }
 
