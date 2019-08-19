@@ -13,7 +13,7 @@ export const MyMomentsLoader = () => (
 
 export const MyTopicsLoader = () => (
   <View>
-    <Text>xxxxxxx</Text>
+    <Text></Text>
   </View>
 )
 
@@ -21,8 +21,8 @@ export const MyTalkLoader = () => (
   null
 )
 
-export default () => (
-  <View>
-    <Text>xxxxxxx</Text>
-  </View>
-)
+// export default () => (
+//   <View>
+//     <Text></Text>
+//   </View>
+// )
