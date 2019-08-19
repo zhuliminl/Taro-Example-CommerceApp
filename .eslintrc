@@ -2,14 +2,25 @@
   "extends": ["taro"],
   "rules": {
     "no-unused-vars": ["error", { "varsIgnorePattern": "Taro" }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+    "react/no-multi-comp":  ["off", { "ignoreStateless": true }],
+    "jsx-quotes": ["off", "double"],
+    "import/first": ["off"],
+    // "semi": ["error", "always"],
+    "react/jsx-curly-brace-presence": ["off"]
   },
-    "parser": "@typescript-eslint/parser",
+  // "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["typescript"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "useJSXTextNode": true,
     "project": "./tsconfig.json"
+  },
+  "globals": {
+    "wx": false,
+    "my": false
   }
-  }
+}

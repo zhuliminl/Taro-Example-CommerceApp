@@ -5,12 +5,20 @@ import Taro, { Component } from '@tarojs/taro'
 
 import HangAround from './hang-around'
 import LargeTitle from '@/components/large-title'
+import { MyTalkLoader } from '@/components-poly/skeleton-poly'
 import Spin from '@/components/spin'
-import SwiperPoly from '@/components-poly/swiper-poly/index'
+import SwiperPoly from '@/components-poly/swiper-poly'
 import ThisWeek from './this-week'
-import SkeletonPoly from '@/components-poly/skeleton-poly/index'
 
-const host = HOST
+/* tslint:disable */ 
+const host = HOST // tslint:disable
+/* tslint:enable */
+
+const bar = "sau" // eslint-disable-line
+
+/* eslint-disable  */
+const foo = 'sdfd' // eslint-disable-line 
+/* eslint-enable  */
 
 
 interface TalkInterface {
@@ -62,6 +70,11 @@ export default class Talk extends Component<TalkInterface, {}> {
       }
     })
 
+    // if (this.state.loading) {
+    if (true) {
+      return <MyTalkLoader />
+    }
+
     return (
       <ScrollView
         scrollY
@@ -72,9 +85,6 @@ export default class Talk extends Component<TalkInterface, {}> {
         <SwiperPoly
           imgList={imglist}
         />
-
-        <SkeletonPoly  action />
-
 
         <LargeTitle title={'本周推荐'} />
         <ThisWeek talkList={newData} />

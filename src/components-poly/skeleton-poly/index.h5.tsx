@@ -1,12 +1,11 @@
-
-import Taro, { Component } from '@tarojs/taro'
-import {View} from '@tarojs/components'
-import Skeleton from 'taro-skeleton'
-
 import ContentLoader, { Facebook, Instagram } from 'react-content-loader'
+import Taro, { Component } from '@tarojs/taro'
+
+import Skeleton from 'taro-skeleton'
+import { View } from '@tarojs/components'
 
 const pColor = '#EEE'
-const sColor =  '#F5F6F7'
+const sColor = '#F5F6F7'
 
 const MyLoader = () => <ContentLoader />
 const MyFacebookLoader = () => <Facebook />
@@ -54,20 +53,23 @@ export const MyTopicsLoader = () => (
   </ContentLoader>
 )
 
-
-
-// interface SkeletonPolyInterface {
-// }
-
-// export default class SkeletonPoly extends Component<SkeletonPolyInterface,{}> {
-
-//   componentDidMount = () => {
-//   }
-
-//   render() {
-//     return (
-//     )
-//   }
-// }
+export const MyTalkLoader = () => (
+  <ContentLoader
+    height={1000}
+    speed={3}
+    primaryColor={pColor}
+    secondaryColor={sColor}
+  >
+    {/* Only SVG shapes */}
+    <rect x="15" y="20" rx="2" ry="2" width="370" height="370" />
+    <rect x="15" y="400" rx="2" ry="2" width="100" height="30" />
+    <rect x="15" y="440" rx="2" ry="2" width="370" height="10" />
+    <rect x="15" y="460" rx="2" ry="2" width="370" height="10" />
+    <rect x="15" y="480" rx="2" ry="2" width="370" height="10" />
+    <rect x="15" y="500" rx="2" ry="2" width="330" height="10" />
+    <rect x="15" y="520" rx="2" ry="2" width="300" height="10" />
+    <rect x="15" y="540" rx="2" ry="2" width="200" height="10" />
+  </ContentLoader>
+)
 
 export default Skeleton
