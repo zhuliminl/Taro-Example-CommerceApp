@@ -12,9 +12,17 @@ export const MyMomentsLoader = () => (
 )
 
 export const MyTopicsLoader = () => (
-  null
+  <View>
+    <Text>xxxxxxx</Text>
+  </View>
 )
 
 export const MyTalkLoader = () => (
   null
+)
+
+export default () => (
+  <View>
+    <Text>xxxxxxx</Text>
+  </View>
 )

@@ -66,7 +66,8 @@ export default class Talk extends Component<TalkInterface, {}> {
 
     if (this.state.loading) {
     // if (true) {
-      return <MyTalkLoader />
+      return null
+      // return <MyTalkLoader />
     }
 
     return (

@@ -60,7 +60,8 @@ export default class Moments extends Component<MomentsInterface, {}> {
 
     // if(true) {
     if (this.state.loading) { 
-      return ( <MyMomentsLoader />) 
+      return null
+      // return ( <MyMomentsLoader />) 
     }
 
 
