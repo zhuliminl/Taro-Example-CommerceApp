@@ -15,7 +15,7 @@ class Community extends Component {
     disableScroll: true,
   }
   state = {
-    current: 1,
+    current: 2,
   }
 
   render() {
@@ -35,11 +35,11 @@ class Community extends Component {
 
     if (device.isWeChat()) {
       // scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
-      scrollStyle.height = (Taro.getSystemInfoSync().screenHeight - 150 ) + 'px'   // 手机上还是超出，需要集中处理这个问题 
+      scrollStyle.height = (Taro.getSystemInfoSync().screenHeight - 150) + 'px'   // 手机上还是超出，需要集中处理这个问题 
     }
 
     let tabMarginTop: any = 20
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       tabMarginTop = 60
     }
 
@@ -65,7 +65,7 @@ class Community extends Component {
         }
         {
           this.state.current === 1 &&
-          <Topic scrollStyle={scrollStyle}/>
+          <Topic scrollStyle={scrollStyle} />
         }
         {
           this.state.current === 2 &&

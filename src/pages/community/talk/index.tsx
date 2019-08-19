@@ -1,24 +1,18 @@
-import './index.scss'
+import './index.scss';
 
-import { ScrollView, Text, View } from '@tarojs/components'
-import Taro, { Component } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro';
 
-import HangAround from './hang-around'
-import LargeTitle from '@/components/large-title'
-import { MyTalkLoader } from '@/components-poly/skeleton-poly'
-import Spin from '@/components/spin'
-import SwiperPoly from '@/components-poly/swiper-poly'
-import ThisWeek from './this-week'
+import HangAround from './hang-around';
+import LargeTitle from '@/components/large-title';
+import { MyTalkLoader } from '@/components-poly/skeleton-poly';
+import { ScrollView } from '@tarojs/components';
+import Spin from '@/components/spin';
+import SwiperPoly from '@/components-poly/swiper-poly';
+import ThisWeek from './this-week';
 
-/* tslint:disable */ 
-const host = HOST // tslint:disable
-/* tslint:enable */
-
-const bar = "sau" // eslint-disable-line
-
-/* eslint-disable  */
-const foo = 'sdfd' // eslint-disable-line 
-/* eslint-enable  */
+/* eslint:disable */
+const host = HOST
+/* eslint:enable */
 
 
 interface TalkInterface {
