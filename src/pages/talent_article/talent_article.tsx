@@ -12,6 +12,8 @@ import { device } from '@/utils/device'
 import { escape2Html } from '@/utils/stringhelper'
 import { parseUrlParams } from '@/utils/navigation'
 
+import { MyTalentArticleLoader } from '@/components-poly/skeleton-poly'
+
 const host = HOST
 
 export default class TalentArticle extends Component {
@@ -90,7 +92,10 @@ export default class TalentArticle extends Component {
 
           <View className='talent-article-wrap'>
             <ArticleInfo data={data} />
-            <RichTextPoly nodes={escape2Html(nodes)} />
+            {
+              this.state.loading ? <MyTalentArticleLoader />:
+              <RichTextPoly nodes={escape2Html(nodes)} />
+            }
             {/* <RichTextPoly nodes={getHtml_()} /> */}
           </View>
 

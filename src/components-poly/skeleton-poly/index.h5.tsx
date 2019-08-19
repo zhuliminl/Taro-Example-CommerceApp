@@ -6,8 +6,18 @@ import Skeleton from 'taro-skeleton';
 const pColor = '#EEE'
 const sColor = '#F5F6F7'
 
-const MyLoader = () => <ContentLoader />
-const MyFacebookLoader = () => <Facebook />
+
+export const MyTalentArticleLoader = () => (
+  <ContentLoader
+    height={840}
+    speed={3}
+    primaryColor={pColor}
+    secondaryColor={sColor}
+  >
+    {/* Only SVG shapes */}
+    <rect x="0" y="0" rx="4" ry="4" width="500" height="900" />
+  </ContentLoader>
+)
 
 export const MyMomentsLoader = () => (
   <ContentLoader

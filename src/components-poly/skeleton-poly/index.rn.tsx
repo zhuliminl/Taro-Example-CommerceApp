@@ -11,7 +11,29 @@ import {
 } from "rn-placeholder";
 import { device } from '@/utils/device'
 
-
+export const MyTalentArticleLoader = () => (
+  <Placeholder
+    Animation={Fade}
+  >
+    <View
+      style={{
+        flexDirection: 'row',
+        height: device.windowHeight,
+        width: device.windowWidth,
+        alignContent: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <PlaceholderLine
+        style={{
+          borderRadius: 3,
+          height:400,
+          width: 300,
+        }}
+      />
+    </View>
+  </Placeholder>
+)
 
 export const MyMomentsLoader = () => (
   <Placeholder
@@ -108,69 +130,69 @@ export const MyMomentsLoader = () => (
           style={{
             flexDirection: 'row',
             flexWrap: 'wrap',
-            width: 240 + 4*6,
+            width: 240 + 4 * 6,
           }}
         >
-        <PlaceholderLine
-          style={{
-            borderRadius: 3,
-            height: 80,
-            width: 80,
-            padding: 0,
-            margin: 4,
-            marginLeft: 0,
-          }}
-        />
-        <PlaceholderLine
-          style={{
-            borderRadius: 3,
-            height: 80,
-            width: 80,
-            padding: 0,
-            margin: 4,
-          }}
-        />
-        <PlaceholderLine
-          style={{
-            borderRadius: 3,
-            height: 80,
-            width: 80,
-            padding: 0,
-            margin: 4,
-          }}
-        />
+          <PlaceholderLine
+            style={{
+              borderRadius: 3,
+              height: 80,
+              width: 80,
+              padding: 0,
+              margin: 4,
+              marginLeft: 0,
+            }}
+          />
+          <PlaceholderLine
+            style={{
+              borderRadius: 3,
+              height: 80,
+              width: 80,
+              padding: 0,
+              margin: 4,
+            }}
+          />
+          <PlaceholderLine
+            style={{
+              borderRadius: 3,
+              height: 80,
+              width: 80,
+              padding: 0,
+              margin: 4,
+            }}
+          />
 
-        <PlaceholderLine
-          style={{
-            borderRadius: 3,
-            height: 80,
-            width: 80,
-            padding: 0,
-            margin: 4,
-            marginLeft: 0,
-            marginTop: 0,
-          }}
-        />
-        <PlaceholderLine
-          style={{
-            borderRadius: 3,
-            height: 80,
-            width: 80,
-            padding: 0,
-            margin: 4,
-            marginTop: 0,
-          }}
-        />
-        <PlaceholderLine
-          style={{
-            borderRadius: 3,
-            height: 80,
-            width: 80,
-            padding: 0,
-            margin: 4,
-            marginTop: 0,
-          }}
-        />
+          <PlaceholderLine
+            style={{
+              borderRadius: 3,
+              height: 80,
+              width: 80,
+              padding: 0,
+              margin: 4,
+              marginLeft: 0,
+              marginTop: 0,
+            }}
+          />
+          <PlaceholderLine
+            style={{
+              borderRadius: 3,
+              height: 80,
+              width: 80,
+              padding: 0,
+              margin: 4,
+              marginTop: 0,
+            }}
+          />
+          <PlaceholderLine
+            style={{
+              borderRadius: 3,
+              height: 80,
+              width: 80,
+              padding: 0,
+              margin: 4,
+              marginTop: 0,
+            }}
+          />
 
 
         </View>
@@ -257,7 +279,7 @@ export const MyTalkLoader = () => (
       <PlaceholderLine
         style={{
           width: 300,
-          height: 150,
+          height: 100,
           marginBottom: 0,
           borderRadius: 3,
           // marginLeft: 40,
