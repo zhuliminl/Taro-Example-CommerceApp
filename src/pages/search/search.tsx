@@ -94,6 +94,7 @@ export default class Search extends Component {
           <SearchBar
             $router={this.$router}
             placeholder={this.state.keyword}
+            focus={false}
             onSearch={(keyword) => {
               this.handleOnSearch(keyword)
             }}

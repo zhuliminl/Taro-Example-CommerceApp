@@ -1,4 +1,53 @@
 
-.home_title {
-  color: red;
+ $mainColor: #FE1123;
+
+.user_login_page {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
 }
+
+.user-login-page-wrap {
+  padding-top: 300px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-login-title-txt {
+  font-size: 50px;
+  color: #111;
+  padding-bottom: 80px;
+}
+
+.user-login-desc-wrap {
+  display: flex;
+  flex-direction: row;
+  flex:1;
+}
+
+.user-login-desc-grey-txt {
+  font-size: 26px;
+  color: #999;
+}
+
+.user-login-desc-red-txt {
+  font-size: 26px;
+  color: $mainColor;
+}
+
+.user-login-wechat-icon-img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.user-login-wechat-txt {
+  margin-bottom: 80px;
+  font-size: 26px;
+  color: #999;
+}
+
+
+

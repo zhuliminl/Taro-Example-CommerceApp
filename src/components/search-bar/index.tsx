@@ -11,12 +11,17 @@ interface SearchBarInterface {
   placeholder: string;
   onSearch: (any) => void;
   $router?: any;
+  focus?: boolean;
 }
 
 
 export default class SearchBar extends Component<SearchBarInterface, {}> {
   state = {
     keyword: ''
+  }
+
+  static defaultProps = {
+    focus: true
   }
 
   componentDidMount = () => {
@@ -55,8 +60,9 @@ export default class SearchBar extends Component<SearchBarInterface, {}> {
             type='text'
             placeholder={this.props.placeholder}
             className='search-bar-input'
-            focus
+            focus={this.props.focus}
             onInput={this.handleOnChange.bind(this)}
+            onConfirm={this.handleOnSearch.bind(this)}
             style={inputStyle}
           />
           <Text className='search-bar-red-btn' onClick={this.handleOnSearch.bind(this)}>搜券</Text>

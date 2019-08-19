@@ -1,11 +1,12 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Image, ScrollView } from '@tarojs/components';
+import { View, Text, Image, ScrollView } from '@tarojs/components';
 import Header from '@/components/header'
 import List from '@/components/list'
 import Btn from '@/components/btn'
 import './setting.scss'
 import { device } from '@/utils/device'
 import { phone } from '@/utils/phone'
+import { navigateTo } from '@/utils/navigation'
 
 const defaultAvatar = 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80'
 
@@ -42,7 +43,9 @@ class Setting extends Component {
           <List
             title='头像'
             callback={() => {
-              console.log('FIN 进入其他页面')
+              Taro.showToast({
+                title: 'qqqqqqqqqqq'
+              })
             }}
             renderAsideEl={
               <Image
@@ -100,15 +103,23 @@ class Setting extends Component {
             hasMarginBottom
           />
 
-
-
           <Btn
             title='退出当前账户'
-
             callback={() => {
-              console.log('FIN 注销')
+              // Taro.showToast({
+              //   title: 'uuuuuuuuuuuu'
+              // })
+              try {
+                navigateTo('user_login')
+              } catch (err) {
+                Taro.showToast({
+                  title: JSON.stringify(err)
+                })
+              }
             }}
           />
+          {/* 
+         */}
 
         </ScrollView>
       </View>
