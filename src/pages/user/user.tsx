@@ -207,7 +207,7 @@ class User extends Component<UserInterface, {}> {
 
   componentDidShow = () => {
     this.props.getUser('saul')
-    console.log('FIN', device)
+    // console.log('FIN', device)
   }
 
   componentDidMount = () => {

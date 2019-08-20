@@ -24,7 +24,6 @@ export default class CodeInput extends Component<CodeInputInterface, {}> {
   componentDidMount = () => {
     const { codeLength = 4 } = this.props
     this.setState({
-      // codeList: [...Array(codeLength)].map(x => '3')
       codeList: [...Array(codeLength)].map(x => '')
     })
   }
@@ -39,6 +38,7 @@ export default class CodeInput extends Component<CodeInputInterface, {}> {
       handleOnSubmit && handleOnSubmit({ code: value })
     }
 
+
     let codeListInit = [...Array(codeLength)].map(x => '')
     let codeList = codeListInit.map((item, i) => {
       const data = value.split('')[i] || ''
@@ -50,7 +50,6 @@ export default class CodeInput extends Component<CodeInputInterface, {}> {
       codeList,
     })
   }
-
 
   render() {
     const { codeLength = 4 } = this.props
@@ -96,7 +95,7 @@ export default class CodeInput extends Component<CodeInputInterface, {}> {
 
         <Input
           maxLength={codeLength}
-          value={''}
+          value={this.state.code}
           type={'number'}
           placeholder={''}
           className='code-input'

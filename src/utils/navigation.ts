@@ -5,7 +5,7 @@ export const navigateTo = (pathName, params = {}) => {
       return encodeURIComponent(k) + "=" + encodeURIComponent(params[k]);
     }).join('&')
 
-    console.log(paramsStr)
+    console.log('FIN paramsStr ===>',paramsStr)
 
     Taro.navigateTo({
       url: `/pages/${pathName}/${pathName}?${paramsStr}`
