@@ -8,9 +8,12 @@ import H1 from '@/components/h1'
 import { parseUrlParams } from '@/utils/navigation'
 import { phone } from '@/utils/phone'
 import CodeInput from '@/components/code-input'
+import { codeTimer } from '@/utils/codeTimer'
 
 
 export default class InputAuthcode extends Component {
+  clear: () => void;
+
   config = {
     navigationBarTitleText: 'input_authcode',
     disableScroll: true,
@@ -18,6 +21,8 @@ export default class InputAuthcode extends Component {
 
   state = {
     mobile: '13735881684',
+    isAgain: false,
+    timeLeft: 10,
   }
 
   componentDidMount = () => {
@@ -27,6 +32,38 @@ export default class InputAuthcode extends Component {
       // 开发阶段先注释
       // mobile
     })
+
+    // 倒计时
+    this.initTimer()
+  }
+
+  initTimer = () => {
+    this.clear = codeTimer(
+      t => {
+        this.setState({
+          timeLeft: t,
+        })
+      },
+      () => {
+        this.setState({
+          isAgain: true,
+        })
+      }, 10);
+  }
+
+  fetchAuthCode = () => {
+    this.initTimer()
+    this.setState({
+      isAgain: false,
+    })
+
+    Taro.showToast({
+      title: '重新获取'
+    })
+  }
+
+  componentWillUnmount = () => {
+    this.clear && this.clear()
   }
 
   render() {
@@ -67,6 +104,9 @@ export default class InputAuthcode extends Component {
               })
             }}
           />
+
+          {!this.state.isAgain && <Text className='input-authcode-hint-txt'>{this.state.timeLeft}s后重新获取</Text>}
+          {this.state.isAgain && <Text className='input-authcode-hint-again-txt' onClick={this.fetchAuthCode.bind(this)}>重新获取验证码</Text>}
         </View>
       </View>
     )
