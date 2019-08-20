@@ -30,7 +30,7 @@ export default class InputAuthcode extends Component {
     const { mobile = '' } = params
     this.setState({
       // 开发阶段先注释
-      // mobile
+      mobile
     })
 
     // 倒计时
