@@ -6,7 +6,7 @@
   margin-bottom: 20px;
   border-radius: 40px;
   height: 80px;
-  width: 480px;
+  width: 540px;
   display: flex;
   // 不可忽视的小细节，一切需要flex 的地方都要注意 RN 和 和 的 flex-direction 是反着的，所以必须强制声明来统一平台差异
   flex-direction: row;   
@@ -17,7 +17,7 @@
   background-color: red;
   // background-color: #999;
   /*postcss-pxtransform rn eject enable*/
-  line-height: 26px;
+  line-height: 30px;
   /*postcss-pxtransform rn eject disable*/
 
 }
@@ -27,6 +27,6 @@
   flex-direction: row;
   justify-content: center;
   color: #FFF;
-  font-size: 28px;
+  font-size: 32px;
   text-align: center;
 }

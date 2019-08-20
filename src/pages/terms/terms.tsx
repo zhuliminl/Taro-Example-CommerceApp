@@ -41,7 +41,6 @@ export default class Terms extends Component {
     }
 
     const terms = terms_data['html'] || ''
-    console.log('FIN xxxxxxx', terms)
 
     return (
       <View className="terms-page">
