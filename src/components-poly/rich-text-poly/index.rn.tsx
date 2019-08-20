@@ -23,12 +23,15 @@ export default class RichTextPoly extends Component<RichTextPolyInterface, {}> {
     return (
       <View
         style={{
-          width: device.windowWidth - 30,
+          // width: device.windowWidth - 30,
           backgroundColor: '#FFF',
           overflow: 'hidden',
         }}
       >
         <AutoHeightWebView
+          style={{
+            width: device.windowWidth - 30
+          }}
           // overScrollMode={'never'}
           scrollEnabled={false}
           customScript={`document.body.style.background = '#FFF';`}

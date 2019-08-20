@@ -7,6 +7,7 @@ import RedBtn from '@/components/red-btn'
 import Header from '@/components/header'
 import { device } from '@/utils/device'
 import icon_wechat_green from '@/assets/icon/wechat_green.png'
+import { navigateTo } from '@/utils/navigation'
 
 class UserLogin extends Component {
   config = {
@@ -23,7 +24,7 @@ class UserLogin extends Component {
 
   render() {
     let pageHeight = device.windowHeight
-    if(device.isWeChat()) {
+    if (device.isWeChat()) {
       pageHeight = device.info.screenHeight + 'px'
     }
     return (
@@ -34,7 +35,7 @@ class UserLogin extends Component {
         }}
       >
         <Header
-          title={'登录'}
+          title={''}
         />
         <View className='user-login-page-wrap'>
           <Text className='user-login-title-txt'>登录大淘客</Text>
@@ -45,7 +46,7 @@ class UserLogin extends Component {
             }}
           />
           <View className='user-login-desc-wrap' onClick={() => {
-            console.log('FIN 查看条款')
+            navigateTo('terms')
           }}>
             <Text className='user-login-desc-grey-txt'>登录即代表你已同意</Text>
             <Text className='user-login-desc-red-txt'>《大淘客隐私条款》</Text>

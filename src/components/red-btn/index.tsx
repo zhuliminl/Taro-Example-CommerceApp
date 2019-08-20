@@ -4,21 +4,29 @@ import './index.scss'
 
 interface RedBtnInterface {
   title: string;
+  disable?: boolean;
   style?: any;
   onClick: () => void;
 }
 
 export default class RedBtn extends Component<RedBtnInterface, {}> {
-
   componentDidMount = () => {
   }
 
   render() {
-    const { style = {}, onClick } = this.props
+    const { style = {}, onClick, disable = false } = this.props
     return (
-      <View className="red-btn-comp" style={style} onClick={() => {
-        onClick && onClick()
-      }}>
+      <View
+        className="red-btn-comp"
+        style={{
+          ...style,
+          opacity: disable ? 0.5 : 1,
+        }}
+        onClick={() => {
+          if(!disable) {
+            onClick && onClick()
+          }
+        }}>
         <Text className='red-btn-title-txt'>
           {this.props.title}
         </Text>

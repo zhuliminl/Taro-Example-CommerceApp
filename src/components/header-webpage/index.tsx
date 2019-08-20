@@ -16,6 +16,7 @@ interface HeaderWebpageInterface {
   backgroundColor: string;
   isBlackIcon?: boolean;
   titleColor?: string;
+  hasReload?: boolean;
 }
 
 export default class HeaderWebpage extends Component<HeaderWebpageInterface, {}> {
@@ -35,12 +36,18 @@ export default class HeaderWebpage extends Component<HeaderWebpageInterface, {}>
       wrapStyle.height = 70 + 'px'   // 小程序需要格外注意
     }
 
-    const { backgroundColor = 'red', isBlackIcon = true, titleColor = '#FFF' } = this.props
+    const { backgroundColor = 'red', isBlackIcon = true, titleColor = '#FFF', hasReload = false } = this.props
 
     let titlePaddingRight: any = 30
+
+    if(!hasReload) {
+      titlePaddingRight  = 30 + 30
+    }
+
     if (device.isWeChat()) {
       titlePaddingRight = 73 + 'px'
     }
+
 
     return (
       <View className="header-webpage-comp" style={{ backgroundColor, ...wrapStyle }}>
@@ -57,7 +64,9 @@ export default class HeaderWebpage extends Component<HeaderWebpageInterface, {}>
               title: '正在重新加载',
             })
           }}>
-            <Image className='header-webpage-icon-img' src={isBlackIcon ? reload_img_grey : reload_img} />
+            { 
+              hasReload && <Image className='header-webpage-icon-img' src={isBlackIcon ? reload_img_grey : reload_img} />
+            }
           </View>
         }
       </View>

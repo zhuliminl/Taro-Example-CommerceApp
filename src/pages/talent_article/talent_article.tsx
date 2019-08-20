@@ -73,7 +73,7 @@ export default class TalentArticle extends Component {
     const nodes = data['article'] || ''
     return (
       <View className="talent_article-page">
-        <HeaderWebpage backgroundColor={'#FFF'} titleColor={'#333'} title={'达人文章'} />
+        <HeaderWebpage backgroundColor={'#FFF'} titleColor={'#333'} title={'达人文章'} hasReload />
         {device.isH5() && (<View style={{ height: 50 }}></View>)}
         {device.isIOS() && (<View style={{ height: 70 }}></View>)}
         {device.isAndroid() && (<View style={{ height: 48 }}></View>)}
