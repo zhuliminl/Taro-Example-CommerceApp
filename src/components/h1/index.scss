@@ -1,1 +1,17 @@
+.h1-comp {
+  display: flex;
+  flex-direction: column;
 
+}
+
+
+.h1-title-txt {
+  font-size: 60px;
+  color: #111;
+}
+
+.h1-desc-txt {
+  font-size: 28px;
+  color: #999;
+  margin-top: 20px;
+}

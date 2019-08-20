@@ -42,7 +42,7 @@ class UserLogin extends Component {
           <RedBtn
             title={'立即登录'}
             onClick={() => {
-              console.log('FIN 登录')
+              navigateTo('input_mobile')
             }}
           />
           <View className='user-login-desc-wrap' onClick={() => {

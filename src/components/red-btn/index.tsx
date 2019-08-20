@@ -7,6 +7,7 @@ interface RedBtnInterface {
   disable?: boolean;
   style?: any;
   onClick: () => void;
+  active?: boolean;
 }
 
 export default class RedBtn extends Component<RedBtnInterface, {}> {
@@ -14,7 +15,10 @@ export default class RedBtn extends Component<RedBtnInterface, {}> {
   }
 
   render() {
-    const { style = {}, onClick, disable = false } = this.props
+    const { style = {}, onClick, disable = false, active = true } = this.props
+    if(!active) {
+      style['backgroundColor'] = '#CCC'
+    }
     return (
       <View
         className="red-btn-comp"

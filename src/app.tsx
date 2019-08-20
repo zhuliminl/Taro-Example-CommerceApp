@@ -45,6 +45,8 @@ class App extends Component {
       'pages/talent_article/talent_article',
       'pages/FAQ/FAQ',
       'pages/terms/terms',
+      'pages/input_mobile/input_mobile',
+      'pages/input_authcode/input_authcode',
     ],
     window: {
       backgroundTextStyle: 'light',

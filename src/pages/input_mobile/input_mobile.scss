@@ -1,1 +1,40 @@
 
+.input_mobile-page {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-mobile-content-wrap {
+  margin-top: 260px;
+  padding-left: 60px;
+  padding-right: 60px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.input-mobile-wrap {
+  padding-bottom: 10px;
+  border-width: 0;
+  border-bottom-width: 2px;
+  // border-color: #eee;
+  border-color: #eee;
+  border-style: solid;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input-mobile-prefix-txt {
+  font-size: 36px;
+  color: #333;
+  margin-right: 20px;
+}
+
+.mobile-input {
+  font-size: 36px;
+  color: #333;
+  flex: 1;
+}
