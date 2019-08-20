@@ -82,9 +82,7 @@ export default class InputMobile extends Component {
           height: pageHeight,
         }}
       >
-        <Header
-          title={''}
-        />
+        <Header title={''} />
         <View className='input-mobile-content-wrap'>
           <H1
             title='输入手机号'
