@@ -4,10 +4,10 @@ import './input_authcode.scss'
 import Header from '@/components/header'
 import { device } from '@/utils/device'
 import { navigateTo } from '@/utils/navigation'
-import RedBtn from '@/components/red-btn'
 import H1 from '@/components/h1'
 import { parseUrlParams } from '@/utils/navigation'
 import { phone } from '@/utils/phone'
+import CodeInput from '@/components/code-input'
 
 
 export default class InputAuthcode extends Component {
@@ -45,7 +45,6 @@ export default class InputAuthcode extends Component {
     }
 
     const { mobile = '' } = this.state
-    console.log('FIN mobile', mobile)
 
     return (
       <View className="input_authcode-page"
@@ -59,6 +58,14 @@ export default class InputAuthcode extends Component {
             title='输入短信验证码'
             desc={`短信已发送至 +86 ${phone.divideFormat(mobile)}`}
             style={{ ...h1Style, }}
+          />
+          <CodeInput
+            codeLength={4}
+            handleOnSubmit={({ code }) => {
+              Taro.showToast({
+                title: code
+              })
+            }}
           />
         </View>
       </View>

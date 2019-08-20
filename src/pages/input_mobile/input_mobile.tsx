@@ -100,7 +100,6 @@ export default class InputMobile extends Component {
               focus
               onInput={this.handleOnChange.bind(this)}
             // onConfirm={this.handleOnSearch.bind(this)}
-            // style={inputStyle}
             />
             <IconClose
               isShow={this.state.isIconCloseShow}
