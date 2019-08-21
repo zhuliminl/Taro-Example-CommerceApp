@@ -15,6 +15,7 @@ import banner4 from '@/assets/tmp/banner/b4.png';
 import banner5 from '@/assets/tmp/banner/b5.png';
 import { device } from '@/utils/device';
 import { navigateTo } from '@/utils/navigation';
+import ModalPoly from '@/components-poly/modal-poly'
 
 const IMG_LIST = [
   {
@@ -243,6 +244,7 @@ class Home extends Component {
   }
 
   render() {
+
     let scrollStyle: any = {}
     if (device.isH5()) {
       scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
@@ -270,6 +272,13 @@ class Home extends Component {
       // swiperStyle.height = 300
     }
 
+    if(true) {
+      return (
+        <View>
+          <Text>xxxxxx</Text>
+        </View>
+      )
+    }
 
     return (
       <View className='home'>

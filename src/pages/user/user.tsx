@@ -239,6 +239,7 @@ class User extends Component<UserInterface, {}> {
 
 
   render() {
+
     return (
       <View className='user'>
         <Image className='user_bg' src={bg_user} />
