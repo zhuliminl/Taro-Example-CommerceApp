@@ -130,6 +130,7 @@ class Home extends Component {
   }
 
   state = {
+    showModal: false,
     loading: false,
     coupons: [],
     current: 0,
@@ -145,6 +146,12 @@ class Home extends Component {
   componentDidMount = async () => {
     this.fetchCoupon()
     this.fetchSuperSortList()
+
+    setTimeout(() => {
+      this.setState({
+        showModal: true,
+      })
+    }, 3000)
   }
 
 
@@ -272,11 +279,9 @@ class Home extends Component {
       // swiperStyle.height = 300
     }
 
-    if(true) {
+    if(this.state.showModal) {
       return (
-        <View>
-          <Text>xxxxxx</Text>
-        </View>
+        <ModalPoly />
       )
     }
 
