@@ -20,6 +20,7 @@ export default class ModalPoly extends Component<ModalPolyInterface, {}> {
     return (
       <View>
         <Modal
+          backButtonClose
           coverScreen
           isOpen={isShow}
           style={{
