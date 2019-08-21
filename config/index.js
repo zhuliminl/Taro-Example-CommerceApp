@@ -89,6 +89,7 @@ const config = {
         }
       })
     },
+    esnextModules: ['taro-ui'],
 
     publicPath: '/',
     staticDirectory: 'static',

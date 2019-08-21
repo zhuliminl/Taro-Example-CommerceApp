@@ -70,6 +70,7 @@
     "redux-thunk": "^2.3.0",
     "rn-placeholder": "^3.0.0",
     "taro-skeleton": "^1.0.6",
+    "taro-ui": "^2.2.1",
     "tslib": "^1.8.0"
   },
   "devDependencies": {
