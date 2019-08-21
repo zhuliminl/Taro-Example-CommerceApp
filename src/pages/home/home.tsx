@@ -16,6 +16,7 @@ import banner5 from '@/assets/tmp/banner/b5.png';
 import { device } from '@/utils/device';
 import { navigateTo } from '@/utils/navigation';
 import ModalPoly from '@/components-poly/modal-poly'
+// import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
 
 const IMG_LIST = [
   {
@@ -279,14 +280,27 @@ class Home extends Component {
       // swiperStyle.height = 300
     }
 
-    if(this.state.showModal) {
+    /*
+    if (this.state.showModal) {
+      // return (
+      //   <AtModal isOpened>
+      //     <AtModalHeader>标题</AtModalHeader>
+      //     <AtModalContent>
+      //       这里是正文内容，欢迎加入京东凹凸实验室
+      //       这里是正文内容，欢迎加入京东凹凸实验室
+      //       hhhhhhhhhhhhhhhh
+      //       </AtModalContent>
+      //   </AtModal>
+      // )
       return (
         <ModalPoly />
       )
     }
+    */
 
     return (
       <View className='home'>
+        <ModalPoly />
         <View className='home-sticky-wrap'
           style={{
             top: this.state.stickyTop,
