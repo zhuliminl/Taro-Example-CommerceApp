@@ -9,6 +9,7 @@ interface ModalPolyInterface {
   isShow: boolean;
   width: number;
   height: number;
+  borderRadius: number;
   // onCancel: () => void;
   // onConfirm: () => void;
 }
@@ -19,26 +20,31 @@ export default class ModalPoly extends Component<ModalPolyInterface, {}> {
   }
 
   render() {
+    // 注意：官方 UI 暂时不支持自定义宽度和圆角
+
     let wrapStyle: any = {
-      width: this.props.width,
+      // width: this.props.width,
       height: this.props.height,
+      // borderRadius: this.props.borderRadius,
     }
 
     if (device.isWeChat()) {
-      wrapStyle.width += 'px'
+      // wrapStyle.width += 'px'
       wrapStyle.height += 'px'
+      // wrapStyle.borderRadius += 'px'
     }
 
     return (
       <View className="modal-poly-comp">
         <AtModal
           isOpened={this.props.isShow}
-          // onCancel={this.props.onCancel}
-          // onConfirm={this.props.onConfirm}
+        // onCancel={this.props.onCancel}
+        // onConfirm={this.props.onConfirm}
         >
           <View style={{
             ...wrapStyle,
             backgroundColor: '#000',
+            overflow: 'hidden',
           }}>
             {this.props.children}
           </View>

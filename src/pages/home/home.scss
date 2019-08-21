@@ -1,4 +1,6 @@
+/*postcss-pxtransform rn eject enable*/
 @import "~taro-ui/dist/style/components/modal.scss";  // 必须在 home 中引入，才能应用到将样式应用到小程序
+/*postcss-pxtransform rn eject disable*/
 
 .home {
   background-color: #FFF;

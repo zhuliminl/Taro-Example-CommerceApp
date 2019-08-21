@@ -284,17 +284,18 @@ class Home extends Component {
       <View className='home'>
 
         <ModalPoly
-          isShow
-          width={300}
+          isShow={this.state.showModal}
+          width={240}
           height={500}
+          borderRadius={10}
         >
           <View onClick={() => {
+            console.log('FIN ModalPoly click')
             Taro.showToast({
               title: 'xxxxxxxxxxxxxxxxx'
             })
           }}>
-            <Text>标题</Text>
-            <Image src={banner1} />
+            <Text style={{ color: '#FFF' }}>标题</Text>
           </View>
         </ModalPoly>
 
