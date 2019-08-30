@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SceneMap, SceneRendererProps, TabBar, TabView, NavigationState } from 'react-native-tab-view';
+import { device } from '@/utils/device';
 
 
 interface SuperTabPolyInterface {
@@ -11,17 +12,23 @@ type State = NavigationState<{
   title: string;
 }>;
 
-
 export default class SuperTabPoly extends Component<SuperTabPolyInterface, {}> {
   state = {
     index: 0,
     routes: [
-      { key: 'article', title: 'Article' },
-      { key: 'contacts', title: 'Contacts' },
-      { key: 'albums', title: 'Albums' },
-      { key: 'chat', title: 'Chat' },
+      { key: '0', title: '全部' },
+      { key: '1', title: '美食' },
+      { key: '2', title: '育英' },
+      { key: '3', title: '美妆' },
+      { key: '4', title: '博主' },
+      { key: '5', title: '上衣' },
+      { key: '5', title: '上衣' },
+      { key: '6', title: '裤子' },
+      { key: '7', title: '美食' },
     ],
-  }
+  };
+
+
   handleIndexChange = index => {
     this.setState({
       index,
@@ -36,50 +43,56 @@ export default class SuperTabPoly extends Component<SuperTabPolyInterface, {}> {
     <TabBar
       {...props}
       scrollEnabled
-      indicatorStyle={styles.indicator}
-      style={styles.tabbar}
-      tabStyle={styles.tab}
-      labelStyle={styles.label}
+      indicatorStyle={{
+        backgroundColor: 'green',
+      }}
+      style={{
+      }}
+      tabStyle={{
+        width: 60,
+        backgroundColor: '#FFF',
+      }}
+      labelStyle={{
+        color: '#333',
+        fontSize: 14,
+      }}
     />
-  );
+  )
 
-  renderScene = SceneMap({
-    albums: () => null,
-    contacts: () => null,
-    article: () => null,
-    chat: () => null,
-  })
-
-
+  renderScene = () => {
+    return <View />
+  }
 
   render() {
-    return (
-      <View>
-        <Text>
-          rn super-tab-poly
-        </Text>
-        <TabView
-          navigationState={this.state}
-          renderScene={this.renderScene}
-          renderTabBar={this.renderTabBar}
-          onIndexChange={this.handleIndexChange}
-        />
-      </View>
-    )
+    if (true) {
+      return (
+        <View
+          style={{
+            // 高度必须有
+            height: 300,
+            backgroundColor: '#EEE',
+          }}
+        >
+          <Text>xxxx</Text>
+          <TabView
+            style={{ backgroundColor: 'red', }}
+            navigationState={this.state}
+            renderScene={this.renderScene}
+            renderTabBar={this.renderTabBar}
+            onIndexChange={index => this.setState({ index })}
+          />
+          <Text>sssss</Text>
+        </View>
+      );
+    }
   }
 }
 
 const styles = StyleSheet.create({
-  tabbar: {
-    backgroundColor: '#3f51b5',
-  },
-  tab: {
-    width: 120,
+  scene: {
+    flex: 1,
   },
   indicator: {
     backgroundColor: '#ffeb3b',
-  },
-  label: {
-    fontWeight: '400',
   },
 });
