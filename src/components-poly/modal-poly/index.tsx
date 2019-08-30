@@ -21,15 +21,14 @@ export default class ModalPoly extends Component<ModalPolyInterface, {}> {
 
   render() {
     // 注意：官方 UI 暂时不支持自定义宽度和圆角
-
     let wrapStyle: any = {
-      // width: this.props.width,
+      width: this.props.width,
       height: this.props.height,
       // borderRadius: this.props.borderRadius,
     }
 
     if (device.isWeChat()) {
-      // wrapStyle.width += 'px'
+      wrapStyle.width += 'px'
       wrapStyle.height += 'px'
       // wrapStyle.borderRadius += 'px'
     }
@@ -43,7 +42,7 @@ export default class ModalPoly extends Component<ModalPolyInterface, {}> {
         >
           <View style={{
             ...wrapStyle,
-            backgroundColor: '#000',
+            backgroundColor: 'green',
             overflow: 'hidden',
           }}>
             {this.props.children}

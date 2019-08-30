@@ -5,9 +5,11 @@ import Modal from 'react-native-modalbox';
 
 interface ModalPolyInterface {
   isShow: boolean;
-  width: number;
-  height: number;
-  borderRadius: number;
+  width: number | string;
+  height: number | string;
+  borderRadius: number | string;
+  // onCancel: () => void;
+  // onConfirm: () => void;
 }
 
 export default class ModalPoly extends Component<ModalPolyInterface, {}> {
@@ -26,7 +28,7 @@ export default class ModalPoly extends Component<ModalPolyInterface, {}> {
           style={{
             height,
             width,
-            backgroundColor: '#000',
+            backgroundColor: 'green',
             borderRadius,
             // justifyContent: 'center',
             // alignItems: 'center'

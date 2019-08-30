@@ -1,12 +1,12 @@
 import { Platform } from "react-native";
 import Taro from "@tarojs/taro";
 
-const isRN =  process.env.TARO_ENV === 'rn'
+const isRN = process.env.TARO_ENV === 'rn'
 
 
-let windowHeight : any = Taro.getSystemInfoSync().windowHeight
+let windowHeight: any = Taro.getSystemInfoSync().windowHeight
 
-let windowWidth : any = Taro.getSystemInfoSync().windowWidth
+let windowWidth: any = Taro.getSystemInfoSync().windowWidth
 
 export const device = {
   // 设备平台判断
@@ -15,12 +15,12 @@ export const device = {
   isAliPay: () => process.env.TARO_ENV === 'alipay',
   isH5: () => process.env.TARO_ENV === 'h5',
   isAndroid: () => {
-    if(isRN) {
+    if (isRN) {
       return Platform.OS === 'android'
     }
   },
   isIOS: () => {
-    if(isRN) {
+    if (isRN) {
       return Platform.OS === 'ios'
     }
   },
@@ -29,4 +29,11 @@ export const device = {
   windowHeight,
   windowWidth,
   info: Taro.getSystemInfoSync(),
+}
+
+export const px = n => {
+  if (device.isWeChat()) {
+    return n + 'px'
+  }
+  return n
 }
