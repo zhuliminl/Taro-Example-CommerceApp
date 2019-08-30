@@ -22,6 +22,11 @@ RN 端需要配合 taro 提供的壳才能运行 [https://github.com/NervJS/taro
 见 [https://github.com/facebook/react-native/issues/20252](https://github.com/facebook/react-native/issues/20252)
 注意 image-picker 这个包同样也要改
 
+- 报错 `Native module cannot be null`
+
+见 [https://github.com/react-native-community/react-native-tab-view/issues/711](https://github.com/react-native-community/react-native-tab-view/issues/711)
+
+
 ## 适配进度
 
 - [x] H5 -- 完美适配
