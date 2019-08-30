@@ -1,7 +1,8 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, SwiperItem } from '@tarojs/components';
 import { device } from '@/utils/device'
-import SuperTabPoly from '@/components-poly/super-tab-poly'
+// import SuperTabPoly from '@/components-poly/super-tab-poly'
+import SuperTab from '@/components/super-tab'
 
 const TAB_LIST = [
   {
@@ -89,7 +90,7 @@ class Seckill extends Component {
           marginTop: 100,
         }}
       >
-        <SuperTabPoly
+        <SuperTab
         />
         {this.state.current === 0 && <FooA />}
         {this.state.current === 1 && <FooB />}
