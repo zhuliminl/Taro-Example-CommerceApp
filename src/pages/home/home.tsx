@@ -147,11 +147,11 @@ class Home extends Component {
     this.fetchCoupon()
     this.fetchSuperSortList()
 
-    setTimeout(() => {
-      this.setState({
-        showModal: true,
-      })
-    }, 1000)
+    // setTimeout(() => {
+    //   this.setState({
+    //     showModal: true,
+    //   })
+    // }, 1000)
   }
 
 
@@ -284,7 +284,8 @@ class Home extends Component {
       <View className='home'>
 
         <ModalPoly
-          isShow={this.state.showModal}
+          // isShow={this.state.showModal}
+          isShow={false}
           width={px(270)}
           height={px(300)}
           borderRadius={px(10)}
