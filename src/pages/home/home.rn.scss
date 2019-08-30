@@ -1,5 +1,3 @@
-@import "~taro-ui/dist/style/components/modal.scss";  // 必须在 home 中引入，才能应用到将样式应用到小程序
-
 .home {
   background-color: #FFF;
   position: relative;
@@ -12,5 +10,6 @@
   // top: -100px;
   position: absolute;
   z-index: 999;
-  background-color: #FFF;
+  // background-color: #FFF;
+  background-color: red;
 }

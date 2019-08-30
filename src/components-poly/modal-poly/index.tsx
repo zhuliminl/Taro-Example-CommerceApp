@@ -2,14 +2,14 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
-import './index.scss'
+import './index'
 import { device } from '@/utils/device'
 
 interface ModalPolyInterface {
   isShow: boolean;
-  width: number;
-  height: number;
-  borderRadius: number;
+  width: number | string;
+  height: number | string;
+  borderRadius: number | string;
   // onCancel: () => void;
   // onConfirm: () => void;
 }

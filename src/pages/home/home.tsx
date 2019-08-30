@@ -285,17 +285,26 @@ class Home extends Component {
 
         <ModalPoly
           isShow={this.state.showModal}
-          width={240}
+          width={device.isWeChat() ? '270px' : 270}
           height={500}
           borderRadius={10}
         >
-          <View onClick={() => {
-            console.log('FIN ModalPoly click')
-            Taro.showToast({
-              title: 'xxxxxxxxxxxxxxxxx'
-            })
-          }}>
+          <View
+            style={{
+              width: device.isWeChat() ? '270px' : 270,
+              height: device.isWeChat() ? '270px' : 270,
+            }}
+            onClick={() => {
+              console.log('FIN ModalPoly click')
+            }}>
             <Text style={{ color: '#FFF' }}>标题</Text>
+            <Image
+              style={{
+                width: 270,
+                height: 240,
+              }}
+              src={require('../../assets/image/open_notification.png')}
+            />
           </View>
         </ModalPoly>
 
