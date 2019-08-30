@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, SwiperItem } from '@tarojs/components';
-import {device} from '@/utils/device'
+import { device } from '@/utils/device'
+import SuperTabPoly from '@/components-poly/super-tab-poly'
 
 const TAB_LIST = [
   {
@@ -18,60 +19,21 @@ const TAB_LIST = [
 ]
 
 const FooA = () => (
-  <View style={{backgroundColor: 'green', flexDirection: 'column', justifyContent: 'flex-start'}}>
+  <View style={{ backgroundColor: 'green', flexDirection: 'column', justifyContent: 'flex-start' }}>
     <View><Text>FooA</Text></View>
     <View><Text>FooA</Text></View>
     <View><Text>FooA</Text></View>
     <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FobA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>Fobb</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>Fobb</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>Ooob</Text></View>
-    <View><Text>FobA</Text></View>
-    <View><Text>FobA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FoBA</Text></View>
-    <View><Text>FoBA</Text></View>
-    <View><Text>FBoA</Text></View>
-    <View><Text>BOoA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FBoA</Text></View>
-    <View><Text>FoBA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FBoA</Text></View>
-    <View><Text>BooA</Text></View>
-    <View><Text>BooA</Text></View>
-    <View><Text>FooA</Text></View>
-    <View><Text>FoBA</Text></View>
     <View><Text>FooA</Text></View>
   </View>
 )
 const FooB = () => (
-  <View style={{backgroundColor: 'green'}}>
+  <View style={{ backgroundColor: 'green' }}>
     <Text>FooB</Text>
   </View>
 )
 const FooC = () => (
-  <View style={{backgroundColor: 'red'}}>
+  <View style={{ backgroundColor: 'red' }}>
     <Text>FooC</Text>
   </View>
 )
@@ -102,27 +64,36 @@ class Seckill extends Component {
     current: 0,
   }
 
-render () {
-  let scrollStyle: any = {}
-  if (device.isH5()) {
-    scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
-  }
+  render() {
+    let scrollStyle: any = {}
+    if (device.isH5()) {
+      scrollStyle.height = device.windowHeight - 55   // 必须大于底部栏目固定高度，才不会导致滑动障碍
+    }
 
-  if (device.isIOS()) {
-    scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
-  }
+    if (device.isIOS()) {
+      scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+    }
 
-  if (device.isAndroid()) {
-    scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
-  }
+    if (device.isAndroid()) {
+      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+    }
 
-  if (device.isWeChat()) {
-    scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
-    scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
-  }
+    if (device.isWeChat()) {
+      scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
+      scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
+    }
 
-  return (
-      <View>
+    return (
+      <View
+        style={{
+          marginTop: 100,
+        }}
+      >
+        <SuperTabPoly
+        />
+        {this.state.current === 0 && <FooA />}
+        {this.state.current === 1 && <FooB />}
+        {this.state.current === 2 && <FooC />}
       </View>
     )
   }
