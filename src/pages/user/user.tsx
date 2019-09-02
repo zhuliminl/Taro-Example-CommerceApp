@@ -268,7 +268,7 @@ class User extends Component<UserInterface, {}> {
         }
 
 
-        {/* <Image className='user_bg' src={bg_user} />
+        <Image className='user_bg' src={bg_user} />
 
         <View className='user__profile'>
           <View className='profile__top-bar'
@@ -422,7 +422,7 @@ class User extends Component<UserInterface, {}> {
               )
             })
           }
-        </View> */}
+        </View>
 
 
 

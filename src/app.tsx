@@ -33,7 +33,6 @@ class App extends Component {
       'pages/partner/partner',
       'pages/user/user',
       'pages/user_login/user_login',
-      'pages/setting/setting',
       'pages/estimate/estimate',
       'pages/test/test',
       'pages/search_transition/search_transition',  // 搜索过渡页
@@ -69,6 +68,7 @@ class App extends Component {
       {
         root: 'package_user',
         pages: [
+          '/setting/setting',
 
         ],
       },
