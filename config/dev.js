@@ -9,7 +9,8 @@ module.exports = {
   defineConstants: {
     HOST: isH5 ? '"/api"' : HOST,
   },
-  weapp: {},
+  weapp: {
+  },
   h5: {
 
     devServer: {

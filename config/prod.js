@@ -6,6 +6,7 @@ module.exports = {
     NODE_ENV: '"production"'
   },
   defineConstants: {
+    HOST: isH5 ? '"/api"' : HOST,
   },
   weapp: {},
   h5: {
