@@ -8,13 +8,32 @@ export const navigateTo = (pathName, params = {}) => {
 
   console.log('FIN pathName', pathName)
 
-  if (pathName === 'setting') {
+  // ================ 基础模块路由 =================
+  const package_base_routes = [
+    'img_gallery'
+  ]
+  if (package_base_routes.includes(pathName)) {
+    baseRoute = '/package_base'
+  }
+
+
+  // ================ 用户模块路由 =================
+  const package_user_routes = [
+    'setting',
+    'user_login',
+  ]
+  if (package_user_routes.includes(pathName)) {
     baseRoute = '/package_user'
   }
 
-  if (pathName === 'img_gallery') {
+  // ================ Home 模块路由 =================
+  const package_home_routes = [
+    'img_gallery'
+  ]
+  if (package_base_routes.includes(pathName)) {
     baseRoute = '/package_base'
   }
+
 
   Taro.navigateTo({
     url: `${baseRoute}/${pathName}/${pathName}?${paramsStr}`

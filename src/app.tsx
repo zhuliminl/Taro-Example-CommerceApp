@@ -32,7 +32,6 @@ class App extends Component {
       'pages/seckill/seckill',
       'pages/partner/partner',
       'pages/user/user',
-      'pages/user_login/user_login',
       'pages/estimate/estimate',
       'pages/test/test',
       'pages/search_transition/search_transition',  // 搜索过渡页
@@ -50,9 +49,10 @@ class App extends Component {
       {
         root: 'package_base',
         pages: [
-          '/img_gallery/img_gallery',
+          'img_gallery/img_gallery',
         ],
       },
+      /*
       {
         root: 'package_home',
         pages: [
@@ -65,10 +65,12 @@ class App extends Component {
 
         ],
       },
+      */
       {
         root: 'package_user',
         pages: [
-          '/setting/setting',
+          'setting/setting',
+          'user_login/user_login',
 
         ],
       },
