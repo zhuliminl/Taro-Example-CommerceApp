@@ -26,6 +26,7 @@ export default class Moments extends Component<MomentsInterface, {}> {
   }
 
   componentDidMount = () => {
+    console.log('FIN moments did')
     this.fetchMoments()
   }
 

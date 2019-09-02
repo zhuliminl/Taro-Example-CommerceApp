@@ -26,6 +26,8 @@ export default class Talk extends Component<TalkInterface, {}> {
   }
 
   componentDidMount = async () => {
+    console.log('FIN talk did')
+
 
     // const url = `https://v2.api.haodanku.com/talent_info/apikey/saul/talentcat/1`
     const url = `${host}/talent_info/apikey/saul/talentcat/0`

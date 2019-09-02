@@ -16,6 +16,7 @@ export default class Topic extends Component<TopicInterface,{}> {
   }
 
   componentDidMount = () => {
+    console.log('FIN topic did')
     this.fetchTopics()
   }
 
