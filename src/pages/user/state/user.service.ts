@@ -1,39 +1,47 @@
-import { UsersStore, usersStore } from './user.store'
+import { UserStore, userStore } from './user.store'
 
 import { of } from 'rxjs'
-import { ID } from '@datorama/akita'
 import { User } from './user.model'
 
-const count = 10;
-const data = [] as User[];
 
-for (let i = 0; i < count; i++) {
-  data.push({
-    id: Math.random(),
-    username: 'saul',
-    email: 'zhuliminl@gmail.com',
-    avatar: 'http://www.'
-  });
-}
+/*
+const fakeUserData = {
+  id: '123456',
+  username: '小石头',
+  email: 'zhuliminl@gmai.com',
+  avatar: 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80',
+} as User
+*/
 
 
-export class UsersService {
-  constructor(private usersStore: UsersStore) { }
+export class UserService {
+  constructor(private userStore: UserStore) { }
 
+  /*
   get() {
-    of(data).subscribe(entities => {
+    of(fakeUserData).subscribe(entities => {
       console.log('FIN 初始话用户数据', entities)
       this.usersStore.set(entities)
     })
   }
+  */
 
-  setActive(id: ID) {
-    this.usersStore.setActive(id)
+  // setActive(id: ID) {
+  //   this.usersStore.setActive(id)
+  // }
+
+  // updateActive(user: User) {
+  //   this.usersStore.updateActive(user)
+  // }
+
+  updateUserName(userName: string) {
+    this.userStore.update(state => {
+      return {
+        username: userName,
+      }
+    })
   }
 
-  updateActive(user: User) {
-    this.usersStore.updateActive(user)
-  }
 }
 
-export const usersService = new UsersService(usersStore)
+export const userService = new UserService(userStore)

@@ -1,13 +1,13 @@
-import { QueryEntity } from '@datorama/akita'
+import { Query } from '@datorama/akita'
 
-import { UsersStore, UsersState, usersStore } from './user.store'
+import { UserStore, userStore } from './user.store'
 
 import { User } from './user.model'
 
-export class UsersQuery extends QueryEntity<UsersState, User> {
-  constructor(protected store: UsersStore) {
+export class UserQuery extends Query<User> {
+  constructor(protected store: UserStore) {
     super(store)
   }
 }
 
-export const usersQuery = new UsersQuery(usersStore)
+export const userQuery = new UserQuery(userStore)

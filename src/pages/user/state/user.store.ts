@@ -1,13 +1,20 @@
-import { EntityState, EntityStore, StoreConfig } from '@datorama/akita'
+import { Store, StoreConfig } from '@datorama/akita'
 import { User } from './user.model'
 
-export interface UsersState extends EntityState<User> { }
-
-@StoreConfig({ name: 'users' })
-export class UsersStore extends EntityStore<UsersState, User> {
-  constructor() {
-    super()
+export function createInitialState(): User {
+  return {
+    id: '2143',
+    username: '小石头',
+    email: 'zhuliminl@gmail.com',
+    avatar: 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80'
   }
 }
 
-export const usersStore = new UsersStore()
+@StoreConfig({ name: 'user' })
+export class UserStore extends Store<User> {
+  constructor() {
+    super(createInitialState())
+  }
+}
+
+export const userStore = new UserStore()

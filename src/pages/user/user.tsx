@@ -17,8 +17,8 @@ import bg_user from './assets/bg_user.png'
 import { connect } from '@tarojs/redux'
 import { device } from '@/utils/device'
 import { navigateTo } from '@/utils/navigation'
-import { usersQuery } from './state/user.query'
-import { usersService } from './state/user.service'
+import { userQuery } from './state/user.query'
+import { userService } from './state/user.service'
 
 const IMG_LIST = [
   {
@@ -204,7 +204,7 @@ class User extends Component<UserInterface, {}> {
 
   state = {
     loading: false,
-    users: [],
+    user: [],
   }
 
   componentDidShow = () => {
@@ -213,14 +213,9 @@ class User extends Component<UserInterface, {}> {
   }
 
   componentDidMount = () => {
-    console.log("FIN Did Mount")
-
-    usersService.get()
-    usersQuery.selectAll().subscribe(users => {
-      console.log('FIN users', users)
-      this.setState({ users })
+    userQuery.select().subscribe(user => {
+      this.setState({ user })
     })
-
 
   }
 
@@ -239,21 +234,6 @@ class User extends Component<UserInterface, {}> {
 
     return (
       <View className='user'>
-        {
-          true && (
-            this.state.users && this.state.users.map((user, i) => {
-              return (
-                <View
-                  key={i}
-                >
-                  <Text>xxx</Text>
-                </View>
-              )
-            })
-          )
-        }
-
-
         <Image className='user_bg' src={bg_user} />
 
         <View className='user__profile'>
@@ -277,11 +257,12 @@ class User extends Component<UserInterface, {}> {
           <View className='profile__avatar' onClick={() => {
 
           }} >
-            <Image className='profile__avatar_img' src={defaultAvatar} />
+            {/* <Image className='profile__avatar_img' src={defaultAvatar} /> */}
+            <Image className='profile__avatar_img' src={this.state.user && this.state.user['avatar']} />
             <View className='profile__right'>
               <View className='profile__right-item'
               >
-                <Text className='profile__name-txt'>小石头{device.isAndroid() && 'android'} {device.isIOS() && 'ios'}</Text>
+                <Text className='profile__name-txt'>{this.state.user && this.state.user['username']}{device.isAndroid() && 'android'} {device.isIOS() && 'ios'}</Text>
                 <Text className='profile__partner-txt'>合伙人</Text>
               </View>
               <View className='profile__right-item'>

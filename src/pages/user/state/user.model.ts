@@ -1,7 +1,5 @@
-import {ID} from '@datorama/akita'
-
 export interface User {
-  id: ID;
+  id: string;
   username: string;
   email: string;
   avatar: string;
