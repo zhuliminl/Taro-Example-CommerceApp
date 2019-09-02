@@ -4,7 +4,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
 
 import HeaderWebpage from '@/components/header-webpage'
-import WebPagePoly from '@/components-poly/webpage-poly/index'
+import WebPagePoly from '@/components-poly/webpage-poly'
 import { device } from '@/utils/device'
 
 export default class FAQ extends Component {

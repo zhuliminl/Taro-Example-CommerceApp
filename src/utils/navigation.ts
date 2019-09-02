@@ -11,7 +11,7 @@ export const navigateTo = (pathName, params = {}) => {
   // ================ 基础模块路由 =================
   const package_base_routes = [
     'img_gallery',
-    'item_detail'
+    'item_detail',
   ]
   if (package_base_routes.includes(pathName)) {
     baseRoute = '/package_base'
@@ -22,6 +22,7 @@ export const navigateTo = (pathName, params = {}) => {
   const package_user_routes = [
     'setting',
     'user_login',
+    'FAQ',
   ]
   if (package_user_routes.includes(pathName)) {
     baseRoute = '/package_user'
@@ -30,7 +31,7 @@ export const navigateTo = (pathName, params = {}) => {
   // ================ Home 模块路由 =================
   const package_home_routes = [
     'search_transition',
-    'search'
+    'search',
   ]
   if (package_home_routes.includes(pathName)) {
     baseRoute = '/package_home'

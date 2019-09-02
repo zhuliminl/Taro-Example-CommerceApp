@@ -37,7 +37,6 @@ class App extends Component {
       'pages/supersort/supersort',
       'pages/topic_items/topic_items',
       'pages/talent_article/talent_article',
-      'pages/FAQ/FAQ',
       'pages/terms/terms',
       'pages/input_mobile/input_mobile',
       'pages/input_authcode/input_authcode',
@@ -70,6 +69,7 @@ class App extends Component {
         pages: [
           'setting/setting',
           'user_login/user_login',
+          'FAQ/FAQ',
 
         ],
       },
