@@ -192,7 +192,6 @@ const SERVICE_LIST = [
 
 interface UserInterface {
   getUser: (token: string) => {},
-  goto: (path: string) => {},
   userInfo: any,
 }
 
@@ -236,17 +235,6 @@ class User extends Component<UserInterface, {}> {
       .then(res => console.log(res))
   }
 
-  goto = (pathName, params = {}) => {
-    const paramsStr = Object.keys(params).map(function (k) {
-      return encodeURIComponent(k) + "=" + encodeURIComponent(params[k]);
-    }).join('&')
-
-    console.log(paramsStr)
-
-    navigateTo('setting')
-  }
-
-
   render() {
 
     return (
@@ -279,14 +267,16 @@ class User extends Component<UserInterface, {}> {
             </View>
             <View className='profile__top-bar_item'
               onClick={() => {
-                this.goto('setting')
+                navigateTo('setting')
               }}
             >
               <Text className='profile__top-bar_txt'>设置</Text>
             </View>
           </View>
 
-          <View className='profile__avatar' onClick={this.goto.bind(this, 'test')} >
+          <View className='profile__avatar' onClick={() => {
+
+          }} >
             <Image className='profile__avatar_img' src={defaultAvatar} />
             <View className='profile__right'>
               <View className='profile__right-item'
@@ -302,7 +292,10 @@ class User extends Component<UserInterface, {}> {
           </View>
 
           <View className='profile__estimate'>
-            <View className='profile__estimate-item' onClick={this.goto.bind(this, 'estimate', { title: '今日评估', name: 'saul', age: 45 })}>
+            <View className='profile__estimate-item' onClick={() => {
+              navigateTo('estimate')
+            }}
+            >
               <Text className='profile__estimate_money-txt'>￥0.00</Text>
               <View className='profile__estimate_title-item'>
                 <Text className='profile__estimate_title-txt'>今日预估</Text>

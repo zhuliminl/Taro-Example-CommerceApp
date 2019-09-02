@@ -32,7 +32,6 @@ class App extends Component {
       'pages/seckill/seckill',
       'pages/partner/partner',
       'pages/user/user',
-      'pages/estimate/estimate',
       'pages/test/test',
       'pages/supersort/supersort',
       'pages/topic_items/topic_items',
@@ -70,6 +69,7 @@ class App extends Component {
           'setting/setting',
           'user_login/user_login',
           'FAQ/FAQ',
+          'estimate/estimate',
 
         ],
       },
@@ -107,7 +107,6 @@ class App extends Component {
         },
         {
           pagePath: "pages/seckill/seckill",
-          // pagePath: "pages/estimate/estimate",
           iconPath: "./assets/tab-bar/seckill.png",
           selectedIconPath: "./assets/tab-bar/seckill-active.png",
           text: "大牌秒杀"
