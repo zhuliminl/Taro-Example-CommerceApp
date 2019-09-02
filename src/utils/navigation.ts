@@ -29,10 +29,11 @@ export const navigateTo = (pathName, params = {}) => {
 
   // ================ Home 模块路由 =================
   const package_home_routes = [
-    'img_gallery'
+    'search_transition',
+    'search'
   ]
-  if (package_base_routes.includes(pathName)) {
-    baseRoute = '/package_base'
+  if (package_home_routes.includes(pathName)) {
+    baseRoute = '/package_home'
   }
 
 

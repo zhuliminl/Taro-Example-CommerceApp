@@ -34,8 +34,6 @@ class App extends Component {
       'pages/user/user',
       'pages/estimate/estimate',
       'pages/test/test',
-      'pages/search_transition/search_transition',  // 搜索过渡页
-      'pages/search/search',
       'pages/supersort/supersort',
       'pages/topic_items/topic_items',
       'pages/talent_article/talent_article',
@@ -52,13 +50,14 @@ class App extends Component {
           'item_detail/item_detail',
         ],
       },
-      /*
       {
         root: 'package_home',
         pages: [
-
+          'search_transition/search_transition',  // 搜索过渡页
+          'search/search',
         ],
       },
+      /*
       {
         root: 'package_community',
         pages: [
