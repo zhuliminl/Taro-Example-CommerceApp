@@ -9,10 +9,10 @@ import SearchBarView from './search-bar-view';
 import Spin from '@/components/spin';
 import Tab from '@/components/tab';
 import banner1 from '@/assets/tmp/banner/b1.png';
-import banner2 from '@/assets/tmp/banner/b2.png';
-import banner3 from '@/assets/tmp/banner/b3.png';
-import banner4 from '@/assets/tmp/banner/b4.png';
-import banner5 from '@/assets/tmp/banner/b5.png';
+// import banner2 from '@/assets/tmp/banner/b2.png';
+// import banner3 from '@/assets/tmp/banner/b3.png';
+// import banner4 from '@/assets/tmp/banner/b4.png';
+// import banner5 from '@/assets/tmp/banner/b5.png';
 import { device, px } from '@/utils/device';
 import { navigateTo } from '@/utils/navigation';
 import ModalPoly from '@/components-poly/modal-poly'
@@ -24,19 +24,19 @@ const IMG_LIST = [
   },
   {
     key: 2,
-    src: banner2,
+    src: banner1,
   },
   {
     key: 3,
-    src: banner3,
+    src: banner1,
   },
   {
     key: 4,
-    src: banner4,
+    src: banner1,
   },
   {
     key: 5,
-    src: banner5,
+    src: banner1,
   },
 ]
 
