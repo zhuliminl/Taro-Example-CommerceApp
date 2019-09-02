@@ -7,7 +7,7 @@ import Index from './pages/index'
 
 import './app.scss'
 
-const store = configStore() 
+const store = configStore()
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -40,13 +40,44 @@ class App extends Component {
       'pages/search/search',
       'pages/item_detail/item_detail',
       'pages/supersort/supersort',
-      'pages/img_gallery/img_gallery',
       'pages/topic_items/topic_items',
       'pages/talent_article/talent_article',
       'pages/FAQ/FAQ',
       'pages/terms/terms',
       'pages/input_mobile/input_mobile',
       'pages/input_authcode/input_authcode',
+    ],
+    subPackages: [
+      {
+        root: 'package_base',
+        pages: [
+          '/img_gallery/img_gallery',
+        ],
+      },
+      {
+        root: 'package_home',
+        pages: [
+
+        ],
+      },
+      {
+        root: 'package_community',
+        pages: [
+
+        ],
+      },
+      {
+        root: 'package_user',
+        pages: [
+
+        ],
+      },
+      // {
+      //   root: 'package_seckill',
+      //   pages: [
+
+      //   ],
+      // },
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -96,25 +127,25 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // console.log('APP DidMount')
   }
 
-  componentDidShow () {
+  componentDidShow() {
     // console.log('APP DidShow')
   }
 
-  componentDidHide () {
+  componentDidHide() {
     // console.log('APP DidShow')
   }
 
-  componentDidCatchError () {
+  componentDidCatchError() {
     console.log('APP DidCatchError')
   }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <Index />
