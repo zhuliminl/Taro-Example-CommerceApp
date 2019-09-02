@@ -9,9 +9,9 @@ import Banner from '@/components/banner'
 import arrow from './assets/arrow.png'
 import arrow_grey from './assets/arrow_grey.png'
 import b1 from '@/assets/banner/banner1.png'
-import b2 from '@/assets/banner/banner2.png'
-import b3 from '@/assets/banner/banner3.png'
-import b4 from '@/assets/banner/banner4.png'
+// import b2 from '@/assets/banner/banner2.png'
+// import b3 from '@/assets/banner/banner3.png'
+// import b4 from '@/assets/banner/banner4.png'
 import banner_partner from './assets/banner_partner.png'
 import bg_user from './assets/bg_user.png'
 import { connect } from '@tarojs/redux'
@@ -27,15 +27,15 @@ const IMG_LIST = [
   },
   {
     key: 2,
-    src: b2,
+    src: b1,
   },
   {
     key: 3,
-    src: b3,
+    src: b1,
   },
   {
     key: 4,
-    src: b4,
+    src: b1,
   },
 ]
 
