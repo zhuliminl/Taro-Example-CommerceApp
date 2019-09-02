@@ -243,9 +243,7 @@ class User extends Component<UserInterface, {}> {
 
     console.log(paramsStr)
 
-    Taro.navigateTo({
-      url: `/pages/${pathName}/${pathName}?${paramsStr}`
-    })
+    navigateTo('setting')
   }
 
 
