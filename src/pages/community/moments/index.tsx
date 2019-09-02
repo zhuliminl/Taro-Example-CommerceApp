@@ -16,18 +16,20 @@ import { MyMomentsLoader } from '@/components-poly/skeleton-poly/index'
 
 interface MomentsInterface {
   scrollStyle: any;
+  moments: any[];
 }
 
 export default class Moments extends Component<MomentsInterface, {}> {
   state = {
-    loading: true,
+    // loading: true,
+    loading: false,
     min_id: 1,
     moments: [],
   }
 
   componentDidMount = () => {
     console.log('FIN moments did')
-    this.fetchMoments()
+    // this.fetchMoments()
   }
 
   fetchMoments = async () => {
@@ -52,12 +54,13 @@ export default class Moments extends Component<MomentsInterface, {}> {
   }
 
   handleOnScrollToLower = () => {
-    this.fetchMoments()
+    // this.fetchMoments()
   }
 
 
   render() {
-    const { moments = [] } = this.state
+    // const { moments = [] } = this.state
+    const { moments = [] } = this.props
 
     // if(true) {
     if (this.state.loading) { 

@@ -9,6 +9,7 @@ import Talk from './talk';
 import Topic from './topic';
 
 import { momentsService } from './moments/_state/moment.service'
+import { momentsQuery } from './moments/_state/moment.query';
 
 
 class Community extends Component {
@@ -19,15 +20,20 @@ class Community extends Component {
   state = {
     current: 0,
     momentsState: {},
+    // ========= 上下两种哪种比较合适待考量
+    moments: [],
   }
 
   componentDidMount = () => {
     console.log('FIN community did')
 
     momentsService.get()
-    momentsService.getMore()
-
-
+    momentsQuery.selectAll().subscribe(moments => {
+      this.setState({
+        moments
+        // momentsState
+      })
+    })
   }
 
 
@@ -74,7 +80,10 @@ class Community extends Component {
         />
         {
           this.state.current === 0 &&
-          <Moments scrollStyle={scrollStyle} />
+          <Moments
+            scrollStyle={scrollStyle}
+            moments={this.state.moments || []}
+          />
         }
         {
           this.state.current === 1 &&

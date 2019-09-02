@@ -5,15 +5,13 @@ import Taro from '@tarojs/taro';
 // import { ID } from '@datorama/akita';
 import { momentsQuery } from './moment.query'
 
-const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/1`  // 跨域使用
 
 export class MomentsService {
   constructor(private momentsStore: MomentsStore) { }
 
   get() {
-    // const min_id = this.momentsStore.
-    const min_id = momentsQuery.getValue().min_id
-    console.log('FIN min_id', min_id)
+    const min_id = momentsQuery.getValue().min_id || 1
+    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/${min_id}`  // 跨域使用
 
     const source$ = from(Taro.request({ url }))
     source$.subscribe(data => {
