@@ -13,6 +13,7 @@ import bg_triangle from '@/assets/image/triangle.png';
 import { parseToMinuteago } from '@/utils/date';
 
 import { MyMomentsLoader } from '@/components-poly/skeleton-poly/index'
+import { momentsService } from './_state/moment.service';
 
 interface MomentsInterface {
   scrollStyle: any;
@@ -55,6 +56,7 @@ export default class Moments extends Component<MomentsInterface, {}> {
 
   handleOnScrollToLower = () => {
     // this.fetchMoments()
+    momentsService.get()
   }
 
 
