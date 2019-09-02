@@ -17,8 +17,8 @@ import bg_user from './assets/bg_user.png'
 import { connect } from '@tarojs/redux'
 import { device } from '@/utils/device'
 import { navigateTo } from '@/utils/navigation'
-import { userQuery } from './state/user.query'
-import { userService } from './state/user.service'
+import { userQuery } from './_state/user.query'
+import { userService } from './_state/user.service'
 
 const IMG_LIST = [
   {
