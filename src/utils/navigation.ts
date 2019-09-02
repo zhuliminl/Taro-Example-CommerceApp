@@ -24,6 +24,8 @@ export const navigateTo = (pathName, params = {}) => {
     'user_login',
     'FAQ',
     'estimate',
+    'input_mobile',
+    'input_authcode'
   ]
   if (package_user_routes.includes(pathName)) {
     baseRoute = '/package_user'

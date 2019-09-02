@@ -37,8 +37,6 @@ class App extends Component {
       'pages/topic_items/topic_items',
       'pages/talent_article/talent_article',
       'pages/terms/terms',
-      'pages/input_mobile/input_mobile',
-      'pages/input_authcode/input_authcode',
     ],
     subPackages: [
       {
@@ -70,6 +68,8 @@ class App extends Component {
           'user_login/user_login',
           'FAQ/FAQ',
           'estimate/estimate',
+          'input_mobile/input_mobile',
+          'input_authcode/input_authcode',
 
         ],
       },
