@@ -35,6 +35,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@akanass/rx-http-request": "^3.3.0",
     "@datorama/akita": "^4.10.2",
     "@tarojs/async-await": "^1.3.10",
     "@tarojs/components": "1.3.10",
