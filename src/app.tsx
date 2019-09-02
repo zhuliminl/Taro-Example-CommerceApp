@@ -33,7 +33,6 @@ class App extends Component {
       'pages/partner/partner',
       'pages/user/user',
       'pages/test/test',
-      'pages/supersort/supersort',
       'pages/terms/terms',
     ],
     subPackages: [
@@ -49,6 +48,7 @@ class App extends Component {
         pages: [
           'search_transition/search_transition',  // 搜索过渡页
           'search/search',
+          'supersort/supersort',
         ],
       },
       {

@@ -35,6 +35,7 @@ export const navigateTo = (pathName, params = {}) => {
   const package_home_routes = [
     'search_transition',
     'search',
+    'supersort',
   ]
   if (package_home_routes.includes(pathName)) {
     baseRoute = '/package_home'
