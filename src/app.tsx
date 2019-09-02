@@ -32,8 +32,7 @@ class App extends Component {
       'pages/seckill/seckill',
       'pages/partner/partner',
       'pages/user/user',
-      'pages/test/test',
-      'pages/terms/terms',
+      // 'pages/test/test',
     ],
     subPackages: [
       {
@@ -41,6 +40,7 @@ class App extends Component {
         pages: [
           'img_gallery/img_gallery',
           'item_detail/item_detail',
+          'terms/terms',
         ],
       },
       {

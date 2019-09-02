@@ -12,6 +12,7 @@ export const navigateTo = (pathName, params = {}) => {
   const package_base_routes = [
     'img_gallery',
     'item_detail',
+    'terms',
   ]
   if (package_base_routes.includes(pathName)) {
     baseRoute = '/package_base'

@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from '@tarojs/components'
 import './terms.scss'
 import HeaderWebpage from '@/components/header-webpage'
 import { device } from '@/utils/device'
-import RichTextPoly from '@/components-poly/rich-text-poly/index'
+import RichTextPoly from '@/components-poly/rich-text-poly'
 import { escape2Html } from '@/utils/stringhelper'
 import terms_data from '@/constants/terms'
 
