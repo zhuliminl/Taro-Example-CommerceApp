@@ -4,14 +4,11 @@ import { of } from 'rxjs'
 import { User } from './user.model'
 
 
-/*
 const fakeUserData = {
-  id: '123456',
-  username: '小石头',
+  username: '汪慧明',
   email: 'zhuliminl@gmai.com',
   avatar: 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80',
 } as User
-*/
 
 
 export class UserService {
@@ -25,6 +22,13 @@ export class UserService {
     })
   }
   */
+
+  get() {
+    of(fakeUserData).subscribe(user => {
+      this.userStore.update(user)
+    })
+
+  }
 
   // setActive(id: ID) {
   //   this.usersStore.setActive(id)

@@ -217,6 +217,9 @@ class User extends Component<UserInterface, {}> {
       this.setState({ user })
     })
 
+    // 请求网络数据
+    userService.get()
+
   }
 
   testToast = () => {
