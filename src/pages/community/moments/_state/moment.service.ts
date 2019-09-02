@@ -3,6 +3,7 @@ import { from } from 'rxjs';
 import Taro from '@tarojs/taro';
 // import { Moment } from './moment.model';
 // import { ID } from '@datorama/akita';
+import { momentsQuery } from './moment.query'
 
 const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/1`  // 跨域使用
 
@@ -10,6 +11,10 @@ export class MomentsService {
   constructor(private momentsStore: MomentsStore) { }
 
   get() {
+    // const min_id = this.momentsStore.
+    const min_id = momentsQuery.getValue().min_id
+    console.log('FIN min_id', min_id)
+
     const source$ = from(Taro.request({ url }))
     source$.subscribe(data => {
       console.log('FIN row data', data)
@@ -21,11 +26,12 @@ export class MomentsService {
           min_id,
         })
 
-        this.momentsStore.set(entities)
+        this.momentsStore.add(entities)
       }
     })
   }
 
+  /*
   getMore() {
     const source$ = from(Taro.request({ url }))
     source$.subscribe(data => {
@@ -42,6 +48,7 @@ export class MomentsService {
       }
     })
   }
+  */
 
 }
 
