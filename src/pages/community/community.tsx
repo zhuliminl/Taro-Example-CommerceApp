@@ -8,6 +8,8 @@ import Moments from './moments';
 import Talk from './talk';
 import Topic from './topic';
 
+import { momentsService } from './moments/_state/moment.service'
+
 
 class Community extends Component {
   config = {
@@ -16,7 +18,18 @@ class Community extends Component {
   }
   state = {
     current: 0,
+    momentsState: {},
   }
+
+  componentDidMount = () => {
+    console.log('FIN community did')
+
+    momentsService.get()
+    momentsService.getMore()
+
+
+  }
+
 
   render() {
     let scrollStyle: any = {}
