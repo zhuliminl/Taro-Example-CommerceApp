@@ -40,6 +40,14 @@ export const navigateTo = (pathName, params = {}) => {
     baseRoute = '/package_home'
   }
 
+  // ================ Community 模块路由 =================
+  const package_community_routes = [
+    'topic_items',
+    'talent_article',
+  ]
+  if (package_community_routes.includes(pathName)) {
+    baseRoute = '/package_community'
+  }
 
   Taro.navigateTo({
     url: `${baseRoute}/${pathName}/${pathName}?${paramsStr}`

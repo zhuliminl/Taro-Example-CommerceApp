@@ -34,8 +34,6 @@ class App extends Component {
       'pages/user/user',
       'pages/test/test',
       'pages/supersort/supersort',
-      'pages/topic_items/topic_items',
-      'pages/talent_article/talent_article',
       'pages/terms/terms',
     ],
     subPackages: [
@@ -53,14 +51,13 @@ class App extends Component {
           'search/search',
         ],
       },
-      /*
       {
         root: 'package_community',
         pages: [
-
+          'topic_items/topic_items',
+          'talent_article/talent_article',
         ],
       },
-      */
       {
         root: 'package_user',
         pages: [
