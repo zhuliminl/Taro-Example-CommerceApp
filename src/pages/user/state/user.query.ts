@@ -10,4 +10,4 @@ export class UsersQuery extends QueryEntity<UsersState, User> {
   }
 }
 
-export const userQuery = new UsersQuery(usersStore)
+export const usersQuery = new UsersQuery(usersStore)

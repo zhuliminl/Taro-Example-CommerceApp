@@ -17,6 +17,8 @@ import bg_user from './assets/bg_user.png'
 import { connect } from '@tarojs/redux'
 import { device } from '@/utils/device'
 import { navigateTo } from '@/utils/navigation'
+import { usersQuery } from './state/user.query'
+import { usersService } from './state/user.service'
 
 const IMG_LIST = [
   {
@@ -203,6 +205,7 @@ class User extends Component<UserInterface, {}> {
 
   state = {
     loading: false,
+    users: [],
   }
 
   componentDidShow = () => {
@@ -212,6 +215,14 @@ class User extends Component<UserInterface, {}> {
 
   componentDidMount = () => {
     console.log("FIN Did Mount")
+
+    usersService.get()
+    usersQuery.selectAll().subscribe(users => {
+      console.log('FIN users', users)
+      this.setState({ users })
+    })
+
+
   }
 
   testToast = () => {
@@ -242,7 +253,22 @@ class User extends Component<UserInterface, {}> {
 
     return (
       <View className='user'>
-        <Image className='user_bg' src={bg_user} />
+        {
+          true && (
+            this.state.users && this.state.users.map((user, i) => {
+              return (
+                <View
+                  key={i}
+                >
+                  <Text>xxx</Text>
+                </View>
+              )
+            })
+          )
+        }
+
+
+        {/* <Image className='user_bg' src={bg_user} />
 
         <View className='user__profile'>
           <View className='profile__top-bar'
@@ -396,7 +422,7 @@ class User extends Component<UserInterface, {}> {
               )
             })
           }
-        </View>
+        </View> */}
 
 
 

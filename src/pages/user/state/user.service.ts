@@ -22,6 +22,7 @@ export class UsersService {
 
   get() {
     of(data).subscribe(entities => {
+      console.log('FIN 初始话用户数据', entities)
       this.usersStore.set(entities)
     })
   }
