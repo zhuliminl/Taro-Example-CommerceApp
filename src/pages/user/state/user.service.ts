@@ -1,7 +1,8 @@
-import { UserStore, userStore } from './user.store'
+import { of, from } from 'rxjs';
+import { User } from './user.model';
+import { UserStore, userStore } from './user.store';
+import Taro from '@tarojs/taro';
 
-import { of } from 'rxjs'
-import { User } from './user.model'
 
 
 const fakeUserData = {
@@ -10,6 +11,8 @@ const fakeUserData = {
   avatar: 'https://s.gravatar.com/avatar/3b1d61ea5012bf77e59a91af3234b298?s=80',
 } as User
 
+// 假的 api
+const url = 'https://v2.api.haodanku.com/super_classify/apikey/saul'
 
 export class UserService {
   constructor(private userStore: UserStore) { }
@@ -24,8 +27,17 @@ export class UserService {
   */
 
   get() {
+    /*
     of(fakeUserData).subscribe(user => {
       this.userStore.update(user)
+    })
+    */
+    const source$ = from(Taro.request({ url }))
+    source$.subscribe(data => {
+      if (data && data['statusCode'] === 200) {
+        // this.userStore
+        this.userStore.update({ ...fakeUserData })
+      }
     })
 
   }
