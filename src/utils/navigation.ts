@@ -10,7 +10,8 @@ export const navigateTo = (pathName, params = {}) => {
 
   // ================ 基础模块路由 =================
   const package_base_routes = [
-    'img_gallery'
+    'img_gallery',
+    'item_detail'
   ]
   if (package_base_routes.includes(pathName)) {
     baseRoute = '/package_base'

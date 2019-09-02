@@ -36,7 +36,6 @@ class App extends Component {
       'pages/test/test',
       'pages/search_transition/search_transition',  // 搜索过渡页
       'pages/search/search',
-      'pages/item_detail/item_detail',
       'pages/supersort/supersort',
       'pages/topic_items/topic_items',
       'pages/talent_article/talent_article',
@@ -50,6 +49,7 @@ class App extends Component {
         root: 'package_base',
         pages: [
           'img_gallery/img_gallery',
+          'item_detail/item_detail',
         ],
       },
       /*
