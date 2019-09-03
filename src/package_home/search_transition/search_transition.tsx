@@ -9,9 +9,8 @@ import SearchBar from '@/components/search-bar'
 import Tab from '@/components/tab'
 import Tags from '@/components/tags'
 import video_guide from '@/assets/image/video-guide.png'
-import { appStore } from '../../_state/app.store';
-import { appQuery } from '../../_state/app.query';
 // import { AppService, appService } from '_state/app.service';
+import { appQuery } from '@/_state/app.query'
 
 const TAG_LIST = [
   {
@@ -76,7 +75,7 @@ export default class Search extends Component {
 
 
     // console.log('FIN appStore', appStore.searchs)
-    // console.log('FIN appQuery', appQuery.searchs.selectAll)
+    console.log('FIN appQuery', appQuery.searchs)
 
 
   }

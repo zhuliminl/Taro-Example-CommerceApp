@@ -25,6 +25,7 @@
       "@/components-poly/*": ["components-poly/*"],
       "@/assets/*": ["assets/*"],
       "@/constants/*": ["constants/*"],
+      "@/_state/*": ["_state/*"],
     },
     "typeRoots": [
       "node_modules/@types",

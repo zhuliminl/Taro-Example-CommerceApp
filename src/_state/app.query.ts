@@ -1,4 +1,4 @@
-import { Query } from '@datorama/akita'
+import { Query, QueryEntity } from '@datorama/akita'
 
 import { AppStore, appStore } from './app.store'
 
@@ -6,7 +6,7 @@ import { App } from './app.model'
 import { searchsQuery } from './search';
 
 export class AppQuery extends Query<App> {
-  searchs: any;
+  searchs: QueryEntity<{}>;
   constructor(protected store: AppStore) {
     super(store)
     this.searchs = searchsQuery

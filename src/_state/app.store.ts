@@ -18,8 +18,6 @@ export class AppStore extends Store<App> {
     super(createInitialState())
     this.searchs = searchsStore
   }
-
-
 }
 
 export const appStore = new AppStore()
