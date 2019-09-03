@@ -30,7 +30,7 @@ export default class Topic extends Component<TopicInterface, {}> {
         scrollY
         style={this.props.scrollStyle}
       >
-        <Spin isShow={loading} />
+        {/* <Spin isShow={loading} /> */}
         {
           topics.map((topic, i) => {
             return (

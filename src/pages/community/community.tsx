@@ -12,6 +12,7 @@ import { momentsService } from './moments/_state/moment.service'
 import { momentsQuery } from './moments/_state/moment.query';
 import { topicsService } from './topic/_state/topic.service';
 import { topicsQuery } from './topic/_state/topic.query';
+import { talksQuery } from './talk/_state/talk.query';
 
 
 class Community extends Component {
@@ -29,11 +30,16 @@ class Community extends Component {
     topics: [],
     isLoadingTopic: true,
     isLoadingTopicFirstTime: true,
+
+    talks: [],
+    isLoadingTalk: true,
+    isLoadingTalkFirstTime: true,
   }
 
   componentDidMount = () => {
     this.setMoments()
     this.setTopics()
+    this.setTalks()
   }
 
   setMoments = () => {
@@ -76,6 +82,27 @@ class Community extends Component {
 
       this.setState({
         isLoadingTopic: isLoading,
+      })
+    })
+  }
+
+  setTalks = () => {
+    talksQuery.select('data').subscribe(data => {
+      this.setState({
+        talks: data,
+      })
+    })
+
+    talksQuery.selectLoading().subscribe(isLoading => {
+      // 利用 loading 的状态，来做 firstLoading 这种仅仅修改一次的场景
+      if (!isLoading) {
+        this.setState({
+          isLoadingTalkFirstTime: false,
+        })
+      }
+
+      this.setState({
+        isLoadingTalk: isLoading,
       })
     })
   }
@@ -141,7 +168,12 @@ class Community extends Component {
         }
         {
           this.state.current === 2 &&
-          <Talk scrollStyle={scrollStyle} />
+          <Talk
+            talks={this.state.talks}
+            loading={this.state.isLoadingTalk}
+            firstLoading={this.state.isLoadingTalkFirstTime}
+            scrollStyle={scrollStyle} />
+
         }
 
       </View>
