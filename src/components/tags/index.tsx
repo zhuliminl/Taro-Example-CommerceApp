@@ -9,6 +9,7 @@ interface TagItemInterface {
 
 interface TagsInterface {
   tagList: TagItemInterface[];
+  onTagClick: (title: string) => void;
 }
 
 export default class Tags extends Component<TagsInterface, {}> {
@@ -22,7 +23,15 @@ export default class Tags extends Component<TagsInterface, {}> {
         {
           this.props.tagList.map(item => {
             return (
-              <View key={item.key} className='tag-item-wrap'>
+              <View
+                key={item.key}
+                className='tag-item-wrap'
+                onClick={() => {
+                  const { onTagClick } = this.props
+                  const { title = '' } = item
+                  onTagClick && onTagClick(title)
+                }}
+              >
                 <Text className='tag-item-txt'>{item.title}</Text>
               </View>
             )

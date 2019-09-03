@@ -2,6 +2,7 @@ import { of, from } from 'rxjs';
 import { App } from './app.model';
 import { AppStore, appStore } from './app.store';
 import Taro from '@tarojs/taro';
+import { getHotSearch, pushHistory } from './search/searchs.service'
 
 
 
@@ -18,7 +19,7 @@ export class AppService {
   constructor(private userStore: AppStore) {
   }
 
-  get() {
+  public get() {
     const source$ = from(Taro.request({ url }))
     source$.subscribe(data => {
       if (data && data['statusCode'] === 200) {
@@ -28,6 +29,13 @@ export class AppService {
     })
   }
 
+  public getHotSearch() {
+    getHotSearch()
+  }
+
+  public pushHistory(data: string) {
+    pushHistory(data)
+  }
 
 }
 

@@ -9,8 +9,8 @@ import SearchBar from '@/components/search-bar'
 import Tab from '@/components/tab'
 import Tags from '@/components/tags'
 import video_guide from '@/assets/image/video-guide.png'
-// import { AppService, appService } from '_state/app.service';
 import { appQuery } from '@/_state/app.query'
+import { appService } from '@/_state/app.service';
 
 const TAG_LIST = [
   {
@@ -71,35 +71,24 @@ export default class Search extends Component {
   }
 
   componentDidMount = () => {
-    this.fetchHotSearch()
-
-
-    // console.log('FIN appStore', appStore.searchs)
-    console.log('FIN appQuery', appQuery.searchs)
-
-
+    this.setHotSearch()
   }
 
-
-  fetchHotSearch = async () => {
-    const url = 'http://v2.api.haodanku.com/hot_key/apikey/saul/back/15'
-    try {
-      const resp = await Taro.request({ url })
-      let data = resp && resp.data && resp.data.data || []
-
-      let hotList = data.map((item, i) => ({
-        key: i,
-        title: item.keyword
-      }))
-
+  sub1: any;
+  setHotSearch = () => {
+    appService.getHotSearch()
+    this.sub1 = appQuery.searchs.select('hotList').subscribe(hotList => {
+      console.log('FIN 获取 hotList', hotList)
       this.setState({
         hotList,
       })
-    } catch (err) {
-      console.log('FIN get hostList err', err)
-    }
-
+    })
   }
+
+  componentWillUnmount = () => {
+    this.sub1 && this.sub1.unsubscribe()
+  }
+
 
   handleOnVideoGuideClick = () => {
     console.log('FIN 去h5')
@@ -136,14 +125,25 @@ export default class Search extends Component {
         <Image className='video-guide' src={video_guide} onClick={this.handleOnVideoGuideClick.bind(this)} />
 
         <LargetTitle title='热门搜索' />
-        <Tags tagList={this.state.hotList} />
+        <Tags
+          tagList={this.state.hotList}
+          onTagClick={(title) => {
+            console.log('FIN click tag', title)
+            appService.pushHistory(title)
+          }}
+        />
 
         <LargetTitle title='历史记录'>
           <View className='history-clear-btn-wrap' onClick={this.handleOnHistoryClear.bind(this)}>
             <Text className='history-clear-btn-txt'>清空</Text>
           </View>
         </LargetTitle>
-        <Tags tagList={TAG_LIST} />
+        <Tags
+          tagList={TAG_LIST}
+          onTagClick={title => {
+            console.log('FIN history title', title)
+          }}
+        />
 
       </View>
     )

@@ -1,0 +1,42 @@
+import { searchsStore } from './searchs.store';
+import Taro from '@tarojs/taro'
+import { from } from 'rxjs'
+import { searchsQuery } from '../../../rn_temp/_state/state';
+
+export function getHotSearch() {
+  const url = 'http://v2.api.haodanku.com/hot_key/apikey/saul/back/15'
+  const source$ = from(Taro.request({ url }))
+  source$.subscribe(data => {
+    if (data && data['statusCode'] === 200) {
+      const hotListData = data['data'] && data['data']['data'] || []
+      let hotList = hotListData.map((item, i) => ({
+        key: i,
+        title: item.keyword
+      }))
+      searchsStore.update({
+        hotList,
+      })
+    }
+  })
+}
+
+export function pushHistory(data) {
+  // ===================== 常规的更新 state 的方法 ===============
+  searchsStore.update(state => {
+    const { historys = [] } = state
+    return {
+      historys: [...historys, data] as never
+    }
+  })
+  // ===================== 常规的更新 state 的方法 ===============
+}
+
+export async function update(id, data) {
+  await Promise.resolve();
+  searchsStore.update(id, data);
+}
+
+export async function remove(id) {
+  await Promise.resolve();
+  searchsStore.remove(id);
+}

@@ -6,7 +6,7 @@ import { App } from './app.model'
 import { searchsQuery } from './search';
 
 export class AppQuery extends Query<App> {
-  searchs: QueryEntity<{}>;
+  searchs: QueryEntity<{ hotList: any[] }>;
   constructor(protected store: AppStore) {
     super(store)
     this.searchs = searchsQuery
