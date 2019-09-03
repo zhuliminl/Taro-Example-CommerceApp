@@ -6,7 +6,7 @@ export interface TopicsState extends EntityState<Topic> {
   // firstLoading: boolean;
 }
 
-@StoreConfig({ name: 'topics', idKey: 'edit_id' })
+@StoreConfig({ name: 'topics', idKey: 'id' })
 export class TopicsStore extends EntityStore<TopicsState, Topic> {
   constructor() {
     super({
