@@ -10,8 +10,9 @@ export class MomentsService {
   constructor(private momentsStore: MomentsStore) { }
 
   get() {
+    this.momentsStore.setLoading(true)
     const min_id = momentsQuery.getValue().min_id || 1
-    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/${min_id}`  // 跨域使用
+    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/${min_id}`  
 
     const source$ = from(Taro.request({ url }))
     source$.subscribe(data => {
@@ -25,29 +26,10 @@ export class MomentsService {
         })
 
         this.momentsStore.add(entities)
+        this.momentsStore.setLoading(false)
       }
     })
   }
-
-  /*
-  getMore() {
-    const source$ = from(Taro.request({ url }))
-    source$.subscribe(data => {
-      if (data && data['statusCode'] === 200) {
-        // const entities = data['data'] && data['data']['data'] || []
-        // console.log('FIn entities', entities)
-        const entities = [
-          {
-            'edit_id': 43534,
-            name: 'saul'
-          }
-        ]
-        this.momentsStore.add(entities)
-      }
-    })
-  }
-  */
-
 }
 
 export const momentsService = new MomentsService(momentsStore);

@@ -34,6 +34,10 @@ class Community extends Component {
         // momentsState
       })
     })
+
+    momentsQuery.selectLoading().subscribe(isLoading => {
+      console.log('FIN 加载状态', isLoading)
+    })
   }
 
 

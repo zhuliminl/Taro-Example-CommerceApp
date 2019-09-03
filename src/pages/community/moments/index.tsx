@@ -29,33 +29,10 @@ export default class Moments extends Component<MomentsInterface, {}> {
   }
 
   componentDidMount = () => {
-    console.log('FIN moments did')
-    // this.fetchMoments()
-  }
-
-  fetchMoments = async () => {
-    const { min_id } = this.state
-    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/${min_id}`  // 跨域使用
-    // const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/1`
-    try {
-      const resp = await Taro.request({ url })
-      const moments = resp && resp.data && resp.data.data
-      const min_id = resp && resp.data['min_id']
-      const preState = this.state
-
-      this.setState({
-        moments: preState.moments.concat(moments),
-        min_id,
-        loading: false,
-      })
-
-    } catch (err) {
-      console.log('FIN get moments err', err)
-    }
+    // console.log('FIN moments did')
   }
 
   handleOnScrollToLower = () => {
-    // this.fetchMoments()
     momentsService.get()
   }
 
