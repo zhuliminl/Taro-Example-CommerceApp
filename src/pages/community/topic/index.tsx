@@ -4,43 +4,24 @@ import './index.scss'
 import Spin from '@/components/spin'
 import TopicItem from './topic-item'
 import { MyTopicsLoader } from '@/components-poly/skeleton-poly'
+import { topicsService } from './_state/topic.service';
 
 interface TopicInterface {
   scrollStyle: any;
+  topics: any[];
+  firstLoading: boolean;
+  loading: boolean;
 }
 
-export default class Topic extends Component<TopicInterface,{}> {
-  state = {
-    loading: true,
-    topics: [],
-  }
+export default class Topic extends Component<TopicInterface, {}> {
 
   componentDidMount = () => {
-    console.log('FIN topic did')
-    this.fetchTopics()
-  }
-
-  fetchTopics = async () => {
-    const url = `https://v2.api.haodanku.com/get_subject/apikey/saul`
-    try {
-      const resp = await Taro.request({ url })
-      const topics = resp && resp.data && resp.data.data
-      // console.log('FIN topics data', topics)
-      const preState = this.state
-
-      this.setState({
-        topics: preState.topics.concat(topics),
-        loading: false,
-      })
-
-    } catch (err) {
-      console.log('FIN get topics err', err)
-    }
+    topicsService.get()
   }
 
   render() {
-    if(this.state.loading) {
-    // if(true) {
+    const { topics = [], firstLoading = true, loading = true } = this.props
+    if (firstLoading) {
       return <MyTopicsLoader />
     }
 
@@ -49,9 +30,9 @@ export default class Topic extends Component<TopicInterface,{}> {
         scrollY
         style={this.props.scrollStyle}
       >
-        <Spin isShow={this.state.loading} />
+        <Spin isShow={loading} />
         {
-          this.state.topics.map((topic, i) => {
+          topics.map((topic, i) => {
             return (
               <TopicItem key={i} topic={topic} />
             )

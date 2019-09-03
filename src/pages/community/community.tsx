@@ -10,6 +10,8 @@ import Topic from './topic';
 
 import { momentsService } from './moments/_state/moment.service'
 import { momentsQuery } from './moments/_state/moment.query';
+import { topicsService } from './topic/_state/topic.service';
+import { topicsQuery } from './topic/_state/topic.query';
 
 
 class Community extends Component {
@@ -23,9 +25,18 @@ class Community extends Component {
     moments: [],
     isLoadingMoment: true,
     isLoadingMomentFirstTime: true,
+
+    topics: [],
+    isLoadingTopic: true,
+    isLoadingTopicFirstTime: true,
   }
 
   componentDidMount = () => {
+    this.setMoments()
+    this.setTopics()
+  }
+
+  setMoments = () => {
     momentsService.get()
     momentsQuery.selectAll().subscribe(moments => {
       this.setState({
@@ -43,6 +54,28 @@ class Community extends Component {
 
       this.setState({
         isLoadingMoment: isLoading,
+      })
+    })
+  }
+
+  setTopics = () => {
+    // topicsService.get()
+    topicsQuery.selectAll().subscribe(topics => {
+      this.setState({
+        topics,
+      })
+    })
+
+    topicsQuery.selectLoading().subscribe(isLoading => {
+      // 利用 loading 的状态，来做 firstLoading 这种仅仅修改一次的场景
+      if (!isLoading) {
+        this.setState({
+          isLoadingTopicFirstTime: false,
+        })
+      }
+
+      this.setState({
+        isLoadingTopic: isLoading,
       })
     })
   }
@@ -100,7 +133,11 @@ class Community extends Component {
         }
         {
           this.state.current === 1 &&
-          <Topic scrollStyle={scrollStyle} />
+          <Topic
+            firstLoading={this.state.isLoadingTopicFirstTime}
+            loading={this.state.isLoadingTopic}
+            topics={this.state.topics || []}
+            scrollStyle={scrollStyle} />
         }
         {
           this.state.current === 2 &&
