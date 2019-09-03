@@ -19,24 +19,31 @@ class Community extends Component {
   }
   state = {
     current: 0,
-    momentsState: {},
-    // ========= 上下两种哪种比较合适待考量
+
     moments: [],
+    isLoadingMoment: true,
+    isLoadingMomentFirstTime: true,
   }
 
   componentDidMount = () => {
-    console.log('FIN community did')
-
     momentsService.get()
     momentsQuery.selectAll().subscribe(moments => {
       this.setState({
-        moments
-        // momentsState
+        moments,
       })
     })
 
     momentsQuery.selectLoading().subscribe(isLoading => {
-      console.log('FIN 加载状态', isLoading)
+      // 利用 loading 的状态，来做 firstLoading 这种仅仅修改一次的场景
+      if (!isLoading) {
+        this.setState({
+          isLoadingMomentFirstTime: false,
+        })
+      }
+
+      this.setState({
+        isLoadingMoment: isLoading,
+      })
     })
   }
 
@@ -85,6 +92,8 @@ class Community extends Component {
         {
           this.state.current === 0 &&
           <Moments
+            firstLoading={this.state.isLoadingMomentFirstTime}
+            loading={this.state.isLoadingMoment}
             scrollStyle={scrollStyle}
             moments={this.state.moments || []}
           />

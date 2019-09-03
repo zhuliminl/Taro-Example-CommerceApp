@@ -10,13 +10,15 @@ export class MomentsService {
   constructor(private momentsStore: MomentsStore) { }
 
   get() {
+    // ========================= 在 service 层手动设定 loading ============
     this.momentsStore.setLoading(true)
+
     const min_id = momentsQuery.getValue().min_id || 1
-    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/${min_id}`  
+    const url = `https://v2.api.haodanku.com/selected_item/apikey/saul/min_id/${min_id}`
 
     const source$ = from(Taro.request({ url }))
     source$.subscribe(data => {
-      console.log('FIN row data', data)
+      // console.log('FIN row data', data)
       if (data && data['statusCode'] === 200) {
         const entities = data['data'] && data['data']['data'] || []
         // console.log('FIn entities', entities)
@@ -26,6 +28,8 @@ export class MomentsService {
         })
 
         this.momentsStore.add(entities)
+
+        // ========================= 在 service 层手动设定 loading ============
         this.momentsStore.setLoading(false)
       }
     })

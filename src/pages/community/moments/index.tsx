@@ -18,19 +18,12 @@ import { momentsService } from './_state/moment.service';
 interface MomentsInterface {
   scrollStyle: any;
   moments: any[];
+  firstLoading: boolean;
+  loading: boolean;
 }
 
 export default class Moments extends Component<MomentsInterface, {}> {
-  state = {
-    // loading: true,
-    loading: false,
-    min_id: 1,
-    moments: [],
-  }
 
-  componentDidMount = () => {
-    // console.log('FIN moments did')
-  }
 
   handleOnScrollToLower = () => {
     momentsService.get()
@@ -38,12 +31,10 @@ export default class Moments extends Component<MomentsInterface, {}> {
 
 
   render() {
-    // const { moments = [] } = this.state
-    const { moments = [] } = this.props
+    const { moments = [], firstLoading = true, loading = true } = this.props
 
-    // if(true) {
-    if (this.state.loading) { 
-      return ( <MyMomentsLoader />) 
+    if (firstLoading) {
+      return (<MyMomentsLoader />)
     }
 
 
@@ -117,7 +108,7 @@ export default class Moments extends Component<MomentsInterface, {}> {
             })
           }
         </View>
-        {/* <Spin isShow /> */}
+        <Spin isShow={loading} />
       </ScrollView >
     )
   }
