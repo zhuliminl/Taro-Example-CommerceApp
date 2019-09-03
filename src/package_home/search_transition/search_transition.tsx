@@ -68,10 +68,12 @@ export default class Search extends Component {
   state = {
     current: 0,
     hotList: [],
+    historys: [],
   }
 
   componentDidMount = () => {
     this.setHotSearch()
+    this.setHistory()
   }
 
   sub1: any;
@@ -85,8 +87,22 @@ export default class Search extends Component {
     })
   }
 
+  sub2: any;
+  setHistory = () => {
+    this.sub2 = appQuery.searchs.select('historys').subscribe(historys => {
+      console.log('FIN 获取 historys', historys)
+      this.setState({
+        historys: historys.map((item, i) => ({
+          title: item,
+          key: i,
+        }))
+      })
+    })
+  }
+
   componentWillUnmount = () => {
     this.sub1 && this.sub1.unsubscribe()
+    this.sub2 && this.sub2.unsubscribe()
   }
 
 
@@ -139,7 +155,7 @@ export default class Search extends Component {
           </View>
         </LargetTitle>
         <Tags
-          tagList={TAG_LIST}
+          tagList={this.state.historys}
           onTagClick={title => {
             console.log('FIN history title', title)
           }}
