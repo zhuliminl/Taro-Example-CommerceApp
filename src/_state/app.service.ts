@@ -15,7 +15,8 @@ const fakeAppData = {
 const url = 'https://v2.api.haodanku.com/super_classify/apikey/saul'
 
 export class AppService {
-  constructor(private userStore: AppStore) { }
+  constructor(private userStore: AppStore) {
+  }
 
   get() {
     const source$ = from(Taro.request({ url }))
@@ -30,4 +31,4 @@ export class AppService {
 
 }
 
-export const userService = new AppService(appStore)
+export const appService = new AppService(appStore)
