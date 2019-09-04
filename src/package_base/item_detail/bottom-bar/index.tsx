@@ -67,6 +67,7 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
           scheme: 'taobao://',
           url: 'https://m.taobao.com/#index',
           param: {
+            // 这里打开指定商品
             k2: 'v2'
           }
         }
@@ -91,18 +92,18 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
     Taro.setClipboardData({
       data: token,
     }).then(data => {
-      // Taro.showToast({
-      //   title: '复制成功'
-      // })
+      Taro.showToast({
+        title: '复制成功'
+      })
 
       // ============================================ 为 RN 打开 淘宝 ========================
       this.openTaobaoForRN()
 
     }).catch(err => {
       console.log('FIN 设置系统剪切板失败', err)
-      // Taro.showToast({
-      //   title: '复制失败'
-      // })
+      Taro.showToast({
+        title: '复制失败'
+      })
     })
 
   }
