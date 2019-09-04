@@ -37,11 +37,17 @@ export default class SearchBar extends Component<SearchBarInterface, {}> {
 
   handleOnSearch = () => {
     // 如果当前页面是搜索页，则直接在原地重新渲染，而不是跳转
+
     // console.log('FIN search', this.props.$router)   // 注意 RN 中 非页面组件中访问 $router 必须得通过下传的方式才能做到
+
+    // ================================ 这个地方 RN 需要具体调试看看 ===========================================
     if (this.props.$router && this.props.$router['path'] === '/pages/search/search') {
       return this.props.onSearch(this.state.keyword)
     }
+    // ================================ 这个地方 RN 需要具体调试看看 ===========================================
+
     navigateTo('search', { keyword: this.state.keyword })
+    this.props.onSearch(this.state.keyword)
   }
 
   render() {

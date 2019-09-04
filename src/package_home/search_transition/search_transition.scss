@@ -4,6 +4,9 @@
   overflow: hidden;  // 避免页面内部元素超出造成的晃动
   display: flex;
   flex-direction: column;
+  /*postcss-pxtransform rn eject enable*/
+  height: 100vh;
+  /*postcss-pxtransform rn eject disable*/
 }
 
 .video-guide {

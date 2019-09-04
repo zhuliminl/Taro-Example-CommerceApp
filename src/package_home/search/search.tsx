@@ -10,6 +10,7 @@ import Spin from '@/components/spin';
 import Tab from '@/components/tab';
 import { device } from '@/utils/device';
 import { parseUrlParams } from '@/utils/navigation';
+import { appService } from '@/_state/app.service';
 
 export default class Search extends Component {
   config = {
@@ -36,7 +37,6 @@ export default class Search extends Component {
 
   fetchCoupon = async () => {
     const { cid, min_id, keyword } = this.state
-    console.log('FIN home state', this.state)
     const coupon_url = `https://v2.api.haodanku.com/get_keyword_items/apikey/saul/keyword/${keyword}/back/20/min_id/${min_id}/sort/0/cid/0`
     // console.log('FIN coupon list url', coupon_url)
     try {
@@ -63,6 +63,10 @@ export default class Search extends Component {
   }
 
   handleOnSearch = keyword => {
+    if (keyword) {
+      appService.pushHistory(keyword)
+    }
+
     this.setState({
       keyword,
       min_id: 1,

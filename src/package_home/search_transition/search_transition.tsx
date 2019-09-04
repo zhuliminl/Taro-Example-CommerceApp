@@ -11,6 +11,7 @@ import Tags from '@/components/tags'
 import video_guide from '@/assets/image/video-guide.png'
 import { appQuery } from '@/_state/app.query'
 import { appService } from '@/_state/app.service';
+import { navigateTo } from '@/utils/navigation'
 
 const TAG_LIST = [
   {
@@ -80,7 +81,6 @@ export default class Search extends Component {
   setHotSearch = () => {
     appService.getHotSearch()
     this.sub1 = appQuery.searchs.select('hotList').subscribe(hotList => {
-      console.log('FIN 获取 hotList', hotList)
       this.setState({
         hotList,
       })
@@ -90,7 +90,6 @@ export default class Search extends Component {
   sub2: any;
   setHistory = () => {
     this.sub2 = appQuery.searchs.select('historys').subscribe(historys => {
-      console.log('FIN 获取 historys', historys)
       this.setState({
         historys: historys.map((item, i) => ({
           title: item,
@@ -107,11 +106,16 @@ export default class Search extends Component {
 
 
   handleOnVideoGuideClick = () => {
-    console.log('FIN 去h5')
   }
 
   handleOnHistoryClear = () => {
     appService.clearHistory()
+  }
+
+  handleOnTagClick = title => {
+    if (title) {
+      navigateTo('search', { keyword: title })
+    }
   }
 
   render() {
@@ -120,7 +124,9 @@ export default class Search extends Component {
         <SearchBar
           placeholder={'复制标题，搜隐藏优惠券拿返利'}
           onSearch={(title) => {
-            console.log('FIN 就搜你了', title)
+            if (title) {
+              appService.pushHistory(title)
+            }
           }}
         />
 
@@ -131,7 +137,7 @@ export default class Search extends Component {
           current={this.state.current}
           list={Market}
           onChange={(item) => {
-            console.log('FIN tab item', item)
+            // console.log('FIN tab item', item)
             this.setState({
               current: item.key
             })
@@ -144,7 +150,7 @@ export default class Search extends Component {
         <Tags
           tagList={this.state.hotList}
           onTagClick={(title) => {
-            console.log('FIN click tag', title)
+            this.handleOnTagClick(title)
             appService.pushHistory(title)
           }}
         />
@@ -157,7 +163,7 @@ export default class Search extends Component {
         <Tags
           tagList={this.state.historys}
           onTagClick={title => {
-            console.log('FIN history title', title)
+            this.handleOnTagClick(title)
           }}
         />
 
