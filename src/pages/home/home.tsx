@@ -283,7 +283,9 @@ class Home extends Component {
     return (
       <View className='home'>
 
-        <ModalPoly
+
+        {/* <ModalPoly
+          // 暂时注销弹窗
           // isShow={this.state.showModal}
           isShow={false}
           width={px(270)}
@@ -306,7 +308,7 @@ class Home extends Component {
               src={require('../../assets/image/open_notification.png')}
             />
           </View>
-        </ModalPoly>
+        </ModalPoly> */}
 
         <View className='home-sticky-wrap'
           style={{
