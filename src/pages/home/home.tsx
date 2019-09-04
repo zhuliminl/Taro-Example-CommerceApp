@@ -310,7 +310,8 @@ class Home extends Component {
           </View>
         </ModalPoly> */}
 
-        <View className='home-sticky-wrap'
+        {/* <View className='home-sticky-wrap'
+        // 注销 sticky
           style={{
             top: this.state.stickyTop,
           }}
@@ -322,7 +323,7 @@ class Home extends Component {
             list={this.state.tabList}
             onChange={(item) => { this.handleOnTabChange(item) }}
           />
-        </View>
+        </View> */}
         <ScrollView
           onScroll={this.handleOnScroll.bind(this)}
           onScrollToLower={this.handleOnScrollToLower.bind(this)}
