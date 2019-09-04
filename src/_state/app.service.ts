@@ -2,7 +2,7 @@ import { of, from } from 'rxjs';
 import { App } from './app.model';
 import { AppStore, appStore } from './app.store';
 import Taro from '@tarojs/taro';
-import { getHotSearch, pushHistory } from './search/searchs.service'
+import { getHotSearch, pushHistory, clearHistory } from './search/searchs.service'
 
 
 
@@ -35,6 +35,10 @@ export class AppService {
 
   public pushHistory(title: string) {
     pushHistory(title)
+  }
+
+  public clearHistory() {
+    clearHistory()
   }
 
 }

@@ -111,7 +111,7 @@ export default class Search extends Component {
   }
 
   handleOnHistoryClear = () => {
-    console.log('FIN 清空历史')
+    appService.clearHistory()
   }
 
   render() {

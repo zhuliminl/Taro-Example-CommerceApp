@@ -34,6 +34,12 @@ export function pushHistory(title: string) {
   // ===================== 常规的更新 state 的方法 ===============
 }
 
+export function clearHistory() {
+  searchsStore.update({
+    historys: []
+  })
+}
+
 export async function update(id, data) {
   await Promise.resolve();
   searchsStore.update(id, data);
