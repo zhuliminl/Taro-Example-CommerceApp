@@ -27,11 +27,16 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
   openTaobaoForRN = () => {
     if (device.isRN()) {
       RN.Linking.canOpenURL('taobao://').then(supported => {
-        Taro.showToast({
-          title: '淘宝'
-        })
-
-        RN.Linking.openURL('taobao://')
+        if (supported) {
+          // Taro.showToast({
+          //   title: '正在打开淘宝'
+          // })
+          RN.Linking.openURL('taobao://')
+        } else {
+          Taro.showToast({
+            title: '无法打开淘宝'
+          })
+        }
 
       }).catch(err => {
         console.log('FIN 打开淘宝错误', err)
@@ -43,7 +48,7 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
   }
 
   handleOnTokenClick = () => {
-    const token = '复制框内整段文字，打开 淘宝 即可领券购买。￥c1cwYlfIWSg￥'
+    const token = '打开"手机tao包“即可打开下单，付款后就能获得返利￥K6noYlUjx1O￥'  // 会过期
     Taro.setClipboardData({
       data: token,
     }).then(data => {
