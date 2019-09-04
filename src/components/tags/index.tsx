@@ -21,7 +21,7 @@ export default class Tags extends Component<TagsInterface, {}> {
     return (
       <View className="tags-comp">
         {
-          this.props.tagList.map(item => {
+          this.props.tagList && this.props.tagList.map(item => {
             return (
               <View
                 key={item.key}

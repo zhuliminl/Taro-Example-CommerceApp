@@ -4,7 +4,7 @@ import { from } from 'rxjs'
 import { searchsQuery } from '../../../rn_temp/_state/state';
 
 export function getHotSearch() {
-  const url = 'http://v2.api.haodanku.com/hot_key/apikey/saul/back/15'
+  const url = 'https://v2.api.haodanku.com/hot_key/apikey/saul/back/15'
   const source$ = from(Taro.request({ url }))
   source$.subscribe(data => {
     if (data && data['statusCode'] === 200) {
