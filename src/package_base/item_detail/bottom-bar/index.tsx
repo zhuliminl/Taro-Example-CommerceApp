@@ -2,7 +2,18 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import './index.scss'
 import icon_copy from '@/assets/icon/copy.png'
-import item_detail_styles from '../../../../rn_temp/pages/item_detail/item_detail_styles';
+import { device } from '@/utils/device';
+
+let RN = {
+  Linking: {
+    canOpenURL: (url) => Promise,
+    openURL: (url) => { }
+  }
+}
+
+if (process.env.TARO_ENV === 'rn') {
+  RN = require('react-native')
+}
 
 interface BottomBarInterface {
   item: any;
@@ -13,15 +24,49 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
   componentDidMount = () => {
   }
 
+  openTaobaoForRN = () => {
+    if (device.isRN()) {
+      RN.Linking.canOpenURL('taobao://').then(supported => {
+        Taro.showToast({
+          title: '淘宝'
+        })
+
+        RN.Linking.openURL('taobao://')
+
+      }).catch(err => {
+        console.log('FIN 打开淘宝错误', err)
+        Taro.showToast({
+          title: '无法打开淘宝'
+        })
+      })
+    }
+  }
+
+  handleOnTokenClick = () => {
+    const token = '复制框内整段文字，打开 淘宝 即可领券购买。￥c1cwYlfIWSg￥'
+    Taro.setClipboardData({
+      data: token,
+    }).then(data => {
+      Taro.showToast({
+        title: '复制成功'
+      })
+
+      // ============================================ 为 RN 打开 淘宝 ========================
+      this.openTaobaoForRN()
+
+    }).catch(err => {
+      console.log('FIN 设置系统剪切板失败', err)
+      Taro.showToast({
+        title: '复制失败'
+      })
+    })
+  }
+
   render() {
     const { item } = this.props
     return (
       <View className="bottom-bar-comp">
-        <View className='bottom-bar-left-wrap' onClick={() => {
-          Taro.showToast({
-            title: '复制成功'
-          })
-        }}>
+        <View className='bottom-bar-left-wrap' onClick={this.handleOnTokenClick.bind(this)}>
           <Image className='bottom-bar-left-img' src={icon_copy} />
           <Text className='bottom-bar-left-txt'>复制口令</Text>
         </View>
