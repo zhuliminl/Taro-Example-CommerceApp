@@ -33,8 +33,8 @@ export class AppService {
     getHotSearch()
   }
 
-  public pushHistory(data: string) {
-    pushHistory(data)
+  public pushHistory(title: string) {
+    pushHistory(title)
   }
 
 }

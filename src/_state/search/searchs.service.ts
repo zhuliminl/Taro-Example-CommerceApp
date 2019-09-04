@@ -20,12 +20,15 @@ export function getHotSearch() {
   })
 }
 
-export function pushHistory(data) {
+export function pushHistory(title: string) {
   // ===================== 常规的更新 state 的方法 ===============
-  searchsStore.update(state => {
+  searchsStore.update((state) => {
     const { historys = [] } = state
+    if (historys.includes(title as never)) {
+      return { historys }
+    }
     return {
-      historys: [...historys, data] as never
+      historys: [...historys, title] as never
     }
   })
   // ===================== 常规的更新 state 的方法 ===============

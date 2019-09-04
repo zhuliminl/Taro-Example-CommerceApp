@@ -324,6 +324,7 @@ class Home extends Component {
             onChange={(item) => { this.handleOnTabChange(item) }}
           />
         </View> */}
+
         <ScrollView
           onScroll={this.handleOnScroll.bind(this)}
           onScrollToLower={this.handleOnScrollToLower.bind(this)}
