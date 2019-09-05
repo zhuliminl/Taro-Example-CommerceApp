@@ -11,6 +11,7 @@ import Tab from '@/components/tab';
 import { device } from '@/utils/device';
 import { parseUrlParams } from '@/utils/navigation';
 import { appService } from '@/_state/app.service';
+import { baseUrl } from '@/constants/baseUrl'
 
 export default class Search extends Component {
   config = {
@@ -20,39 +21,72 @@ export default class Search extends Component {
 
   state = {
     current: 0,
+
     coupons: [],
-    cid: 0,
-    min_id: 1,
+
     keyword: '',
+    tbkUserId: '',
+    channel: '',
+    pageIndex: 1,
   }
 
   componentDidMount = () => {
     const params = parseUrlParams(this.$router.params)
-    const keyword = params && params['keyword'] || ''
+    const keyword = params && params['keyword'] || '皮裤'
+    const tbkUserId = params && params['tbkUserId'] || '6'
+    const channel = params && params['channel'] || '2'
+
+    let current = 1
+    if (channel === '2') { // 拼多多平台
+      current = 1
+    }
+
     this.setState({
       keyword,
+      tbkUserId,
+      channel,
+      current,
     }, this.fetchCoupon)
 
   }
 
   fetchCoupon = async () => {
-    const { cid, min_id, keyword } = this.state
-    const coupon_url = `https://v2.api.haodanku.com/get_keyword_items/apikey/saul/keyword/${keyword}/back/20/min_id/${min_id}/sort/0/cid/0`
-    // console.log('FIN coupon list url', coupon_url)
+    // const coupon_url = `http://${baseUrl}/goods/search_goods_by_keyword/3/3?sort=total_sales_des&keyWord=拖鞋男&tbkUserId=6&channel=2`
+    const coupon_url = `http://${baseUrl}/goods/search_goods_by_keyword/20/${this.state.pageIndex}`
     try {
-      const resp = await Taro.request({ url: coupon_url })
-      const couponsData = resp && resp.data && resp.data.data
-      const min_id = resp && resp.data && resp.data.min_id
-      const preState = this.state
-      const coupons = preState.coupons.concat(couponsData)
-      this.setState({
-        coupons,
-        min_id,
+      const resp = await Taro.request({
+        url: coupon_url,
+        data: {
+          sort: 'total_sales_des',
+          keyWord: this.state.keyword,
+          tbkUserId: this.state.tbkUserId,
+          channel: this.state.channel,
+        }
       })
+      if (resp && resp['statusCode'] === 200 && resp['data']['success'] && resp['data'] && resp['data']['data']) {
+        const data = resp['data']['data'] || {}
+        console.log('FIN data', data)
+        const { list = [] } = data
+        const { total = 0 } = data
+        this.setState({
+          coupons: this.state.coupons.concat(list),
+          pageIndex: this.state.pageIndex + 1,
+        })
+      }
+
+      if (resp && resp['data'] && resp['data']['success'] === false) {
+        const { msg = '' } = resp['data']
+        Taro.showToast({ title: msg })
+      }
+
     } catch (err) {
+      Taro.showToast({ title: '获取搜索列表错误' })
       console.log('FIN get coupon err', err)
     }
   }
+
+
+
 
   handleOnScroll = () => {
 
@@ -69,7 +103,7 @@ export default class Search extends Component {
 
     this.setState({
       keyword,
-      min_id: 1,
+      pageIndex: 1,
       coupons: [],
     }, this.fetchCoupon)
   }
