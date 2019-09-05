@@ -13,6 +13,7 @@ import ShopInfo from './shop-info';
 import SimilarItemList from '@/components/item-list-b';
 import { device } from '@/utils/device';
 import { parseUrlParams } from '@/utils/navigation';
+import { baseUrl } from '@/constants/baseUrl'
 
 const isIOS = device.isIOS()
 
@@ -41,39 +42,90 @@ interface stateInterface {
   item: itemInterface;
   isLoading: boolean;
   similarCoupon: any[];
+  itemid: string | number;
+  tbkUserId: string | number;
+  isHdk: boolean;
 }
 
 export default class Item_detail extends Component<{}, stateInterface> {
   config = {
     navigationBarTitleText: 'item_detail',
     disableScroll: true,
-
   }
 
   state = {
     isLoading: true,
     similarCoupon: [],
+
+    itemid: '',
     item: {},
+    tbkUserId: '',
+    isHdk: false,
   }
 
   componentDidMount = async () => {
-    const params = parseUrlParams(this.$router.params)
-    const itemid = params.itemid
-    console.log('FIN item detail itemid', itemid)
-    const url = `https://v2.api.haodanku.com/item_detail/apikey/saul/itemid/${itemid}`
+    const params = parseUrlParams(this.$router.params) || {}
+    const itemid = params['itemid'] || ''
+    const tbkUserId = params['tbkUserId'] || ''
+    console.log('FIN淘宝客 id', tbkUserId)
+
+    // 非机器人链接而来的订单详情，走好单库 api
+    const isFromHaoDanku = tbkUserId === ''
+    if (isFromHaoDanku) {
+      this.setState({
+        isHdk: true,
+      })
+      return this.getItemFromHaoDanKu()
+    }
+
+    this.setState({
+      itemid,
+      tbkUserId,
+    }, this.getItem)
+
+  }
+
+  getItem = async () => {
+    const url = `http://${baseUrl}/goods/goods_detail`
     try {
+      const resp = await Taro.request({
+        url,
+        data: {
+          tbkUserId: this.state.tbkUserId,
+          goodsId: this.state.itemid,
+        }
+      })
+      if (resp && resp['statusCode'] === 200 && resp['data'] && resp['data']['success'] && resp['data']['goodsDetail']) {
+        const item = resp['data']['goodsDetail'] || {}
+        this.setState({
+          item,
+          isLoading: false,
+        })
+      }
+    } catch (err) {
+      Taro.showToast({ title: '获取商品详情错误' })
+      console.log('FIN get coupon err', err)
+    }
+
+
+  }
+
+  getItemFromHaoDanKu = async () => {
+    const params = parseUrlParams(this.$router.params) || {}
+    const itemid = params['itemid'] || ''
+    try {
+      const url = `https://v2.api.haodanku.com/item_detail/apikey/saul/itemid/${itemid}`
       const resp = await Taro.request({ url })
       const item = resp && resp.data && resp.data.data
       this.setState({
         item,
-        isLoading: false,
+        isLoading: false
       })
     } catch (err) {
+      Taro.showToast({ title: '获取好单库商品详情错误' })
       console.log('FIN get coupon err', err)
     }
-
     this.getSimilar()
-
   }
 
   getSimilar = async () => {
@@ -134,6 +186,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
     }
 
     const { item } = this.state
+    console.log('FIN item', item)
     const taobao_image = item && item['taobao_image'] || ''
     const itemSrcList = taobao_image.split(',')
 
@@ -150,8 +203,8 @@ export default class Item_detail extends Component<{}, stateInterface> {
             style={scrollStyle}
           >
             {/* <Text>{pageStyle.height}</Text> */}
-            <ItemCarousel itemSrcList={itemSrcList} />
-            <ItemInfo item={this.state.item} />
+            <ItemCarousel itemSrcList={itemSrcList[0] === '' ? (item['goodsImages'] || []) : itemSrcList} />
+            <ItemInfo item={this.state.item} isHdk={this.state.isHdk} />
             <ShopInfo item={this.state.item} />
             <CenterTitle title={'商品详情'} />
             <CenterTitle title={'商品推荐'} />
@@ -159,7 +212,10 @@ export default class Item_detail extends Component<{}, stateInterface> {
           </ScrollView>
         </View>
 
-        <BottomBar item={this.state.item} />
+        <BottomBar
+          item={this.state.item}
+          isHdk={this.state.isHdk}
+        />
       </View>
     )
   }

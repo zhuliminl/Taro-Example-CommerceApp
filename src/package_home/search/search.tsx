@@ -28,6 +28,8 @@ export default class Search extends Component {
     tbkUserId: '',
     channel: '',
     pageIndex: 1,
+
+    // 没有更多和空数据暂时懒得做
   }
 
   componentDidMount = () => {
@@ -63,7 +65,7 @@ export default class Search extends Component {
           channel: this.state.channel,
         }
       })
-      if (resp && resp['statusCode'] === 200 && resp['data']['success'] && resp['data'] && resp['data']['data']) {
+      if (resp && resp['statusCode'] === 200 && resp['data'] && resp['data']['success'] && resp['data']['data']) {
         const data = resp['data']['data'] || {}
         console.log('FIN data', data)
         const { list = [] } = data
@@ -151,7 +153,10 @@ export default class Search extends Component {
             }}
           />
 
-          <ItemListA list={this.state.coupons || []} />
+          <ItemListA
+            tbkUserId={this.state.tbkUserId}
+            list={this.state.coupons || []}
+          />
           <Spin isShow />
         </ScrollView>
       </View>

@@ -16,6 +16,7 @@ interface WrapperStyleInterface {
 
 interface ItemListInterface {
   list: any[],
+  tbkUserId?: string | number;
 }
 
 class ItemList extends Component<ItemListInterface, {}> {
@@ -24,7 +25,9 @@ class ItemList extends Component<ItemListInterface, {}> {
 
   handleItemClick = (item) => {
     // console.log('FIN 去商品详情页', item)
-    navigateTo('item_detail', { itemid: item.itemid })
+    const itemid = item['itemid'] || item['goodsId'] || ''
+    const tbkUserId = this.props['tbkUserId'] || ''
+    navigateTo('item_detail', { itemid, tbkUserId })
 
   }
 

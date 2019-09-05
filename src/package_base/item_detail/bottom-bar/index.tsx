@@ -28,6 +28,7 @@ if (process.env.TARO_ENV === 'h5') {
 
 interface BottomBarInterface {
   item: any;
+  isHdk?: boolean;
 }
 
 export default class BottomBar extends Component<BottomBarInterface, {}> {
@@ -113,20 +114,31 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
     const { item } = this.props
     return (
       <View className="bottom-bar-comp">
-        <View className='bottom-bar-left-wrap' onClick={this.handleOnTokenClick.bind(this)}>
+        <View
+          className='bottom-bar-left-wrap'
+          style={{
+            ...(!this.props.isHdk && {
+              flex: 1,
+            })
+          }}
+          onClick={this.handleOnTokenClick.bind(this)}
+        >
           <Image className='bottom-bar-left-img' src={icon_copy} />
           <Text className='bottom-bar-left-txt'>复制口令</Text>
         </View>
-        <View className='bottom-bar-right-wrap'>
-          <View className='bottom-bar-right-red-wrap'>
-            <Text className='bottom-bar-right-txt'>分享赚</Text>
-            <Text className='bottom-bar-right-txt'>￥{item.tkmoney}</Text>
+        {
+          this.props.isHdk &&
+          <View className='bottom-bar-right-wrap'>
+            <View className='bottom-bar-right-red-wrap'>
+              <Text className='bottom-bar-right-txt'>分享赚</Text>
+              <Text className='bottom-bar-right-txt'>￥{item.tkmoney}</Text>
+            </View>
+            <View className='bottom-bar-right-black-wrap'>
+              <Text className='bottom-bar-right-txt'>下单返</Text>
+              <Text className='bottom-bar-right-txt'>￥{item.tkmoney || item['rebate']}</Text>
+            </View>
           </View>
-          <View className='bottom-bar-right-black-wrap'>
-            <Text className='bottom-bar-right-txt'>下单返</Text>
-            <Text className='bottom-bar-right-txt'>￥{item.tkmoney}</Text>
-          </View>
-        </View>
+        }
       </View>
     )
   }

@@ -7,6 +7,7 @@ import up from '@/assets/image/up.png'
 
 interface ShopInfoInterface {
   item: any;
+  isHdk?: boolean;
 }
 
 export default class ShopInfo extends Component<ShopInfoInterface, {}> {
@@ -19,7 +20,7 @@ export default class ShopInfo extends Component<ShopInfoInterface, {}> {
     return (
       <View className="shop-info-comp">
         <View className='shop-info-title-wrap'>
-          <Image className='shop-info-bg' src={bg_tianmao} />
+          {/* <Image className='shop-info-bg' src={bg_tianmao} /> */}
           <Text className='shop-info-title-txt'>{item.sellernick}</Text>
         </View>
         <View className='shop-info-appraise-wrap'>
@@ -43,7 +44,7 @@ export default class ShopInfo extends Component<ShopInfoInterface, {}> {
 
         <View className='shop-info-recommend-wrap'>
           <Text className='shop-info-recommend-title-txt'>推荐语</Text>
-          <Text className='shop-info-recommend-desc-txt'>{item.itemdesc}</Text>
+          <Text className='shop-info-recommend-desc-txt'>{item.itemdesc || item['goodsDescription'] || ''}</Text>
         </View>
       </View>
     )
