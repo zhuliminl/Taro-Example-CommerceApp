@@ -17,6 +17,7 @@ interface WrapperStyleInterface {
 interface ItemListInterface {
   list: any[],
   tbkUserId?: string | number;
+  channel: number;
 }
 
 class ItemList extends Component<ItemListInterface, {}> {
@@ -27,9 +28,8 @@ class ItemList extends Component<ItemListInterface, {}> {
     // console.log('FIN 去商品详情页', item)
     const itemid = item['itemid'] || item['goodsId'] || ''
     const tbkUserId = this.props['tbkUserId'] || ''
-    // const channel = this.props['channel'] || ''
-    // 搜索页传递 channel
-    navigateTo('item_detail', { itemid, tbkUserId })
+    const channel = this.props['channel'] || 1
+    navigateTo('item_detail', { itemid, tbkUserId, channel })
 
   }
 

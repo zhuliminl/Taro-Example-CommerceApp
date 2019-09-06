@@ -190,7 +190,7 @@ class Home extends Component {
     const { cid, min_id } = this.state
     // console.log('FIN home state', this.state)
     const coupon_url = `https://v2.api.haodanku.com/itemlist/apikey/saul/nav/3/cid/${cid}/back/20/min_id/${min_id}`
-    console.log('FIN coupon list url', coupon_url)
+    // console.log('FIN coupon list url', coupon_url)
     try {
       const resp = await Taro.request({ url: coupon_url })
       const couponsData = resp && resp.data && resp.data.data
@@ -373,7 +373,10 @@ class Home extends Component {
             </SwiperItem>
           </Swiper> */}
 
-          <ItemListB list={this.state.coupons || []} />
+          <ItemListB
+            list={this.state.coupons || []}
+            channel={1}
+          />
           <Spin isShow />
 
         </ScrollView>

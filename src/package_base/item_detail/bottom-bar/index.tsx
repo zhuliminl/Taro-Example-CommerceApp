@@ -88,7 +88,6 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
 
   handleOnTokenClick = () => {
     const { channel = 1 } = this.props
-    console.log('FIN chanel', channel)
     if (channel === 1) {
       this.openTaoBao()
     }

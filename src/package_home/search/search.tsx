@@ -26,7 +26,7 @@ export default class Search extends Component {
 
     keyword: '',
     tbkUserId: '',
-    channel: '',
+    channel: 1,
     pageIndex: 1,
 
     // 没有更多和空数据暂时懒得做
@@ -155,6 +155,7 @@ export default class Search extends Component {
           />
 
           <ItemListA
+            channel={this.state.channel}
             tbkUserId={this.state.tbkUserId}
             list={this.state.coupons || []}
           />

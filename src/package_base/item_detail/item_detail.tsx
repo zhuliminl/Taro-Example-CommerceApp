@@ -72,13 +72,16 @@ export default class Item_detail extends Component<{}, stateInterface> {
     const params = parseUrlParams(this.$router.params) || {}
     const itemid = params['itemid'] || ''
     const tbkUserId = params['tbkUserId'] || ''
-    console.log('FIN淘宝客 id', tbkUserId)
+    // number 类型被自动转成 string了，必须转回来
+    const channel = +params['channel'] || 1
+    // console.log('FIN淘宝客 id', tbkUserId)
 
     // 1. 非机器人链接而来的宝贝，走好单库 api
     const isFromHaoDanku = tbkUserId === ''
     if (isFromHaoDanku) {
       this.setState({
         isHdk: true,
+        channel,
       })
       return this.getItemFromHaoDanKu()
     }
@@ -87,6 +90,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
     this.setState({
       itemid,
       tbkUserId,
+      channel,
     }, this.getItem)
 
   }
@@ -104,7 +108,6 @@ export default class Item_detail extends Component<{}, stateInterface> {
       if (resp && resp['statusCode'] === 200 && resp['data'] && resp['data']['success'] && resp['data']['goodsDetail']) {
         const item = resp['data']['goodsDetail'] || {}
         const { channel = 2 } = item
-        console.log('FIN 后端返回的 channel', channel)
         this.setState({
           item,
           isLoading: false,
