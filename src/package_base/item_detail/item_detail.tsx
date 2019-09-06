@@ -45,6 +45,8 @@ interface stateInterface {
   itemid: string | number;
   tbkUserId: string | number;
   isHdk: boolean;
+  channel: number;
+  proUrl: string;
 }
 
 export default class Item_detail extends Component<{}, stateInterface> {
@@ -61,6 +63,9 @@ export default class Item_detail extends Component<{}, stateInterface> {
     item: {},
     tbkUserId: '',
     isHdk: false,
+    channel: 0,
+    // 产品链接
+    proUrl: ''
   }
 
   componentDidMount = async () => {
@@ -69,7 +74,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
     const tbkUserId = params['tbkUserId'] || ''
     console.log('FIN淘宝客 id', tbkUserId)
 
-    // 非机器人链接而来的订单详情，走好单库 api
+    // 1. 非机器人链接而来的宝贝，走好单库 api
     const isFromHaoDanku = tbkUserId === ''
     if (isFromHaoDanku) {
       this.setState({
@@ -78,6 +83,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
       return this.getItemFromHaoDanKu()
     }
 
+    // 2. 机器人宝贝
     this.setState({
       itemid,
       tbkUserId,
@@ -97,17 +103,44 @@ export default class Item_detail extends Component<{}, stateInterface> {
       })
       if (resp && resp['statusCode'] === 200 && resp['data'] && resp['data']['success'] && resp['data']['goodsDetail']) {
         const item = resp['data']['goodsDetail'] || {}
+        const { channel = 1 } = item
         this.setState({
           item,
           isLoading: false,
-        })
+          channel,
+        }, this.getProUrl)
+
       }
     } catch (err) {
       Taro.showToast({ title: '获取商品详情错误' })
       console.log('FIN get coupon err', err)
     }
+  }
 
-
+  getProUrl = async () => {
+    const { channel = 0 } = this.state
+    // 获取拼多多打开链接
+    if (channel === 1) {
+      try {
+        const { goodsId = '' } = this.state.item as any
+        const { tbkUserId } = this.state
+        const resp = await Taro.request({
+          url: `http://${baseUrl}/goods/generate_pdd_pro_url`,
+          data: {
+            goodsId,
+            tbkUserId
+          }
+        })
+        if (resp && resp['statusCode'] === 200 && resp['data'] && resp['data']['success']) {
+          const data = resp['data'] || {}
+          const { proUrl = '' } = data
+          this.setState({ proUrl })
+        }
+      } catch (err) {
+        console.log('FIN 获取拼多多宝贝链接错误', err)
+        Taro.showToast({ title: '获取拼多多产品链接失败' })
+      }
+    }
   }
 
   getItemFromHaoDanKu = async () => {
@@ -213,6 +246,8 @@ export default class Item_detail extends Component<{}, stateInterface> {
         </View>
 
         <BottomBar
+          proUrl={this.state.proUrl}
+          channel={this.state.channel}
           item={this.state.item}
           isHdk={this.state.isHdk}
         />

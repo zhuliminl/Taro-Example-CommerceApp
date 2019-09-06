@@ -29,6 +29,8 @@ if (process.env.TARO_ENV === 'h5') {
 interface BottomBarInterface {
   item: any;
   isHdk?: boolean;
+  channel: number;
+  proUrl: string;
 }
 
 export default class BottomBar extends Component<BottomBarInterface, {}> {
@@ -69,7 +71,7 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
           url: 'https://m.taobao.com/#index',
           param: {
             // 这里打开指定商品
-            k2: 'v2'
+            // k2: 'v2'
           }
         }
 
@@ -85,9 +87,21 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
   }
 
   handleOnTokenClick = () => {
+    const { channel = 0 } = this.props
+    if (channel === 0) {
+      this.openTaoBao()
+    }
+
+    if (channel === 1) {
+      this.openPindudduo()
+    }
+
+  }
+
+  // 这地方需要小小修改下，到时候看情况
+  openTaoBao = () => {
     // ====================== h5 端打开 app =====================
     this.openTaobaoForH5()
-
 
     const token = '打开利￥K6noYlUjx1O￥'  // 会过期
     Taro.setClipboardData({
@@ -97,7 +111,7 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
         title: '复制成功'
       })
 
-      // ============================================ 为 RN 打开 淘宝 ========================
+      // =================== 为 RN 打开 淘宝 ===================
       this.openTaobaoForRN()
 
     }).catch(err => {
@@ -109,9 +123,75 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
 
   }
 
+  openPindudduo = () => {
+    this.openPinduoduoForH5()
+    this.openPinduoduoForRN()
+  }
+
+  openPinduoduoForH5 = () => {
+    const { proUrl = '' } = this.props
+    if (device.isH5()) {
+      try {
+        const launchApp = new LaunchApp({})
+        // console.log('FIN launchApp', launchApp)
+        const config = {
+          scheme: 'pinduoduo://',
+          url: proUrl,
+          param: {
+            // 这里打开指定商品
+            // k2: 'v2'
+          }
+        }
+
+        launchApp.open(config, (s, d, url) => {
+          console.log('callbackout', s, d, url);
+          return 2
+        })
+      } catch (err) {
+        Taro.showToast({ title: '打开拼多多失败' })
+        console.log('FIN 尝试打开拼多多失败', err)
+      }
+    }
+  }
+
+  openPinduoduoForRN = () => {
+    // const { proUrl = '' } = this.props
+    const { item = {} } = this.props
+    if (device.isRN()) {
+      RN.Linking.canOpenURL('pinduoduo://').then(supported => {
+        if (supported) {
+          Taro.showToast({
+            title: '正在打开拼多多'
+          })
+          // let url = "pinduoduo://com.xunmeng.pinduoduo/duo_coupon_landing.html?goods_id=" + goodId + "&pid=" + pid;
+          // const goodsId = '23000840254'
+          const goodsId = item['goodsId'] || ''
+          const url = "pinduoduo://com.xunmeng.pinduoduo/duo_coupon_landing.html?goods_id=" + goodsId
+          RN.Linking.openURL(url)
+        } else {
+          Taro.showToast({
+            title: '无法打开拼多多'
+          })
+        }
+
+      }).catch(err => {
+        console.log('FIN 打开拼多多错误', err)
+        Taro.showToast({
+          title: '无法打开拼多多'
+        })
+      })
+    }
+  }
+
 
   render() {
     const { item } = this.props
+
+    let btn_label = '复制口令'
+    if (this.props.channel === 1) {
+      btn_label = '打开宝贝'
+    }
+
     return (
       <View className="bottom-bar-comp">
         <View
@@ -124,7 +204,7 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
           onClick={this.handleOnTokenClick.bind(this)}
         >
           <Image className='bottom-bar-left-img' src={icon_copy} />
-          <Text className='bottom-bar-left-txt'>复制口令</Text>
+          <Text className='bottom-bar-left-txt'>{btn_label}</Text>
         </View>
         {
           this.props.isHdk &&
@@ -143,3 +223,4 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
     )
   }
 }
+
