@@ -87,12 +87,13 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
   }
 
   handleOnTokenClick = () => {
-    const { channel = 0 } = this.props
-    if (channel === 0) {
+    const { channel = 1 } = this.props
+    console.log('FIN chanel', channel)
+    if (channel === 1) {
       this.openTaoBao()
     }
 
-    if (channel === 1) {
+    if (channel === 2) {
       this.openPindudduo()
     }
 
@@ -188,7 +189,7 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
     const { item } = this.props
 
     let btn_label = '复制口令'
-    if (this.props.channel === 1) {
+    if (this.props.channel === 2) {
       btn_label = '打开宝贝'
     }
 

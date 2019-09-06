@@ -37,6 +37,7 @@ export default class Search extends Component {
     const keyword = params && params['keyword'] || '皮裤'
     const tbkUserId = params && params['tbkUserId'] || '6'
     const channel = params && params['channel'] || '2'
+    console.log('FIN params', params)
 
     let current = 1
     if (channel === '2') { // 拼多多平台

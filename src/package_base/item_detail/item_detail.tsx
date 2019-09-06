@@ -63,7 +63,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
     item: {},
     tbkUserId: '',
     isHdk: false,
-    channel: 0,
+    channel: 1,  // 默认是淘宝
     // 产品链接
     proUrl: ''
   }
@@ -103,7 +103,8 @@ export default class Item_detail extends Component<{}, stateInterface> {
       })
       if (resp && resp['statusCode'] === 200 && resp['data'] && resp['data']['success'] && resp['data']['goodsDetail']) {
         const item = resp['data']['goodsDetail'] || {}
-        const { channel = 1 } = item
+        const { channel = 2 } = item
+        console.log('FIN 后端返回的 channel', channel)
         this.setState({
           item,
           isLoading: false,
@@ -118,9 +119,9 @@ export default class Item_detail extends Component<{}, stateInterface> {
   }
 
   getProUrl = async () => {
-    const { channel = 0 } = this.state
+    const { channel = 2 } = this.state
     // 获取拼多多打开链接
-    if (channel === 1) {
+    if (channel === 2) {
       try {
         const { goodsId = '' } = this.state.item as any
         const { tbkUserId } = this.state
