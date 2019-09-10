@@ -34,8 +34,11 @@ export default class Search extends Component {
 
   componentDidMount = () => {
     const params = parseUrlParams(this.$router.params)
-    const keyword = params && params['keyword'] || '皮裤'
-    const tbkUserId = params && params['tbkUserId'] || '6'
+    const keyword = params && params['keyword'] || ''
+    // const tbkUserId = params && params['tbkUserId'] || '6'
+
+    // 线上获取用户 id
+    const tbkUserId = params && params['user'] || '6'
     const channel = params && params['channel'] || '2'
     console.log('FIN params', params)
 

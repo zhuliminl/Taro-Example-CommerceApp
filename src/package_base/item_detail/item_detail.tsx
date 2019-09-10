@@ -72,12 +72,14 @@ export default class Item_detail extends Component<{}, stateInterface> {
     const params = parseUrlParams(this.$router.params) || {}
     const itemid = params['itemid'] || ''
     const tbkUserId = params['tbkUserId'] || ''
+
     // number 类型被自动转成 string了，必须转回来
     const channel = +params['channel'] || 1
     // console.log('FIN淘宝客 id', tbkUserId)
 
     // 1. 非机器人链接而来的宝贝，走好单库 api
     const isFromHaoDanku = tbkUserId === ''
+    console.log('FIN 来自好单库', isFromHaoDanku)
     if (isFromHaoDanku) {
       this.setState({
         isHdk: true,
@@ -139,6 +141,10 @@ export default class Item_detail extends Component<{}, stateInterface> {
           const data = resp['data'] || {}
           const { proUrl = '' } = data
           this.setState({ proUrl })
+        }
+
+        if(resp && resp['statusCode'] === 500) {
+          console.error('FIN 获取拼多多宝贝链接错误')
         }
       } catch (err) {
         console.log('FIN 获取拼多多宝贝链接错误', err)

@@ -130,8 +130,14 @@ export default class BottomBar extends Component<BottomBarInterface, {}> {
 
   openPinduoduoForH5 = () => {
     const { proUrl = '' } = this.props
+    if (!proUrl) {
+      return Taro.showToast({
+        title: '未能获取宝贝链接'
+      })
+    }
     if (device.isH5()) {
       try {
+        console.log('FIN 打开宝贝')
         const launchApp = new LaunchApp({})
         // console.log('FIN launchApp', launchApp)
         const config = {
