@@ -1,0 +1,22 @@
+.supersort-page {
+  background-color: #FFF;
+  // margin-top: 80px;
+  // padding-top: 80px;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.supersort-scroll-left {
+  flex: 1;
+  border-width: 0;
+  border-right-width: 1px;
+  border-color: #F5F6F7;
+  border-style: solid;
+}
+
+.supersort-scroll-right {
+  // padding-top: 100px;
+  // background-color: #888;
+  flex: 3;
+}

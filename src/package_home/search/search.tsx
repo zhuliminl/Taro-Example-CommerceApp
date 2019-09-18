@@ -103,7 +103,7 @@ export default class Search extends Component {
               this.handleOnSearch(keyword)
             }}
           />
-          <Tab
+          {/* <Tab
             noScroll
             marginLeft={65}
             itemWidth={80}
@@ -115,7 +115,7 @@ export default class Search extends Component {
                 current: item.key
               })
             }}
-          />
+          /> */}
 
           <ItemListA list={this.state.coupons || []} />
           <Spin isShow />

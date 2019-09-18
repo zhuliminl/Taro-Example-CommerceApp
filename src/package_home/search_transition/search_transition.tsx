@@ -130,7 +130,7 @@ export default class Search extends Component {
           }}
         />
 
-        <Tab
+        {/* <Tab
           noScroll
           marginLeft={65}
           itemWidth={80}
@@ -142,7 +142,7 @@ export default class Search extends Component {
               current: item.key
             })
           }}
-        />
+        /> */}
 
         <Image className='video-guide' src={video_guide} onClick={this.handleOnVideoGuideClick.bind(this)} />
 

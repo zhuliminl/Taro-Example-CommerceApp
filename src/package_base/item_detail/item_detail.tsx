@@ -159,7 +159,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
           </ScrollView>
         </View>
 
-        <BottomBar item={this.state.item} />
+        {/* <BottomBar item={this.state.item} /> */}
       </View>
     )
   }

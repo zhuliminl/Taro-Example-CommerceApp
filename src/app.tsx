@@ -30,9 +30,10 @@ class App extends Component {
   config: Config = {
     pages: [
       'pages/home/home',
+      'pages/supersort/supersort',
       'pages/community/community',
-      'pages/seckill/seckill',
-      'pages/partner/partner',
+      // 'pages/seckill/seckill',
+      // 'pages/partner/partner',
       'pages/user/user',
       // 'pages/test/test',
     ],
@@ -99,11 +100,18 @@ class App extends Component {
           text: "首页"
         },
         {
+          pagePath: "pages/supersort/supersort",
+          iconPath: "./assets/tab-bar/partner.png",
+          selectedIconPath: "./assets/tab-bar/home-active.png",
+          text: "分类"
+        },
+        {
           pagePath: "pages/community/community",
           iconPath: "./assets/tab-bar/save.png",
           selectedIconPath: "./assets/tab-bar/save-active.png",
           text: "好省圈"
         },
+        /*
         {
           pagePath: "pages/seckill/seckill",
           iconPath: "./assets/tab-bar/seckill.png",
@@ -116,6 +124,7 @@ class App extends Component {
           selectedIconPath: "./assets/tab-bar/home-active.png",
           text: "定制页"
         },
+        */
         {
           pagePath: "pages/user/user",
           iconPath: "./assets/tab-bar/user.png",

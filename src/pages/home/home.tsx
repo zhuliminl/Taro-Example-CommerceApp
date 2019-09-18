@@ -348,9 +348,9 @@ class Home extends Component {
             onChange={(item) => { this.handleOnTabChange(item) }}
           />
 
-          <View onClick={() => { navigateTo('supersort') }}>
+          {/* <View onClick={() => { navigateTo('supersort') }}>
             <Text>超级分类</Text>
-          </View>
+          </View> */}
 
 
           {/* <Swiper
