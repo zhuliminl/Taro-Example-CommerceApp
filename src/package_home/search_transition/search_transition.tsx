@@ -122,7 +122,7 @@ export default class Search extends Component {
     return (
       <View className="search-transition-page">
         <SearchBar
-          placeholder={'复制标题，搜隐藏优惠券拿返利'}
+          placeholder={'复制标题，搜隐藏优惠券领优惠券'}
           onSearch={(title) => {
             if (title) {
               appService.pushHistory(title)

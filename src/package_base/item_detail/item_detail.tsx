@@ -64,6 +64,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
     try {
       const resp = await Taro.request({ url })
       const item = resp && resp.data && resp.data.data
+      console.log('FIN ===========================>> good', item)
       this.setState({
         item,
         isLoading: false,
@@ -119,12 +120,12 @@ export default class Item_detail extends Component<{}, stateInterface> {
     }
 
     if (device.isIOS()) {
-      scrollStyle.height = device.windowHeight - 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+      scrollStyle.height = device.windowHeight - 49.5 + 49.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
       // scrollStyle.height = 617.5
     }
 
     if (device.isAndroid()) {
-      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5   // 同上，需要根据底部栏目的实际高度来设置滚动高度
+      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5 + 50.5  // 同上，需要根据底部栏目的实际高度来设置滚动高度
     }
 
     if (device.isWeChat()) {

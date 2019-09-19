@@ -22,7 +22,7 @@ export default class SearchBarView extends Component {
         <View className='search-bar-view-text-wrap'>
           <Text className='search-bar-view-title-thin'>复制标题,</Text>
           <Text className='search-bar-view-title-bold'>搜隐藏优惠券</Text>
-          <Text className='search-bar-view-title-thin'>拿返利</Text>
+          <Text className='search-bar-view-title-thin'>领优惠券</Text>
         </View>
         <Text className='search-bar-view-red-btn'>搜券</Text>
       </View>

@@ -55,7 +55,7 @@ export default class Supersort extends Component {
     }
 
     if(device.isAndroid()) {
-      scrollStyle.height = device.windowHeight - device.info.statusBarHeight
+      scrollStyle.height = device.windowHeight - device.info.statusBarHeight - 50.5
     }
 
     if(device.isWeChat()) {

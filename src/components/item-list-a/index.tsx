@@ -35,6 +35,11 @@ class ItemList extends Component<ItemListInterface, {}> {
         <View className='item-list__title'>{this.props.children}</View>
         <View className='item-list__wrap'>
           {list.map((item, i) => {
+            let title = item['itemshorttitle'] || ''
+            let maxChar = 23
+            if (title.length > maxChar) {
+              title = title.substr(0, maxChar) + '...'
+            }
             return (
               <View
                 key={i}
@@ -44,7 +49,7 @@ class ItemList extends Component<ItemListInterface, {}> {
                 <Image className='item-list__item-img' src={item.itempic} />
                 <View className='item-list__item-right'>
                   <View className='item-right-top'>
-                    <Text className='item__title-txt'>{item.itemshorttitle}</Text>
+                    <Text className='item__title-txt'>{title}</Text>
                     <View className='item__price-wrap'>
                       <Text className='item__symbol-txt'>￥</Text>
                       <Text className='item__price-txt'>{item.itemendprice}</Text>
