@@ -17,17 +17,17 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
 
   render() {
     const { item = {} } = this.props
-    console.log('FIN couponurl', item.couponurl)
+    console.log('FIN item in ItemInfo', item)
     return (
       <View className="item-info-comp">
         <View className='item-info-price-wrap'>
           <View className='item-info-price-tag-wrap'>
             <Text className='item-info-price-tag-txt'>券后</Text>
           </View>
-          <TextMoney money={item.itemendprice} fontSize={32} />
+          <TextMoney money={item['actualPrice']} fontSize={32} />
           <View className='item-info-price-right-wrap'>
-            <Text className='item-info-price-original-txt'>原价￥{item.itemprice}</Text>
-            <Text className='item-info-price-sold-txt'>{item.itemsale}人已购</Text>
+            <Text className='item-info-price-original-txt'>原价￥{item['originalPrice']}</Text>
+            <Text className='item-info-price-sold-txt'>{item['monthSales']}人已购</Text>
           </View>
         </View>
 
@@ -41,7 +41,7 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
         </View> */}
 
         <View className='item-info-item-title-wrap'>
-          <Text className='item-info-item-title-txt'>{item.itemshorttitle}</Text>
+          <Text className='item-info-item-title-txt'>{item['dtitle']}</Text>
         </View>
 
         <View className='item-info-coupon-wrap'>

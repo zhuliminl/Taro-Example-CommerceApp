@@ -6,13 +6,14 @@ import Taro, { Component } from '@tarojs/taro';
 import BottomBar from './bottom-bar';
 import CenterTitle from './center-title';
 import ItemCarousel from './item-carousel';
-import ItemInfo from './item-info';
+import ItemInfo from './item-info/_index';
 import PageLoading from '@/components/page-loading';
 import RoundBack from '@/components/round-back';
 import ShopInfo from './shop-info';
 import SimilarItemList from '@/components/item-list-b';
 import { device } from '@/utils/device';
 import { parseUrlParams } from '@/utils/navigation';
+import { signed, dtkAppData } from '@/utils/signed'
 
 const isIOS = device.isIOS()
 
@@ -57,24 +58,62 @@ export default class Item_detail extends Component<{}, stateInterface> {
   }
 
   componentDidMount = async () => {
-    const params = parseUrlParams(this.$router.params)
-    const itemid = params.itemid
-    console.log('FIN item detail itemid', itemid)
-    const url = `https://v2.api.haodanku.com/item_detail/apikey/saul/itemid/${itemid}`
-    try {
-      const resp = await Taro.request({ url })
-      const item = resp && resp.data && resp.data.data
-      console.log('FIN ===========================>> good', item)
-      this.setState({
-        item,
-        isLoading: false,
-      })
-    } catch (err) {
-      console.log('FIN get coupon err', err)
+
+    await this.getDTKGood()
+
+
+    // const params = parseUrlParams(this.$router.params)
+    // const itemid = params.itemid
+    // console.log('FIN item detail itemid', itemid)
+    // const url = `https://v2.api.haodanku.com/item_detail/apikey/saul/itemid/${itemid}`
+    // try {
+    //   const resp = await Taro.request({ url })
+    //   const item = resp && resp.data && resp.data.data
+    //   console.log('FIN ===========================>> good', item)
+    //   this.setState({
+    //     item,
+    //     isLoading: false,
+    //   })
+    // } catch (err) {
+    //   console.log('FIN get coupon err', err)
+    // }
+
+    // this.getSimilar()
+
+  }
+
+  getDTKGood = async () => {
+    const params = {
+      goodsId: 601630839338,
     }
 
-    this.getSimilar()
+    const url = `https://openapi.dataoke.com/api/goods/get-goods-details`
+    try {
+      const resp = await Taro.request({
+        url,
+        data: {
+          ...dtkAppData,
+          ...params,
+          sign: signed(params),
+        }
+      })
 
+      if (resp && resp['statusCode'] === 200 && resp['data']) {
+        const data = resp['data'] || {}
+        const item = data['data'] || {}
+        console.log('FIN item', item)
+        this.setState({
+          item,
+          isLoading: false,
+        })
+      }
+
+    } catch (err) {
+      console.log('FIN get DTKGood error', err)
+      Taro.showToast({
+        title: '获取商品失败'
+      })
+    }
   }
 
   getSimilar = async () => {
