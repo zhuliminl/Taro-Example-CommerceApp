@@ -17,7 +17,11 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
 
   render() {
     const { item = {} } = this.props
-    console.log('FIN item in ItemInfo', item)
+    let start_date = item['couponStartTime'] || '' as string
+    let end_date = item['couponEndTime'] || '' as string
+    start_date = start_date.substr(0, 10)
+    end_date = end_date.substr(0, 10)
+
     return (
       <View className="item-info-comp">
         <View className='item-info-price-wrap'>
@@ -45,10 +49,11 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
         </View>
 
         <View className='item-info-coupon-wrap'>
-          <Text className='item-info-coupon-money-txt'>￥{item.couponmoney}</Text>
+          <Text className='item-info-coupon-money-txt'>￥{item['couponPrice']}</Text>
           <View className='item-info-coupon-desc-wrap'>
             <Text className='item-info-coupon-desc-txt'>优惠券使用期限</Text>
-            <Text className='item-info-coupon-date-txt'>{parseDate(item.couponstarttime)}-{parseDate(item.couponendtime)}</Text>
+            {/* <Text className='item-info-coupon-date-txt'>{parseDate(item.couponstarttime)}-{parseDate(item.couponendtime)}</Text> */}
+            <Text className='item-info-coupon-date-txt'>{start_date}-{end_date}</Text>
           </View>
           <Image className='item-info-coupon-bg' src={bg_coupon} />
           <Text className='item-info-coupon-take-txt'>立即领取</Text>

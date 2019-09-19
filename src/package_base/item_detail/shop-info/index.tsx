@@ -20,22 +20,22 @@ export default class ShopInfo extends Component<ShopInfoInterface, {}> {
       <View className="shop-info-comp">
         <View className='shop-info-title-wrap'>
           <Image className='shop-info-bg' src={bg_tianmao} />
-          <Text className='shop-info-title-txt'>{item.sellernick}</Text>
+          <Text className='shop-info-title-txt'>{item['shopName']}</Text>
         </View>
         <View className='shop-info-appraise-wrap'>
 
           <View className='shop-info-appraise-item-wrap'>
-            <Text className='shop-info-appraise-item-txt'>宝贝描述4.7</Text>
+            <Text className='shop-info-appraise-item-txt'>宝贝描述{item['descScore']}</Text>
             <Image className='shop-info-appraise-up-img' src={up} />
           </View>
 
           <View className='shop-info-appraise-item-wrap'>
-            <Text className='shop-info-appraise-item-txt'>卖家服务4.8</Text>
+            <Text className='shop-info-appraise-item-txt'>卖家服务{item['shipScore']}</Text>
             <Image className='shop-info-appraise-up-img' src={up} />
           </View>
 
           <View className='shop-info-appraise-item-wrap'>
-            <Text className='shop-info-appraise-item-txt'>物流五服务4.7</Text>
+            <Text className='shop-info-appraise-item-txt'>物流五服务{item['serviceScore']}</Text>
             <Image className='shop-info-appraise-up-img' src={up} />
           </View>
 
@@ -43,7 +43,7 @@ export default class ShopInfo extends Component<ShopInfoInterface, {}> {
 
         <View className='shop-info-recommend-wrap'>
           <Text className='shop-info-recommend-title-txt'>推荐语</Text>
-          <Text className='shop-info-recommend-desc-txt'>{item.itemdesc}</Text>
+          <Text className='shop-info-recommend-desc-txt'>{item['desc']}</Text>
         </View>
       </View>
     )

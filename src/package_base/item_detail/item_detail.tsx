@@ -6,7 +6,8 @@ import Taro, { Component } from '@tarojs/taro';
 import BottomBar from './bottom-bar';
 import CenterTitle from './center-title';
 import ItemCarousel from './item-carousel';
-import ItemInfo from './item-info/_index';
+import ItemInfo from './item-info';
+import ItemDetail from './item-detail'
 import PageLoading from '@/components/page-loading';
 import RoundBack from '@/components/round-back';
 import ShopInfo from './shop-info';
@@ -54,7 +55,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
   state = {
     isLoading: true,
     similarCoupon: [],
-    item: {},
+    item: {} as any,
   }
 
   componentDidMount = async () => {
@@ -84,7 +85,9 @@ export default class Item_detail extends Component<{}, stateInterface> {
 
   getDTKGood = async () => {
     const params = {
-      goodsId: 601630839338,
+      // goodsId: 601630839338,
+      id: 22270804,
+      goodsId: 572079415867,
     }
 
     const url = `https://openapi.dataoke.com/api/goods/get-goods-details`
@@ -174,8 +177,12 @@ export default class Item_detail extends Component<{}, stateInterface> {
     }
 
     const { item } = this.state
-    const taobao_image = item && item['taobao_image'] || ''
-    const itemSrcList = taobao_image.split(',')
+    // const taobao_image = item && item['taobao_image'] || ''
+    // const itemSrcList = taobao_image.split(',')
+
+    const { detailPics = '' } = item
+    // const detailImgs = detailPics.split(',').map(src => src.slice(2))
+    const detailImgs = detailPics.split(',').map(src => 'http:' + src)
 
     return (
       <View className="item_detail-page" style={pageStyle} >
@@ -190,10 +197,11 @@ export default class Item_detail extends Component<{}, stateInterface> {
             style={scrollStyle}
           >
             {/* <Text>{pageStyle.height}</Text> */}
-            <ItemCarousel itemSrcList={itemSrcList} />
+            {/* <ItemCarousel itemSrcList={''} /> */}
             <ItemInfo item={this.state.item} />
             <ShopInfo item={this.state.item} />
             <CenterTitle title={'商品详情'} />
+            <ItemDetail imgList={detailImgs} />
             <CenterTitle title={'商品推荐'} />
             <SimilarItemList list={this.state.similarCoupon || []} />
           </ScrollView>
