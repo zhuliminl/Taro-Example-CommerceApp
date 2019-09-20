@@ -24,6 +24,9 @@ interface ItemInfoInterface {
 }
 
 export default class ItemInfo extends Component<ItemInfoInterface, {}> {
+  state = {
+    token: ''
+  }
 
   componentDidMount = () => {
   }
@@ -31,6 +34,26 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
   handleOnCouponClick = async () => {
     // this.openTaobaoForRN()
     await this.getToken()
+    const { token } = this.state
+    if (token) {
+      Taro.setClipboardData({
+        data: token,
+      }).then(data => {
+        Taro.showToast({
+          title: '复制淘口令成功'
+        })
+
+        // ============================================ 为 RN 打开 淘宝 ========================
+        this.openTaobaoForRN()
+
+      }).catch(err => {
+        console.log('FIN 设置系统剪切板失败', err)
+        Taro.showToast({
+          title: '复制失败'
+        })
+      })
+
+    }
 
   }
 
@@ -38,11 +61,9 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
   getToken = async () => {
     const { item = {} } = this.props
     const { goodsId = '0' } = item
+    console.log('FIN 转链商品', goodsId)
     const query = {
-      // goodsId: 572079415867,
       goodsId,
-      // pid: 'mm_25980018_161500381_52500400059',
-      pid: 'mm_25980018_42802227_261638775',
     }
 
     const url = 'https://openapi.dataoke.com/api/tb-service/get-privilege-link'
@@ -58,6 +79,19 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
       console.log('FIN item resp', resp)
 
       if (resp && resp['statusCode'] === 200 && resp['data']) {
+        if (resp['data']['msg'] === '成功') {
+          const data = resp['data']['data'] || {}
+          const token = data['tpwd']
+          await this.setState({
+            token,
+          })
+        } else {
+          const errMsg = resp['data']['msg'] || ''
+          Taro.showToast({
+            // title: '获取淘口令失败!'
+            title: errMsg,
+          })
+        }
       }
 
     } catch (err) {
