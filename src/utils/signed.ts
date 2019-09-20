@@ -34,7 +34,7 @@ export const signed = (params: any) => {
   }
 
   const dataStr = `${str}&key=${appSecret}`
-  console.log('FIN dataStr', dataStr)
+  // console.log('FIN dataStr', dataStr)
   // md5加密
   const ret = md5(dataStr)
 

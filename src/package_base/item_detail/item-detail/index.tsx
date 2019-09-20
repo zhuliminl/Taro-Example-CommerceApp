@@ -52,7 +52,7 @@ export default class ItemDetail extends Component<ItemDetailInterface, {}> {
 
   render() {
     const { imgList = [] } = this.props
-    console.log('FIN imgList', imgList)
+    // console.log('FIN imgList', imgList)
     return (
       <View className="item-detail-comp">
         {

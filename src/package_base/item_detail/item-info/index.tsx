@@ -4,6 +4,19 @@ import TextMoney from '@/components/text-money'
 import './index.scss'
 import bg_coupon from '@/assets/image/bg_coupon.png'
 import { parseDate } from '@/utils/date'
+import { device } from '@/utils/device';
+import { signed, dtkAppData } from '@/utils/signed'
+
+let RN = {
+  Linking: {
+    canOpenURL: (url) => Promise,
+    openURL: (url) => { }
+  }
+}
+
+if (process.env.TARO_ENV === 'rn') {
+  RN = require('react-native')
+}
 
 
 interface ItemInfoInterface {
@@ -13,6 +26,70 @@ interface ItemInfoInterface {
 export default class ItemInfo extends Component<ItemInfoInterface, {}> {
 
   componentDidMount = () => {
+  }
+
+  handleOnCouponClick = async () => {
+    // this.openTaobaoForRN()
+    await this.getToken()
+
+  }
+
+  // 生成淘口令
+  getToken = async () => {
+    const { item = {} } = this.props
+    const { goodsId = '0' } = item
+    const query = {
+      // goodsId: 572079415867,
+      goodsId,
+      // pid: 'mm_25980018_161500381_52500400059',
+      pid: 'mm_25980018_42802227_261638775',
+    }
+
+    const url = 'https://openapi.dataoke.com/api/tb-service/get-privilege-link'
+    try {
+      const resp = await Taro.request({
+        url,
+        data: {
+          ...dtkAppData,
+          ...query,
+          sign: signed(query),
+        }
+      })
+      console.log('FIN item resp', resp)
+
+      if (resp && resp['statusCode'] === 200 && resp['data']) {
+      }
+
+    } catch (err) {
+      console.log('FIN get DTKToken error', err)
+      Taro.showToast({
+        title: '获取淘宝口令失败'
+      })
+    }
+
+  }
+
+  openTaobaoForRN = () => {
+    if (device.isRN()) {
+      RN.Linking.canOpenURL('taobao://').then(supported => {
+        if (supported) {
+          // Taro.showToast({
+          //   title: '正在打开淘宝'
+          // })
+          RN.Linking.openURL('taobao://')
+        } else {
+          Taro.showToast({
+            title: '无法打开淘宝'
+          })
+        }
+
+      }).catch(err => {
+        console.log('FIN 打开淘宝错误', err)
+        Taro.showToast({
+          title: '无法打开淘宝'
+        })
+      })
+    }
   }
 
   render() {
@@ -45,10 +122,13 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
         </View> */}
 
         <View className='item-info-item-title-wrap'>
-          <Text className='item-info-item-title-txt'>{item['dtitle']}</Text>
+          <Text className='item-info-item-title-txt'>{item['dtitle'] || item['title']}</Text>
         </View>
 
-        <View className='item-info-coupon-wrap'>
+        <View
+          className='item-info-coupon-wrap'
+          onClick={this.handleOnCouponClick}
+        >
           <Text className='item-info-coupon-money-txt'>￥{item['couponPrice']}</Text>
           <View className='item-info-coupon-desc-wrap'>
             <Text className='item-info-coupon-desc-txt'>优惠券使用期限</Text>

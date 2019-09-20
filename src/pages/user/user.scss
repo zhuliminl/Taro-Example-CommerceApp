@@ -3,6 +3,7 @@
   z-index: -999;
 }
 .user {
+  background-color: #FFF;
 
   &_bg{
     position: absolute;
@@ -206,4 +207,49 @@
   font-size: 22px;
   color: #999;
 
+}
+
+.user-input-wraper {
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-input-title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 32px;
+  color: #666;
+
+}
+
+.user-input {
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #EEE;
+  border-width: 1px;
+  border-color: #F5F6F7;
+  width: 400px;
+  height: 80px;
+  padding-left: 30px;
+  // height: 80px;
+  font-size: 28px;
+  color: #666;
+}
+
+.user-btn {
+  margin-top: 100px;
+  border-radius: 10px;
+  width: 400px;
+  height: 80px;
+  background-color: #ED0D69;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-btn-txt {
+  color: #FFF;
+  font-size: 38px;
+  text-align: center;
 }

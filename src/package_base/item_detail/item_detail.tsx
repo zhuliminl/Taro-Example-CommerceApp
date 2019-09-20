@@ -79,15 +79,18 @@ export default class Item_detail extends Component<{}, stateInterface> {
     //   console.log('FIN get coupon err', err)
     // }
 
-    // this.getSimilar()
+    this.getSimilar()
 
   }
 
   getDTKGood = async () => {
-    const params = {
+    const params = parseUrlParams(this.$router.params)
+    const itemid = params.itemid
+
+    const query = {
       // goodsId: 601630839338,
-      id: 22270804,
-      goodsId: 572079415867,
+      // goodsId: 572079415867,
+      goodsId: itemid,
     }
 
     const url = `https://openapi.dataoke.com/api/goods/get-goods-details`
@@ -96,15 +99,16 @@ export default class Item_detail extends Component<{}, stateInterface> {
         url,
         data: {
           ...dtkAppData,
-          ...params,
-          sign: signed(params),
+          ...query,
+          sign: signed(query),
         }
       })
+      console.log('FIN item resp', resp)
 
       if (resp && resp['statusCode'] === 200 && resp['data']) {
         const data = resp['data'] || {}
         const item = data['data'] || {}
-        console.log('FIN item', item)
+        // console.log('FIN item', item)
         this.setState({
           item,
           isLoading: false,
@@ -173,7 +177,6 @@ export default class Item_detail extends Component<{}, stateInterface> {
     if (device.isWeChat()) {
       scrollStyle.height = device.windowHeight + 'px'   // wechat ide 中没问题
       scrollStyle.height = Taro.getSystemInfoSync().screenHeight + 'px'   // 手机上还是超出，需要集中处理这个问题 
-      console.log('FIN item scroll style for wechat', scrollStyle)
     }
 
     const { item } = this.state
@@ -182,7 +185,17 @@ export default class Item_detail extends Component<{}, stateInterface> {
 
     const { detailPics = '' } = item
     // const detailImgs = detailPics.split(',').map(src => src.slice(2))
-    const detailImgs = detailPics.split(',').map(src => 'http:' + src)
+    // const detailImgs = detailPics.split(',').map(src => 'http:' + src)
+    const detailImgs = detailPics.split(',').filter(src => src !== '').map(src => {
+      if (src.includes('http')) {
+        return src
+      }
+      return 'http:' + src
+    })
+    // console.log('FIN detailImgs', detailImgs)
+
+    const imgsStr = item['imgs'] || ''
+    const imgs = imgsStr.split(',').filter(src => src !== '')
 
     return (
       <View className="item_detail-page" style={pageStyle} >
@@ -197,11 +210,17 @@ export default class Item_detail extends Component<{}, stateInterface> {
             style={scrollStyle}
           >
             {/* <Text>{pageStyle.height}</Text> */}
-            {/* <ItemCarousel itemSrcList={''} /> */}
+            <ItemCarousel itemSrcList={imgs} />
             <ItemInfo item={this.state.item} />
             <ShopInfo item={this.state.item} />
-            <CenterTitle title={'商品详情'} />
-            <ItemDetail imgList={detailImgs} />
+            {
+              item['id'] !== -1 &&
+              <CenterTitle title={'商品详情'} />
+            }
+            {
+              item['id'] !== -1 &&
+              <ItemDetail imgList={detailImgs} />
+            }
             <CenterTitle title={'商品推荐'} />
             <SimilarItemList list={this.state.similarCoupon || []} />
           </ScrollView>

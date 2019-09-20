@@ -35,6 +35,7 @@ class App extends Component {
       // 'pages/seckill/seckill',
       // 'pages/partner/partner',
       'pages/user/user',
+      'pages/nine_goods/nine_goods',
       // 'pages/test/test',
     ],
     subPackages: [
