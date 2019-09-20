@@ -2,6 +2,7 @@ import './home.scss';
 
 import { ScrollView, Text, View, Image } from '@tarojs/components';
 import Taro, { Component, pxTransform } from '@tarojs/taro';
+import SplashScreen from 'react-native-splash-screen'
 
 import Banner from '@/components/banner';
 import ItemListB from '@/components/item-list-a';
@@ -147,6 +148,12 @@ class Home extends Component {
   componentDidMount = async () => {
     this.fetchCoupon()
     this.fetchSuperSortList()
+
+    // SplashScreen.hide()
+    // console.log('FIN splash', SplashScreen.show())
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1000)
 
     // setTimeout(() => {
     //   this.setState({
