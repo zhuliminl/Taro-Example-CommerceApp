@@ -5,19 +5,24 @@ import { searchsQuery } from '../../../rn_temp/_state/state';
 
 export function getHotSearch() {
   const url = 'https://v2.api.haodanku.com/hot_key/apikey/saul/back/15'
-  const source$ = from(Taro.request({ url }))
-  source$.subscribe(data => {
-    if (data && data['statusCode'] === 200) {
-      const hotListData = data['data'] && data['data']['data'] || []
-      let hotList = hotListData.map((item, i) => ({
-        key: i,
-        title: item.keyword
-      }))
-      searchsStore.update({
-        hotList,
-      })
-    }
-  })
+  try {
+    const source$ = from(Taro.request({ url }))
+    source$.subscribe(data => {
+      if (data && data['statusCode'] === 200) {
+        const hotListData = data['data'] && data['data']['data'] || []
+        let hotList = hotListData.map((item, i) => ({
+          key: i,
+          title: item.keyword
+        }))
+        searchsStore.update({
+          hotList,
+        })
+      }
+    })
+
+  } catch (err) {
+    console.log('FIN get hot history err', err)
+  }
 }
 
 export function pushHistory(title: string) {

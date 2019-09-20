@@ -48,6 +48,7 @@ export const navigateTo = (pathName, params = {}) => {
     'talent_article',
   ]
   if (package_community_routes.includes(pathName)) {
+    baseRoute = '/package_community'
   }
 
   Taro.navigateTo({

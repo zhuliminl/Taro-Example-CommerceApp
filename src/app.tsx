@@ -34,7 +34,7 @@ class App extends Component {
       'pages/community/community',
       // 'pages/seckill/seckill',
       // 'pages/partner/partner',
-      'pages/user/user',
+      // 'pages/user/user',
       'pages/nine_goods/nine_goods',
       // 'pages/test/test',
     ],
@@ -125,13 +125,13 @@ class App extends Component {
           selectedIconPath: "./assets/tab-bar/home-active.png",
           text: "定制页"
         },
-        */
         {
           pagePath: "pages/user/user",
           iconPath: "./assets/tab-bar/user.png",
           selectedIconPath: "./assets/tab-bar/user-active.png",
           text: "我的"
         }
+        */
       ]
     }
   }

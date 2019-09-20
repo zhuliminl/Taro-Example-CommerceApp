@@ -76,7 +76,7 @@ export default class ItemInfo extends Component<ItemInfoInterface, {}> {
           sign: signed(query),
         }
       })
-      console.log('FIN item resp', resp)
+      console.log('FIN token resp', resp)
 
       if (resp && resp['statusCode'] === 200 && resp['data']) {
         if (resp['data']['msg'] === '成功') {

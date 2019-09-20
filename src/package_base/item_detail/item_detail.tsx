@@ -126,10 +126,12 @@ export default class Item_detail extends Component<{}, stateInterface> {
   getSimilar = async () => {
     const params = parseUrlParams(this.$router.params)
     const itemid = params.itemid
+    console.log("FIN itemid", itemid)
     const url = `https://v2.api.haodanku.com/get_similar_info/apikey/saul/back/50/itemid/${itemid}`
     try {
       const resp = await Taro.request({ url })
       const coupon = resp && resp.data && resp.data.data
+      console.log('FIN 相似产品', coupon)
       this.setState({
         similarCoupon: coupon,
       })

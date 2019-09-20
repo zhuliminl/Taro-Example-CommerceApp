@@ -79,12 +79,16 @@ export default class Search extends Component {
 
   sub1: any;
   setHotSearch = () => {
-    appService.getHotSearch()
-    this.sub1 = appQuery.searchs.select('hotList').subscribe(hotList => {
-      this.setState({
-        hotList,
+    try {
+      appService.getHotSearch()
+      this.sub1 = appQuery.searchs.select('hotList').subscribe(hotList => {
+        this.setState({
+          hotList,
+        })
       })
-    })
+    } catch (err) {
+      console.log('FIN get hot history err', err)
+    }
   }
 
   sub2: any;
