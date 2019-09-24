@@ -66,9 +66,9 @@ export default class DownloadBtn extends Component<DownloadBtnInterface, {}> {
   render() {
     return (
       <View className="download-btn-comp" onClick={this.handleOnDownLoadBtnClick.bind(this)}>
-        <Text className='download-btn-txt'>
+        {/* <Text className='download-btn-txt'>
           下载原图
-        </Text>
+        </Text> */}
       </View>
     )
   }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StyleSheet, Platform } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, Platform } from 'react-native'
 import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
 import { device } from '@/utils/device'
+import { navigateTo } from '@/utils/navigation'
 
 interface SwiperPolyInterface {
   imgList: any[];
@@ -13,7 +14,12 @@ export default class SwiperPoly extends Component<SwiperPolyInterface, {}> {
 
   _renderItem({ item, index }, parallaxProps) {
     return (
-      <View style={styles.item}>
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => {
+          navigateTo('talent_article', { title: 'xxxx', id: item['id'] })
+        }}
+      >
         <ParallaxImage
           source={{ uri: item['url'] }}
           containerStyle={styles.imageContainer}
@@ -22,7 +28,7 @@ export default class SwiperPoly extends Component<SwiperPolyInterface, {}> {
           {...parallaxProps}
         />
         <Text style={styles.title} numberOfLines={2}>{item['title']}</Text>
-      </View>
+      </TouchableOpacity>
     )
   }
 

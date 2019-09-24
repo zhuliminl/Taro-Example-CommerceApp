@@ -29,6 +29,7 @@ export default class Talk extends Component<TalkInterface, {}> {
     const { talks = {}, firstLoading = true, loading = true } = this.props
     const imglist = talks['topdata'] && talks['topdata'].map(item => {
       return {
+        id: item['id'],
         url: item['article_banner'],
         title: item['shorttitle'],
         type: 'image',             // 使用 mp-colorui 必须要声明好 item 类型
