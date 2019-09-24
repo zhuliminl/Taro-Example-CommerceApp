@@ -36,6 +36,7 @@ class App extends Component {
       // 'pages/partner/partner',
       // 'pages/user/user',
       'pages/nine_goods/nine_goods',
+      'pages/ranking_list/ranking_list',
       // 'pages/test/test',
     ],
     subPackages: [

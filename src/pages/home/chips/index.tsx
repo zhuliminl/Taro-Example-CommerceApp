@@ -45,13 +45,16 @@ export default class Chips extends Component<ChipsInterface, {}> {
           style={{
             width: device.windowWidth / 2,
           }}
+          onClick={() => {
+            navigateTo('ranking_list')
+          }}
         >
           <Image
             style={{
               width: device.windowWidth / 2,
               height: 150 * (device.windowWidth / 2) / 350,
             }}
-            src={bg_chip1}
+            src={bg_chip2}
           />
         </View>
 

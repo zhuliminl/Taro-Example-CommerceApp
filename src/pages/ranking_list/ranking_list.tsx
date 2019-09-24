@@ -3,56 +3,28 @@ import { View, Text, ScrollView } from '@tarojs/components'
 import Tab from '@/components/tab';
 import ItemListA from '@/components/item-list-a';
 import Header from '@/components/header'
-import './nine_goods.scss'
+import './ranking_list.scss'
 import { device } from '@/utils/device'
 import Spin from '@/components/spin'
 
 import { signed, dtkAppData } from '@/utils/signed'
 
 const TAB_LIST = [
-  // {
-  //   key: 0,
-  //   title: '精选',
-  // },
   {
     key: 0,
-    title: '居家',
+    title: '实时榜',
   },
   {
     key: 1,
-    title: '美食',
+    title: '全天榜',
   },
   {
     key: 2,
-    title: '服饰',
+    title: '热推榜',
   },
   {
     key: 3,
-    title: '配饰',
-  },
-  {
-    key: 4,
-    title: '美妆',
-  },
-  {
-    key: 5,
-    title: '内衣',
-  },
-  {
-    key: 6,
-    title: '母婴',
-  },
-  {
-    key: 7,
-    title: '箱包',
-  },
-  {
-    key: 8,
-    title: '数码',
-  },
-  {
-    key: 9,
-    title: '文娱',
+    title: '复购榜',
   },
 ]
 
@@ -60,8 +32,7 @@ const TAB_LIST = [
 export default class NineGoods extends Component {
   state = {
     current: 0,
-    pageId: '',
-    nineCid: 1,
+    rankType: 1,
 
     items: [],
   }
@@ -78,13 +49,10 @@ export default class NineGoods extends Component {
   getItem = async () => {
 
     const query = {
-      pageSize: 50,
-      // pageId: '718a6aee2246e13e',
-      pageId: this.state.pageId,
-      nineCid: this.state.nineCid,
+      rankType: this.state.rankType,
     }
 
-    const url = 'https://openapi.dataoke.com/api/goods/nine/op-goods-list'
+    const url = 'https://openapi.dataoke.com/api/goods/get-ranking-list'
     try {
       const resp = await Taro.request({
         url,
@@ -94,44 +62,31 @@ export default class NineGoods extends Component {
           sign: signed(query),
         }
       })
-      // console.log('FIN 9.9 resp', resp)
+      // console.log('FIN ranking-list resp', resp)
 
       if (resp && resp['statusCode'] === 200 && resp['data']) {
         const data = resp['data'] || {}
-        const itemData = data['data'] || {}
-        const items = itemData['list'] || []
-        const preState = this.state
-        const nextItems = preState.items.concat(items)
+        const items = data['data'] || []
+
         this.setState({
-          items: nextItems,
-          pageId: itemData['pageId'],
+          items,
         })
       }
 
     } catch (err) {
-      console.log('FIN get 9.9 error', err)
+      console.log('FIN get 各大榜单 error', err)
       Taro.showToast({
         title: '获取商品失败'
       })
     }
   }
 
-  handleOnScroll = () => {
-
-  }
-
-  handleOnScrollToLower = () => {
-    this.getItem()
-
-  }
-
   handleOnTabChange = (item) => {
     const key = item.key
     this.setState({
       current: key,
-      nineCid: key + 1,
+      rankType: key + 1,
       items: [],
-      pageId: '',
     }, this.getItem)
 
   }
@@ -143,9 +98,10 @@ export default class NineGoods extends Component {
       // 安卓特殊处理，否则无法滑动
       scrollHeight = 98 + 30
     }
+
     return (
-      <View className="nine_goods-page">
-        <Header title='9.9包邮' />
+      <View className="ranking_list-page">
+        <Header title='各大榜单' />
         <View style={{ height: Taro.pxTransform(130), backgroundColor: '#FFF' }} ></View>
         <Tab
           itemWidth={60}
@@ -154,15 +110,12 @@ export default class NineGoods extends Component {
           onChange={(item) => { this.handleOnTabChange(item) }}
         />
         <ScrollView
-          onScroll={this.handleOnScroll.bind(this)}
-          onScrollToLower={this.handleOnScrollToLower.bind(this)}
           scrollY
           style={{
             height: device.windowHeight - scrollHeight
           }}
         >
           <ItemListA list={this.state.items || []} isDTK={true} />
-          <Spin isShow />
         </ScrollView>
       </View>
     )
