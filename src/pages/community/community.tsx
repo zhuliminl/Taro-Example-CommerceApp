@@ -137,7 +137,7 @@ class Community extends Component {
       <View className='community-page'>
         <Tab
           noScroll
-          marginLeft={65}
+          marginLeft={65 + 40}
           marginTop={tabMarginTop}
           itemWidth={80}
           current={this.state.current}
@@ -150,7 +150,7 @@ class Community extends Component {
           }}
         />
         {
-          this.state.current === 0 &&
+          this.state.current === 3 &&
           <Moments
             firstLoading={this.state.isLoadingMomentFirstTime}
             loading={this.state.isLoadingMoment}
@@ -159,7 +159,7 @@ class Community extends Component {
           />
         }
         {
-          this.state.current === 1 &&
+          this.state.current === 0 &&
           <Topic
             firstLoading={this.state.isLoadingTopicFirstTime}
             loading={this.state.isLoadingTopic}
@@ -167,7 +167,7 @@ class Community extends Component {
             scrollStyle={scrollStyle} />
         }
         {
-          this.state.current === 2 &&
+          this.state.current === 1 &&
           <Talk
             talks={this.state.talks}
             loading={this.state.isLoadingTalk}

@@ -104,14 +104,14 @@ class App extends Component {
         {
           pagePath: "pages/supersort/supersort",
           iconPath: "./assets/tab-bar/partner.png",
-          selectedIconPath: "./assets/tab-bar/home-active.png",
+          selectedIconPath: "./assets/tab-bar/partner-active.png",
           text: "分类"
         },
         {
           pagePath: "pages/community/community",
           iconPath: "./assets/tab-bar/save.png",
           selectedIconPath: "./assets/tab-bar/save-active.png",
-          text: "好省圈"
+          text: "淘便宜"
         },
         /*
         {

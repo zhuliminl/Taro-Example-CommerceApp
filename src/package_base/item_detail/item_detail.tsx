@@ -131,7 +131,7 @@ export default class Item_detail extends Component<{}, stateInterface> {
     try {
       const resp = await Taro.request({ url })
       const coupon = resp && resp.data && resp.data.data
-      console.log('FIN 相似产品', coupon)
+      // console.log('FIN 相似产品', coupon)
       this.setState({
         similarCoupon: coupon,
       })
